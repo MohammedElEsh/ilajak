@@ -40,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+        padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 12.h),
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: theme.colorScheme.surface,
@@ -58,12 +58,26 @@ class _BottomNavBarState extends State<BottomNavBar> {
             height: 64.h,
             selectedIndex: _highlightedIndex,
             onDestinationSelected: widget.onTap,
+            labelTextStyle: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.selected)) {
+                return TextStyle(
+                  fontSize: 9.sp,
+                  color: theme.colorScheme.primary,
+                );
+              }
+              return TextStyle(fontSize: 9.sp);
+            }),
             destinations: [
               NavigationDestination(
                 icon: HugeIcon(
                   icon: HugeIcons.strokeRoundedHome01,
                   size: 24,
                   color: theme.colorScheme.onSurface,
+                ),
+                selectedIcon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedHome01,
+                  size: 24,
+                  color: theme.colorScheme.primary,
                 ),
                 label: AppStrings.navHome.tr(),
               ),
@@ -73,6 +87,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   size: 24,
                   color: theme.colorScheme.onSurface,
                 ),
+                selectedIcon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedUser,
+                  size: 24,
+                  color: theme.colorScheme.primary,
+                ),
                 label: AppStrings.navPatients.tr(),
               ),
               NavigationDestination(
@@ -80,6 +99,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   icon: HugeIcons.strokeRoundedBookOpen01,
                   size: 24,
                   color: theme.colorScheme.onSurface,
+                ),
+                selectedIcon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedBookOpen01,
+                  size: 24,
+                  color: theme.colorScheme.primary,
                 ),
                 label: AppStrings.navArticles.tr(),
               ),
@@ -89,6 +113,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   size: 24,
                   color: theme.colorScheme.onSurface,
                 ),
+                selectedIcon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedNotification01,
+                  size: 24,
+                  color: theme.colorScheme.primary,
+                ),
                 label: AppStrings.navNotifications.tr(),
               ),
               NavigationDestination(
@@ -96,6 +125,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   icon: HugeIcons.strokeRoundedSettings01,
                   size: 24,
                   color: theme.colorScheme.onSurface,
+                ),
+                selectedIcon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedSettings01,
+                  size: 24,
+                  color: theme.colorScheme.primary,
                 ),
                 label: AppStrings.navProfile.tr(),
               ),
