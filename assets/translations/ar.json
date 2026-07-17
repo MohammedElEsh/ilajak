@@ -1,0 +1,142 @@
+{
+  "shared": {
+    "get_started": "ابدأ الآن",
+    "retry": "إعادة المحاولة",
+    "no_internet": "لا يوجد اتصال بالإنترنت",
+    "no_internet_subtitle": "تحقق من إعدادات الشبكة وحاول مرة أخرى.",
+    "connection_restored": "تم استعادة الاتصال",
+    "still_no_connection": "لا يزال لا يوجد اتصال"
+  },
+  "onboarding": {
+    "actions": {
+      "skip": "تخطي",
+      "prev": "السابق",
+      "next": "التالي",
+      "get_started": "ابدأ الآن"
+    },
+    "steps": {
+      "title1": "اختر المنتجات",
+      "subtitle1": "تصفح آلاف المنتجات واعثر على ما تحتاجه بالضبط.",
+      "title2": "ادفع",
+      "subtitle2": "دفع آمن مع خيارات دفع متعددة.",
+      "title3": "استلم طلبك",
+      "subtitle3": "توصيل سريع لباب بيتك."
+    }
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "field_required": "{} مطلوب"
+  },
+  "auth": {
+    "or_continue_with": "أو المتابعة بواسطة",
+    "login": {
+      "title": "تسجيل الدخول",
+      "subtitle": "أدخل بريدك الإلكتروني وكلمة المرور",
+      "welcome_back": "مرحباً\nبعودتك!",
+      "email": "البريد الإلكتروني",
+      "email_hint": "أدخل بريدك الإلكتروني",
+      "email_required": "البريد الإلكتروني مطلوب",
+      "email_invalid": "أدخل بريداً إلكترونياً صالحاً",
+      "password": "كلمة المرور",
+      "password_hint": "أدخل كلمة المرور",
+      "password_required": "كلمة المرور مطلوبة",
+      "password_min_length": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+      "remember_me": "تذكرني",
+      "forgot_password": "نسيت كلمة المرور؟",
+      "button": "دخول",
+      "dont_have_account": "ليس لديك حساب؟ ",
+      "sign_up": "سجل الآن"
+    },
+    "signup": {
+      "title": "إنشاء حساب",
+      "subtitle": "أنشئ حساباً جديداً للبدء.",
+      "name": "الاسم",
+      "name_required": "الاسم مطلوب",
+      "confirm_password": "تأكيد كلمة المرور",
+      "confirm_password_required": "تأكيد كلمة المرور مطلوب",
+      "passwords_do_not_match": "كلمات المرور غير متطابقة",
+      "button": "إنشاء حساب",
+      "already_have_account": "لديك حساب بالفعل؟ ",
+      "sign_in": "تسجيل الدخول"
+    },
+    "forgot_password": {
+      "title": "نسيت كلمة المرور",
+      "subtitle": "أدخل بريدك الإلكتروني لاستعادة حسابك.\nستصلك رابط إعادة تعيين كلمة المرور.",
+      "helper": "سنرسل لك رسالة لتعيين أو إعادة تعيين كلمة المرور الجديدة",
+      "reset_link_sent": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.",
+      "submit": "إرسال"
+    },
+    "terms": {
+      "first_part": "بالنقر على زر ",
+      "link": "التسجيل",
+      "second_part": "، أنت توافق على العرض العام"
+    }
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "patients": "المرضى",
+    "articles": "المقالات",
+    "notifications": "الإشعارات",
+    "profile": "الملف الشخصي"
+  },
+  "home": {
+    "getting_started": {
+      "title": "تريد الأصلي، ها هو أمامك!",
+      "subtitle": "اعثر عليه هنا، واشترِه الآن!",
+      "button": "ابدأ الآن"
+    },
+    "title": "الرئيسية",
+    "welcome": "أهلاً بك!",
+    "subtitle": "لقد أكملت عملية الإعداد بنجاح.",
+    "search": {
+      "placeholder": "ابحث عن أي منتج...",
+      "voice_hint": "البحث الصوتي"
+    },
+    "filter_sort": {
+      "title": "كل المنتجات المميزة",
+      "sort": "ترتيب",
+      "filter": "تصفية"
+    },
+    "promo": {
+      "discount": "50-40% OFF",
+      "subtitle": "متوفر الآن في المنتج",
+      "colours": "جميع الألوان",
+      "shop_now": "تسوق الآن"
+    },
+    "deal_of_the_day": {
+      "title": "عرض اليوم",
+      "remaining": "متبقي 22س : 56د : 30ث",
+      "last_date": "ينتهي 29/02/22",
+      "view_all": "عرض الكل"
+    },
+    "trending_products": {
+      "title": "المنتجات الرائجة"
+    },
+    "special_offers": {
+      "title": "عروض خاصة",
+      "subtitle": "وفّر الكثير مع عروض محدودة تم اختيارها خصيصاً لك"
+    },
+    "flat_and_heels": {
+      "title": "الفلت والكعب",
+      "subtitle": "اعثري على المقاس المثالي لكل مناسبة.",
+      "button": "تسوّقي الآن"
+    },
+    "section": {
+      "view_all": "عرض الكل"
+    },
+    "new_arrivals": {
+      "title": "وصل حديثاً",
+      "subtitle": "تشكيلة صيف 25"
+    },
+    "sponsored": {
+      "header": "إعلان",
+      "title": "خصم يصل إلى 50%"
+    }
+  },
+  "products": {
+    "title": "المنتجات",
+    "subtitle": "اكتشف تشكيلتنا",
+    "empty": "لم يتم العثور على منتجات",
+    "retry": "إعادة المحاولة"
+  }
+}

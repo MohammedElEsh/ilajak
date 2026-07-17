@@ -1,0 +1,142 @@
+{
+  "shared": {
+    "get_started": "Get Started",
+    "retry": "Retry",
+    "no_internet": "No internet connection",
+    "no_internet_subtitle": "Please check your network settings and try again.",
+    "connection_restored": "Connection restored",
+    "still_no_connection": "Still no connection"
+  },
+  "onboarding": {
+    "actions": {
+      "skip": "Skip",
+      "prev": "Prev",
+      "next": "Next",
+      "get_started": "Get Started"
+    },
+    "steps": {
+      "title1": "Choose Products",
+      "subtitle1": "Browse through thousands of products and find exactly what you need.",
+      "title2": "Make Payment",
+      "subtitle2": "Secure checkout with multiple payment options.",
+      "title3": "Get Your Order",
+      "subtitle3": "Fast delivery to your doorstep."
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "field_required": "{} is required"
+  },
+  "auth": {
+    "or_continue_with": "Or Continue With",
+    "login": {
+      "title": "Log in",
+      "subtitle": "Enter your email and password",
+      "welcome_back": "Welcome\nBack!",
+      "email": "Email",
+      "email_hint": "Username or Email",
+      "email_required": "Email is required",
+      "email_invalid": "Enter a valid email",
+      "password": "Password",
+      "password_hint": "password",
+      "password_required": "Password is required",
+      "password_min_length": "Password must be at least 6 characters",
+      "remember_me": "Remember me",
+      "forgot_password": "Forgot Password?",
+      "button": "Login",
+      "dont_have_account": "Don't have an account? ",
+      "sign_up": "Sign Up"
+    },
+    "signup": {
+      "title": "Create An Account",
+      "subtitle": "Create a new account to get started.",
+      "name": "Name",
+      "name_required": "Name is required",
+      "confirm_password": "Confirm Password",
+      "confirm_password_required": "Confirm password is required",
+      "passwords_do_not_match": "Passwords do not match",
+      "button": "Create Account",
+      "already_have_account": "I Already have an account",
+      "sign_in": "Sign In"
+    },
+    "forgot_password": {
+      "title": "Forgot Password?",
+      "subtitle": "Enter your email address to receive a reset link\nand regain access to your account.",
+      "helper": "We will send you a message to set or reset your new password",
+      "reset_link_sent": "Password reset link sent to your email.",
+      "submit": "Submit"
+    },
+    "terms": {
+      "first_part": "By clicking the ",
+      "link": "Register",
+      "second_part": " button, you agree to the public offer"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "patients": "Patients",
+    "articles": "Articles",
+    "notifications": "Notifications",
+    "profile": "Profile"
+  },
+  "home": {
+    "getting_started": {
+      "title": "You want Authentic, here you go!",
+      "subtitle": "Find it here, buy it now!",
+      "button": "Get Started"
+    },
+    "title": "Home",
+    "welcome": "Welcome Home!",
+    "subtitle": "You have successfully completed the onboarding process.",
+    "search": {
+      "placeholder": "Search any Product...",
+      "voice_hint": "Voice search"
+    },
+    "filter_sort": {
+      "title": "All Featured",
+      "sort": "Sort",
+      "filter": "Filter"
+    },
+    "promo": {
+      "discount": "50-40% OFF",
+      "subtitle": "Now in product",
+      "colours": "All colours",
+      "shop_now": "Shop Now"
+    },
+    "deal_of_the_day": {
+      "title": "Deal of the Day",
+      "remaining": "22h : 56m : 30s remaining",
+      "last_date": "Last Date 29/02/22",
+      "view_all": "View all"
+    },
+    "trending_products": {
+      "title": "Trending Products"
+    },
+    "special_offers": {
+      "title": "Special Offers",
+      "subtitle": "Save big on limited-time deals curated just for you"
+    },
+    "flat_and_heels": {
+      "title": "Flat and Heels",
+      "subtitle": "Find the perfect fit for any occasion.",
+      "button": "Visit now"
+    },
+    "section": {
+      "view_all": "View all"
+    },
+    "new_arrivals": {
+      "title": "New Arrivals",
+      "subtitle": "Summer' 25 Collections"
+    },
+    "sponsored": {
+      "header": "Sponsored",
+      "title": "up to 50% Off"
+    }
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Discover our collection",
+    "empty": "No products found",
+    "retry": "Try again"
+  }
+}

@@ -138,8 +138,8 @@ class AppStrings {
 
   // Bottom Nav
   static const String navHome = 'nav.home';
-  static const String navWishlist = 'nav.wishlist';
-  static const String navCart = 'nav.cart';
-  static const String navSearch = 'nav.search';
-  static const String navSettings = 'nav.settings';
+  static const String navPatients = 'nav.patients';
+  static const String navArticles = 'nav.articles';
+  static const String navNotifications = 'nav.notifications';
+  static const String navProfile = 'nav.profile';
 }

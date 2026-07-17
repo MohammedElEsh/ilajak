@@ -7,8 +7,8 @@ class RouteNames {
 
   // Authenticated shell tabs
   static const String home = '/home';
-  static const String categories = '/categories';
-  static const String cart = '/cart';
-  static const String wishlist = '/wishlist';
+  static const String patients = '/patients';
+  static const String articles = '/articles';
+  static const String notifications = '/notifications';
   static const String profile = '/profile';
 }
