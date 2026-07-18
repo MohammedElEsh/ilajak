@@ -50,7 +50,7 @@ dependencies:
 
   # Utilities
   logger: ^2.7.0
-  intl: ^0.20.3
+  intl: ^0.20.2
   crypto: ^3.0.7
 
 dev_dependencies:
