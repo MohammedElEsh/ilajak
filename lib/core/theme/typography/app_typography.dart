@@ -8,7 +8,7 @@ abstract class AppTypography {
     double height = 1,
     double letterSpacing = 0,
   }) {
-    return GoogleFonts.montserrat(
+    return GoogleFonts.almarai(
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: height,

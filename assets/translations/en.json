@@ -15,12 +15,12 @@
       "get_started": "Get Started"
     },
     "steps": {
-      "title1": "Choose Products",
-      "subtitle1": "Browse through thousands of products and find exactly what you need.",
-      "title2": "Make Payment",
-      "subtitle2": "Secure checkout with multiple payment options.",
-      "title3": "Get Your Order",
-      "subtitle3": "Fast delivery to your doorstep."
+      "title1": "Find Doctors",
+      "subtitle1": "Search from over 1,000+ verified medical specialists near you with real patient reviews.",
+      "title2": "Seamless Appointments",
+      "subtitle2": "Book and manage your medical visits with top-rated specialists in just a few taps.",
+      "title3": "Manage Prescriptions",
+      "subtitle3": "Keep track of your medications, set reminders, and order refills directly to your doorstep."
     }
   },
   "validation": {
