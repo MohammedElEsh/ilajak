@@ -56,6 +56,9 @@ class AppButton extends StatelessWidget {
     this.minSize,
     this.maxSize,
 
+    // shape override
+    this.borderRadius,
+
     // color overrides
     this.foregroundColor,
     this.borderColor,
@@ -99,6 +102,8 @@ class AppButton extends StatelessWidget {
   final Size? minSize;
   final Size? maxSize;
 
+  final double? borderRadius;
+
   final Color? foregroundColor;
   final Color? borderColor;
 
@@ -125,7 +130,20 @@ class AppButton extends StatelessWidget {
 
     final baseStyle = _resolveBaseStyle(theme);
     final colorOverrideStyle = _buildColorOverrideStyle();
-    final resolvedStyle = baseStyle?.merge(colorOverrideStyle).merge(style) ?? colorOverrideStyle?.merge(style) ?? style;
+    final mergedStyle = baseStyle
+        ?.merge(colorOverrideStyle)
+        .merge(style) ??
+        colorOverrideStyle?.merge(style) ??
+        style;
+    final resolvedStyle = borderRadius != null
+        ? (mergedStyle ?? ButtonStyle()).copyWith(
+            shape: WidgetStatePropertyAll<OutlinedBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius!),
+              ),
+            ),
+          )
+        : mergedStyle;
 
     final fg = resolvedStyle?.foregroundColor?.resolve({}) ??
         _resolveFallbackFg(theme);
