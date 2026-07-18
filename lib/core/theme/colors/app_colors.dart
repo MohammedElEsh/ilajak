@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Primary
-  static const Color primary = Color(0xFF0077CE);
-  static const Color secondary = Color(0xFF17223B);
-  static const Color primaryLight = Color(0xFFFFCCD5);
-  static const Color primaryMedium = Color(0xFFFD6E87);
-  static const Color secondaryMedium = Color(0xFF4392F9);
+  static const Color primary = Color(0xFF005EA4);
+  static const Color secondary = Color(0xFFD2E0F8);
 
   // Background
   static const Color backgroundLight = Color(0xFFF9F9F9);
@@ -14,18 +11,21 @@ class AppColors {
 
   // Surface
   static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color surfaceDark = Color(0xFF1E1E1E);
+  static const Color surfaceDark = Color(0xFF000000);
 
   // Text
-  static const Color textPrimaryLight = Color(0xFF000000);
+  static const Color textPrimaryLight = Color(0xFF181C22);
   static const Color textPrimaryDark = Color(0xFFFFFFFF);
-  static const Color textSecondary = Color(0xFF828282);
+  static const Color textSecondary = Color(0xFF404752);
+
+  // Label
+  static const Color labelBorder = Color(0xFF707783);
 
   // Semantic
-  static const Color success = Color(0xFF4BB543);
-  static const Color info = Color(0xFF33B5E5);
-  static const Color error = Color(0xFFFF3333);
-  static const Color warning = Color(0xFFFFCC00);
+  static const Color success = Color(0xFF16A34A);
+  static const Color info = Color(0xFF004EAF);
+  static const Color error = Color(0xFFBA1A1A);
+  static const Color warning = Color(0xFFFFB800);
 
   // Neutral
   static const Color grey1 = Color(0xFF333333);
