@@ -1,9 +1,12 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../di/injection.dart';
 import '../services/session/session_manager.dart';
 import '../shared/feedback/feedback_handler.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/onboarding/presentation/manager/onboarding_cubit.dart';
+import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/patients/presentation/views/patients_view.dart';
 import '../../features/articles/presentation/views/articles_view.dart';
 import '../../features/notifications/presentation/views/notifications_view.dart';
@@ -23,6 +26,13 @@ void initRouter() {
     refreshListenable: guard.refreshListenable,
     redirect: guard.redirect,
     routes: [
+      GoRoute(
+        path: RouteNames.onboarding,
+        builder: (context, state) => BlocProvider(
+          create: (_) => sl<OnboardingCubit>(),
+          child: const OnboardingView(),
+        ),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             RouterShell(navigationShell: navigationShell),

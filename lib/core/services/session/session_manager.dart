@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../errors/failures.dart';
 import '../auth/token_refresher.dart';
 import '../auth/token_service.dart';
