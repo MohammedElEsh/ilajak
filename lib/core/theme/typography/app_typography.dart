@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
 
 abstract class AppTypography {
   static TextStyle _base({
@@ -7,12 +8,14 @@ abstract class AppTypography {
     required FontWeight fontWeight,
     double height = 1,
     double letterSpacing = 0,
+    Color? color,
   }) {
     return GoogleFonts.almarai(
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: height,
       letterSpacing: letterSpacing,
+      color: color,
     );
   }
 
@@ -38,5 +41,7 @@ abstract class AppTypography {
       _base(fontSize: 14, fontWeight: FontWeight.w400);
 
   static TextStyle get regular12 =>
-      _base(fontSize: 12, fontWeight: FontWeight.w400);
+      _base(fontSize: 12, fontWeight: FontWeight.w400);  
+  static TextStyle get bold16 =>
+      _base(fontSize: 16, fontWeight: FontWeight.w700,color: AppColors.primary);
 }
