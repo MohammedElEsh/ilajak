@@ -24,4 +24,5 @@ class AppAssets {
 
   static const String defaultUserAvatar = '$_imagesPath/user_avatar.png';
   static const String appBarLogo = '$_imagesPath/app_bar_logo.png';
+  static const String profileImage = '$_imagesPath/profile.png';
 }

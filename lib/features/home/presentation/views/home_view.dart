@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Scaffold(
         appBar: AppTopBar(
           leadingWidget: Image.asset(

@@ -12,6 +12,7 @@ import '../services/connectivity/connectivity_service.dart';
 import '../services/media/media_service.dart';
 import '../services/session/session_manager.dart';
 import '../services/storage/secure_storage_service.dart';
+import '../../features/onboarding/presentation/manager/onboarding_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -99,6 +100,10 @@ Future<void> initDependencies() async {
     () => MediaServiceImpl(),
   );
 
-  // NOTE: Register your feature dependencies here:
-  // e.g.  sl.registerFactory<OnboardingCubit>(() => OnboardingCubit(sl()));
+  // =====================================================
+  // 7. FEATURE: ONBOARDING
+  // =====================================================
+  sl.registerFactory<OnboardingCubit>(
+    () => OnboardingCubit(sl()),
+  );
 }

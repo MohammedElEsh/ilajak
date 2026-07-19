@@ -32,10 +32,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
           Expanded(child: titleWidget),
         ],
       ),
-      actions: [
-        actionWidget,
-        // SizedBox(width: 8.w),
-      ],
+      actions: [actionWidget],
     );
   }
 
