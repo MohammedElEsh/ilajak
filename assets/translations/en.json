@@ -81,9 +81,13 @@
   },
   "home": {
     "getting_started": {
-      "title": "You want Authentic, here you go!",
-      "subtitle": "Find it here, buy it now!",
-      "button": "Get Started"
+      "title": "Hello",
+      "subtitle": "Your health overview is up to date for today.",
+      "appBarTitle": "3ilajak",
+      "Perciptions": "Perciptions",
+      "Labs": "Labs",
+      "Imaging": "Imaging",
+      "Appointments": "Appointments"
     },
     "title": "Home",
     "welcome": "Welcome Home!",

@@ -1,52 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hugeicons/hugeicons.dart';
-
-import '../../constants/app_assets.dart';
-import '../../theme/colors/app_colors.dart';
 
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onMenuTap;
   final VoidCallback? onProfileTap;
+  final Widget leadingWidget;
+  final Widget actionWidget;
+  final Widget titleWidget;
 
   const AppTopBar({
     super.key,
     this.onMenuTap,
     this.onProfileTap,
+    required this.leadingWidget,
+    required this.actionWidget,
+    required this.titleWidget,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       elevation: 0,
       surfaceTintColor: Colors.transparent,
-      leadingWidth: 56.w,
-      leading: IconButton(
-        onPressed: onMenuTap,
-        icon: HugeIcon(
-          icon: HugeIcons.strokeRoundedMenu05,
-          size: 28.r,
-          color: AppColors.primary,
-        ),
-      ),
-      title: Image.asset(
-        AppAssets.appBarLogo,
-        height: 32.h,
-        fit: BoxFit.contain,
+      leadingWidth: 220.w,
+      leading: Row(
+        children: [
+          leadingWidget,
+          SizedBox(width: 12.w),
+          Expanded(child: titleWidget),
+        ],
       ),
       actions: [
-        IconButton(
-          onPressed: onProfileTap,
-          icon: HugeIcon(
-            icon: HugeIcons.strokeRoundedUserSquare,
-            color: AppColors.primary,
-            size: 28.r,
-          ),
-        ),
-        SizedBox(width: 8.w),
+        actionWidget,
+        // SizedBox(width: 8.w),
       ],
     );
   }

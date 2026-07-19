@@ -81,56 +81,13 @@
   },
   "home": {
     "getting_started": {
-      "title": "تريد الأصلي، ها هو أمامك!",
-      "subtitle": "اعثر عليه هنا، واشترِه الآن!",
-      "button": "ابدأ الآن"
-    },
-    "title": "الرئيسية",
-    "welcome": "أهلاً بك!",
-    "subtitle": "لقد أكملت عملية الإعداد بنجاح.",
-    "search": {
-      "placeholder": "ابحث عن أي منتج...",
-      "voice_hint": "البحث الصوتي"
-    },
-    "filter_sort": {
-      "title": "كل المنتجات المميزة",
-      "sort": "ترتيب",
-      "filter": "تصفية"
-    },
-    "promo": {
-      "discount": "50-40% OFF",
-      "subtitle": "متوفر الآن في المنتج",
-      "colours": "جميع الألوان",
-      "shop_now": "تسوق الآن"
-    },
-    "deal_of_the_day": {
-      "title": "عرض اليوم",
-      "remaining": "متبقي 22س : 56د : 30ث",
-      "last_date": "ينتهي 29/02/22",
-      "view_all": "عرض الكل"
-    },
-    "trending_products": {
-      "title": "المنتجات الرائجة"
-    },
-    "special_offers": {
-      "title": "عروض خاصة",
-      "subtitle": "وفّر الكثير مع عروض محدودة تم اختيارها خصيصاً لك"
-    },
-    "flat_and_heels": {
-      "title": "الفلت والكعب",
-      "subtitle": "اعثري على المقاس المثالي لكل مناسبة.",
-      "button": "تسوّقي الآن"
-    },
-    "section": {
-      "view_all": "عرض الكل"
-    },
-    "new_arrivals": {
-      "title": "وصل حديثاً",
-      "subtitle": "تشكيلة صيف 25"
-    },
-    "sponsored": {
-      "header": "إعلان",
-      "title": "خصم يصل إلى 50%"
+      "title": "مرحبًا",
+      "subtitle": "ملخص حالتك الصحية محدث حتى اليوم.",
+      "appBarTitle": "علاجك",
+      "Perciptions": "الوصفات الطبية",
+      "Labs": "التحاليل",
+      "Imaging": "الأشعة",
+      "Appointments": "المواعيد"
     }
   },
   "products": {

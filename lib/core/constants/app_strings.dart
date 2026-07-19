@@ -26,9 +26,13 @@ class AppStrings {
   static const String validationFieldRequired = 'validation.field_required';
 
   // Home
-  static const String homeTitle = 'home.title';
-  static const String homeWelcome = 'home.welcome';
-  static const String homeSubtitle = 'home.subtitle';
+  static const String homeTitle = 'home.getting_started.title';
+  static const String homeSubtitle = 'home.getting_started.subtitle';
+  static const String homeAppBarTitle = 'home.getting_started.appBarTitle';
+  static const String homePerciptions = 'home.getting_started.Perciptions';
+  static const String homeLabs = 'home.getting_started.Labs';
+  static const String homeImaging = 'home.getting_started.Imaging';
+  static const String homeAppointments = 'home.getting_started.Appointments';
 
   // Auth - General
   static const String authOrContinueWith = 'auth.or_continue_with';
