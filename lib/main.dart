@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app.dart';
 import 'core/dev/bloc_observer.dart';
+import 'core/dev/dev_tools.dart';
 import 'core/di/injection.dart';
 import 'core/localization/localization_helper.dart';
 import 'core/routing/app_router.dart';
@@ -25,7 +26,7 @@ void main() async {
 
   if (kDebugMode) {
     Bloc.observer = AppBlocObserver();
-    // await DevTools.resetAll();
+    await DevTools.resetAll();
   }
 
   runApp(
