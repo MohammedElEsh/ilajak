@@ -6,9 +6,7 @@ class LocalizationHelper {
     Locale(AppConstants.arabicLangCode),
     Locale(AppConstants.englishLangCode),
   ];
-
   static const String path = AppConstants.translationsPath;
-
   static Locale get fallbackLocale =>
       const Locale(AppConstants.englishLangCode);
 }

@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onMenuTap;
   final VoidCallback? onProfileTap;
-  final Widget? actionWidget;
-  final Widget? leadingWidget;
+  final Widget leadingWidget;
+  final Widget actionWidget;
+  final Widget titleWidget;
 
   const AppTopBar({
     super.key,
     this.onMenuTap,
     this.onProfileTap,
-    this.actionWidget,
-    this.leadingWidget,
+    required this.leadingWidget,
+    required this.actionWidget,
+    required this.titleWidget,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
       automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       elevation: 0,
       surfaceTintColor: Colors.transparent,
-      leadingWidth: 120.w,
-      // ProfileImage circle avatar
-      leading: leadingWidget ?? SizedBox.shrink(),
-      actions: [
-        actionWidget ?? SizedBox.shrink(),
-        SizedBox(width: 8.w),
-      ],
+      leadingWidth: 220.w,
+      leading: Row(
+        children: [
+          leadingWidget,
+          SizedBox(width: 12.w),
+          Expanded(child: titleWidget),
+        ],
+      ),
+      actions: [actionWidget],
     );
   }
 

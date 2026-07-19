@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../errors/failures.dart';
 import '../auth/token_refresher.dart';
 import '../auth/token_service.dart';
@@ -44,7 +43,7 @@ class SessionManager extends ChangeNotifier {
 
   AppStatus get status => _status;
 
-  static const _bypassAuth = false;
+  static const _bypassAuth = true;
 
   /// Called once at app startup — inspects persistent storage
   /// and decides the initial app flow state.
