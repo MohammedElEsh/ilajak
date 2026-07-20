@@ -29,13 +29,13 @@ class TimeLineCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-               title,
+                title,
                 style: AppTypography.semiBold18.copyWith(
                   color: AppColors.textPrimaryLight,
                 ),
               ),
               Text(
-             time,
+                time,
                 style: AppTypography.regular13.copyWith(
                   color: AppColors.textSecondary,
                 ),
