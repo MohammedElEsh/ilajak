@@ -100,7 +100,7 @@ class ProfileView extends StatelessWidget {
                         // Health info tile
                         SettingsTile(
                           icon: Icons.medical_services_outlined,
-                          title: "Health Info",
+                          title: AppStrings.healthInfo.tr(),
                           showDivider: true,
                           onTap: () {
                             context.push(RouteNames.healthInfo);
@@ -134,7 +134,7 @@ class ProfileView extends StatelessWidget {
                         // Logout tile
                         SettingsTile(
                           icon: Icons.logout,
-                          title: "Logout",
+                          title: AppStrings.logout.tr(),
                           iconBackgroundColor:
                               AppColors.redTileIconBackgroundColor,
                           iconColor: AppColors.error,
@@ -191,7 +191,7 @@ void showLogOutDialog(BuildContext context) {
 
             /// Title
             Text(
-              "Are you sure you want to logout?",
+              AppStrings.logoutQuestion.tr(),
               textAlign: TextAlign.center,
               style: AppTypography.semiBold22,
             ),
@@ -200,7 +200,7 @@ void showLogOutDialog(BuildContext context) {
 
             /// Description
             Text(
-              "You'll need to enter your credentials to access your health records and appointments again.",
+              AppStrings.logoutHint.tr(),
               textAlign: TextAlign.center,
               style: AppTypography.regular16.copyWith(
                 color: AppColors.textSecondary,
@@ -211,7 +211,7 @@ void showLogOutDialog(BuildContext context) {
 
             /// Stay Logged In
             AppButton(
-              label: "Stay Logged In",
+              label: AppStrings.stayLoggedIn.tr(),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -226,7 +226,7 @@ void showLogOutDialog(BuildContext context) {
                 side: const BorderSide(color: AppColors.error, width: 1.5),
                 foregroundColor: AppColors.error,
               ),
-              label: "Logout",
+              label: AppStrings.logout.tr(),
               onPressed: () {},
               variant: AppButtonVariant.outlined,
             ),

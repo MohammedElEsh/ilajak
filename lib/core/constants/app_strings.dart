@@ -177,5 +177,10 @@ class AppStrings {
   static const String chronicConditions = 'profile.Chronic Conditions';
   static const String currentMedications = 'profile.Current Medications';
   static const String addMedication = 'profile.Add Medication';
-
+  static const String logout = 'profile.Logout';
+  static const String logoutQuestion = 'profile.Logout Question';
+  static const String logoutHint = 'profile.Logout Hint';
+  static const String stayLoggedIn = 'profile.Stay Logged In';
+  static const String bloodType = 'profile.Blood Type';
+  static const String status = 'profile.Status';
 }

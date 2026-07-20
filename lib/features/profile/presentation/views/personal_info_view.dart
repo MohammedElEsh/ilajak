@@ -19,7 +19,6 @@ class PersonalInfoView extends StatelessWidget {
         title: AppStrings.personalInfoTitle.tr(),
         centerTitle: true,
         leadingWidget: IconButton(
-          // constraints: BoxConstraints.tightFor(width: 22.w, height: 22.h),
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back, color: AppColors.primary),
         ),

@@ -51,7 +51,7 @@ class HealthInfoView extends StatelessWidget {
                         icon: Icons.bloodtype_outlined,
                         iconColor: AppColors.error,
                         iconBgColor: AppColors.error.withValues(alpha: 0.1),
-                        title: "Blood Type",
+                        title: AppStrings.bloodType.tr(),
                         value: Text(
                           "O +",
                           style: AppTypography.bold28.copyWith(
@@ -66,7 +66,7 @@ class HealthInfoView extends StatelessWidget {
                         icon: Icons.shield_outlined,
                         iconColor: AppColors.primary,
                         iconBgColor: const Color.fromRGBO(210, 224, 248, 1),
-                        title: "Status",
+                        title: AppStrings.status.tr(),
                         value: Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 8.w,

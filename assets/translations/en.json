@@ -128,6 +128,11 @@
     "Dust": "Dust",
     "Chronic Conditions": "Chronic Conditions",
     "Current Medications": "Current Medications",
-    "Add Medication": "Add Medication"
+    "Add Medication": "Add Medication",
+    "Logout Question": "Are you sure you want to log out?",
+    "Logout Hint": "You'll need to enter your credentials to access your health records and appointments again.",
+    "Stay Logged In": "Stay Logged In",
+    "Blood Type": "Blood Type",
+    "Status": "Status"
   }
 }
