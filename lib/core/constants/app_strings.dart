@@ -33,6 +33,11 @@ class AppStrings {
   static const String homeLabs = 'home.getting_started.Labs';
   static const String homeImaging = 'home.getting_started.Imaging';
   static const String homeAppointments = 'home.getting_started.Appointments';
+  static const String homeUpcomingAppointment = 'home.getting_started.UpcomingAppointment';
+  static const String homeHealthInsight = 'home.getting_started.HealthInsight';
+  static const String homeHealthInsightSubtitle = 'home.getting_started.HealthInsightSubtitle';
+  
+
 
   // Auth - General
   static const String authOrContinueWith = 'auth.or_continue_with';

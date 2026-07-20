@@ -30,6 +30,8 @@ abstract class AppTypography {
 
   static TextStyle get semiBold20 =>
       _base(fontSize: 20, fontWeight: FontWeight.w600);
+       static TextStyle get semiBold22 =>
+      _base(fontSize: 22, fontWeight: FontWeight.w600);
 
   static TextStyle get semiBold18 =>
       _base(fontSize: 18, fontWeight: FontWeight.w600);
@@ -42,6 +44,8 @@ abstract class AppTypography {
 
   static TextStyle get regular12 =>
       _base(fontSize: 12, fontWeight: FontWeight.w400);  
+      static TextStyle get regular13 =>
+      _base(fontSize: 12, fontWeight: FontWeight.w500);       
   static TextStyle get bold16 =>
       _base(fontSize: 16, fontWeight: FontWeight.w700,color: AppColors.primary);
 }

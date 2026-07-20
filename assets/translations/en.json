@@ -81,13 +81,17 @@
   },
   "home": {
     "getting_started": {
-      "title": "Hello",
+      "title": "Hello, ",
       "subtitle": "Your health overview is up to date for today.",
       "appBarTitle": "3ilajak",
       "Perciptions": "Perciptions",
       "Labs": "Labs",
       "Imaging": "Imaging",
-      "Appointments": "Appointments"
+      "Appointments": "Appointments",
+      "UpcomingAppointment":"Upcoming Appointments",
+       "HealthInsight":"Health Insight",
+       "HealthInsightSubtitle":"Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%."
+            
     }
   },
   "products": {
