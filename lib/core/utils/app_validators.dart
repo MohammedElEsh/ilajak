@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 
-import '../constants/app_strings.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
 
 /// Centralized form validators.
 ///

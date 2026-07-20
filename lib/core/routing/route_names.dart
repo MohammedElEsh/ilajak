@@ -11,4 +11,10 @@ class RouteNames {
   static const String articles = '/articles';
   static const String notifications = '/notifications';
   static const String profile = '/profile';
+
+  static const String personalInfo = '/personal-info';
+  static const String healthInfo = '/health-info';
+  static const String emergencyContacts = '/emergency-contacts';
+  static const String changePassword = '/change-password';
+  
 }

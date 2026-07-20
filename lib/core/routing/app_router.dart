@@ -1,19 +1,22 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ilajak/features/profile/presentation/views/change_password_view.dart';
+import 'package:ilajak/features/profile/presentation/views/health_info_view.dart';
+import 'package:ilajak/features/profile/presentation/views/personal_info_view.dart';
 
-import '../di/injection.dart';
-import '../services/session/session_manager.dart';
-import '../shared/feedback/feedback_handler.dart';
-import '../../features/home/presentation/views/home_view.dart';
-import '../../features/onboarding/presentation/manager/onboarding_cubit.dart';
-import '../../features/onboarding/presentation/views/onboarding_view.dart';
-import '../../features/patients/presentation/views/patients_view.dart';
-import '../../features/articles/presentation/views/articles_view.dart';
-import '../../features/notifications/presentation/views/notifications_view.dart';
-import '../../features/profile/presentation/views/profile_view.dart';
-import 'route_names.dart';
-import 'router_guard.dart';
-import 'router_shell.dart';
+import 'package:ilajak/core/di/injection.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
+import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
+import 'package:ilajak/features/home/presentation/views/home_view.dart';
+import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
+import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:ilajak/features/patients/presentation/views/patients_view.dart';
+import 'package:ilajak/features/articles/presentation/views/articles_view.dart';
+import 'package:ilajak/features/notifications/presentation/views/notifications_view.dart';
+import 'package:ilajak/features/profile/presentation/views/profile_view.dart';
+import 'package:ilajak/core/routing/route_names.dart';
+import 'package:ilajak/core/routing/router_guard.dart';
+import 'package:ilajak/core/routing/router_shell.dart';
 
 late final GoRouter appRouter;
 
@@ -32,6 +35,18 @@ void initRouter() {
           create: (_) => sl<OnboardingCubit>(),
           child: const OnboardingView(),
         ),
+      ),
+      GoRoute(
+        path: RouteNames.personalInfo,
+        builder: (context, state) => const PersonalInfoView(),
+      ),
+      GoRoute(
+        path: RouteNames.changePassword,
+        builder: (context, state) => const ChangePasswordView(),
+      ),
+      GoRoute(
+        path: RouteNames.healthInfo,
+        builder: (context, state) => const HealthInfoView(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

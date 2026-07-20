@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../data/models/onboarding_model.dart';
-import '../manager/onboarding_cubit.dart';
-import '../manager/onboarding_state.dart';
-import '../widgets/onboarding_dots.dart';
-import '../widgets/onboarding_footer.dart';
-import '../widgets/onboarding_header.dart';
-import '../widgets/onboarding_item.dart';
+import 'package:ilajak/features/onboarding/data/models/onboarding_model.dart';
+import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
+import 'package:ilajak/features/onboarding/presentation/manager/onboarding_state.dart';
+import 'package:ilajak/features/onboarding/presentation/widgets/onboarding_dots.dart';
+import 'package:ilajak/features/onboarding/presentation/widgets/onboarding_footer.dart';
+import 'package:ilajak/features/onboarding/presentation/widgets/onboarding_header.dart';
+import 'package:ilajak/features/onboarding/presentation/widgets/onboarding_item.dart';
 
 class OnboardingView extends StatefulWidget {
   const OnboardingView({super.key});

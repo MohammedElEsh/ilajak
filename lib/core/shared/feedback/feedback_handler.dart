@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../services/logger/logger_service.dart';
-import 'feedback_card.dart';
-import 'feedback_message.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
+import 'package:ilajak/core/shared/feedback/feedback_card.dart';
+import 'package:ilajak/core/shared/feedback/feedback_message.dart';
 
 class FeedbackHandler {
   static final GlobalKey<NavigatorState> navigatorKey =

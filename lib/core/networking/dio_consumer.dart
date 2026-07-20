@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import 'api_consumer.dart';
-import 'api_endpoints.dart';
-import 'api_interceptors.dart';
+import 'package:ilajak/core/networking/api_consumer.dart';
+import 'package:ilajak/core/networking/api_endpoints.dart';
+import 'package:ilajak/core/networking/api_interceptors.dart';
 
 /// Concrete [ApiConsumer] backed by Dio.
 ///

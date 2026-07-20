@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/app_strings.dart';
-import '../../di/injection.dart';
-import '../../services/connectivity/connectivity_service.dart';
-import '../../services/logger/logger_service.dart';
-import '../../shared/feedback/feedback_handler.dart';
-import 'offline_banner.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/di/injection.dart';
+import 'package:ilajak/core/services/connectivity/connectivity_service.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
+import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
+import 'package:ilajak/core/shared/wrappers/offline_banner.dart';
 
 class ConnectivityWrapper extends StatefulWidget {
   final Widget? child;

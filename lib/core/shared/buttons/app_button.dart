@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../theme/typography/app_typography.dart';
+import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 /// Visual variant of [AppButton]. Each variant pulls its base style from
 /// the matching Material button theme in the active [ThemeData]
@@ -136,7 +136,7 @@ class AppButton extends StatelessWidget {
         colorOverrideStyle?.merge(style) ??
         style;
     final resolvedStyle = borderRadius != null
-        ? (mergedStyle ?? ButtonStyle()).copyWith(
+        ? (mergedStyle ?? const ButtonStyle()).copyWith(
             shape: WidgetStatePropertyAll<OutlinedBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
