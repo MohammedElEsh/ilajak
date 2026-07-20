@@ -26,16 +26,16 @@ class AppStrings {
   static const String validationFieldRequired = 'validation.field_required';
 
   // Home
-  static const String homeTitle = 'home.getting_started.title';
-  static const String homeSubtitle = 'home.getting_started.subtitle';
-  static const String homeAppBarTitle = 'home.getting_started.appBarTitle';
-  static const String homePerciptions = 'home.getting_started.Perciptions';
-  static const String homeLabs = 'home.getting_started.Labs';
-  static const String homeImaging = 'home.getting_started.Imaging';
-  static const String homeAppointments = 'home.getting_started.Appointments';
-  static const String homeUpcomingAppointment = 'home.getting_started.UpcomingAppointment';
-  static const String homeHealthInsight = 'home.getting_started.HealthInsight';
-  static const String homeHealthInsightSubtitle = 'home.getting_started.HealthInsightSubtitle';
+  static const String homeTitle = 'home.title';
+  static const String homeSubtitle = 'home.subtitle';
+  static const String homeAppBarTitle = 'home.appBarTitle';
+  static const String homePerciptions = 'home.Perciptions';
+  static const String homeLabs = 'home.Labs';
+  static const String homeImaging = 'home.Imaging';
+  static const String homeAppointments = 'home.Appointments';
+  static const String homeUpcomingAppointment = 'home.UpcomingAppointment';
+  static const String homeHealthInsight = 'home.HealthInsight';
+  static const String homeHealthInsightSubtitle = 'home.HealthInsightSubtitle';
   
 
 
