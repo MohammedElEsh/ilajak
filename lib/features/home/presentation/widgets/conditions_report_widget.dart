@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
@@ -26,7 +27,21 @@ class ConditionsReportWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(AppAssets.conditionIcon, width: 40.w, height: 40.h),
+            Container(
+              width: 40.w,
+              height: 40.h,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.primaryLight2,
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: HugeIcon(
+                icon: HugeIcons.strokeRoundedPulseRectangle01,
+                size: 30.0,
+                color: AppColors.grey2,
+                strokeWidth: 1.5,
+              ),
+            ),
             SizedBox(width: 16.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +63,12 @@ class ConditionsReportWidget extends StatelessWidget {
               ],
             ),
             Spacer(),
-            Image.asset(AppAssets.arrowRightIcon, width: 24.w, height: 24.h),
+            HugeIcon(
+              icon: HugeIcons.strokeRoundedArrowRight02,
+              size: 24.0,
+              color: AppColors.grey2,
+              strokeWidth: 1.5,
+            ),
           ],
         ),
       ),

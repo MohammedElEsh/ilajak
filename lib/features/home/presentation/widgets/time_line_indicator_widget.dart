@@ -4,7 +4,7 @@ import 'package:ilajak/core/theme/colors/app_colors.dart';
 
 class TimeLineIndicatorWidget extends StatelessWidget {
   const TimeLineIndicatorWidget({super.key, required this.icon});
-  final String icon;
+  final Widget icon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -12,7 +12,7 @@ class TimeLineIndicatorWidget extends StatelessWidget {
         CircleAvatar(
           radius: 22.r,
           backgroundColor: AppColors.primary,
-          child: Image.asset(icon, width: 20.w, height: 20.h),
+          child: icon,
         ),
         Container(width: 2.w, height: 60.h, color: Colors.grey.shade300),
       ],

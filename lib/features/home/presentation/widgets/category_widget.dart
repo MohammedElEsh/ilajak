@@ -4,8 +4,13 @@ import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({super.key, required this.icon, required this.title, required this.onTap});
-  final String icon;
+  const CategoryWidget({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.onTap,
+  });
+  final Widget icon;
   final String title;
   final VoidCallback onTap;
   @override
@@ -16,7 +21,16 @@ class CategoryWidget extends StatelessWidget {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
         child: Column(
           children: [
-            Image.asset(icon, width: 56.w, height: 56.h),
+            Container(
+              width: 60.w,
+              height: 60.h,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+              decoration: BoxDecoration(
+                color: AppColors.primaryLight2,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: icon,
+            ),
             SizedBox(height: 8.h),
             Text(
               title,

@@ -14,7 +14,7 @@ class StatusWidget extends StatelessWidget {
     this.color2,
   });
 
-  final String? image;
+  final Widget? image;
   final String? title;
   final String? analysisName;
   final String? analysisResult;
@@ -35,7 +35,15 @@ class StatusWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (image != null) Image.asset(image!, width: 40.w, height: 40.h),
+            if (image != null)
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: image!,
+              ),
             SizedBox(height: 8),
             if (image == null) SizedBox(height: 0.h),
 

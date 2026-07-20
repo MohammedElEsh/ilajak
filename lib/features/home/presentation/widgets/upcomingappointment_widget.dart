@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ilajak/core/constants/app_assets.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 
 import 'package:ilajak/core/theme/colors/app_colors.dart';
@@ -10,7 +10,7 @@ import 'package:ilajak/core/theme/typography/app_typography.dart';
 class UpcomingAppointmentWidget extends StatelessWidget {
   const UpcomingAppointmentWidget({
     super.key,
-  
+
     required this.title1,
     required this.title2,
     required this.time,
@@ -41,11 +41,11 @@ class UpcomingAppointmentWidget extends StatelessWidget {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.primaryLight2, 
+                  color: AppColors.primaryLight2,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                 AppStrings.homeUpcomingAppointment.tr(),
+                  AppStrings.homeUpcomingAppointment.tr(),
                   style: AppTypography.semiBold14.copyWith(
                     color: AppColors.primary,
                   ),
@@ -79,7 +79,21 @@ class UpcomingAppointmentWidget extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Image.asset(AppAssets.calenderIcon, width: 48.w, height: 48.h),
+          Container(
+            width: 50.w,
+            height: 50.h,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            decoration: BoxDecoration(
+              color: AppColors.primaryLight2,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: HugeIcon(
+              icon: HugeIcons.strokeRoundedCalendar05,
+              size: 30.0,
+              color: AppColors.primary,
+              strokeWidth: 1.5,
+            ),
+          ),
         ],
       ),
     );
