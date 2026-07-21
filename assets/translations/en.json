@@ -35,7 +35,7 @@
       "welcome_back": "Welcome Back",
       "description": "Manage your health journeys with\nprofessional precision and care.",
       "email": "Email",
-      "email_hint": "Username or Email",
+      "email_hint": "name@example.com",
       "email_required": "Email is required",
       "email_invalid": "Enter a valid email",
       "password": "Password",
