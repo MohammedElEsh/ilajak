@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hugeicons/hugeicons.dart';
+
+import '../../theme/colors/app_colors.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -127,7 +130,20 @@ class _AppTextFieldState extends State<AppTextField> {
       );
     }
 
-    return null;
+    if (widget.isPassword && widget.enablePasswordToggle) {
+      return IconButton(
+        onPressed: _toggleObscure,
+        icon: HugeIcon(
+          icon: _obscure
+              ? HugeIcons.strokeRoundedViewOffSlash
+              : HugeIcons.strokeRoundedView,
+          size: 22.r,
+          color: AppColors.fieldLabel,
+        ),
+      );
+    }
+
+    return widget.suffixIcon;
   }
 
   @override
