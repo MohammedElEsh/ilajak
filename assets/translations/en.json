@@ -49,8 +49,8 @@
       "sign_up": "Sign Up"
     },
     "signup": {
-      "title": "Create An Account",
-      "subtitle": "Create a new account to get started.",
+      "title": "Join Our Community",
+      "subtitle": "Create your health profile to access personalized medical services and records.",
       "name": "Name",
       "name_required": "Name is required",
       "confirm_password": "Confirm Password",

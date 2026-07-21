@@ -52,6 +52,7 @@ class _SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colors = theme.colorScheme;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -68,10 +69,18 @@ class _SignupViewState extends State<SignupView> {
                   SizedBox(height: 32.h),
                   Text(
                     AppStrings.authSignupTitle.tr(),
-                    textAlign: TextAlign.left,
                     style: theme.textTheme.displayLarge,
                   ),
-                  SizedBox(height: 32.h),
+                  SizedBox(height: 8.h),
+                  Text(
+                    AppStrings.authSignupSubtitle.tr(),
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: colors.onSurfaceVariant,
+                      wordSpacing: 2.sp,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                  SizedBox(height: 36.h),
                   SignupForm(
                     formKey: _formKey,
                     nameController: _nameController,

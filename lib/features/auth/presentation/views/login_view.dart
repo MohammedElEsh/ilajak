@@ -147,7 +147,7 @@ class _LoginViewState extends State<LoginView> {
                         SizedBox(height: 18.h),
                         AppButton(
                           variant: AppButtonVariant.outlined,
-                          label: AppStrings.authSignupTitle.tr(),
+                          label: AppStrings.authSignupButton.tr(),
                           onPressed: _onCreateAccount,
                         ),
                       ],
