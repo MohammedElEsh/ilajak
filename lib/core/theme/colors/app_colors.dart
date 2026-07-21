@@ -19,7 +19,9 @@ class AppColors {
   static const Color textSecondary = Color(0xFF404752);
 
   // Label
-  static const Color labelBorder = Color(0xFF707783);
+  static const Color fieldBorder = Color(0xFFB5B8BF);
+  static const Color fieldInput = Color(0xFFF1F3FC);
+  static const Color fieldLabel = Color(0xFF6B7280);
 
   // Semantic
   static const Color success = Color(0xFF16A34A);
@@ -33,5 +35,4 @@ class AppColors {
   static const Color grey3 = Color(0xFF828282);
   static const Color grey4 = Color(0xFFBDBDBD);
   static const Color grey5 = Color(0xFFE0E0E0);
-  static const Color grey6 = Color(0xFFA8A8A9);
 }

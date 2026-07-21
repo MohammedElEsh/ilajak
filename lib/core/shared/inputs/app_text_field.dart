@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hugeicons/hugeicons.dart';
+
+import '../../theme/colors/app_colors.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -130,9 +132,12 @@ class _AppTextFieldState extends State<AppTextField> {
     if (widget.isPassword && widget.enablePasswordToggle) {
       return IconButton(
         onPressed: _toggleObscure,
-        icon: Icon(
-          _obscure ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
-          size: 20.r,
+        icon: HugeIcon(
+          icon: _obscure
+              ? HugeIcons.strokeRoundedViewOff
+              : HugeIcons.strokeRoundedView,
+          size: 22.r,
+          color: AppColors.fieldLabel,
         ),
       );
     }
@@ -143,6 +148,7 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).inputDecorationTheme;
+    final suffix = _buildSuffix();
 
     return TextFormField(
       controller: widget.controller,
@@ -164,7 +170,9 @@ class _AppTextFieldState extends State<AppTextField> {
       onTap: widget.onTap,
       onEditingComplete: widget.onEditingComplete,
       validator: widget.validator,
-      style: widget.textStyle ?? Theme.of(context).textTheme.bodyMedium,
+      style:
+          widget.textStyle ??
+          Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
       cursorColor: widget.cursorColor,
       cursorHeight: widget.cursorHeight,
       cursorWidth: widget.cursorWidth,
@@ -174,8 +182,18 @@ class _AppTextFieldState extends State<AppTextField> {
         labelText: widget.label,
         helperText: widget.helperText,
         errorText: widget.errorText,
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: _buildSuffix(),
+        prefixIcon: widget.prefixIcon != null
+            ? Padding(
+                padding: EdgeInsetsDirectional.only(start: 14.w, end: 8.w),
+                child: widget.prefixIcon!,
+              )
+            : null,
+        suffixIcon: suffix != null
+            ? Padding(
+                padding: EdgeInsetsDirectional.only(end: 8.w),
+                child: suffix,
+              )
+            : null,
         filled: true,
         fillColor: widget.fillColor ?? theme.fillColor,
         contentPadding: widget.contentPadding ?? theme.contentPadding,

@@ -28,11 +28,12 @@
     "field_required": "{} is required"
   },
   "auth": {
-    "or_continue_with": "Or Continue With",
+    "or_continue_with": "OR",
     "login": {
       "title": "Log in",
       "subtitle": "Enter your email and password",
-      "welcome_back": "Welcome\nBack!",
+      "welcome_back": "Welcome Back",
+      "description": "Manage your health journeys with\nprofessional precision and care.",
       "email": "Email",
       "email_hint": "Username or Email",
       "email_required": "Email is required",

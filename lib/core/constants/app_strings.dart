@@ -37,6 +37,7 @@ class AppStrings {
   static const String authLoginTitle = 'auth.login.title';
   static const String authLoginSubtitle = 'auth.login.subtitle';
   static const String authLoginWelcomeBack = 'auth.login.welcome_back';
+  static const String authLoginDescription = 'auth.login.description';
   static const String authLoginEmail = 'auth.login.email';
   static const String authLoginEmailHint = 'auth.login.email_hint';
   static const String authLoginEmailRequired = 'auth.login.email_required';

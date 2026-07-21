@@ -28,11 +28,12 @@
     "field_required": "{} مطلوب"
   },
   "auth": {
-    "or_continue_with": "أو المتابعة بواسطة",
+    "or_continue_with": "أو",
     "login": {
       "title": "تسجيل الدخول",
       "subtitle": "أدخل بريدك الإلكتروني وكلمة المرور",
-      "welcome_back": "مرحباً\nبعودتك!",
+      "welcome_back": "مرحباً بعودتك",
+      "description": "ادخل رحلاتك الصحية بدقة واحترافية.",
       "email": "البريد الإلكتروني",
       "email_hint": "أدخل بريدك الإلكتروني",
       "email_required": "البريد الإلكتروني مطلوب",

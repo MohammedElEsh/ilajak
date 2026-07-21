@@ -4,6 +4,11 @@ import 'package:go_router/go_router.dart';
 import '../di/injection.dart';
 import '../services/session/session_manager.dart';
 import '../shared/feedback/feedback_handler.dart';
+import '../../features/auth/presentation/manager/auth_login_cubit.dart';
+import '../../features/auth/presentation/manager/auth_register_cubit.dart';
+import '../../features/auth/presentation/views/forgot_password_view.dart';
+import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/signup_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/manager/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
@@ -32,6 +37,24 @@ void initRouter() {
           create: (_) => sl<OnboardingCubit>(),
           child: const OnboardingView(),
         ),
+      ),
+      GoRoute(
+        path: RouteNames.login,
+        builder: (context, state) => BlocProvider(
+          create: (_) => AuthLoginCubit(),
+          child: const LoginView(),
+        ),
+      ),
+      GoRoute(
+        path: RouteNames.signup,
+        builder: (context, state) => BlocProvider(
+          create: (_) => AuthRegisterCubit(),
+          child: const SignupView(),
+        ),
+      ),
+      GoRoute(
+        path: RouteNames.forgotPassword,
+        builder: (context, state) => const ForgotPasswordView(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
