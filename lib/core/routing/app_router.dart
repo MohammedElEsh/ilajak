@@ -6,6 +6,7 @@ import '../services/session/session_manager.dart';
 import '../shared/feedback/feedback_handler.dart';
 import '../../features/auth/presentation/manager/auth_login_cubit.dart';
 import '../../features/auth/presentation/manager/auth_register_cubit.dart';
+import '../../features/auth/presentation/manager/auth_forgot_password_cubit.dart';
 import '../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signup_view.dart';
@@ -54,7 +55,10 @@ void initRouter() {
       ),
       GoRoute(
         path: RouteNames.forgotPassword,
-        builder: (context, state) => const ForgotPasswordView(),
+        builder: (context, state) => BlocProvider(
+          create: (_) => AuthForgotPasswordCubit(),
+          child: const ForgotPasswordView(),
+        ),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

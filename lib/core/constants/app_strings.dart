@@ -100,6 +100,8 @@ class AppStrings {
   static const String authForgotPasswordTitle = 'auth.forgot_password.title';
   static const String authForgotPasswordSubtitle =
       'auth.forgot_password.subtitle';
+  static const String authForgotPasswordEmailLabel =
+      'auth.forgot_password.email_label';
   static const String authForgotPasswordHelper = 'auth.forgot_password.helper';
   static const String authForgotPasswordResetLinkSent =
       'auth.forgot_password.reset_link_sent';

@@ -21,12 +21,20 @@ class ForgotPasswordForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colors = theme.colorScheme;
 
     return Form(
       key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            AppStrings.authForgotPasswordEmailLabel.tr(),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: colors.onSurfaceVariant,
+            ),
+          ),
+          SizedBox(height: 8.h),
           AppTextField(
             controller: emailController,
             hint: AppStrings.authLoginEmailHint.tr(),
@@ -34,32 +42,10 @@ class ForgotPasswordForm extends StatelessWidget {
             textInputAction: TextInputAction.done,
             prefixIcon: HugeIcon(
               icon: HugeIcons.strokeRoundedMail01,
-              color: AppColors.error,
-              size: 14.r,
+              color: AppColors.fieldLabel,
+              size: 24.r,
             ),
             validator: AppValidators.validateEmail,
-          ),
-          SizedBox(height: 24.h),
-          Padding(
-            padding: EdgeInsets.only(right: 50.w),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: '* ',
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      color: theme.colorScheme.primary,
-                    ),
-                  ),
-                  TextSpan(
-                    text: AppStrings.authForgotPasswordHelper.tr(),
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      color: theme.colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ),
         ],
       ),

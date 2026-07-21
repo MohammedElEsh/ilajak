@@ -83,10 +83,11 @@
     },
     "forgot_password": {
       "title": "Forgot Password?",
-      "subtitle": "Enter your email address to receive a reset link\nand regain access to your account.",
+      "subtitle": "Enter the email associated with your medical account and we'll send a secure reset link.",
+      "email_label": "Email Address",
       "helper": "We will send you a message to set or reset your new password",
       "reset_link_sent": "Password reset link sent to your email.",
-      "submit": "Submit"
+      "submit": "Send Reset Link"
     },
     "terms": {
       "agree": "I agree to the ",
