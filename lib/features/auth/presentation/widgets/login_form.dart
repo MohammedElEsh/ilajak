@@ -46,7 +46,7 @@ class LoginForm extends StatelessWidget {
           SizedBox(height: 8.h),
           AppTextField(
             controller: emailController,
-            hint: 'name@example.com',
+            hint: AppStrings.authLoginEmailHint.tr(),
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             prefixIcon: HugeIcon(
@@ -70,7 +70,7 @@ class LoginForm extends StatelessWidget {
             isPassword: true,
             textInputAction: TextInputAction.done,
             prefixIcon: HugeIcon(
-              icon: HugeIcons.strokeRoundedLockPassword,
+              icon: HugeIcons.strokeRoundedSquareLock01,
               color: AppColors.fieldLabel,
               size: 24.r,
             ),
