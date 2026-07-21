@@ -166,7 +166,7 @@ class HomeView extends StatelessWidget {
                     StatusWidget(
                       title: "BLOOD TYPE",
                       analysisResult: "O+ Universal",
-                      color2: AppColors.textSecondary,
+                      color2: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                     SizedBox(width: 16.w),
 
@@ -175,7 +175,7 @@ class HomeView extends StatelessWidget {
                       analysisName: "Penicillin",
                       analysisResult: "Severe Reaction",
                       color1: Theme.of(context).colorScheme.error,
-                      color2: AppColors.textSecondary,
+                      color2: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ],
                 ),
