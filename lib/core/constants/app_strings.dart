@@ -59,6 +59,32 @@ class AppStrings {
   static const String authSignupSubtitle = 'auth.signup.subtitle';
   static const String authSignupName = 'auth.signup.name';
   static const String authSignupNameRequired = 'auth.signup.name_required';
+  static const String authSignupPhone = 'auth.signup.phone';
+  static const String authSignupPhoneHint = 'auth.signup.phone_hint';
+  static const String authSignupPhoneRequired = 'auth.signup.phone_required';
+  static const String authSignupPhoneInvalid = 'auth.signup.phone_invalid';
+  static const String authSignupNationalId = 'auth.signup.national_id';
+  static const String authSignupNationalIdHint = 'auth.signup.national_id_hint';
+  static const String authSignupNationalIdRequired =
+      'auth.signup.national_id_required';
+  static const String authSignupDateOfBirth = 'auth.signup.date_of_birth';
+  static const String authSignupDateOfBirthHint =
+      'auth.signup.date_of_birth_hint';
+  static const String authSignupDateOfBirthRequired =
+      'auth.signup.date_of_birth_required';
+  static const String authSignupGender = 'auth.signup.gender';
+  static const String authSignupGenderHint = 'auth.signup.gender_hint';
+  static const String authSignupGenderRequired = 'auth.signup.gender_required';
+  static const String authSignupBloodType = 'auth.signup.blood_type';
+  static const String authSignupBloodTypeHint = 'auth.signup.blood_type_hint';
+  static const String authSignupBloodTypeRequired =
+      'auth.signup.blood_type_required';
+  static const String authSignupAddress = 'auth.signup.address';
+  static const String authSignupAddressHint = 'auth.signup.address_hint';
+  static const String authSignupAddressRequired =
+      'auth.signup.address_required';
+  static const String authSignupPassword = 'auth.signup.password';
+  static const String authSignupPasswordHint = 'auth.signup.password_hint';
   static const String authSignupConfirmPassword =
       'auth.signup.confirm_password';
   static const String authSignupConfirmPasswordRequired =
@@ -80,9 +106,11 @@ class AppStrings {
   static const String authForgotPasswordSubmit = 'auth.forgot_password.submit';
 
   // Auth - Terms
-  static const String authTermsFirstPart = 'auth.terms.first_part';
-  static const String authTermsLink = 'auth.terms.link';
-  static const String authTermsSecondPart = 'auth.terms.second_part';
+  static const String authTermsAgree = 'auth.terms.agree';
+  static const String authTermsTermsOfService = 'auth.terms.terms_of_service';
+  static const String authTermsAnd = 'auth.terms.and';
+  static const String authTermsPrivacyPolicy = 'auth.terms.privacy_policy';
+  static const String authTermsMedicalData = 'auth.terms.medical_data';
 
   // Home - Getting Started
   static const String gettingStartedTitle = 'home.getting_started.title';

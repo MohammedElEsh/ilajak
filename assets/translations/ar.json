@@ -51,8 +51,29 @@
     "signup": {
       "title": "انضم إلى مجتمعنا",
       "subtitle": "أنشئ ملفك الصحي للوصول إلى خدمات وسجلات طبية مخصصة.",
-      "name": "الاسم",
+      "name": "الاسم الكامل",
       "name_required": "الاسم مطلوب",
+      "phone": "رقم الهاتف",
+      "phone_hint": "+1 (555) 000-0000",
+      "phone_required": "رقم الهاتف مطلوب",
+      "phone_invalid": "أدخل رقماً صالحاً",
+      "national_id": "الرقم الوطني / جواز السفر",
+      "national_id_hint": "1234567890",
+      "national_id_required": "الرقم الوطني مطلوب",
+      "date_of_birth": "تاريخ الميلاد",
+      "date_of_birth_hint": "mm/dd/yyyy",
+      "date_of_birth_required": "تاريخ الميلاد مطلوب",
+      "gender": "الجنس",
+      "gender_hint": "اختر الجنس",
+      "gender_required": "الجنس مطلوب",
+      "blood_type": "فصيلة الدم",
+      "blood_type_hint": "اختر الفصيلة",
+      "blood_type_required": "فصيلة الدم مطلوبة",
+      "address": "العنوان الدائم",
+      "address_hint": "123 شارع الصحة، المدينة",
+      "address_required": "العنوان مطلوب",
+      "password": "كلمة المرور",
+      "password_hint": "••••••••",
       "confirm_password": "تأكيد كلمة المرور",
       "confirm_password_required": "تأكيد كلمة المرور مطلوب",
       "passwords_do_not_match": "كلمات المرور غير متطابقة",
@@ -68,9 +89,11 @@
       "submit": "إرسال"
     },
     "terms": {
-      "first_part": "بالنقر على زر ",
-      "link": "التسجيل",
-      "second_part": "، أنت توافق على العرض العام"
+      "agree": "أوافق على ",
+      "terms_of_service": "شروط الخدمة",
+      "and": " و",
+      "privacy_policy": "سياسة الخصوصية",
+      "medical_data": "، بما في ذلك التعامل مع البيانات الطبية."
     }
   },
   "nav": {

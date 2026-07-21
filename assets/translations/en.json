@@ -51,13 +51,34 @@
     "signup": {
       "title": "Join Our Community",
       "subtitle": "Create your health profile to access personalized medical services and records.",
-      "name": "Name",
+      "name": "Full Name",
       "name_required": "Name is required",
+      "phone": "Phone Number",
+      "phone_hint": "+1 (555) 000-0000",
+      "phone_required": "Phone number is required",
+      "phone_invalid": "Enter a valid phone number",
+      "national_id": "National ID / Passport",
+      "national_id_hint": "1234567890",
+      "national_id_required": "National ID is required",
+      "date_of_birth": "Date of Birth",
+      "date_of_birth_hint": "mm/dd/yyyy",
+      "date_of_birth_required": "Date of birth is required",
+      "gender": "Gender",
+      "gender_hint": "Select Gender",
+      "gender_required": "Gender is required",
+      "blood_type": "Blood Type",
+      "blood_type_hint": "Select Type",
+      "blood_type_required": "Blood type is required",
+      "address": "Permanent Address",
+      "address_hint": "123 Health Ave, City",
+      "address_required": "Address is required",
+      "password": "Password",
+      "password_hint": "••••••••",
       "confirm_password": "Confirm Password",
       "confirm_password_required": "Confirm password is required",
       "passwords_do_not_match": "Passwords do not match",
       "button": "Create Account",
-      "already_have_account": "I Already have an account",
+      "already_have_account": "I Already have an account?",
       "sign_in": "Sign In"
     },
     "forgot_password": {
@@ -68,9 +89,11 @@
       "submit": "Submit"
     },
     "terms": {
-      "first_part": "By clicking the ",
-      "link": "Register",
-      "second_part": " button, you agree to the public offer"
+      "agree": "I agree to the ",
+      "terms_of_service": "Terms of Service",
+      "and": " and ",
+      "privacy_policy": "Privacy Policy",
+      "medical_data": ", including medical data handling."
     }
   },
   "nav": {

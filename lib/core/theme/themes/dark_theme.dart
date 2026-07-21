@@ -111,7 +111,7 @@ ThemeData darkTheme = ThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColors.primary,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      textStyle: AppTypography.regular14,
+      textStyle: AppTypography.semiBold14,
     ),
   ),
 
