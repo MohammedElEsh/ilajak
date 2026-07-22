@@ -17,5 +17,6 @@ class RouteNames {
   static const String healthInfo = '/health-info';
   static const String emergencyContacts = '/emergency-contacts';
   static const String changePassword = '/change-password';
-  
+  static const String health = '/health';
+  static const String labResults = '/lab-results';
 }

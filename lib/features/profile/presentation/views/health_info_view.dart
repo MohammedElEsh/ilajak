@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
+import 'package:ilajak/core/shared/widgets/status_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/profile/presentation/widgets/add_medication_buttom_widget.dart';
@@ -67,22 +68,7 @@ class HealthInfoView extends StatelessWidget {
                         iconColor: AppColors.primary,
                         iconBgColor: const Color.fromRGBO(210, 224, 248, 1),
                         title: AppStrings.status.tr(),
-                        value: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8.w,
-                            vertical: 4.h,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.secondary,
-                            borderRadius: BorderRadius.circular(20.r),
-                          ),
-                          child: Text(
-                            "Verified",
-                            style: AppTypography.medium12.copyWith(
-                              color: AppColors.primary,
-                            ),
-                          ),
-                        ),
+                        value: const StatusWidget(title: 'Verified'),
                       ),
                     ),
                   ],

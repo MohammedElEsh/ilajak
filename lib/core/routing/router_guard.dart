@@ -56,6 +56,8 @@ class RouterGuard {
           RouteNames.changePassword,
           RouteNames.healthInfo,
           RouteNames.emergencyContacts,
+          RouteNames.health,
+          RouteNames.labResults,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:

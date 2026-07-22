@@ -15,6 +15,8 @@ import 'package:ilajak/features/auth/presentation/views/forgot_password_view.dar
 import 'package:ilajak/features/auth/presentation/views/login_view.dart';
 import 'package:ilajak/features/auth/presentation/views/signup_view.dart';
 import 'package:ilajak/features/auth/presentation/views/verify_otp_view.dart';
+import 'package:ilajak/features/health/presentation/views/health_view.dart';
+import 'package:ilajak/features/health/presentation/views/labs_view.dart';
 import 'package:ilajak/features/home/presentation/views/home_view.dart';
 import 'package:ilajak/features/notifications/presentation/views/notifications_view.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
@@ -42,6 +44,10 @@ void initRouter() {
           create: (_) => sl<OnboardingCubit>(),
           child: const OnboardingView(),
         ),
+      ),
+      GoRoute(
+        path: RouteNames.labResults,
+        builder: (context, state) => const LabResultsView(),
       ),
       GoRoute(
         path: RouteNames.personalInfo,
@@ -110,7 +116,7 @@ void initRouter() {
             routes: [
               GoRoute(
                 path: RouteNames.articles,
-                builder: (context, state) => const ArticlesView(),
+                builder: (context, state) => const HealthView(),
               ),
             ],
           ),

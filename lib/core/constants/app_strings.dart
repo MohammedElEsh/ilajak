@@ -192,7 +192,7 @@ class AppStrings {
   // Bottom Nav
   static const String navHome = 'nav.home';
   static const String navPatients = 'nav.patients';
-  static const String navArticles = 'nav.articles';
+  static const String navHealth = 'nav.health';
   static const String navNotifications = 'nav.notifications';
   static const String navProfile = 'nav.profile';
 
