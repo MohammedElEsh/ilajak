@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
-
 import 'package:ilajak/core/constants/app_strings.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -83,12 +82,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ),
               NavigationDestination(
                 icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedUser,
+                  icon: HugeIcons.strokeRoundedCalendarCheckOut01,
                   size: 24,
                   color: theme.colorScheme.onSurface,
                 ),
                 selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedUser,
+                  icon: HugeIcons.strokeRoundedCalendarCheckOut01,
                   size: 24,
                   color: theme.colorScheme.primary,
                 ),
@@ -96,12 +95,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ),
               NavigationDestination(
                 icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedBookOpen01,
+                  icon: HugeIcons.strokeRoundedActivity03,
                   size: 24,
                   color: theme.colorScheme.onSurface,
                 ),
                 selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedBookOpen01,
+                  icon: HugeIcons.strokeRoundedActivity03,
                   size: 24,
                   color: theme.colorScheme.primary,
                 ),
@@ -122,12 +121,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ),
               NavigationDestination(
                 icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedSettings01,
+                  icon: HugeIcons.strokeRoundedUser,
                   size: 24,
                   color: theme.colorScheme.onSurface,
                 ),
                 selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedSettings01,
+                  icon: HugeIcons.strokeRoundedUser,
                   size: 24,
                   color: theme.colorScheme.primary,
                 ),
