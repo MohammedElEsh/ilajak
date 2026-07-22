@@ -6,8 +6,10 @@ import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/home/presentation/widgets/status_widget.dart';
 import 'package:ilajak/features/profile/presentation/widgets/add_medication_buttom_widget.dart';
 import 'package:ilajak/features/profile/presentation/widgets/current_medications_tile_widget.dart';
+import 'package:ilajak/features/profile/presentation/widgets/disease_widget.dart';
 import 'package:ilajak/features/profile/presentation/widgets/health_info_card.dart';
 import 'package:ilajak/features/profile/presentation/widgets/health_info_container_widget.dart';
 import 'package:ilajak/features/profile/presentation/widgets/health_information_widget.dart';
@@ -28,7 +30,10 @@ class HealthInfoView extends StatelessWidget {
         ),
         actionWidget: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Image.asset(AppAssets.profileImage, width: 40.w, height: 40.h),
+          child: CircleAvatar(
+            radius: 20.r,
+            backgroundImage: const AssetImage(AppAssets.profileImage),
+          ),
         ),
       ),
       body: SafeArea(
@@ -67,21 +72,8 @@ class HealthInfoView extends StatelessWidget {
                         iconColor: AppColors.primary,
                         iconBgColor: const Color.fromRGBO(210, 224, 248, 1),
                         title: AppStrings.status.tr(),
-                        value: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8.w,
-                            vertical: 4.h,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.secondary,
-                            borderRadius: BorderRadius.circular(20.r),
-                          ),
-                          child: Text(
-                            "Verified",
-                            style: AppTypography.medium12.copyWith(
-                              color: AppColors.primary,
-                            ),
-                          ),
+                        value: const StatusWidget(
+                          title: "Verified",
                         ),
                       ),
                     ),
@@ -179,42 +171,9 @@ class HealthInfoView extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 12.h),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryLight,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Hypertension",
-                                  style: AppTypography.semiBold16.copyWith(
-                                    color: AppColors.textPrimaryLight,
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.info_outlined,
-                                  color: AppColors.primary,
-                                  size: 24.sp,
-                                ),
-                              ],
-                            ),
-                            Text(
-                              "Diagnosed in April 2022",
-                              style: AppTypography.regular16.copyWith(
-                                color: AppColors.textPrimaryLight,
-                              ),
-                            ),
-                          ],
-                        ),
+                      const DiseaseWidget(
+                        diseaseName: 'Hypertension',
+                        diagnosisDate: 'Diagnosed in April 2022',
                       ),
                     ],
                   ),
@@ -244,7 +203,7 @@ class HealthInfoView extends StatelessWidget {
                       ),
                       SizedBox(height: 12.h),
                       Material(
-                        color: AppColors.primaryLight,
+                        color: AppColors.primaryLight2,
                         borderRadius: BorderRadius.circular(16.r),
                         child: CurrentMedicationsTile(
                           name: "Lisinopril",
@@ -265,3 +224,5 @@ class HealthInfoView extends StatelessWidget {
     );
   }
 }
+
+
