@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../constants/app_strings.dart';
-import '../../services/logger/logger_service.dart';
-import '../../theme/colors/app_colors.dart';
-import '../buttons/app_button.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
+import 'package:ilajak/core/shared/buttons/app_button.dart';
 
 class OfflineWidget extends StatefulWidget {
   final VoidCallback onRetry;

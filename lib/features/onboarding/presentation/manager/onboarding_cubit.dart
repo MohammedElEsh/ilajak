@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/services/session/session_manager.dart';
-import 'onboarding_state.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
+import 'package:ilajak/features/onboarding/presentation/manager/onboarding_state.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   final SessionManager _sessionManager;

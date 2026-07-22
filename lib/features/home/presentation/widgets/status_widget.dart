@@ -44,7 +44,7 @@ class StatusWidget extends StatelessWidget {
                 ),
                 child: image!,
               ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             if (image == null) SizedBox(height: 0.h),
 
             if (title != null)
@@ -54,7 +54,7 @@ class StatusWidget extends StatelessWidget {
                   color: AppColors.textSecondary,
                 ),
               ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             if (title == null) SizedBox(height: 0.h),
 
@@ -65,7 +65,7 @@ class StatusWidget extends StatelessWidget {
                   color: color1 ?? AppColors.backgroundDark,
                 ),
               ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             if (analysisName == null) SizedBox(height: 0.h),
 

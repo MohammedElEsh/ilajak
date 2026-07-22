@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
-
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 
@@ -78,7 +77,7 @@ class UpcomingAppointmentWidget extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Container(
             width: 50.w,
             height: 50.h,
@@ -87,7 +86,7 @@ class UpcomingAppointmentWidget extends StatelessWidget {
               color: AppColors.primaryLight2,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: HugeIcon(
+            child: const HugeIcon(
               icon: HugeIcons.strokeRoundedCalendar05,
               size: 30.0,
               color: AppColors.primary,

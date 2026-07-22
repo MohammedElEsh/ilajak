@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../di/injection.dart';
-import '../services/connectivity/connectivity_service.dart';
-import '../services/logger/logger_service.dart';
-import 'failures.dart';
+import 'package:ilajak/core/di/injection.dart';
+import 'package:ilajak/core/services/connectivity/connectivity_service.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
+import 'package:ilajak/core/errors/failures.dart';
 
 typedef EitherResult<T> = Future<Either<Failure, T>>;
 

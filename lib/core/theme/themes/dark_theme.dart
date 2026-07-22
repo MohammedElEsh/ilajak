@@ -21,8 +21,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../colors/app_colors.dart';
-import '../typography/app_typography.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
+import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
@@ -89,20 +89,20 @@ ThemeData darkTheme = ThemeData(
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.surfaceDark,
       elevation: 0,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      textStyle: AppTypography.semiBold18,
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
   // ── Outlined Button ───────────────────────────────────────────────────────
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: AppColors.surfaceDark,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      side: const BorderSide(color: AppColors.surfaceDark),
-      textStyle: AppTypography.semiBold14,
+      foregroundColor: AppColors.primary,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      side: const BorderSide(color: AppColors.primary),
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
@@ -111,7 +111,7 @@ ThemeData darkTheme = ThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColors.primary,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      textStyle: AppTypography.regular14,
+      textStyle: AppTypography.semiBold14,
     ),
   ),
 

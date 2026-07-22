@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../errors/failures.dart';
-import '../../errors/safe_call.dart';
-import '../../networking/api_endpoints.dart';
-import '../logger/logger_service.dart';
-import 'token_service.dart';
+import 'package:ilajak/core/errors/failures.dart';
+import 'package:ilajak/core/errors/safe_call.dart';
+import 'package:ilajak/core/networking/api_endpoints.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
+import 'package:ilajak/core/services/auth/token_service.dart';
 
 class TokenRefresher {
   final TokenService _tokenService;

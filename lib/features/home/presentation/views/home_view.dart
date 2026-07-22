@@ -27,11 +27,11 @@ class HomeView extends StatelessWidget {
         appBar: AppTopBar(
           leadingWidget: CircleAvatar(
             radius: 20.r,
-            backgroundImage: AssetImage(AppAssets.profileImage),
+            backgroundImage: const AssetImage(AppAssets.profileImage),
           ),
           actionWidget: HugeIcon(
             icon: HugeIcons.strokeRoundedSearch01,
-            size: 24.0,
+            size: 24.sp,
             color: AppColors.primary,
             strokeWidth: 1.5,
           ),
@@ -75,7 +75,7 @@ class HomeView extends StatelessWidget {
                 Row(
                   children: [
                     CategoryWidget(
-                      icon: HugeIcon(
+                      icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedPrescriptions,
                         size: 30,
                         color: AppColors.primary,
@@ -84,10 +84,10 @@ class HomeView extends StatelessWidget {
                       title: AppStrings.homePerciptions.tr(),
                       onTap: () {},
                     ),
-                    Spacer(),
+                    const Spacer(),
 
                     CategoryWidget(
-                      icon: HugeIcon(
+                      icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedAiChemistry02,
                         size: 30,
                         color: AppColors.primary,
@@ -96,10 +96,10 @@ class HomeView extends StatelessWidget {
                       title: AppStrings.homeLabs.tr(),
                       onTap: () {},
                     ),
-                    Spacer(),
+                    const Spacer(),
 
                     CategoryWidget(
-                      icon: HugeIcon(
+                      icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedXRay,
                         size: 30,
                         color: AppColors.primary,
@@ -108,10 +108,10 @@ class HomeView extends StatelessWidget {
                       title: AppStrings.homeImaging.tr(),
                       onTap: () {},
                     ),
-                    Spacer(),
+                    const Spacer(),
 
                     CategoryWidget(
-                      icon: HugeIcon(
+                      icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedCalendar02,
                         size: 30,
                         color: AppColors.primary,
@@ -124,7 +124,7 @@ class HomeView extends StatelessWidget {
                 ),
                 SizedBox(height: 32.h),
 
-                UpcomingAppointmentWidget(
+                const UpcomingAppointmentWidget(
                   title1: 'Dr. Sarah Johnson',
                   title2: 'Cardiology . ',
                   time: 'Today, 2:30 PM',
@@ -132,7 +132,7 @@ class HomeView extends StatelessWidget {
                 SizedBox(height: 16.h),
                 Row(
                   children: [
-                    StatusWidget(
+                    const StatusWidget(
                       image: HugeIcon(
                         icon: HugeIcons.strokeRoundedBandage,
                         size: 24.0,
@@ -146,7 +146,7 @@ class HomeView extends StatelessWidget {
                     ),
                     SizedBox(width: 16.w),
 
-                    StatusWidget(
+                    const StatusWidget(
                       image: HugeIcon(
                         icon: HugeIcons.strokeRoundedMicroscope,
                         size: 24.0,
@@ -180,7 +180,7 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 16.h),
-                ConditionsReportWidget(
+                const ConditionsReportWidget(
                   title: "CONDITIONS",
                   subTitle: "None Reported",
                 ),
@@ -194,7 +194,7 @@ class HomeView extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TimeLineIndicatorWidget(
+                    const TimeLineIndicatorWidget(
                       icon: HugeIcon(
                         icon: HugeIcons.strokeRoundedAmpoule,
                         size: 24.0,
@@ -203,7 +203,7 @@ class HomeView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 16.w),
-                    Expanded(
+                    const Expanded(
                       child: TimeLineCardWidget(
                         title: 'Flu Vaccination',
                         subTitle:
@@ -217,7 +217,7 @@ class HomeView extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TimeLineIndicatorWidget(
+                    const TimeLineIndicatorWidget(
                       icon: HugeIcon(
                         icon: HugeIcons.strokeRoundedDocumentAttachment,
                         size: 24.0,
@@ -226,7 +226,7 @@ class HomeView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 16.w),
-                    Expanded(
+                    const Expanded(
                       child: TimeLineCardWidget(
                         title: 'Blood Test Results',
                         subTitle:
@@ -237,7 +237,7 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 16.h),
-                HealthInsightCard(),
+                const HealthInsightCard(),
                 SizedBox(height: 24.h),
               ],
             ),

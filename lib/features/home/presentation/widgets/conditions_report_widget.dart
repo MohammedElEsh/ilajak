@@ -29,12 +29,12 @@ class ConditionsReportWidget extends StatelessWidget {
             Container(
               width: 40.w,
               height: 40.h,
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: AppColors.primaryLight2,
                 borderRadius: BorderRadius.circular(12.r),
               ),
-              child: HugeIcon(
+              child: const HugeIcon(
                 icon: HugeIcons.strokeRoundedPulseRectangle01,
                 size: 30.0,
                 color: AppColors.grey2,
@@ -61,8 +61,8 @@ class ConditionsReportWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Spacer(),
-            HugeIcon(
+            const Spacer(),
+            const HugeIcon(
               icon: HugeIcons.strokeRoundedArrowRight02,
               size: 24.0,
               color: AppColors.grey2,

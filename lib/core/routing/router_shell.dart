@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../shared/layout/bottom_nav_bar.dart';
+import 'package:ilajak/core/shared/layout/bottom_nav_bar.dart';
 
 class RouterShell extends StatelessWidget {
   const RouterShell({super.key, required this.navigationShell});

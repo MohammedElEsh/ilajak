@@ -23,7 +23,7 @@ class RowTextButtonWidget extends StatelessWidget {
             color: AppColors.textPrimaryLight,
           ),
         ),
-        Spacer(),
+        const Spacer(),
         TextButton(
           onPressed: onTap,
           child: Text(

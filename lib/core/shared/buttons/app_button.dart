@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../theme/typography/app_typography.dart';
+import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 /// Visual variant of [AppButton]. Each variant pulls its base style from
 /// the matching Material button theme in the active [ThemeData]
@@ -130,13 +129,12 @@ class AppButton extends StatelessWidget {
 
     final baseStyle = _resolveBaseStyle(theme);
     final colorOverrideStyle = _buildColorOverrideStyle();
-    final mergedStyle = baseStyle
-        ?.merge(colorOverrideStyle)
-        .merge(style) ??
+    final mergedStyle =
+        baseStyle?.merge(colorOverrideStyle).merge(style) ??
         colorOverrideStyle?.merge(style) ??
         style;
     final resolvedStyle = borderRadius != null
-        ? (mergedStyle ?? ButtonStyle()).copyWith(
+        ? (mergedStyle ?? const ButtonStyle()).copyWith(
             shape: WidgetStatePropertyAll<OutlinedBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
@@ -145,7 +143,8 @@ class AppButton extends StatelessWidget {
           )
         : mergedStyle;
 
-    final fg = resolvedStyle?.foregroundColor?.resolve({}) ??
+    final fg =
+        resolvedStyle?.foregroundColor?.resolve({}) ??
         _resolveFallbackFg(theme);
 
     final child = _buildChild(resolvedStyle, fg);
@@ -178,11 +177,7 @@ class AppButton extends StatelessWidget {
         focusNode: focusNode,
         style: resolvedStyle,
         clipBehavior: clipBehavior,
-        child: Semantics(
-          label: semanticLabel,
-          button: true,
-          child: child,
-        ),
+        child: Semantics(label: semanticLabel, button: true, child: child),
       ),
     );
   }
@@ -309,10 +304,7 @@ class AppButton extends StatelessWidget {
       return SizedBox(
         width: 18.r,
         height: 18.r,
-        child: CircularProgressIndicator(
-          strokeWidth: 2,
-          color: fg,
-        ),
+        child: CircularProgressIndicator(strokeWidth: 2, color: fg),
       );
     }
 
@@ -324,13 +316,19 @@ class AppButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (prefixIcon != null) ...[
-          IconTheme(data: IconThemeData(color: fg), child: prefixIcon!),
+          IconTheme(
+            data: IconThemeData(color: fg),
+            child: prefixIcon!,
+          ),
           SizedBox(width: 8.w),
         ],
         Text(label, style: baseTextStyle.copyWith(color: fg)),
         if (suffixIcon != null) ...[
           SizedBox(width: 8.w),
-          IconTheme(data: IconThemeData(color: fg), child: suffixIcon!),
+          IconTheme(
+            data: IconThemeData(color: fg),
+            child: suffixIcon!,
+          ),
         ],
       ],
     );
