@@ -104,7 +104,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   size: 24,
                   color: theme.colorScheme.primary,
                 ),
-                label: AppStrings.navArticles.tr(),
+                label: AppStrings.navHealth.tr(),
               ),
               NavigationDestination(
                 icon: HugeIcon(

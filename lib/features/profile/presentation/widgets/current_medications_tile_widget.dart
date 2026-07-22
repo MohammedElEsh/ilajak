@@ -20,7 +20,7 @@ class CurrentMedicationsTile extends StatelessWidget {
     return ListTile(
       onTap: onTap,
       contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
-      tileColor: AppColors.primaryLight,
+      tileColor: AppColors.primaryLight2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
 
       leading: Container(
