@@ -24,7 +24,10 @@ class PersonalInfoView extends StatelessWidget {
         ),
         actionWidget: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Image.asset(AppAssets.profileImage, width: 40.w, height: 40.h),
+          child: CircleAvatar(
+            radius: 20.r,
+            backgroundImage: const AssetImage(AppAssets.profileImage),
+          ),
         ),
       ),
       body: SafeArea(
@@ -49,4 +52,3 @@ class PersonalInfoView extends StatelessWidget {
     );
   }
 }
-
