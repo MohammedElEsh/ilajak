@@ -16,7 +16,7 @@ class ProfileView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w),
       child: Scaffold(
-        appBar:AppTopBar(
+        appBar: AppTopBar(
           leadingWidget: CircleAvatar(
             radius: 20.r,
             backgroundImage: AssetImage(AppAssets.profileImage),
