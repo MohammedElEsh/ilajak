@@ -117,58 +117,16 @@
     "profile": "Profile"
   },
   "home": {
-    "getting_started": {
-      "title": "You want Authentic, here you go!",
-      "subtitle": "Find it here, buy it now!",
-      "button": "Get Started"
-    },
-    "title": "Home",
-    "welcome": "Welcome Home!",
-    "subtitle": "You have successfully completed the onboarding process.",
-    "search": {
-      "placeholder": "Search any Product...",
-      "voice_hint": "Voice search"
-    },
-    "filter_sort": {
-      "title": "All Featured",
-      "sort": "Sort",
-      "filter": "Filter"
-    },
-    "promo": {
-      "discount": "50-40% OFF",
-      "subtitle": "Now in product",
-      "colours": "All colours",
-      "shop_now": "Shop Now"
-    },
-    "deal_of_the_day": {
-      "title": "Deal of the Day",
-      "remaining": "22h : 56m : 30s remaining",
-      "last_date": "Last Date 29/02/22",
-      "view_all": "View all"
-    },
-    "trending_products": {
-      "title": "Trending Products"
-    },
-    "special_offers": {
-      "title": "Special Offers",
-      "subtitle": "Save big on limited-time deals curated just for you"
-    },
-    "flat_and_heels": {
-      "title": "Flat and Heels",
-      "subtitle": "Find the perfect fit for any occasion.",
-      "button": "Visit now"
-    },
-    "section": {
-      "view_all": "View all"
-    },
-    "new_arrivals": {
-      "title": "New Arrivals",
-      "subtitle": "Summer' 25 Collections"
-    },
-    "sponsored": {
-      "header": "Sponsored",
-      "title": "up to 50% Off"
-    }
+    "title": "Hello, ",
+    "subtitle": "Your health overview is up to date for today.",
+    "appBarTitle": "3ilajak",
+    "Perciptions": "Perciptions",
+    "Labs": "Labs",
+    "Imaging": "Imaging",
+    "Appointments": "Appointments",
+    "UpcomingAppointment": "Upcoming Appointments",
+    "HealthInsight": "Health Insight",
+    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%."
   },
   "products": {
     "title": "Products",

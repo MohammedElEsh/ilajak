@@ -27,8 +27,17 @@ class AppStrings {
 
   // Home
   static const String homeTitle = 'home.title';
-  static const String homeWelcome = 'home.welcome';
   static const String homeSubtitle = 'home.subtitle';
+  static const String homeAppBarTitle = 'home.appBarTitle';
+  static const String homePerciptions = 'home.Perciptions';
+  static const String homeLabs = 'home.Labs';
+  static const String homeImaging = 'home.Imaging';
+  static const String homeAppointments = 'home.Appointments';
+  static const String homeUpcomingAppointment = 'home.UpcomingAppointment';
+  static const String homeHealthInsight = 'home.HealthInsight';
+  static const String homeHealthInsightSubtitle = 'home.HealthInsightSubtitle';
+  
+
 
   // Auth - General
   static const String authOrContinueWith = 'auth.or_continue_with';
