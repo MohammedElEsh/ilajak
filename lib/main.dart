@@ -3,13 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'app.dart';
-import 'core/dev/bloc_observer.dart';
-import 'core/di/injection.dart';
-import 'core/localization/localization_helper.dart';
-import 'core/routing/app_router.dart';
-import 'core/services/session/session_manager.dart';
-import 'core/services/storage/hive_storage_service.dart';
+import 'package:ilajak/app.dart';
+import 'package:ilajak/core/dev/bloc_observer.dart';
+import 'package:ilajak/core/di/injection.dart';
+import 'package:ilajak/core/localization/localization_helper.dart';
+import 'package:ilajak/core/routing/app_router.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
+import 'package:ilajak/core/services/storage/hive_storage_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

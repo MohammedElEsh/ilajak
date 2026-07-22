@@ -27,11 +27,11 @@ class HomeView extends StatelessWidget {
         appBar: AppTopBar(
           leadingWidget: CircleAvatar(
             radius: 20.r,
-            backgroundImage: AssetImage(AppAssets.profileImage),
+            backgroundImage: const AssetImage(AppAssets.profileImage),
           ),
           actionWidget: HugeIcon(
             icon: HugeIcons.strokeRoundedSearch01,
-            size: 24.0,
+            size: 24.sp,
             color: AppColors.primary,
             strokeWidth: 1.5,
           ),

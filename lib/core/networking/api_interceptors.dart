@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
-import '../errors/failures.dart';
+import 'package:ilajak/core/errors/failures.dart';
 
-import '../services/auth/token_refresher.dart';
-import '../services/auth/token_service.dart';
-import '../services/connectivity/connectivity_service.dart';
-import '../services/logger/logger_service.dart';
-import '../services/session/session_manager.dart';
+import 'package:ilajak/core/services/auth/token_refresher.dart';
+import 'package:ilajak/core/services/auth/token_service.dart';
+import 'package:ilajak/core/services/connectivity/connectivity_service.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
 
 class ApiInterceptors extends Interceptor {
   final Dio _dio;

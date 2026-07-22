@@ -21,8 +21,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../colors/app_colors.dart';
-import '../typography/app_typography.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
+import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 ThemeData lightTheme = ThemeData(
   useMaterial3: true,
@@ -34,6 +34,7 @@ ThemeData lightTheme = ThemeData(
     primary: AppColors.primary,
     onPrimary: AppColors.surfaceLight,
     secondary: AppColors.secondary,
+
     onSecondary: AppColors.surfaceLight,
     surface: AppColors.surfaceLight,
     onSurface: AppColors.textPrimaryLight,

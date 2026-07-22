@@ -35,14 +35,54 @@ abstract class AppTypography {
   static TextStyle get semiBold18 =>
       _base(fontSize: 18, fontWeight: FontWeight.w600);
 
+  static TextStyle get semiBold16 =>
+      _base(fontSize: 16, fontWeight: FontWeight.w600);
+
   static TextStyle get semiBold14 =>
       _base(fontSize: 14, fontWeight: FontWeight.w600);
 
-  static TextStyle get regular14 =>
-      _base(fontSize: 14, fontWeight: FontWeight.w400);
+  static TextStyle get regular14 => _base(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textPrimaryLight,
+  );
+
+  static TextStyle get regular16 => _base(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primary,
+  );
 
   static TextStyle get regular12 =>
       _base(fontSize: 12, fontWeight: FontWeight.w400);
+  static TextStyle get bold16 => _base(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: AppColors.primary,
+  );
+
+  static TextStyle get semiBold22 => _base(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimaryLight,
+  );
+
+  static TextStyle get medium12 => _base(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondary,
+  );
+
+  static TextStyle get medium14 => _base(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+  );
+  static TextStyle get medium16 => _base(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+  );
   static TextStyle get regular13 =>
       _base(fontSize: 12, fontWeight: FontWeight.w500);
   static TextStyle get bold16 =>

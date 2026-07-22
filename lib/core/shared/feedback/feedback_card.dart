@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../theme/colors/app_colors.dart';
-import 'feedback_message.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
+import 'package:ilajak/core/shared/feedback/feedback_message.dart';
 
 class FeedbackCard extends StatelessWidget {
   final FeedbackMessage message;

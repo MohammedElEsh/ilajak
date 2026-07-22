@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-import '../../constants/app_strings.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({

@@ -1,5 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ilajak/features/profile/presentation/views/change_password_view.dart';
+import 'package:ilajak/features/profile/presentation/views/health_info_view.dart';
+import 'package:ilajak/features/profile/presentation/views/personal_info_view.dart';
 
 import '../di/injection.dart';
 import '../services/session/session_manager.dart';
@@ -42,6 +45,16 @@ void initRouter() {
         ),
       ),
       GoRoute(
+        path: RouteNames.personalInfo,
+        builder: (context, state) => const PersonalInfoView(),
+      ),
+      GoRoute(
+        path: RouteNames.changePassword,
+        builder: (context, state) => const ChangePasswordView(),
+      ),
+      GoRoute(
+        path: RouteNames.healthInfo,
+        builder: (context, state) => const HealthInfoView(),
         path: RouteNames.login,
         builder: (context, state) => BlocProvider(
           create: (_) => AuthLoginCubit(),
