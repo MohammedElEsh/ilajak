@@ -87,7 +87,19 @@
       "email_label": "Email Address",
       "helper": "We will send you a message to set or reset your new password",
       "reset_link_sent": "Password reset link sent to your email.",
-      "submit": "Send Reset Link"
+      "submit": "Send Reset Code"
+    },
+    "verify_otp": {
+      "title": "Verify Your Email",
+      "subtitle": "We've sent a 6-digit code to ",
+      "subtitle_end": ". Please enter it below to reset your password.",
+      "button": "Verify",
+      "resend_in": "Resend in",
+      "didnt_receive": "Didn't receive the code?",
+      "resend": "Resend OTP",
+      "resent": "OTP code resent successfully.",
+      "success": "Email verified successfully.",
+      "incomplete": "Please enter the complete 6-digit code."
     },
     "terms": {
       "agree": "I agree to the ",

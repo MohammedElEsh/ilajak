@@ -107,6 +107,19 @@ class AppStrings {
       'auth.forgot_password.reset_link_sent';
   static const String authForgotPasswordSubmit = 'auth.forgot_password.submit';
 
+  // Auth - Verify OTP
+  static const String authVerifyOtpTitle = 'auth.verify_otp.title';
+  static const String authVerifyOtpSubtitle = 'auth.verify_otp.subtitle';
+  static const String authVerifyOtpSubtitleEnd = 'auth.verify_otp.subtitle_end';
+  static const String authVerifyOtpButton = 'auth.verify_otp.button';
+  static const String authVerifyOtpResendIn = 'auth.verify_otp.resend_in';
+  static const String authVerifyOtpDidntReceive =
+      'auth.verify_otp.didnt_receive';
+  static const String authVerifyOtpResendButton = 'auth.verify_otp.resend';
+  static const String authVerifyOtpResent = 'auth.verify_otp.resent';
+  static const String authVerifyOtpSuccess = 'auth.verify_otp.success';
+  static const String authVerifyOtpIncomplete = 'auth.verify_otp.incomplete';
+
   // Auth - Terms
   static const String authTermsAgree = 'auth.terms.agree';
   static const String authTermsTermsOfService = 'auth.terms.terms_of_service';
