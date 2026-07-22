@@ -48,6 +48,9 @@ dependencies:
   cached_network_image: ^3.4.1
   image_picker: ^1.2.3
 
+  # SVG
+  flutter_svg: ^2.0.17
+
   # Utilities
   logger: ^2.7.0
   intl: ^0.20.2

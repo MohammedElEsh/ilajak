@@ -95,20 +95,20 @@ ThemeData lightTheme = ThemeData(
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.surfaceLight,
       elevation: 0,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      textStyle: AppTypography.semiBold18,
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
   // ── Outlined Button ───────────────────────────────────────────────────────
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      // foregroundColor: AppColors.surfaceLight,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      // side: const BorderSide(color: AppColors.surfaceLight),
-      textStyle: AppTypography.semiBold18,
+      foregroundColor: AppColors.primary,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      side: const BorderSide(color: AppColors.primary),
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
@@ -117,7 +117,7 @@ ThemeData lightTheme = ThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColors.primary,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      textStyle: AppTypography.regular14,
+      textStyle: AppTypography.semiBold14,
     ),
   ),
 
@@ -135,25 +135,30 @@ ThemeData lightTheme = ThemeData(
   // Priority: widget.param > inputDecorationTheme > colorScheme fallback.
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: AppColors.surfaceLight,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+    fillColor: AppColors.fieldInput,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 32),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: AppColors.grey4),
+      borderRadius: BorderRadius.circular(24),
+      borderSide: const BorderSide(color: AppColors.fieldBorder),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: AppColors.grey4),
+      borderRadius: BorderRadius.circular(24),
+      borderSide: const BorderSide(color: AppColors.fieldBorder),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(24),
       borderSide: const BorderSide(color: AppColors.primary, width: 2),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(24),
       borderSide: const BorderSide(color: AppColors.error),
     ),
-    hintStyle: AppTypography.regular16.copyWith(color: AppColors.textPrimaryLight),
+    hintStyle: AppTypography.semiBold14.copyWith(
+      color: AppColors.fieldLabel,
+      fontSize: 16,
+    ),
+    prefixIconConstraints: const BoxConstraints(),
+    suffixIconConstraints: const BoxConstraints(),
   ),
 
   // ── Bottom Navigation Bar ─────────────────────────────────────────────────
@@ -173,7 +178,7 @@ ThemeData lightTheme = ThemeData(
     }),
     checkColor: WidgetStateProperty.all(AppColors.surfaceLight),
     side: const BorderSide(color: AppColors.grey4),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
   ),
 
   // ── Radio ─────────────────────────────────────────────────────────────────

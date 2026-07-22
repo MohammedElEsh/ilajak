@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hugeicons/hugeicons.dart';
 
-class AppTextField extends StatefulWidget {
+import '../../theme/colors/app_colors.dart';
+
+enum AppTextFieldType { text, dropdown, date }
+
+class AppTextField<T> extends StatefulWidget {
   const AppTextField({
     super.key,
     this.controller,
@@ -41,6 +46,11 @@ class AppTextField extends StatefulWidget {
     this.fillColor,
     this.textStyle,
     this.hintStyle,
+    this.type = AppTextFieldType.text,
+    this.dropdownItems,
+    this.dropdownValue,
+    this.onDropdownChanged,
+    this.locale,
   });
 
   final TextEditingController? controller;
@@ -91,11 +101,17 @@ class AppTextField extends StatefulWidget {
   final TextStyle? textStyle;
   final TextStyle? hintStyle;
 
+  final AppTextFieldType type;
+  final List<DropdownMenuItem<T>>? dropdownItems;
+  final T? dropdownValue;
+  final ValueChanged<T?>? onDropdownChanged;
+  final Locale? locale;
+
   @override
-  State<AppTextField> createState() => _AppTextFieldState();
+  State<AppTextField> createState() => _AppTextFieldState<T>();
 }
 
-class _AppTextFieldState extends State<AppTextField> {
+class _AppTextFieldState<T> extends State<AppTextField<T>> {
   late bool _obscure;
   late FocusNode _focusNode;
 
@@ -123,26 +139,113 @@ class _AppTextFieldState extends State<AppTextField> {
       return SizedBox(
         width: 18.r,
         height: 18.r,
-        child: const CircularProgressIndicator(strokeWidth: 2),
+        child: const CupertinoActivityIndicator(radius: 9),
       );
     }
 
     if (widget.isPassword && widget.enablePasswordToggle) {
       return IconButton(
         onPressed: _toggleObscure,
-        icon: Icon(
-          _obscure ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
-          size: 20.r,
+        icon: HugeIcon(
+          icon: _obscure
+              ? HugeIcons.strokeRoundedViewOffSlash
+              : HugeIcons.strokeRoundedView,
+          size: 22.r,
+          color: AppColors.fieldLabel,
         ),
+      );
+    }
+
+    if (widget.type == AppTextFieldType.dropdown) {
+      return HugeIcon(
+        icon: HugeIcons.strokeRoundedArrowDown01,
+        size: 20.r,
+        color: AppColors.fieldLabel,
+      );
+    }
+
+    if (widget.type == AppTextFieldType.date) {
+      return HugeIcon(
+        icon: HugeIcons.strokeRoundedCalendar01,
+        size: 22.r,
+        color: AppColors.fieldLabel,
       );
     }
 
     return widget.suffixIcon;
   }
 
+  InputDecoration _buildDecoration() {
+    final theme = Theme.of(context).inputDecorationTheme;
+    final suffix = _buildSuffix();
+
+    return InputDecoration(
+      hintText: widget.hint,
+      labelText: widget.label,
+      helperText: widget.helperText,
+      errorText: widget.errorText,
+      prefixIcon: widget.prefixIcon != null
+          ? Padding(
+              padding: EdgeInsetsDirectional.only(start: 14.w, end: 8.w),
+              child: widget.prefixIcon!,
+            )
+          : null,
+      suffixIcon: suffix != null
+          ? Padding(
+              padding: EdgeInsetsDirectional.only(end: 8.w),
+              child: suffix,
+            )
+          : null,
+      filled: true,
+      fillColor: widget.fillColor ?? theme.fillColor,
+      contentPadding: widget.contentPadding ?? theme.contentPadding,
+      hintStyle: widget.hintStyle ?? theme.hintStyle,
+      border: theme.border,
+      enabledBorder: theme.enabledBorder,
+      focusedBorder: theme.focusedBorder,
+      errorBorder: theme.errorBorder,
+      focusedErrorBorder: theme.focusedErrorBorder,
+      disabledBorder: theme.disabledBorder,
+      counterText: '',
+    );
+  }
+
+  Future<void> _pickDate() async {
+    final date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+      locale: widget.locale,
+    );
+    if (date != null && widget.controller != null) {
+      widget.controller!.text =
+          '${date.month.toString().padLeft(2, '0')}/${date.day.toString().padLeft(2, '0')}/${date.year}';
+      widget.onChanged?.call(widget.controller!.text);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).inputDecorationTheme;
+    if (widget.type == AppTextFieldType.dropdown) {
+      return DropdownButtonFormField<T>(
+        initialValue: widget.dropdownValue,
+        items: widget.dropdownItems ?? [],
+        onChanged: widget.enabled ? widget.onDropdownChanged : null,
+        validator: widget.validator != null
+            ? (value) => widget.validator!(value as String?)
+            : null,
+        icon: HugeIcon(
+          icon: HugeIcons.strokeRoundedArrowDown01,
+          size: 20.r,
+          color: AppColors.fieldLabel,
+        ),
+        style:
+            widget.textStyle ??
+            Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
+        decoration: _buildDecoration(),
+      );
+    }
 
     return TextFormField(
       controller: widget.controller,
@@ -150,7 +253,7 @@ class _AppTextFieldState extends State<AppTextField> {
       initialValue: widget.initialValue,
       obscureText: widget.isPassword ? _obscure : false,
       enabled: widget.enabled,
-      readOnly: widget.readOnly,
+      readOnly: widget.readOnly || widget.type == AppTextFieldType.date,
       autofocus: widget.autofocus,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
@@ -161,33 +264,17 @@ class _AppTextFieldState extends State<AppTextField> {
       inputFormatters: widget.inputFormatters,
       onChanged: widget.onChanged,
       onFieldSubmitted: widget.onSubmitted,
-      onTap: widget.onTap,
+      onTap: widget.type == AppTextFieldType.date ? _pickDate : widget.onTap,
       onEditingComplete: widget.onEditingComplete,
       validator: widget.validator,
-      style: widget.textStyle ?? Theme.of(context).textTheme.bodyMedium,
+      style:
+          widget.textStyle ??
+          Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
       cursorColor: widget.cursorColor,
       cursorHeight: widget.cursorHeight,
       cursorWidth: widget.cursorWidth,
       cursorRadius: widget.cursorRadius,
-      decoration: InputDecoration(
-        hintText: widget.hint,
-        labelText: widget.label,
-        helperText: widget.helperText,
-        errorText: widget.errorText,
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: _buildSuffix(),
-        filled: true,
-        fillColor: widget.fillColor ?? theme.fillColor,
-        contentPadding: widget.contentPadding ?? theme.contentPadding,
-        hintStyle: widget.hintStyle ?? theme.hintStyle,
-        border: theme.border,
-        enabledBorder: theme.enabledBorder,
-        focusedBorder: theme.focusedBorder,
-        errorBorder: theme.errorBorder,
-        focusedErrorBorder: theme.focusedErrorBorder,
-        disabledBorder: theme.disabledBorder,
-        counterText: '',
-      ),
+      decoration: _buildDecoration(),
     );
   }
 }

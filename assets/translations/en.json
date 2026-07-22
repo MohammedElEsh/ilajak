@@ -15,12 +15,12 @@
       "get_started": "Get Started"
     },
     "steps": {
-      "title1": "Choose Products",
-      "subtitle1": "Browse through thousands of products and find exactly what you need.",
-      "title2": "Make Payment",
-      "subtitle2": "Secure checkout with multiple payment options.",
-      "title3": "Get Your Order",
-      "subtitle3": "Fast delivery to your doorstep."
+      "title1": "Find Doctors",
+      "subtitle1": "Search from over 1,000+ verified medical specialists near you with real patient reviews.",
+      "title2": "Seamless Appointments",
+      "subtitle2": "Book and manage your medical visits with top-rated specialists in just a few taps.",
+      "title3": "Manage Prescriptions",
+      "subtitle3": "Keep track of your medications, set reminders, and order refills directly to your doorstep."
     }
   },
   "validation": {
@@ -28,13 +28,14 @@
     "field_required": "{} is required"
   },
   "auth": {
-    "or_continue_with": "Or Continue With",
+    "or_continue_with": "OR",
     "login": {
       "title": "Log in",
       "subtitle": "Enter your email and password",
-      "welcome_back": "Welcome\nBack!",
+      "welcome_back": "Welcome Back",
+      "description": "Manage your health journeys with\nprofessional precision and care.",
       "email": "Email",
-      "email_hint": "Username or Email",
+      "email_hint": "name@example.com",
       "email_required": "Email is required",
       "email_invalid": "Enter a valid email",
       "password": "Password",
@@ -48,28 +49,64 @@
       "sign_up": "Sign Up"
     },
     "signup": {
-      "title": "Create An Account",
-      "subtitle": "Create a new account to get started.",
-      "name": "Name",
+      "title": "Join Our Community",
+      "subtitle": "Create your health profile to access personalized medical services and records.",
+      "name": "Full Name",
       "name_required": "Name is required",
+      "phone": "Phone Number",
+      "phone_hint": "+1 (555) 000-0000",
+      "phone_required": "Phone number is required",
+      "phone_invalid": "Enter a valid phone number",
+      "national_id": "National ID / Passport",
+      "national_id_hint": "1234567890",
+      "national_id_required": "National ID is required",
+      "date_of_birth": "Date of Birth",
+      "date_of_birth_hint": "mm/dd/yyyy",
+      "date_of_birth_required": "Date of birth is required",
+      "gender": "Gender",
+      "gender_hint": "Select Gender",
+      "gender_required": "Gender is required",
+      "blood_type": "Blood Type",
+      "blood_type_hint": "Select Type",
+      "blood_type_required": "Blood type is required",
+      "address": "Permanent Address",
+      "address_hint": "123 Health Ave, City",
+      "address_required": "Address is required",
+      "password": "Password",
+      "password_hint": "••••••••",
       "confirm_password": "Confirm Password",
       "confirm_password_required": "Confirm password is required",
       "passwords_do_not_match": "Passwords do not match",
       "button": "Create Account",
-      "already_have_account": "I Already have an account",
+      "already_have_account": "I Already have an account?",
       "sign_in": "Sign In"
     },
     "forgot_password": {
       "title": "Forgot Password?",
-      "subtitle": "Enter your email address to receive a reset link\nand regain access to your account.",
+      "subtitle": "Enter the email associated with your medical account and we'll send a secure reset link.",
+      "email_label": "Email Address",
       "helper": "We will send you a message to set or reset your new password",
       "reset_link_sent": "Password reset link sent to your email.",
-      "submit": "Submit"
+      "submit": "Send Reset Code"
+    },
+    "verify_otp": {
+      "title": "Verify Your Email",
+      "subtitle": "We've sent a 6-digit code to ",
+      "subtitle_end": ". Please enter it below to reset your password.",
+      "button": "Verify",
+      "resend_in": "Resend in",
+      "didnt_receive": "Didn't receive the code?",
+      "resend": "Resend OTP",
+      "resent": "OTP code resent successfully.",
+      "success": "Email verified successfully.",
+      "incomplete": "Please enter the complete 6-digit code."
     },
     "terms": {
-      "first_part": "By clicking the ",
-      "link": "Register",
-      "second_part": " button, you agree to the public offer"
+      "agree": "I agree to the ",
+      "terms_of_service": "Terms of Service",
+      "and": " and ",
+      "privacy_policy": "Privacy Policy",
+      "medical_data": ", including medical data handling."
     }
   },
   "nav": {
@@ -80,15 +117,16 @@
     "profile": "Profile"
   },
   "home": {
-    "getting_started": {
-      "title": "Hello",
-      "subtitle": "Your health overview is up to date for today.",
-      "appBarTitle": "3ilajak",
-      "Perciptions": "Perciptions",
-      "Labs": "Labs",
-      "Imaging": "Imaging",
-      "Appointments": "Appointments"
-    }
+    "title": "Hello, ",
+    "subtitle": "Your health overview is up to date for today.",
+    "appBarTitle": "3ilajak",
+    "Perciptions": "Perciptions",
+    "Labs": "Labs",
+    "Imaging": "Imaging",
+    "Appointments": "Appointments",
+    "UpcomingAppointment": "Upcoming Appointments",
+    "HealthInsight": "Health Insight",
+    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%."
   },
   "products": {
     "title": "Products",

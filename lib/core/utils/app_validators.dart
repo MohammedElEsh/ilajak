@@ -71,4 +71,23 @@ class AppValidators {
     }
     return null;
   }
+
+  /// Validates a phone number.
+  static String? validatePhone(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return AppStrings.authSignupPhoneRequired.tr();
+    }
+    final phoneRegex = RegExp(r'^\+?[\d\s\-\(\)]{7,15}$');
+    if (!phoneRegex.hasMatch(value.trim())) {
+      return AppStrings.authSignupPhoneInvalid.tr();
+    }
+    return null;
+  }
+
+  /// Validates that [value] is non-empty (for required fields).
+  static String? validateRequiredField(String? value, {String? fieldName}) {
+    if (value != null && value.trim().isNotEmpty) return null;
+    if (fieldName == null) return AppStrings.validationRequired.tr();
+    return AppStrings.validationFieldRequired.tr(args: [fieldName]);
+  }
 }

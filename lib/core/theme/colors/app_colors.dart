@@ -4,6 +4,8 @@ class AppColors {
   // Primary
   static const Color primary = Color(0xFF005EA4);
   static const Color secondary = Color(0xFFD2E0F8);
+  static const Color primaryLight2 = Color(0xFFE8F4FF);
+  static const Color primaryLight = Color(0xff4a90e2);
 
   // Background
   static const Color backgroundLight = Color(0xFFF8F9FF);
@@ -20,7 +22,9 @@ class AppColors {
   static const Color labelColor = Color(0xff3E484C);
 
   // Label
-  static const Color labelBorder = Color(0xFF707783);
+  static const Color fieldBorder = Color(0xFFB5B8BF);
+  static const Color fieldInput = Color(0xFFF1F3FC);
+  static const Color fieldLabel = Color(0xFF6B7280);
 
   // Semantic
   static const Color success = Color(0xFF16A34A);
@@ -51,4 +55,6 @@ class AppColors {
   static const Color lightGray = Color(0xffE5E8F0);
   static const Color lightRed = Color(0xffFFDAD6);
   static const Color primaryLight = Color(0xffF1F3FC);
+  
+   
 }

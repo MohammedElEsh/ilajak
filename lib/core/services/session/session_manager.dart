@@ -43,7 +43,7 @@ class SessionManager extends ChangeNotifier {
 
   AppStatus get status => _status;
 
-  static const _bypassAuth = true;
+  static const _bypassAuth = false;
 
   /// Called once at app startup — inspects persistent storage
   /// and decides the initial app flow state.

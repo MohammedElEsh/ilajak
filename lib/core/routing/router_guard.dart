@@ -44,6 +44,7 @@ class RouterGuard {
         return const {
           RouteNames.signup,
           RouteNames.forgotPassword,
+          RouteNames.verifyOtp,
         };
       case AppStatus.authenticated:
         return const {

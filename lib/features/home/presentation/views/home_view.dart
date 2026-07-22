@@ -7,6 +7,14 @@ import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/home/presentation/widgets/category_widget.dart';
+import 'package:ilajak/features/home/presentation/widgets/conditions_report_widget.dart';
+import 'package:ilajak/features/home/presentation/widgets/health_insight_card.dart';
+import 'package:ilajak/features/home/presentation/widgets/row_text_button_widget.dart';
+import 'package:ilajak/features/home/presentation/widgets/status_widget.dart';
+import 'package:ilajak/features/home/presentation/widgets/time_line_card_widget.dart';
+import 'package:ilajak/features/home/presentation/widgets/time_line_indicator_widget.dart';
+import 'package:ilajak/features/home/presentation/widgets/upcomingappointment_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -32,11 +40,206 @@ class HomeView extends StatelessWidget {
             style: AppTypography.bold28.copyWith(color: AppColors.primary),
           ),
         ),
-        body: SafeArea(
-          child: Center(
-            child: Text(
-              AppStrings.homeTitle.tr(),
-              style: TextStyle(fontSize: 24.sp),
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(height: 24.h),
+                Row(
+                  children: [
+                    Text(
+                      AppStrings.homeTitle.tr(),
+                      style: AppTypography.bold28.copyWith(
+                        color: AppColors.backgroundDark,
+                      ),
+                    ),
+                    Text(
+                      "Ahmed",
+                      style: AppTypography.bold28.copyWith(
+                        color: AppColors.backgroundDark,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8.h),
+
+                Text(
+                  AppStrings.homeSubtitle.tr(),
+                  style: AppTypography.regular14.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                SizedBox(height: 24.h),
+                Row(
+                  children: [
+                    CategoryWidget(
+                      icon: HugeIcon(
+                        icon: HugeIcons.strokeRoundedPrescriptions,
+                        size: 30,
+                        color: AppColors.primary,
+                        strokeWidth: 1.5,
+                      ),
+                      title: AppStrings.homePerciptions.tr(),
+                      onTap: () {},
+                    ),
+                    Spacer(),
+
+                    CategoryWidget(
+                      icon: HugeIcon(
+                        icon: HugeIcons.strokeRoundedAiChemistry02,
+                        size: 30,
+                        color: AppColors.primary,
+                        strokeWidth: 1.5,
+                      ),
+                      title: AppStrings.homeLabs.tr(),
+                      onTap: () {},
+                    ),
+                    Spacer(),
+
+                    CategoryWidget(
+                      icon: HugeIcon(
+                        icon: HugeIcons.strokeRoundedXRay,
+                        size: 30,
+                        color: AppColors.primary,
+                        strokeWidth: 1.5,
+                      ),
+                      title: AppStrings.homeImaging.tr(),
+                      onTap: () {},
+                    ),
+                    Spacer(),
+
+                    CategoryWidget(
+                      icon: HugeIcon(
+                        icon: HugeIcons.strokeRoundedCalendar02,
+                        size: 30,
+                        color: AppColors.primary,
+                        strokeWidth: 1.5,
+                      ),
+                      title: AppStrings.homeAppointments.tr(),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+                SizedBox(height: 32.h),
+
+                UpcomingAppointmentWidget(
+                  title1: 'Dr. Sarah Johnson',
+                  title2: 'Cardiology . ',
+                  time: 'Today, 2:30 PM',
+                ),
+                SizedBox(height: 16.h),
+                Row(
+                  children: [
+                    StatusWidget(
+                      image: HugeIcon(
+                        icon: HugeIcons.strokeRoundedBandage,
+                        size: 24.0,
+                        color: AppColors.backgroundLight,
+                        strokeWidth: 1.5,
+                      ),
+                      title: "PRESCRIPTIONS",
+                      analysisName: "Lisinopril",
+                      analysisResult: "10mg • Daily",
+                      color2: AppColors.primary,
+                    ),
+                    SizedBox(width: 16.w),
+
+                    StatusWidget(
+                      image: HugeIcon(
+                        icon: HugeIcons.strokeRoundedMicroscope,
+                        size: 24.0,
+                        color: AppColors.backgroundLight,
+                        strokeWidth: 1.5,
+                      ),
+                      title: "LATEST LAB",
+                      analysisName: "Glucose",
+                      analysisResult: "Normal",
+                      color2: AppColors.success,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16.h),
+                Row(
+                  children: [
+                    StatusWidget(
+                      title: "BLOOD TYPE",
+                      analysisResult: "O+ Universal",
+                      color2: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                    SizedBox(width: 16.w),
+
+                    StatusWidget(
+                      title: "ALLERGIES",
+                      analysisName: "Penicillin",
+                      analysisResult: "Severe Reaction",
+                      color1: Theme.of(context).colorScheme.error,
+                      color2: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16.h),
+                ConditionsReportWidget(
+                  title: "CONDITIONS",
+                  subTitle: "None Reported",
+                ),
+                SizedBox(height: 24.h),
+                RowTextButtonWidget(
+                  title: "Health Timeline",
+                  buttonText: "View All",
+                  onTap: () {},
+                ),
+                SizedBox(height: 16.h),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TimeLineIndicatorWidget(
+                      icon: HugeIcon(
+                        icon: HugeIcons.strokeRoundedAmpoule,
+                        size: 24.0,
+                        color: AppColors.backgroundLight,
+                        strokeWidth: 1.5,
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    Expanded(
+                      child: TimeLineCardWidget(
+                        title: 'Flu Vaccination',
+                        subTitle:
+                            'Annual booster completed at Central Pharmacy',
+                        time: 'Oct 12',
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 6.h),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TimeLineIndicatorWidget(
+                      icon: HugeIcon(
+                        icon: HugeIcons.strokeRoundedDocumentAttachment,
+                        size: 24.0,
+                        color: AppColors.backgroundLight,
+                        strokeWidth: 1.5,
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    Expanded(
+                      child: TimeLineCardWidget(
+                        title: 'Blood Test Results',
+                        subTitle:
+                            'All parameters within normal range.View report',
+                        time: 'Sep 28',
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16.h),
+                HealthInsightCard(),
+                SizedBox(height: 24.h),
+              ],
             ),
           ),
         ),
