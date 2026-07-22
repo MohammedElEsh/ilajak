@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:ilajak/core/errors/failures.dart';
+import 'package:ilajak/core/services/auth/token_refresher.dart';
+import 'package:ilajak/core/services/auth/token_service.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../errors/failures.dart';
-import '../auth/token_refresher.dart';
-import '../auth/token_service.dart';
-import '../logger/logger_service.dart';
 
 /// High-level application flow states.
 ///

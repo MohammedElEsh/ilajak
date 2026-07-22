@@ -1,8 +1,8 @@
 import 'package:hive_ce/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../di/injection.dart';
-import '../services/storage/secure_storage_service.dart';
+import 'package:ilajak/core/di/injection.dart';
+import 'package:ilajak/core/services/storage/secure_storage_service.dart';
 
 /// ===============================
 /// Dev Tools (DEBUG ONLY)

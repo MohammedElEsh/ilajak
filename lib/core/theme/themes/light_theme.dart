@@ -20,9 +20,8 @@
 // =============================================================================
 
 import 'package:flutter/material.dart';
-
-import '../colors/app_colors.dart';
-import '../typography/app_typography.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
+import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 ThemeData lightTheme = ThemeData(
   useMaterial3: true,

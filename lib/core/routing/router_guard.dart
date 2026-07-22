@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../services/session/session_manager.dart';
-import 'route_names.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
+import 'package:ilajak/core/routing/route_names.dart';
 
 class RouterGuard {
   final SessionManager _sessionManager;
@@ -52,6 +52,10 @@ class RouterGuard {
           RouteNames.articles,
           RouteNames.notifications,
           RouteNames.profile,
+          RouteNames.personalInfo,
+          RouteNames.changePassword,
+          RouteNames.healthInfo,
+          RouteNames.emergencyContacts,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:

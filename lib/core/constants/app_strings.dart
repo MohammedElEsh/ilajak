@@ -195,4 +195,41 @@ class AppStrings {
   static const String navArticles = 'nav.articles';
   static const String navNotifications = 'nav.notifications';
   static const String navProfile = 'nav.profile';
+
+  //Profile
+  static const String profileRecords = 'profile.Records';
+  static const String profileAppointments = 'profile.Appointments';
+  static const String profileArticles = 'profile.Articles';
+  static const String profileSettings = 'profile.Settings';
+  static const String personalInfoTitle = 'profile.Personal Info';
+  static const String fullName = 'profile.Full Name';
+  static const String emailAddress = 'profile.Email Address';
+  static const String phoneNumber = 'profile.Phone Number';
+  static const String birthDate = 'profile.Birth Date';
+  static const String gender = 'profile.Gender';
+  static const String male = 'profile.Male';
+  static const String female = 'profile.Female';
+  static const String saveChanges = 'profile.Save Changes';
+  static const String secureInfo = 'profile.Secure Info';
+  static const String password = 'profile.Password';
+  static const String changePassword = 'profile.Change Password';
+  static const String currentPassword = 'profile.Current Password';
+  static const String newPassword = 'profile.New Password';
+  static const String confirmNewPassword = 'profile.Confirm New Password';
+  static const String passwordHint = 'profile.password_hint';
+  static const String forgotPassword = 'profile.forgot_password';
+  static const String forgetPasswordHint = 'profile.forget_password_hint';
+  static const String healthInfo = 'profile.Health Info';
+  static const String allergies = 'profile.Allergies';
+  static const String penicillin = 'profile.Penicillin';
+  static const String dust = 'profile.Dust';
+  static const String chronicConditions = 'profile.Chronic Conditions';
+  static const String currentMedications = 'profile.Current Medications';
+  static const String addMedication = 'profile.Add Medication';
+  static const String logout = 'profile.Logout';
+  static const String logoutQuestion = 'profile.Logout Question';
+  static const String logoutHint = 'profile.Logout Hint';
+  static const String stayLoggedIn = 'profile.Stay Logged In';
+  static const String bloodType = 'profile.Blood Type';
+  static const String status = 'profile.Status';
 }

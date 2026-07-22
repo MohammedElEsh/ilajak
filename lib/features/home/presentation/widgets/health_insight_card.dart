@@ -43,7 +43,7 @@ class HealthInsightCard extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.surfaceLight.withOpacity(.18),
+                backgroundColor: AppColors.surfaceLight.withValues(alpha: 0.18),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14.r),
