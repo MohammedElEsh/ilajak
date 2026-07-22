@@ -6,16 +6,23 @@ class RouteNames {
   static const String verifyOtp = '/verify-otp';
   static const String gettingStarted = '/getting-started';
 
-  // Authenticated shell tabs
-  static const String home = '/home';
-  static const String patients = '/patients';
-  static const String articles = '/articles';
-  static const String notifications = '/notifications';
-  static const String profile = '/profile';
+  // Patient shell tabs
+  static const String patientHome = '/patient-home';
+  static const String patientAppointments = '/patient-appointments';
+  static const String patientArticles = '/patient-articles';
+  static const String patientNotifications = '/patient-notifications';
+  static const String patientProfile = '/patient-profile';
 
-  static const String personalInfo = '/personal-info';
-  static const String healthInfo = '/health-info';
-  static const String emergencyContacts = '/emergency-contacts';
-  static const String changePassword = '/change-password';
-  
+  // Doctor shell tabs
+  static const String doctorHome = '/doctor-home';
+  static const String doctorPatients = '/doctor-patients';
+  static const String doctorArticles = '/doctor-articles';
+  static const String doctorNotifications = '/doctor-notifications';
+  static const String doctorProfile = '/doctor-profile';
+
+  // Patient sub-routes
+  static const String patientPersonalInfo = '/patient-personal-info';
+  static const String patientHealthInfo = '/patient-health-info';
+  static const String patientEmergencyContacts = '/patient-emergency-contacts';
+  static const String patientChangePassword = '/patient-change-password';
 }

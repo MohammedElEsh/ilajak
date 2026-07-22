@@ -193,6 +193,8 @@ class AppStrings {
   static const String navHealth = 'nav.health';
   static const String navNotifications = 'nav.notifications';
   static const String navProfile = 'nav.profile';
+  static const String navBookings = 'nav.bookings';
+  static const String navArticles = 'nav.articles';
 
   //Profile
   static const String profileRecords = 'profile.Records';
