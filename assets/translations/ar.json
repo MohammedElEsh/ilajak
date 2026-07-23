@@ -112,9 +112,11 @@
   "nav": {
     "home": "الرئيسية",
     "patients": "المرضى",
-    "articles": "المقالات",
+    "health": "الصحة",
     "notifications": "الإشعارات",
-    "profile": "الملف الشخصي"
+    "profile": "الملف الشخصي",
+    "bookings": "الحجوزات",
+    "articles": "المقالات"
   },
   "home": {
     "title": "مرحبًا، ",

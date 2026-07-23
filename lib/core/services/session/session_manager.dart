@@ -5,6 +5,8 @@ import 'package:ilajak/core/services/auth/token_service.dart';
 import 'package:ilajak/core/services/logger/logger_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+enum UserRole { patient, doctor }
+
 /// High-level application flow states.
 ///
 /// These are the ONLY states the router reasons about.
@@ -39,10 +41,22 @@ class SessionManager extends ChangeNotifier {
 
   AppStatus _status = AppStatus.initial;
 
+  /// 🎭 UI Preview → doctor | patient
+  //  _role = doctor      →  shows doctor UI; change to patient for patient UI
+  UserRole _role = UserRole.patient;
+
   bool get onboardingDone => prefs.getBool(_onboardingKey) ?? false;
 
   AppStatus get status => _status;
+  UserRole get role => _role;
 
+  void setRole(UserRole role) {
+    _role = role;
+    notifyListeners();
+  }
+
+  /// 🚀 DEV ONLY — Set `true` to skip Onboarding & Login
+  //  _bypassAuth = true  →  skips onboarding & login, opens app directly
   static const _bypassAuth = true;
 
   /// Called once at app startup — inspects persistent storage

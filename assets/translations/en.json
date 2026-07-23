@@ -112,9 +112,11 @@
   "nav": {
     "home": "Home",
     "patients": "Patients",
-    "articles": "Articles",
+    "health": "Health",
     "notifications": "Notifications",
-    "profile": "Profile"
+    "profile": "Profile",
+    "bookings": "Bookings",
+    "articles": "Articles"
   },
   "home": {
     "title": "Hello, ",

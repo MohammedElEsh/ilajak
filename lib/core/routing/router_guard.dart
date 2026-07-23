@@ -34,7 +34,10 @@ class RouterGuard {
       case AppStatus.authenticatedNeedsSetup:
         return RouteNames.gettingStarted;
       case AppStatus.authenticated:
-        return RouteNames.home;
+        if (_sessionManager.role == UserRole.doctor) {
+          return RouteNames.doctorHome;
+        }
+        return RouteNames.patientHome;
     }
   }
 
@@ -48,14 +51,23 @@ class RouterGuard {
         };
       case AppStatus.authenticated:
         return const {
-          RouteNames.patients,
-          RouteNames.articles,
-          RouteNames.notifications,
-          RouteNames.profile,
-          RouteNames.personalInfo,
-          RouteNames.changePassword,
-          RouteNames.healthInfo,
-          RouteNames.emergencyContacts,
+          // Patient routes
+          RouteNames.patientHome,
+          RouteNames.patientAppointments,
+          RouteNames.patientArticles,
+          RouteNames.patientNotifications,
+          RouteNames.patientProfile,
+          // Doctor routes
+          RouteNames.doctorHome,
+          RouteNames.doctorPatients,
+          RouteNames.doctorArticles,
+          RouteNames.doctorNotifications,
+          RouteNames.doctorProfile,
+          // Patient profile sub-routes
+          RouteNames.patientPersonalInfo,
+          RouteNames.patientChangePassword,
+          RouteNames.patientHealthInfo,
+          RouteNames.patientEmergencyContacts,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:

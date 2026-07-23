@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
+    required this.role,
   });
 
   final int currentIndex;
   final ValueChanged<int> onTap;
+  final UserRole role;
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -31,6 +34,148 @@ class _BottomNavBarState extends State<BottomNavBar> {
   void didUpdateWidget(covariant BottomNavBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     _highlightedIndex = widget.currentIndex;
+  }
+
+  List<NavigationDestination> _destinationsForRole(UserRole role) {
+    final theme = Theme.of(context);
+    switch (role) {
+      case UserRole.patient:
+        return [
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedHome01,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedHome01,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navHome.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedCalendarCheckOut01,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedCalendarCheckOut01,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navBookings.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedActivity03,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedActivity03,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navHealth.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedNotification01,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedNotification01,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navNotifications.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedUser,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedUser,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navProfile.tr(),
+          ),
+        ];
+      case UserRole.doctor:
+        return [
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedHome01,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedHome01,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navHome.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedUserGroup,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedUserGroup,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navPatients.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedNotebook01,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedNotebook01,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navArticles.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedNotification01,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedNotification01,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navNotifications.tr(),
+          ),
+          NavigationDestination(
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedUser,
+              size: 24,
+              color: theme.colorScheme.onSurface,
+            ),
+            selectedIcon: HugeIcon(
+              icon: HugeIcons.strokeRoundedUser,
+              size: 24,
+              color: theme.colorScheme.primary,
+            ),
+            label: AppStrings.navProfile.tr(),
+          ),
+        ];
+    }
   }
 
   @override
@@ -66,73 +211,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               }
               return TextStyle(fontSize: 9.sp);
             }),
-            destinations: [
-              NavigationDestination(
-                icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedHome01,
-                  size: 24,
-                  color: theme.colorScheme.onSurface,
-                ),
-                selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedHome01,
-                  size: 24,
-                  color: theme.colorScheme.primary,
-                ),
-                label: AppStrings.navHome.tr(),
-              ),
-              NavigationDestination(
-                icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedCalendarCheckOut01,
-                  size: 24,
-                  color: theme.colorScheme.onSurface,
-                ),
-                selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedCalendarCheckOut01,
-                  size: 24,
-                  color: theme.colorScheme.primary,
-                ),
-                label: AppStrings.navPatients.tr(),
-              ),
-              NavigationDestination(
-                icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedActivity03,
-                  size: 24,
-                  color: theme.colorScheme.onSurface,
-                ),
-                selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedActivity03,
-                  size: 24,
-                  color: theme.colorScheme.primary,
-                ),
-                label: AppStrings.navArticles.tr(),
-              ),
-              NavigationDestination(
-                icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedNotification01,
-                  size: 24,
-                  color: theme.colorScheme.onSurface,
-                ),
-                selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedNotification01,
-                  size: 24,
-                  color: theme.colorScheme.primary,
-                ),
-                label: AppStrings.navNotifications.tr(),
-              ),
-              NavigationDestination(
-                icon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedUser,
-                  size: 24,
-                  color: theme.colorScheme.onSurface,
-                ),
-                selectedIcon: HugeIcon(
-                  icon: HugeIcons.strokeRoundedUser,
-                  size: 24,
-                  color: theme.colorScheme.primary,
-                ),
-                label: AppStrings.navProfile.tr(),
-              ),
-            ],
+            destinations: _destinationsForRole(widget.role),
           ),
         ),
       ),
