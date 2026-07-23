@@ -5,9 +5,10 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
-import 'package:ilajak/core/shared/widgets/status_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/health/presentation/widgets/health_card_widget.dart';
+import 'package:ilajak/features/health/presentation/widgets/health_view_banner.dart';
 
 class HealthView extends StatelessWidget {
   const HealthView({super.key});
@@ -15,7 +16,7 @@ class HealthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w),
+      padding: EdgeInsets.symmetric(horizontal: 18.w).copyWith(bottom: 68.h),
       child: Scaffold(
         appBar: AppTopBar(
           leadingWidget: CircleAvatar(
@@ -49,91 +50,56 @@ class HealthView extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 24.h),
-                Container(
-                  width: double.infinity,
-                  height: 176.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryLight3,
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Lab Results",
-                        style: AppTypography.bold28.copyWith(
-                          color: AppColors.surfaceLight,
-                        ),
-                      ),
-                      SizedBox(height: 8.h),
-                      Text(
-                        "Monitor your progress with\nclinical precision.",
-                        style: AppTypography.regular14.copyWith(
-                          color: AppColors.surfaceLight,
-                          height: 1.5,
-                          wordSpacing: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const HealthViewBanner(),
                 SizedBox(height: 24.h),
-                Container(
-                  width: double.infinity,
-                  color: AppColors.transparent,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 16.h,
-                  ),
-                  child: Column(
-                    children: [
-                      // Headre Column
-                      Column(
-                        children: [
-                          // Row of title and statu
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  HugeIcon(
-                                    icon: HugeIcons.strokeRoundedLabs,
-                                    size: 24.sp,
-                                    color: AppColors.primary,
-                                    strokeWidth: 1.5,
-                                  ),
-                                  SizedBox(width: 8.w),
-                                  Text(
-                                    "Lipid Profile",
-                                    style: AppTypography.semiBold18.copyWith(
-                                      color: AppColors.textPrimaryLight,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              StatusWidget(
-                                title: "High",
-                                backgroundColor:
-                                    AppColors.redTileIconBackgroundColor,
-                                textColor: AppColors.error,
-                                textStyle: AppTypography.bold12,
-                              ),
-                            ],
-                          ),
-                          // Text
-                        ],
-                      ),
-
-                      // Statistics card row
-
-                      // View details and download button
-                    ],
-                  ),
+                HealthCardWidget(
+                  title: 'Lipid Profile',
+                  subtitle: 'Oct 24, 2023 • General Checkup',
+                  icon: Icons.science_outlined,
+                  status: 'High',
+                  statusColor: AppColors.error,
+                  statusBackgroundColor: AppColors.redTileIconBackgroundColor,
+                  labValue: 'TOTAL CHOLESTEROL',
+                  value: '245',
+                  valueColor: AppColors.error,
+                  unit: 'mg/dL',
+                  normalRange: '125 - 200',
+                  onViewDetailsPressed: () {},
+                  onDownloadPressed: () {},
+                ),
+                SizedBox(height: 16.h),
+                HealthCardWidget(
+                  // Complete Blood Count
+                  title: 'Complete Blood Count',
+                  subtitle: 'Oct 12, 2023 • Routine Screening',
+                  icon: Icons.bloodtype_outlined,
+                  status: 'Normal',
+                  statusColor: AppColors.success,
+                  statusBackgroundColor: AppColors.greenBg,
+                  labValue: 'HEMOGLOBIN',
+                  value: '12.5',
+                  valueColor: AppColors.primary,
+                  unit: 'g/dL',
+                  normalRange: '13.5 - 17.5',
+                  onViewDetailsPressed: () {},
+                  onDownloadPressed: () {},
+                ),
+                SizedBox(height: 16.h),
+                HealthCardWidget(
+                  // Vitamin D, 25-Hydroxy
+                  title: 'Vitamin D, 25-Hydroxy',
+                  subtitle: 'Sep 30, 2023 • Deficiency Check',
+                  icon: Icons.wb_sunny_outlined,
+                  status: 'High',
+                  statusColor: AppColors.success,
+                  statusBackgroundColor: AppColors.greenBg,
+                  labValue: 'Result Value',
+                  value: '15',
+                  valueColor: AppColors.primary,
+                  unit: 'ng/dL',
+                  normalRange: '30 - 100',
+                  onViewDetailsPressed: () {},
+                  onDownloadPressed: () {},
                 ),
               ],
             ),

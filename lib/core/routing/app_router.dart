@@ -6,7 +6,6 @@ import 'package:ilajak/core/routing/router_guard.dart';
 import 'package:ilajak/core/routing/router_shell.dart';
 import 'package:ilajak/core/services/session/session_manager.dart';
 import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
-import 'package:ilajak/features/articles/presentation/views/articles_view.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_forgot_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_login_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_register_cubit.dart';

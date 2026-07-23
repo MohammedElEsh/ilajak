@@ -171,6 +171,11 @@
     "Logout Hint": "سوف تحتاج إلى إدخال بيانات الاعتماد الخاصة بك للوصول إلى سجلاتك الصحية ومواعيدك مرة أخرى",
     "Stay Logged In": "البقاء مسجلا",
     "Blood Type" : "فصيلة الدم",
-    "Status" : "الحالة"
+    "Status" : "الحالة",
+    "Lab Results" : "نتائج التحاليل",
+    "Monitor your progress with clinical precision." : "راقب تقدمك بدقة علمية",
+    "TOTAL CHOLESTEROL" : "إجمالي الكوليسترول",
+    "NORMAL RANGE" : "نطاق طبيعي",
+    "View Details" : "عرض التفاصيل"
   }
 }
