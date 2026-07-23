@@ -23,6 +23,7 @@ import 'package:ilajak/features/patient/health/presentation/views/health_view.da
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_view.dart';
+import 'package:ilajak/features/patient/health/presentation/views/labs_view.dart';
 import 'package:ilajak/features/patient/home/presentation/views/patient_home_view.dart';
 import 'package:ilajak/features/patient/notifications/presentation/views/patient_notifications_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_change_password_view.dart';
@@ -59,6 +60,10 @@ void initRouter() {
       GoRoute(
         path: RouteNames.patientHealthInfo,
         builder: (context, state) => const PatientHealthInfoView(),
+      ),
+      GoRoute(
+        path: RouteNames.patientLabResults,
+        builder: (context, state) => const LabResultsView(),
       ),
       GoRoute(
         path: RouteNames.login,
