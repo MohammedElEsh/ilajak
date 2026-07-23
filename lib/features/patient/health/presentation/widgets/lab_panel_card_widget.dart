@@ -7,9 +7,7 @@ import 'package:ilajak/features/patient/health/presentation/widgets/lab_status_w
 import 'package:ilajak/features/patient/health/presentation/widgets/range_indicator_Widget.dart';
 
 class LabPanelCardWidget extends StatelessWidget {
-  const LabPanelCardWidget({
-    super.key,
-  });
+  const LabPanelCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +20,7 @@ class LabPanelCardWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surfaceLight,
         borderRadius: BorderRadiusDirectional.circular(20.r),
-        border: Border.all(
-          color: AppColors.surfaceLight,
-          width: 1.w,
-        ),
+        border: Border.all(color: AppColors.surfaceLight, width: 1.w),
         boxShadow: [
           BoxShadow(
             color: AppColors.surfaceDark.withValues(alpha: 0.1),
@@ -37,12 +32,8 @@ class LabPanelCardWidget extends StatelessWidget {
       // Container body
       child: Column(
         children: [
-          
           // Lab & Status Header
-          const LabStatusWidget(
-            labName: 'Lipid Profile',
-            status: 'High Risk',
-          ),
+          const LabStatusWidget(labName: 'Lipid Profile', status: 'High Risk'),
           SizedBox(height: 32.h),
 
           // Disease result & Optimal result
@@ -52,11 +43,11 @@ class LabPanelCardWidget extends StatelessWidget {
             optimalRange: '< 200 mg/dL',
           ),
           SizedBox(height: 24.h),
-    
+
           // Multi-color Normal Range Bar
           const RangeIndicatorBar(value: 228, min: 125, max: 300),
           SizedBox(height: 24.h),
-    
+
           // Date With Place
           const DateWithPlaceWidget(),
         ],

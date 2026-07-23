@@ -7,11 +7,21 @@ import 'package:ilajak/core/theme/typography/app_typography.dart';
 class LabStatusWidget extends StatelessWidget {
   const LabStatusWidget({
     super.key,
-    required this.labName,
+    this.labName,
     required this.status,
+    this.textColor,
+    this.backgroundColor,
+    this.titleTextStyle,
+    this.showLabel = true,
+    this.title,
   });
-  final String labName;
+  final String? labName;
   final String status;
+  final Color? textColor;
+  final Color? backgroundColor;
+  final TextStyle? titleTextStyle;
+  final bool? showLabel;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -21,27 +31,33 @@ class LabStatusWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'LAB PANEL',
-              style: AppTypography.bold12.copyWith(color: AppColors.primary),
+              title ?? 'LAB PANEL',
+              style:
+                  titleTextStyle ??
+                  AppTypography.bold12.copyWith(color: AppColors.primary),
             ),
             StatusWidget(
               title: status,
-              backgroundColor: AppColors.lightRed,
-              textColor: AppColors.error,
-              textStyle: AppTypography.bold12.copyWith(color: AppColors.error),
+              backgroundColor: backgroundColor ?? AppColors.lightRed,
+              textColor: textColor ?? AppColors.error,
+              textStyle: AppTypography.bold12.copyWith(
+                color: textColor ?? AppColors.error,
+              ),
             ),
           ],
         ),
         SizedBox(height: 4.h),
-        Align(
-          alignment: AlignmentDirectional.centerStart,
-          child: Text(
-            labName,
-            style: AppTypography.bold28.copyWith(
-              color: AppColors.textPrimaryLight,
-            ),
-          ),
-        ),
+        showLabel == true
+            ? Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  labName ?? "Lab Name",
+                  style: AppTypography.bold28.copyWith(
+                    color: AppColors.textPrimaryLight,
+                  ),
+                ),
+              )
+            : const SizedBox.shrink(),
       ],
     );
   }
