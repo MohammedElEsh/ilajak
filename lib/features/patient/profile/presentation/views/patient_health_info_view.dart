@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
+import 'package:ilajak/core/shared/widgets/status_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
-import 'package:ilajak/features/patient/home/presentation/widgets/status_widget.dart';
 import 'package:ilajak/features/patient/profile/presentation/widgets/add_medication_buttom_widget.dart';
 import 'package:ilajak/features/patient/profile/presentation/widgets/current_medications_tile_widget.dart';
 import 'package:ilajak/features/patient/profile/presentation/widgets/disease_widget.dart';
@@ -72,9 +72,7 @@ class PatientHealthInfoView extends StatelessWidget {
                         iconColor: AppColors.primary,
                         iconBgColor: const Color.fromRGBO(210, 224, 248, 1),
                         title: AppStrings.status.tr(),
-                        value: const StatusWidget(
-                          title: "Verified",
-                        ),
+                        value: const StatusWidget(title: 'Verified'),
                       ),
                     ),
                   ],

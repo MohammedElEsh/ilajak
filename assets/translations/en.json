@@ -180,5 +180,11 @@
     "radiology_results": "Radiology Results",
     "review_text": "Review your recent scans and diagnostic reports from our partner clinics.",
     "hint_msg": "Your recent lab results for \"Full Blood Count\" are pending. You will receive a notification once they are ready."
+    "Status": "Status",
+    "Lab Results": "Lab Results",
+    "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",
+    "TOTAL CHOLESTEROL": "TOTAL CHOLESTEROL",
+    "NORMAL RANGE": "NORMAL RANGE",
+    "View Details": "View Details"
   }
 }

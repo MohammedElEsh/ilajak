@@ -9,7 +9,7 @@ class RouteNames {
   // Patient shell tabs
   static const String patientHome = '/patient-home';
   static const String patientAppointments = '/patient-appointments';
-  static const String patientArticles = '/patient-articles';
+  static const String patientHealth = '/patient-health';
   static const String patientNotifications = '/patient-notifications';
   static const String patientProfile = '/patient-profile';
 
