@@ -33,7 +33,7 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 27.w),
+      padding: EdgeInsets.symmetric(horizontal: 27.w).copyWith(bottom: 16.h),
       child: Column(
         children: [
           // Full Name
@@ -151,4 +151,3 @@ class _PersonalInfoFormState extends State<PersonalInfoForm> {
     );
   }
 }
-
