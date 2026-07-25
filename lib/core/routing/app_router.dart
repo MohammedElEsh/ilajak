@@ -67,6 +67,10 @@ void initRouter() {
         builder: (context, state) => const RadiologyResultsView(),
       ),
       GoRoute(
+        path: RouteNames.patientLabResults,
+        builder: (context, state) => const LabResultsView(),
+      ),
+      GoRoute(
         path: RouteNames.login,
         builder: (context, state) => BlocProvider(
           create: (_) => AuthLoginCubit(),
