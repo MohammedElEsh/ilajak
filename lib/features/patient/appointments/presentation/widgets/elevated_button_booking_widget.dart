@@ -9,11 +9,16 @@ class ElevatedButtonBookingWidget extends StatelessWidget {
     required this.text,
     this.onTap,
     this.width,
+    this.prefiXIcon,
+    this.color1,
+    this.color2,
   });
-
+  final Widget? prefiXIcon;
   final String text;
   final VoidCallback? onTap;
   final double? width;
+  final Color? color1;
+  final Color? color2;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +27,25 @@ class ElevatedButtonBookingWidget extends StatelessWidget {
       height: 60.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: color1 ?? AppColors.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),
+            side: BorderSide(color: AppColors.primary, width: 2.w),
           ),
         ),
         onPressed: onTap,
-        child: Text(
-          text,
-          style: AppTypography.semiBold16.copyWith(
-            color: Colors.white,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: 10.w),
+              child: prefiXIcon ?? const SizedBox.shrink(),
+            ),
+            Text(
+              text,
+              style: AppTypography.semiBold16.copyWith(color: color2 ?? AppColors.surfaceLight),
+            ),
+          ],
         ),
       ),
     );
