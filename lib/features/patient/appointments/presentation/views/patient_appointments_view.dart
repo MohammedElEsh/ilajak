@@ -110,7 +110,7 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                 SizedBox(height: 35.h),
                 RowTextButtonWidget(
                   title: "Recommended Doctors",
-                  buttonText: "View All",
+                  buttonText: "156 Found",
                   onTap: () {},
                 ),
                 SizedBox(height: 24.h),

@@ -25,4 +25,10 @@ class RouteNames {
   static const String patientHealthInfo = '/patient-health-info';
   static const String patientEmergencyContacts = '/patient-emergency-contacts';
   static const String patientChangePassword = '/patient-change-password';
+
+
+  static const String patientAppointmentsConfirm = '/patient-appointments-confirm';
+  
+
+
 }

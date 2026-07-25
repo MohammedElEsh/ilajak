@@ -22,7 +22,7 @@ class PatientHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w),
+      padding: EdgeInsets.only(left: 18.w, right: 18.w, bottom: 60.h),
       child: Scaffold(
         appBar: AppTopBar(
           leadingWidget: CircleAvatar(

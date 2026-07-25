@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
+import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
@@ -9,15 +11,15 @@ import 'package:ilajak/features/patient/appointments/presentation/widgets/info_b
 class DoctorCardWidget extends StatelessWidget {
   const DoctorCardWidget({
     super.key,
-  this.doctorName,
-   this.specialization,
-   this.rating,
-   this.reviews,
-   this.experience,
-   this.patients,
-   this.availability,
-   this.image,
-   this.onTap,
+    this.doctorName,
+    this.specialization,
+    this.rating,
+    this.reviews,
+    this.experience,
+    this.patients,
+    this.availability,
+    this.image,
+    this.onTap,
   });
   final String? doctorName;
   final String? specialization;
@@ -44,7 +46,7 @@ class DoctorCardWidget extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 30.r,
-                backgroundImage:  AssetImage(image??AppAssets.profileImage),
+                backgroundImage: AssetImage(image ?? AppAssets.profileImage),
               ),
 
               SizedBox(width: 16.w),
@@ -74,12 +76,12 @@ class DoctorCardWidget extends StatelessWidget {
                     children: [
                       const Icon(Icons.star, color: Colors.amber, size: 18),
                       SizedBox(width: 4.w),
-                      Text(rating??"5.0", style: AppTypography.semiBold18),
+                      Text(rating ?? "5.0", style: AppTypography.semiBold18),
                     ],
                   ),
                   SizedBox(height: 12.h),
                   Text(
-                    reviews??"98 Reviews",
+                    reviews ?? "98 Reviews",
                     style: AppTypography.medium16.copyWith(
                       color: AppColors.fieldLabel,
                     ),
@@ -93,22 +95,36 @@ class DoctorCardWidget extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: InfoBoxWidget(title: "Experience", value: experience??"12 Years"),
-              ),
-              SizedBox(width: 16.w),
-               Expanded(
-                child: InfoBoxWidget(title: "Patients", value:patients?? "2.4k+"),
+                child: InfoBoxWidget(
+                  title: "Experience",
+                  value: experience ?? "12 Years",
+                ),
               ),
               SizedBox(width: 16.w),
               Expanded(
-                child: InfoBoxWidget(title: "Availability", value: availability?? "Tomorrow"),
+                child: InfoBoxWidget(
+                  title: "Patients",
+                  value: patients ?? "2.4k+",
+                ),
+              ),
+              SizedBox(width: 16.w),
+              Expanded(
+                child: InfoBoxWidget(
+                  title: "Availability",
+                  value: availability ?? "Tomorrow",
+                ),
               ),
             ],
           ),
 
           SizedBox(height: 24.h),
 
-          ElevatedButtonBookingWidget(text: 'Book Appointment ', onTap: () {}),
+          ElevatedButtonBookingWidget(
+            text: 'Book Appointment ',
+            onTap: () {
+              context.push(RouteNames.patientAppointmentsConfirm);
+            },
+          ),
         ],
       ),
     );
