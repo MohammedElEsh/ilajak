@@ -232,4 +232,10 @@ class AppStrings {
   static const String stayLoggedIn = 'profile.Stay Logged In';
   static const String bloodType = 'profile.Blood Type';
   static const String status = 'profile.Status';
+
+  // Radiology
+  static const String radiologyTitle = 'radiology.title';
+  static const String radiologyResults = 'radiology.radiology_results';
+  static const String radiologyReviewText = 'radiology.review_text';
+  static const String radiologyHintMsg = 'radiology.hint_msg';
 }
