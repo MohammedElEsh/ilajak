@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 
-import '../logger/logger_service.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
 
 abstract class ConnectivityService {
   Future<bool> get isConnected;

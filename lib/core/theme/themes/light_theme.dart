@@ -20,9 +20,8 @@
 // =============================================================================
 
 import 'package:flutter/material.dart';
-
-import '../colors/app_colors.dart';
-import '../typography/app_typography.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
+import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 ThemeData lightTheme = ThemeData(
   useMaterial3: true,
@@ -39,7 +38,7 @@ ThemeData lightTheme = ThemeData(
     onSurface: AppColors.textPrimaryLight,
     surfaceContainerHighest: AppColors.grey5,
     outlineVariant: AppColors.grey4,
-    onSurfaceVariant: AppColors.grey3,
+    onSurfaceVariant: AppColors.textSecondary,
     error: AppColors.error,
     onError: AppColors.surfaceLight,
   ),
@@ -48,20 +47,21 @@ ThemeData lightTheme = ThemeData(
   // ── Typography ────────────────────────────────────────────────────────────
   // Used via Theme.of(context).textTheme or context.textTheme.
   // AppTextField, AppButton, etc. read text styles from here.
-  textTheme: TextTheme(
-    displayLarge: AppTypography.bold36,
-    headlineLarge: AppTypography.extraBold24,
-    headlineMedium: AppTypography.semiBold20,
-    headlineSmall: AppTypography.semiBold18,
-    bodyLarge: AppTypography.regular14,
-    bodyMedium: AppTypography.semiBold14,
-    labelLarge: AppTypography.regular14,
-    labelMedium: AppTypography.regular12,
-    labelSmall: AppTypography.regular12,
-  ).apply(
-    bodyColor: AppColors.textPrimaryLight,
-    displayColor: AppColors.textPrimaryLight,
-  ),
+  textTheme:
+      TextTheme(
+        displayLarge: AppTypography.bold36,
+        headlineLarge: AppTypography.bold28,
+        headlineMedium: AppTypography.semiBold20,
+        headlineSmall: AppTypography.semiBold18,
+        bodyLarge: AppTypography.regular14,
+        bodyMedium: AppTypography.semiBold14,
+        labelLarge: AppTypography.regular14,
+        labelMedium: AppTypography.regular12,
+        labelSmall: AppTypography.regular12,
+      ).apply(
+        bodyColor: AppColors.textPrimaryLight,
+        displayColor: AppColors.textPrimaryLight,
+      ),
 
   // ── AppBar ────────────────────────────────────────────────────────────────
   appBarTheme: AppBarTheme(
@@ -93,20 +93,20 @@ ThemeData lightTheme = ThemeData(
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.surfaceLight,
       elevation: 0,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      textStyle: AppTypography.semiBold18,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
   // ── Outlined Button ───────────────────────────────────────────────────────
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: AppColors.surfaceLight,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      side: const BorderSide(color: AppColors.surfaceLight),
-      textStyle: AppTypography.semiBold14,
+      foregroundColor: AppColors.primary,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      side: const BorderSide(color: AppColors.primary),
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
@@ -115,7 +115,7 @@ ThemeData lightTheme = ThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColors.primary,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      textStyle: AppTypography.regular14,
+      textStyle: AppTypography.semiBold14,
     ),
   ),
 
@@ -133,25 +133,30 @@ ThemeData lightTheme = ThemeData(
   // Priority: widget.param > inputDecorationTheme > colorScheme fallback.
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: AppColors.surfaceLight,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+    fillColor: AppColors.fieldInput,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 32),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: AppColors.grey4),
+      borderRadius: BorderRadius.circular(24),
+      borderSide: const BorderSide(color: AppColors.fieldBorder),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: const BorderSide(color: AppColors.grey4),
+      borderRadius: BorderRadius.circular(24),
+      borderSide: const BorderSide(color: AppColors.fieldBorder),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(24),
       borderSide: const BorderSide(color: AppColors.primary, width: 2),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(24),
       borderSide: const BorderSide(color: AppColors.error),
     ),
-    hintStyle: AppTypography.regular14.copyWith(color: AppColors.grey2),
+    hintStyle: AppTypography.semiBold14.copyWith(
+      color: AppColors.fieldLabel,
+      fontSize: 16,
+    ),
+    prefixIconConstraints: const BoxConstraints(),
+    suffixIconConstraints: const BoxConstraints(),
   ),
 
   // ── Bottom Navigation Bar ─────────────────────────────────────────────────
@@ -171,7 +176,7 @@ ThemeData lightTheme = ThemeData(
     }),
     checkColor: WidgetStateProperty.all(AppColors.surfaceLight),
     side: const BorderSide(color: AppColors.grey4),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
   ),
 
   // ── Radio ─────────────────────────────────────────────────────────────────
@@ -244,8 +249,9 @@ ThemeData lightTheme = ThemeData(
   // ── SnackBar ──────────────────────────────────────────────────────────────
   snackBarTheme: SnackBarThemeData(
     backgroundColor: AppColors.surfaceLight,
-    contentTextStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryLight),
+    contentTextStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryLight,
+    ),
     actionTextColor: AppColors.primary,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     elevation: 6,
@@ -255,10 +261,12 @@ ThemeData lightTheme = ThemeData(
   // ── Dialog ────────────────────────────────────────────────────────────────
   dialogTheme: DialogThemeData(
     backgroundColor: AppColors.surfaceLight,
-    titleTextStyle:
-        AppTypography.semiBold20.copyWith(color: AppColors.textPrimaryLight),
-    contentTextStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryLight),
+    titleTextStyle: AppTypography.semiBold20.copyWith(
+      color: AppColors.textPrimaryLight,
+    ),
+    contentTextStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryLight,
+    ),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     elevation: 8,
   ),
@@ -266,8 +274,9 @@ ThemeData lightTheme = ThemeData(
   // ── Popup Menu ────────────────────────────────────────────────────────────
   popupMenuTheme: PopupMenuThemeData(
     color: AppColors.surfaceLight,
-    textStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryLight),
+    textStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryLight,
+    ),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     elevation: 4,
   ),
@@ -275,8 +284,9 @@ ThemeData lightTheme = ThemeData(
   // ── List Tile ─────────────────────────────────────────────────────────────
   listTileTheme: ListTileThemeData(
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    titleTextStyle:
-        AppTypography.semiBold14.copyWith(color: AppColors.textPrimaryLight),
+    titleTextStyle: AppTypography.semiBold14.copyWith(
+      color: AppColors.textPrimaryLight,
+    ),
     subtitleTextStyle: AppTypography.regular12.copyWith(color: AppColors.grey3),
     iconColor: AppColors.textPrimaryLight,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -316,7 +326,9 @@ ThemeData lightTheme = ThemeData(
       if (states.contains(WidgetState.selected)) {
         return AppTypography.semiBold14.copyWith(color: AppColors.primary);
       }
-      return AppTypography.semiBold14.copyWith(color: AppColors.textPrimaryLight);
+      return AppTypography.semiBold14.copyWith(
+        color: AppColors.textPrimaryLight,
+      );
     }),
     iconTheme: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
@@ -352,13 +364,15 @@ ThemeData lightTheme = ThemeData(
 
   // ── Dropdown Menu ─────────────────────────────────────────────────────────
   dropdownMenuTheme: DropdownMenuThemeData(
-    textStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryLight),
+    textStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryLight,
+    ),
     menuStyle: MenuStyle(
       backgroundColor: WidgetStateProperty.all(AppColors.surfaceLight),
       elevation: WidgetStateProperty.all(4),
       shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
     ),
   ),
 
@@ -376,14 +390,18 @@ ThemeData lightTheme = ThemeData(
   searchBarTheme: SearchBarThemeData(
     backgroundColor: WidgetStateProperty.all(AppColors.surfaceLight),
     hintStyle: WidgetStateProperty.all(
-        AppTypography.semiBold14.copyWith(color: AppColors.textSecondary)),
+      AppTypography.semiBold14.copyWith(color: AppColors.textSecondary),
+    ),
     textStyle: WidgetStateProperty.all(
-        AppTypography.semiBold14.copyWith(color: AppColors.textPrimaryLight)),
+      AppTypography.semiBold14.copyWith(color: AppColors.textPrimaryLight),
+    ),
     elevation: WidgetStateProperty.all(0),
     shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(14))),
-    padding:
-        WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 16)),
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+    ),
+    padding: WidgetStateProperty.all(
+      const EdgeInsets.symmetric(horizontal: 16),
+    ),
   ),
 
   // ── Menu Button ───────────────────────────────────────────────────────────

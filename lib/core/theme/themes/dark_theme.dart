@@ -21,8 +21,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../colors/app_colors.dart';
-import '../typography/app_typography.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
+import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
@@ -38,27 +38,28 @@ ThemeData darkTheme = ThemeData(
     onSurface: AppColors.textPrimaryDark,
     surfaceContainerHighest: AppColors.grey2,
     outlineVariant: AppColors.grey2,
-    onSurfaceVariant: AppColors.grey3,
+    onSurfaceVariant: AppColors.textSecondary,
     error: AppColors.error,
     onError: AppColors.surfaceDark,
   ),
   scaffoldBackgroundColor: AppColors.backgroundDark,
 
   // ── Typography ────────────────────────────────────────────────────────────
-  textTheme: TextTheme(
-    displayLarge: AppTypography.bold36,
-    headlineLarge: AppTypography.extraBold24,
-    headlineMedium: AppTypography.semiBold20,
-    headlineSmall: AppTypography.semiBold18,
-    bodyLarge: AppTypography.regular14,
-    bodyMedium: AppTypography.semiBold14,
-    labelLarge: AppTypography.regular14,
-    labelMedium: AppTypography.regular12,
-    labelSmall: AppTypography.regular12,
-  ).apply(
-    bodyColor: AppColors.textPrimaryDark,
-    displayColor: AppColors.textPrimaryDark,
-  ),
+  textTheme:
+      TextTheme(
+        displayLarge: AppTypography.bold36,
+        headlineLarge: AppTypography.bold28,
+        headlineMedium: AppTypography.semiBold20,
+        headlineSmall: AppTypography.semiBold18,
+        bodyLarge: AppTypography.regular14,
+        bodyMedium: AppTypography.semiBold14,
+        labelLarge: AppTypography.regular14,
+        labelMedium: AppTypography.regular12,
+        labelSmall: AppTypography.regular12,
+      ).apply(
+        bodyColor: AppColors.textPrimaryDark,
+        displayColor: AppColors.textPrimaryDark,
+      ),
 
   // ── AppBar ────────────────────────────────────────────────────────────────
   appBarTheme: AppBarTheme(
@@ -88,20 +89,20 @@ ThemeData darkTheme = ThemeData(
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.surfaceDark,
       elevation: 0,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      textStyle: AppTypography.semiBold18,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
   // ── Outlined Button ───────────────────────────────────────────────────────
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: AppColors.surfaceDark,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      side: const BorderSide(color: AppColors.surfaceDark),
-      textStyle: AppTypography.semiBold14,
+      foregroundColor: AppColors.primary,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      side: const BorderSide(color: AppColors.primary),
+      textStyle: AppTypography.semiBold20,
     ),
   ),
 
@@ -110,7 +111,7 @@ ThemeData darkTheme = ThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColors.primary,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      textStyle: AppTypography.regular14,
+      textStyle: AppTypography.semiBold14,
     ),
   ),
 
@@ -236,8 +237,9 @@ ThemeData darkTheme = ThemeData(
   // ── SnackBar ──────────────────────────────────────────────────────────────
   snackBarTheme: SnackBarThemeData(
     backgroundColor: AppColors.surfaceDark,
-    contentTextStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryDark),
+    contentTextStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryDark,
+    ),
     actionTextColor: AppColors.primary,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     elevation: 6,
@@ -247,10 +249,12 @@ ThemeData darkTheme = ThemeData(
   // ── Dialog ────────────────────────────────────────────────────────────────
   dialogTheme: DialogThemeData(
     backgroundColor: AppColors.surfaceDark,
-    titleTextStyle:
-        AppTypography.semiBold20.copyWith(color: AppColors.textPrimaryDark),
-    contentTextStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryDark),
+    titleTextStyle: AppTypography.semiBold20.copyWith(
+      color: AppColors.textPrimaryDark,
+    ),
+    contentTextStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryDark,
+    ),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
     elevation: 8,
   ),
@@ -258,8 +262,9 @@ ThemeData darkTheme = ThemeData(
   // ── Popup Menu ────────────────────────────────────────────────────────────
   popupMenuTheme: PopupMenuThemeData(
     color: AppColors.surfaceDark,
-    textStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryDark),
+    textStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryDark,
+    ),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     elevation: 4,
   ),
@@ -267,8 +272,9 @@ ThemeData darkTheme = ThemeData(
   // ── List Tile ─────────────────────────────────────────────────────────────
   listTileTheme: ListTileThemeData(
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    titleTextStyle:
-        AppTypography.semiBold14.copyWith(color: AppColors.textPrimaryDark),
+    titleTextStyle: AppTypography.semiBold14.copyWith(
+      color: AppColors.textPrimaryDark,
+    ),
     subtitleTextStyle: AppTypography.regular12.copyWith(color: AppColors.grey3),
     iconColor: AppColors.textPrimaryDark,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -344,13 +350,15 @@ ThemeData darkTheme = ThemeData(
 
   // ── Dropdown Menu ─────────────────────────────────────────────────────────
   dropdownMenuTheme: DropdownMenuThemeData(
-    textStyle:
-        AppTypography.regular14.copyWith(color: AppColors.textPrimaryDark),
+    textStyle: AppTypography.regular14.copyWith(
+      color: AppColors.textPrimaryDark,
+    ),
     menuStyle: MenuStyle(
       backgroundColor: WidgetStateProperty.all(AppColors.surfaceDark),
       elevation: WidgetStateProperty.all(4),
       shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
     ),
   ),
 
@@ -368,14 +376,18 @@ ThemeData darkTheme = ThemeData(
   searchBarTheme: SearchBarThemeData(
     backgroundColor: WidgetStateProperty.all(AppColors.surfaceDark),
     hintStyle: WidgetStateProperty.all(
-        AppTypography.semiBold14.copyWith(color: AppColors.textSecondary)),
+      AppTypography.semiBold14.copyWith(color: AppColors.textSecondary),
+    ),
     textStyle: WidgetStateProperty.all(
-        AppTypography.semiBold14.copyWith(color: AppColors.textPrimaryDark)),
+      AppTypography.semiBold14.copyWith(color: AppColors.textPrimaryDark),
+    ),
     elevation: WidgetStateProperty.all(0),
     shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(14))),
-    padding:
-        WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 16)),
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+    ),
+    padding: WidgetStateProperty.all(
+      const EdgeInsets.symmetric(horizontal: 16),
+    ),
   ),
 
   // ── Menu Button ───────────────────────────────────────────────────────────

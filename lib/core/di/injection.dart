@@ -3,15 +3,16 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../networking/api_consumer.dart';
-import '../networking/api_interceptors.dart';
-import '../networking/dio_consumer.dart';
-import '../services/auth/token_refresher.dart';
-import '../services/auth/token_service.dart';
-import '../services/connectivity/connectivity_service.dart';
-import '../services/media/media_service.dart';
-import '../services/session/session_manager.dart';
-import '../services/storage/secure_storage_service.dart';
+import 'package:ilajak/core/networking/api_consumer.dart';
+import 'package:ilajak/core/networking/api_interceptors.dart';
+import 'package:ilajak/core/networking/dio_consumer.dart';
+import 'package:ilajak/core/services/auth/token_refresher.dart';
+import 'package:ilajak/core/services/auth/token_service.dart';
+import 'package:ilajak/core/services/connectivity/connectivity_service.dart';
+import 'package:ilajak/core/services/media/media_service.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
+import 'package:ilajak/core/services/storage/secure_storage_service.dart';
+import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -99,6 +100,10 @@ Future<void> initDependencies() async {
     () => MediaServiceImpl(),
   );
 
-  // NOTE: Register your feature dependencies here:
-  // e.g.  sl.registerFactory<OnboardingCubit>(() => OnboardingCubit(sl()));
+  // =====================================================
+  // 7. FEATURE: ONBOARDING
+  // =====================================================
+  sl.registerFactory<OnboardingCubit>(
+    () => OnboardingCubit(sl()),
+  );
 }
