@@ -21,6 +21,7 @@ import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patien
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_profile_view.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:ilajak/features/patient/appointments/presentation/views/my_appointments_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_confirm_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_success.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_view.dart';
@@ -188,6 +189,10 @@ void initRouter() {
       GoRoute(
         path: RouteNames.patientAppointmentsSuccess,
         builder: (context, state) => const PatientAppointmentsSuccessView(),
+      ),
+      GoRoute(
+        path: RouteNames.patientMyAppointments,
+        builder: (context, state) => const MyAppointmentsView(),
       ),
     ],
   );

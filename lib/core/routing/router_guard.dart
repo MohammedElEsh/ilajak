@@ -71,6 +71,7 @@ class RouterGuard {
           
           RouteNames.patientAppointmentsConfirm,
           RouteNames.patientAppointmentsSuccess,
+          RouteNames.patientMyAppointments,
 
         };
       case AppStatus.initial:

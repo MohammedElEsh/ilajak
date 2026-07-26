@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
@@ -120,7 +122,7 @@ class DoctorCardWidget extends StatelessWidget {
           SizedBox(height: 24.h),
 
           ElevatedButtonBookingWidget(
-            text: 'Book Appointment ',
+            text: AppStrings.bookAppointment.tr(),
             onTap: () {
               context.push(RouteNames.patientAppointmentsConfirm);
             },

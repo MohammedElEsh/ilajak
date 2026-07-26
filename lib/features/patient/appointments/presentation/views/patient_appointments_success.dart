@@ -67,7 +67,7 @@ class PatientAppointmentsSuccessView extends StatelessWidget {
               ),
               SizedBox(height: 50.h),
               Text(
-                "Appointment Confirmed!",
+                AppStrings.appointmentConfirmed.tr(),
                 style: AppTypography.bold28.copyWith(
                   color: AppColors.backgroundDark,
                 ),
@@ -77,7 +77,7 @@ class PatientAppointmentsSuccessView extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   textAlign: TextAlign.center,
-                  "Your visit has been successfully scheduled.\nWe’ve sent a confirmation to your email.",
+                  AppStrings.appointmentConfirmedSubtitle.tr(),
                   style: AppTypography.regular16.copyWith(
                     color: AppColors.darkMint,
                   ),
@@ -93,12 +93,13 @@ class PatientAppointmentsSuccessView extends StatelessWidget {
                 address: "123 Health St., Heartville, CA 90210",
                 doctorImage: AppAssets.profileImage,
                 mapImage: AppAssets.mapImage,
-                status: "Confirmed",
               ),
               const SizedBox(height: 32),
               ElevatedButtonBookingWidget(
-                text: "View My Appointments",
-                onTap: () {},
+                text: AppStrings.viewMyAppointments.tr(),
+                onTap: () {
+                  context.push(RouteNames.patientMyAppointments);
+                },
                 color1: Colors.white,
                 color2: AppColors.primary,
                 prefiXIcon: const HugeIcon(
@@ -124,9 +125,13 @@ class PatientAppointmentsSuccessView extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         context.go(RouteNames.patientHome);
+                        debugPrint(AppStrings.searchDoctorsSymptoms.tr());
+                        debugPrint(
+                          AppStrings.appointmentConfirmedSubtitle.tr(),
+                        );
                       },
                       child: Text(
-                        "Back to Home",
+                        AppStrings.backToHome.tr(),
                         style: AppTypography.semiBold16.copyWith(
                           color: AppColors.darkMint,
                         ),

@@ -62,9 +62,9 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: SearchFieldWidget(
-                        hintText: "Search doctors, symptoms...",
+                        hintText: AppStrings.searchDoctorsSymptoms.tr(),
                       ),
                     ),
                     SizedBox(width: 12.w),
@@ -109,7 +109,7 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                 ),
                 SizedBox(height: 35.h),
                 RowTextButtonWidget(
-                  title: "Recommended Doctors",
+                  title: AppStrings.recommendedDoctors.tr(),
                   buttonText: "156 Found",
                   onTap: () {},
                 ),

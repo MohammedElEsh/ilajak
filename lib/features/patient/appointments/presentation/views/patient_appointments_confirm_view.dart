@@ -65,7 +65,7 @@ class _PatientAppointmentsConfirmViewState
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: RowTextButtonWidget(
-                title: "Select Date",
+                title: AppStrings.selectDate.tr(),
                 buttonText: DateFormat('MMMM yyyy').format(now),
                 onTap: () {},
               ),
@@ -111,7 +111,7 @@ class _PatientAppointmentsConfirmViewState
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Text(
-                "Available Time",
+                AppStrings.availableTime.tr(),
                 style: AppTypography.semiBold22.copyWith(
                   color: AppColors.textPrimaryLight,
                 ),
@@ -140,7 +140,7 @@ class _PatientAppointmentsConfirmViewState
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Text(
-                "Symptoms/Notes (Optional)",
+               AppStrings.symptomsNotes.tr(),
                 style: AppTypography.semiBold22.copyWith(
                   color: AppColors.textPrimaryLight,
                 ),
@@ -162,7 +162,7 @@ class _PatientAppointmentsConfirmViewState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Total Payment',
+                        AppStrings.totalPayment.tr(),
                         style: AppTypography.regular13.copyWith(
                           color: AppColors.darkMint,
                         ),
@@ -178,7 +178,7 @@ class _PatientAppointmentsConfirmViewState
                   ),
                   const Spacer(),
                   ElevatedButtonBookingWidget(
-                    text: 'Confirm Booking',
+                    text: AppStrings.confirmBooking.tr(),
                     width: 180.w,
                     onTap: () {
                       context.push(RouteNames.patientAppointmentsSuccess);

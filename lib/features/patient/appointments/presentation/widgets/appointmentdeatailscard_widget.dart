@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/widgets/status_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
@@ -16,7 +18,7 @@ class AppointmentDetailsCard extends StatelessWidget {
     required this.address,
     required this.doctorImage,
     required this.mapImage,
-    this.status = "Confirmed",
+  
   });
 
   final String doctorName;
@@ -26,7 +28,7 @@ class AppointmentDetailsCard extends StatelessWidget {
   final String address;
   final String doctorImage;
   final String mapImage;
-  final String status;
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class AppointmentDetailsCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "DOCTOR",
+                      AppStrings.doctor.tr(),
                       style: AppTypography.regular15.copyWith(
                         color: AppColors.primary,
                       ),
@@ -76,8 +78,8 @@ class AppointmentDetailsCard extends StatelessWidget {
                 ),
               ),
 
-              StatusWidget(
-                title: status,
+               StatusWidget(
+                title:AppStrings.confirmed.tr(),
                 backgroundColor: AppColors.lightMint,
                 textColor: AppColors.primary,
               ),
@@ -89,11 +91,11 @@ class AppointmentDetailsCard extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: InfoBoxWidget(title: "DATE", value: date),
+                child: InfoBoxWidget(title: AppStrings.date.tr(), value: date),
               ),
               SizedBox(width: 16.w),
               Expanded(
-                child: InfoBoxWidget(title: "TIME", value: time),
+                child: InfoBoxWidget(title: AppStrings.time.tr(), value: time),
               ),
             ],
           ),
@@ -108,7 +110,7 @@ class AppointmentDetailsCard extends StatelessWidget {
               ),
               SizedBox(width: 8.w),
               Text(
-                "CLINIC ADDRESS",
+                AppStrings.clinicAddress.tr(),
                 style: AppTypography.medium14.copyWith(
                   color: AppColors.backgroundDark,
                 ),

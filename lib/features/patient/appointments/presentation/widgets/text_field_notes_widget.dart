@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 
@@ -12,7 +14,7 @@ class TextFieldNotesWidget extends StatelessWidget {
       maxLines: 4,
       style: AppTypography.medium16.copyWith(color: AppColors.backgroundDark),
       decoration: InputDecoration(
-        hintText: "Describe how you're feeling or any specific symptoms...",
+        hintText: AppStrings.describeSymptoms.tr(),
         hintStyle: TextStyle(
           color: AppColors.grey3,
           fontSize: 15.sp,
