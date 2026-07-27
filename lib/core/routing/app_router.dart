@@ -19,13 +19,14 @@ import 'package:ilajak/features/doctor/home/presentation/views/doctor_home_view.
 import 'package:ilajak/features/doctor/notifications/presentation/views/doctor_notifications_view.dart';
 import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patients_view.dart';
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_profile_view.dart';
+import 'package:ilajak/features/patient/health/presentation/views/health_view.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/my_appointments_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_confirm_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_success.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_view.dart';
-import 'package:ilajak/features/patient/articles/presentation/views/patient_articles_view.dart';
+import 'package:ilajak/features/patient/health/presentation/views/labs_view.dart';
 import 'package:ilajak/features/patient/home/presentation/views/patient_home_view.dart';
 import 'package:ilajak/features/patient/notifications/presentation/views/patient_notifications_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_change_password_view.dart';
@@ -62,6 +63,10 @@ void initRouter() {
       GoRoute(
         path: RouteNames.patientHealthInfo,
         builder: (context, state) => const PatientHealthInfoView(),
+      ),
+      GoRoute(
+        path: RouteNames.patientLabResults,
+        builder: (context, state) => const LabResultsView(),
       ),
       GoRoute(
         path: RouteNames.login,
@@ -118,8 +123,8 @@ void initRouter() {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: RouteNames.patientArticles,
-                builder: (context, state) => const PatientArticlesView(),
+                path: RouteNames.patientHealth,
+                builder: (context, state) => const HealthView(),
               ),
             ],
           ),

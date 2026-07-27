@@ -9,7 +9,7 @@ class RouteNames {
   // Patient shell tabs
   static const String patientHome = '/patient-home';
   static const String patientAppointments = '/patient-appointments';
-  static const String patientArticles = '/patient-articles';
+  static const String patientHealth = '/patient-health';
   static const String patientNotifications = '/patient-notifications';
   static const String patientProfile = '/patient-profile';
 
@@ -25,12 +25,4 @@ class RouteNames {
   static const String patientHealthInfo = '/patient-health-info';
   static const String patientEmergencyContacts = '/patient-emergency-contacts';
   static const String patientChangePassword = '/patient-change-password';
-
-
-  static const String patientAppointmentsConfirm = '/patient-appointments-confirm';
-  static const String patientAppointmentsSuccess = '/patient-appointments-success';
-  static const String patientMyAppointments = '/patient-my-appointments';
-  
-
-
 }

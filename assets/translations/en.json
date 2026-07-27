@@ -200,6 +200,11 @@
     "Logout Hint": "You'll need to enter your credentials to access your health records and appointments again.",
     "Stay Logged In": "Stay Logged In",
     "Blood Type": "Blood Type",
-    "Status": "Status"
+    "Status": "Status",
+    "Lab Results": "Lab Results",
+    "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",
+    "TOTAL CHOLESTEROL": "TOTAL CHOLESTEROL",
+    "NORMAL RANGE": "NORMAL RANGE",
+    "View Details": "View Details"
   }
 }
