@@ -68,6 +68,11 @@ class RouterGuard {
           RouteNames.patientChangePassword,
           RouteNames.patientHealthInfo,
           RouteNames.patientEmergencyContacts,
+          // Patient appointment & sub-routes
+          RouteNames.patientAppointmentsConfirm,
+          RouteNames.patientAppointmentsSuccess,
+          RouteNames.patientMyAppointments,
+          RouteNames.patientLabResults,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:
