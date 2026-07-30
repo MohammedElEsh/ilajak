@@ -233,9 +233,33 @@ class AppStrings {
   static const String bloodType = 'profile.Blood Type';
   static const String status = 'profile.Status';
   static const String labResults = 'profile.Lab Results';
-  static const String monitorYourProgress = 'profile.Monitor your progress with clinical precision.';
+  static const String monitorYourProgress =
+      'profile.Monitor your progress with clinical precision.';
   static const String totalCholesterol = 'profile.TOTAL CHOLESTEROL';
   static const String normalRange = 'profile.NORMAL RANGE';
   static const String viewDetails = 'profile.View Details';
-  
+
+  // Prescriptions
+  static const String prescriptionsTitle = 'prescriptions.title';
+  static const String prescriptionsSubtitle = 'prescriptions.subtitle';
+  static const String prescriptionsFilterAll = 'prescriptions.filter_all';
+  static const String prescriptionsFilterActive = 'prescriptions.filter_active';
+  static const String prescriptionsFilterCompleted = 'prescriptions.filter_completed';
+  static const String prescriptionsFilterExpiringSoon = 'prescriptions.filter_expiring_soon';
+  static const String prescriptionsDosage = 'prescriptions.dosage';
+  static const String prescriptionsFrequency = 'prescriptions.frequency';
+  static const String prescriptionsDoctor = 'prescriptions.doctor';
+  static const String prescriptionsPrescribed = 'prescriptions.prescribed';
+  static const String prescriptionsExpires = 'prescriptions.expires';
+  static const String prescriptionsNoPrescriptions = 'prescriptions.no_prescriptions';
+  static const String prescriptionsNoPrescriptionsSubtitle = 'prescriptions.no_prescriptions_subtitle';
+  static const String prescriptionsStatusActive = 'prescriptions.status_active';
+  static const String prescriptionsStatusCompleted = 'prescriptions.status_completed';
+  static const String prescriptionsStatusExpiringSoon = 'prescriptions.status_expiring_soon';
+  static const String prescriptionsStatusExpired = 'prescriptions.status_expired';
+  static const String prescriptionsMedicines = 'prescriptions.medicines';
+  static const String prescriptionsMedicinesCount = 'prescriptions.medicines_count';
+  static const String prescriptionsIssueDate = 'prescriptions.issue_date';
+  static const String prescriptionsRefill = 'prescriptions.refill';
+  static const String prescriptionsView = 'prescriptions.view';
 }

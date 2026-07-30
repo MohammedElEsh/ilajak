@@ -70,6 +70,8 @@ class RouterGuard {
           RouteNames.patientEmergencyContacts,
           // Patient health sub-routes
           RouteNames.patientLabResults,
+          // Prescriptions routes
+          RouteNames.patientPrescriptions,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:
