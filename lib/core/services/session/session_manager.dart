@@ -38,6 +38,8 @@ class SessionManager extends ChangeNotifier {
   SessionManager(this.prefs, this.tokenService, this.tokenRefresher);
 
   static const _onboardingKey = 'onboarding_done';
+  static const _roleSelectedKey = 'role_selected';
+  static const _roleKey = 'user_role';
 
   AppStatus _status = AppStatus.initial;
 
@@ -46,18 +48,21 @@ class SessionManager extends ChangeNotifier {
   UserRole _role = UserRole.patient;
 
   bool get onboardingDone => prefs.getBool(_onboardingKey) ?? false;
+  bool get isRoleSelected => prefs.getBool(_roleSelectedKey) ?? false;
 
   AppStatus get status => _status;
   UserRole get role => _role;
 
   void setRole(UserRole role) {
     _role = role;
+    prefs.setString(_roleKey, role.name);
+    prefs.setBool(_roleSelectedKey, true);
     notifyListeners();
   }
 
   /// 🚀 DEV ONLY — Set `true` to skip Onboarding & Login
   //  _bypassAuth = true  →  skips onboarding & login, opens app directly
-  static const _bypassAuth = true;
+  static const _bypassAuth = false;
 
   /// Called once at app startup — inspects persistent storage
   /// and decides the initial app flow state.
@@ -71,6 +76,14 @@ class SessionManager extends ChangeNotifier {
   ///    - Refresh fails with network/other error → authenticated (assume token still valid,
   ///      let the interceptor handle 401 on actual API calls)
   Future<void> initialize() async {
+    final savedRole = prefs.getString(_roleKey);
+    if (savedRole != null) {
+      _role = UserRole.values.firstWhere(
+        (r) => r.name == savedRole,
+        // orElse: () => UserRole.patient,
+      );
+    }
+
     if (_bypassAuth) {
       LoggerService.i(
         'SessionManager.initialize — bypass: opening home directly',

@@ -40,6 +40,14 @@ class AppStrings {
   // Auth - General
   static const String authOrContinueWith = 'auth.or_continue_with';
 
+  // Role Selection
+  static const String roleSelectionTitle = 'role_selection.title';
+  static const String roleSelectionSubtitle = 'role_selection.subtitle';
+  static const String roleSelectionPatient = 'role_selection.patient';
+  static const String roleSelectionPatientDesc = 'role_selection.patient_desc';
+  static const String roleSelectionDoctor = 'role_selection.doctor';
+  static const String roleSelectionDoctorDesc = 'role_selection.doctor_desc';
+
   // Auth - Login
   static const String authLoginTitle = 'auth.login.title';
   static const String authLoginSubtitle = 'auth.login.subtitle';

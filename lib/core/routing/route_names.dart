@@ -4,6 +4,7 @@ class RouteNames {
   static const String signup = '/signup';
   static const String forgotPassword = '/forgot-password';
   static const String verifyOtp = '/verify-otp';
+  static const String roleSelection = '/role-selection';
   static const String gettingStarted = '/getting-started';
 
   // Patient shell tabs

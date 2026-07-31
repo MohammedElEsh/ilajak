@@ -23,6 +23,14 @@
       "subtitle3": "Keep track of your medications, set reminders, and order refills directly to your doorstep."
     }
   },
+  "role_selection": {
+    "title": "Choose Your Role",
+    "subtitle": "Are you a patient or a doctor?",
+    "patient": "Patient",
+    "patient_desc": "Find doctors, book appointments, manage prescriptions",
+    "doctor": "Doctor",
+    "doctor_desc": "Manage patients, publish articles, grow your practice"
+  },
   "validation": {
     "required": "This field is required",
     "field_required": "{} is required"
