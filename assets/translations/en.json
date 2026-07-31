@@ -179,5 +179,29 @@
     "TOTAL CHOLESTEROL": "TOTAL CHOLESTEROL",
     "NORMAL RANGE": "NORMAL RANGE",
     "View Details": "View Details"
+  },
+  "prescriptions": {
+    "title": "My Prescriptions",
+    "subtitle": "Manage and refill your current medications.",
+    "filter_all": "All",
+    "filter_active": "Active",
+    "filter_completed": "Completed",
+    "filter_expiring_soon": "Expiring Soon",
+    "dosage": "Dosage",
+    "frequency": "Frequency",
+    "doctor": "Doctor",
+    "prescribed": "Prescribed",
+    "expires": "Expires",
+    "no_prescriptions": "No prescriptions found",
+    "no_prescriptions_subtitle": "You don't have any prescriptions matching this filter.",
+    "status_active": "Active",
+    "status_completed": "Completed",
+    "status_expiring_soon": "Expiring Soon",
+    "status_expired": "Expired",
+    "medicines": "Medicines",
+    "medicines_count": "{} Medicines",
+    "issue_date": "Issue Date",
+    "refill": "Refill",
+    "view": "View"
   }
 }

@@ -26,6 +26,8 @@ import 'package:ilajak/features/patient/appointments/presentation/views/patient_
 import 'package:ilajak/features/patient/health/presentation/views/labs_view.dart';
 import 'package:ilajak/features/patient/home/presentation/views/patient_home_view.dart';
 import 'package:ilajak/features/patient/notifications/presentation/views/patient_notifications_view.dart';
+import 'package:ilajak/features/patient/prescriptions/presentation/manager/prescription_cubit.dart';
+import 'package:ilajak/features/patient/prescriptions/presentation/views/patient_prescriptions_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_change_password_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_health_info_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_personal_info_view.dart';
@@ -65,6 +67,14 @@ void initRouter() {
         path: RouteNames.patientLabResults,
         builder: (context, state) => const LabResultsView(),
       ),
+      GoRoute(
+        path: RouteNames.patientPrescriptions,
+        builder: (context, state) => BlocProvider(
+          create: (_) => PrescriptionCubit(),
+          child: const PatientPrescriptionsView(),
+        ),
+      ),
+
       GoRoute(
         path: RouteNames.login,
         builder: (context, state) => BlocProvider(
