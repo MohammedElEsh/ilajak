@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:ilajak/app.dart';
 import 'package:ilajak/core/dev/bloc_observer.dart';
-import 'package:ilajak/core/dev/dev_tools.dart';
 import 'package:ilajak/core/di/injection.dart';
 import 'package:ilajak/core/localization/localization_helper.dart';
 import 'package:ilajak/core/routing/app_router.dart';
@@ -27,7 +26,7 @@ void main() async {
 
   if (kDebugMode) {
     Bloc.observer = AppBlocObserver();
-    await DevTools.resetAll();
+    // await DevTools.resetAll();
   }
 
   FlutterNativeSplash.remove();
