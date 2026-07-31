@@ -23,6 +23,14 @@
       "subtitle3": "تتبع أدويتك، واضبط التذكيرات، واطلب إعادة الوصفات الطبية مباشرة إلى باب منزلك."
     }
   },
+  "role_selection": {
+    "title": "اختر دورك",
+    "subtitle": "هل أنت مريض أم طبيب؟",
+    "patient": "مريض",
+    "patient_desc": "ابحث عن الأطباء، احجز مواعيد، أدر الوصفات الطبية",
+    "doctor": "طبيب",
+    "doctor_desc": "أدر المرضى، انشر المقالات، طوّر ممارستك"
+  },
   "validation": {
     "required": "هذا الحقل مطلوب",
     "field_required": "{} مطلوب"
@@ -112,68 +120,96 @@
   "nav": {
     "home": "الرئيسية",
     "patients": "المرضى",
-    "articles": "المقالات",
+    "health": "الصحة",
     "notifications": "الإشعارات",
-    "profile": "الملف الشخصي"
+    "profile": "الملف الشخصي",
+    "bookings": "الحجوزات",
+    "articles": "المقالات"
   },
   "home": {
-    "getting_started": {
-      "title": "تريد الأصلي، ها هو أمامك!",
-      "subtitle": "اعثر عليه هنا، واشترِه الآن!",
-      "button": "ابدأ الآن"
-    },
-    "title": "الرئيسية",
-    "welcome": "أهلاً بك!",
-    "subtitle": "لقد أكملت عملية الإعداد بنجاح.",
-    "search": {
-      "placeholder": "ابحث عن أي منتج...",
-      "voice_hint": "البحث الصوتي"
-    },
-    "filter_sort": {
-      "title": "كل المنتجات المميزة",
-      "sort": "ترتيب",
-      "filter": "تصفية"
-    },
-    "promo": {
-      "discount": "50-40% OFF",
-      "subtitle": "متوفر الآن في المنتج",
-      "colours": "جميع الألوان",
-      "shop_now": "تسوق الآن"
-    },
-    "deal_of_the_day": {
-      "title": "عرض اليوم",
-      "remaining": "متبقي 22س : 56د : 30ث",
-      "last_date": "ينتهي 29/02/22",
-      "view_all": "عرض الكل"
-    },
-    "trending_products": {
-      "title": "المنتجات الرائجة"
-    },
-    "special_offers": {
-      "title": "عروض خاصة",
-      "subtitle": "وفّر الكثير مع عروض محدودة تم اختيارها خصيصاً لك"
-    },
-    "flat_and_heels": {
-      "title": "الفلت والكعب",
-      "subtitle": "اعثري على المقاس المثالي لكل مناسبة.",
-      "button": "تسوّقي الآن"
-    },
-    "section": {
-      "view_all": "عرض الكل"
-    },
-    "new_arrivals": {
-      "title": "وصل حديثاً",
-      "subtitle": "تشكيلة صيف 25"
-    },
-    "sponsored": {
-      "header": "إعلان",
-      "title": "خصم يصل إلى 50%"
-    }
+    "title": "مرحبًا، ",
+    "subtitle": "ملخص حالتك الصحية مُحدَّث حتى اليوم.",
+    "appBarTitle": "علاجك",
+    "Perciptions": "الوصفات الطبية",
+    "Labs": "التحاليل",
+    "Imaging": "الأشعة",
+    "Appointments": "المواعيد",
+    "UpcomingAppointment": "المواعيد القادمة",
+    "HealthInsight": "رؤية صحية",
+    "HealthInsightSubtitle": "استنادًا إلى نشاطك، فإن زيادة عدد خطواتك اليومية بمقدار 2000 خطوة قد تُحسّن صحة القلب والأوعية الدموية لديك بنسبة 15٪."
   },
   "products": {
     "title": "المنتجات",
     "subtitle": "اكتشف تشكيلتنا",
     "empty": "لم يتم العثور على منتجات",
     "retry": "إعادة المحاولة"
+  },
+  "profile": {
+    "Records": "سجلات",
+    "Appointments": "المواعيد",
+    "Articles": "المقالات",
+    "Settings": "الإعدادات",
+    "Personal Info": "المعلومات الشخصية",
+    "Health Info": "المعلومات الصحية",
+    "Emergency Contacts": "جهات الاتصال في حالات الطوارئ",
+    "Privacy": "الخصوصية",
+    "Logout": "تسجيل الخروج",
+    "Full Name": "الاسم الكامل",
+    "Email Address": "البريد الإلكتروني",
+    "Phone Number": "رقم الهاتف",
+    "Birth Date": "تاريخ الميلاد",
+    "Gender": "الجنس",
+    "Male": "ذكر",
+    "Female": "أنثى",
+    "Save Changes": "حفظ التغييرات",
+    "Secure Info" : "بياناتك الشخصية آمنة ومحمية وفقًا للمعايير الدولية لخصوصية بيانات الرعاية الصحية.",
+    "Password" : "كلمة المرور",
+    "Change Password": "تغيير كلمة المرور",
+    "Current Password": "كلمة المرور الحالية",
+    "New Password": "كلمة المرور الجديدة",
+    "Confirm New Password": "تأكيد كلمة المرور الجديدة",
+    "password_hint": "At least 8 characters, including a number and a symbol.",
+    "forgot_password" : "نسيت كلمة المرور",
+    "forget_password_hint" : "قم بتحديث كلمة المرور للحفاظ على أمان حسابك",
+    "Allergies" : "الحساسية",
+    "Penicillin" : "بنسلين",
+    "Dust" : "غبار",
+    "Chronic Conditions" : "الحالات المزمنة",
+    "Current Medications" : "الأدوية الحالية",
+    "Add Medication" : "أضف دواء",
+    "Logout Question": "هل أنت متأكد من رغبتك في تسجيل الخروج؟",
+    "Logout Hint": "سوف تحتاج إلى إدخال بيانات الاعتماد الخاصة بك للوصول إلى سجلاتك الصحية ومواعيدك مرة أخرى",
+    "Stay Logged In": "البقاء مسجلا",
+    "Blood Type" : "فصيلة الدم",
+    "Status" : "الحالة",
+    "Lab Results" : "نتائج التحاليل",
+    "Monitor your progress with clinical precision." : "راقب تقدمك بدقة علمية",
+    "TOTAL CHOLESTEROL" : "إجمالي الكوليسترول",
+    "NORMAL RANGE" : "نطاق طبيعي",
+    "View Details" : "عرض التفاصيل"
+  },
+  "prescriptions": {
+    "title": "وصفاتي الطبية",
+    "subtitle": "إدارة وتجديد أدويتك الحالية.",
+    "filter_all": "الكل",
+    "filter_active": "نشط",
+    "filter_completed": "مكتمل",
+    "filter_expiring_soon": "ينتهي قريباً",
+    "dosage": "الجرعة",
+    "frequency": "التكرار",
+    "doctor": "الطبيب",
+    "prescribed": "تاريخ الوصفة",
+    "expires": "تاريخ الانتهاء",
+    "no_prescriptions": "لم يتم العثور على وصفات",
+    "no_prescriptions_subtitle": "ليس لديك أي وصفات تطابق هذا الفلتر.",
+    "status_active": "نشط",
+    "status_completed": "مكتمل",
+    "status_expiring_soon": "ينتهي قريباً",
+    "status_expired": "منتهي الصلاحية",
+    "medicines": "الأدوية",
+    "medicines_count": "{} أدوية",
+    "issue_date": "تاريخ الإصدار",
+    "refill": "تجديد",
+    "view": "عرض"
   }
 }

@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import 'core/constants/app_constants.dart';
-import 'core/routing/app_router.dart';
-import 'core/shared/wrappers/connectivity_wrapper.dart';
-import 'core/shared/wrappers/screen_util_wrapper.dart';
-import 'core/theme/themes/app_themes.dart';
+import 'package:ilajak/core/constants/app_constants.dart';
+import 'package:ilajak/core/routing/app_router.dart';
+import 'package:ilajak/core/shared/wrappers/connectivity_wrapper.dart';
+import 'package:ilajak/core/shared/wrappers/screen_util_wrapper.dart';
+import 'package:ilajak/core/theme/themes/app_themes.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

@@ -1,5 +1,5 @@
-import '../logger/logger_service.dart';
-import '../storage/secure_storage_service.dart';
+import 'package:ilajak/core/services/logger/logger_service.dart';
+import 'package:ilajak/core/services/storage/secure_storage_service.dart';
 
 class TokenService {
   final SecureStorageService _secureStorage;

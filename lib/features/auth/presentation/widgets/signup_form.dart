@@ -174,7 +174,7 @@ class SignupForm extends StatelessWidget {
                 color: AppColors.fieldLabel,
                 size: 24.r,
               ),
-              dropdownItems: [
+              dropdownItems: const [
                 DropdownMenuItem(value: 'male', child: Text('Male')),
                 DropdownMenuItem(value: 'female', child: Text('Female')),
               ],
@@ -201,7 +201,7 @@ class SignupForm extends StatelessWidget {
                 color: AppColors.fieldLabel,
                 size: 24.r,
               ),
-              dropdownItems: [
+              dropdownItems: const [
                 DropdownMenuItem(value: 'A+', child: Text('A+')),
                 DropdownMenuItem(value: 'A-', child: Text('A-')),
                 DropdownMenuItem(value: 'B+', child: Text('B+')),

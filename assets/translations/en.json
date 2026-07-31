@@ -23,6 +23,14 @@
       "subtitle3": "Keep track of your medications, set reminders, and order refills directly to your doorstep."
     }
   },
+  "role_selection": {
+    "title": "Choose Your Role",
+    "subtitle": "Are you a patient or a doctor?",
+    "patient": "Patient",
+    "patient_desc": "Find doctors, book appointments, manage prescriptions",
+    "doctor": "Doctor",
+    "doctor_desc": "Manage patients, publish articles, grow your practice"
+  },
   "validation": {
     "required": "This field is required",
     "field_required": "{} is required"
@@ -112,68 +120,96 @@
   "nav": {
     "home": "Home",
     "patients": "Patients",
-    "articles": "Articles",
+    "health": "Health",
     "notifications": "Notifications",
-    "profile": "Profile"
+    "profile": "Profile",
+    "bookings": "Bookings",
+    "articles": "Articles"
   },
   "home": {
-    "getting_started": {
-      "title": "You want Authentic, here you go!",
-      "subtitle": "Find it here, buy it now!",
-      "button": "Get Started"
-    },
-    "title": "Home",
-    "welcome": "Welcome Home!",
-    "subtitle": "You have successfully completed the onboarding process.",
-    "search": {
-      "placeholder": "Search any Product...",
-      "voice_hint": "Voice search"
-    },
-    "filter_sort": {
-      "title": "All Featured",
-      "sort": "Sort",
-      "filter": "Filter"
-    },
-    "promo": {
-      "discount": "50-40% OFF",
-      "subtitle": "Now in product",
-      "colours": "All colours",
-      "shop_now": "Shop Now"
-    },
-    "deal_of_the_day": {
-      "title": "Deal of the Day",
-      "remaining": "22h : 56m : 30s remaining",
-      "last_date": "Last Date 29/02/22",
-      "view_all": "View all"
-    },
-    "trending_products": {
-      "title": "Trending Products"
-    },
-    "special_offers": {
-      "title": "Special Offers",
-      "subtitle": "Save big on limited-time deals curated just for you"
-    },
-    "flat_and_heels": {
-      "title": "Flat and Heels",
-      "subtitle": "Find the perfect fit for any occasion.",
-      "button": "Visit now"
-    },
-    "section": {
-      "view_all": "View all"
-    },
-    "new_arrivals": {
-      "title": "New Arrivals",
-      "subtitle": "Summer' 25 Collections"
-    },
-    "sponsored": {
-      "header": "Sponsored",
-      "title": "up to 50% Off"
-    }
+    "title": "Hello, ",
+    "subtitle": "Your health overview is up to date for today.",
+    "appBarTitle": "3ilajak",
+    "Perciptions": "Perciptions",
+    "Labs": "Labs",
+    "Imaging": "Imaging",
+    "Appointments": "Appointments",
+    "UpcomingAppointment": "Upcoming Appointments",
+    "HealthInsight": "Health Insight",
+    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%."
   },
   "products": {
     "title": "Products",
     "subtitle": "Discover our collection",
     "empty": "No products found",
     "retry": "Try again"
+  },
+  "profile": {
+    "Records": "Records",
+    "Appointments": "Appointments",
+    "Articles": "Articles",
+    "Settings": "Settings",
+    "Personal Info": "Personal Info",
+    "Health Info": "Health Info",
+    "Emergency Contacts": "Emergency Contacts",
+    "Privacy": "Privacy",
+    "Logout": "Logout",
+    "Full Name": "Full Name",
+    "Email Address": "Email Address",
+    "Phone Number": "Phone Number",
+    "Birth Date": "Birth Date",
+    "Gender": "Gender",
+    "Male": "Male",
+    "Female": "Female",
+    "Save Changes": "Save Changes",
+    "Secure Info": "Your personal data is encrypted and secure according to international health data privacy standards.",
+    "Password": "Password",
+    "Change Password": "Change Password",
+    "Current Password": "Current Password",
+    "New Password": "New Password",
+    "Confirm New Password": "Confirm New Password",
+    "password_hint": "At least 8 characters, including a number and a symbol.",
+    "forgot_password": "Forgot Password?",
+    "forget_password_hint": "Update your password to keep your account secure.",
+    "Allergies": "Allergies",
+    "Penicillin": "penicillin",
+    "Dust": "Dust",
+    "Chronic Conditions": "Chronic Conditions",
+    "Current Medications": "Current Medications",
+    "Add Medication": "Add Medication",
+    "Logout Question": "Are you sure you want to log out?",
+    "Logout Hint": "You'll need to enter your credentials to access your health records and appointments again.",
+    "Stay Logged In": "Stay Logged In",
+    "Blood Type": "Blood Type",
+    "Status": "Status",
+    "Lab Results": "Lab Results",
+    "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",
+    "TOTAL CHOLESTEROL": "TOTAL CHOLESTEROL",
+    "NORMAL RANGE": "NORMAL RANGE",
+    "View Details": "View Details"
+  },
+  "prescriptions": {
+    "title": "My Prescriptions",
+    "subtitle": "Manage and refill your current medications.",
+    "filter_all": "All",
+    "filter_active": "Active",
+    "filter_completed": "Completed",
+    "filter_expiring_soon": "Expiring Soon",
+    "dosage": "Dosage",
+    "frequency": "Frequency",
+    "doctor": "Doctor",
+    "prescribed": "Prescribed",
+    "expires": "Expires",
+    "no_prescriptions": "No prescriptions found",
+    "no_prescriptions_subtitle": "You don't have any prescriptions matching this filter.",
+    "status_active": "Active",
+    "status_completed": "Completed",
+    "status_expiring_soon": "Expiring Soon",
+    "status_expired": "Expired",
+    "medicines": "Medicines",
+    "medicines_count": "{} Medicines",
+    "issue_date": "Issue Date",
+    "refill": "Refill",
+    "view": "View"
   }
 }

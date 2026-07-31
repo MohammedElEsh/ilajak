@@ -1,5 +1,5 @@
-import '../../../../core/constants/app_assets.dart';
-import '../../../../core/constants/app_strings.dart';
+import 'package:ilajak/core/constants/app_assets.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
 
 class OnboardingPage {
   final String image;

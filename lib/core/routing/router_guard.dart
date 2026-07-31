@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../services/session/session_manager.dart';
-import 'route_names.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
+import 'package:ilajak/core/routing/route_names.dart';
 
 class RouterGuard {
   final SessionManager _sessionManager;
@@ -30,11 +30,17 @@ class RouterGuard {
       case AppStatus.onboardingRequired:
         return RouteNames.onboarding;
       case AppStatus.unauthenticated:
+        if (!_sessionManager.isRoleSelected) {
+          return RouteNames.roleSelection;
+        }
         return RouteNames.login;
       case AppStatus.authenticatedNeedsSetup:
         return RouteNames.gettingStarted;
       case AppStatus.authenticated:
-        return RouteNames.home;
+        if (_sessionManager.role == UserRole.doctor) {
+          return RouteNames.doctorHome;
+        }
+        return RouteNames.patientHome;
     }
   }
 
@@ -42,16 +48,34 @@ class RouterGuard {
     switch (status) {
       case AppStatus.unauthenticated:
         return const {
+          RouteNames.roleSelection,
           RouteNames.signup,
           RouteNames.forgotPassword,
           RouteNames.verifyOtp,
         };
       case AppStatus.authenticated:
         return const {
-          RouteNames.patients,
-          RouteNames.articles,
-          RouteNames.notifications,
-          RouteNames.profile,
+          // Patient routes
+          RouteNames.patientHome,
+          RouteNames.patientAppointments,
+          RouteNames.patientHealth,
+          RouteNames.patientNotifications,
+          RouteNames.patientProfile,
+          // Doctor routes
+          RouteNames.doctorHome,
+          RouteNames.doctorPatients,
+          RouteNames.doctorArticles,
+          RouteNames.doctorNotifications,
+          RouteNames.doctorProfile,
+          // Patient profile sub-routes
+          RouteNames.patientPersonalInfo,
+          RouteNames.patientChangePassword,
+          RouteNames.patientHealthInfo,
+          RouteNames.patientEmergencyContacts,
+          // Patient health sub-routes
+          RouteNames.patientLabResults,
+          // Prescriptions routes
+          RouteNames.patientPrescriptions,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:

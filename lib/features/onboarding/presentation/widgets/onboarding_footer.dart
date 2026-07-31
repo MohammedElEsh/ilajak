@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/constants/app_strings.dart';
-import '../../../../core/shared/buttons/app_button.dart';
+import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/shared/buttons/app_button.dart';
 
 class OnboardingFooter extends StatelessWidget {
   final bool isFirst;
@@ -30,7 +30,7 @@ class OnboardingFooter extends StatelessWidget {
         onPressed: onNext,
         variant: AppButtonVariant.elevated,
         expanded: true,
-        suffixIcon: Icon(Icons.arrow_forward_rounded),
+        suffixIcon: const Icon(Icons.arrow_forward_rounded),
       ),
     );
   }
