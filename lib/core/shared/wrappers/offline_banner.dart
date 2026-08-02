@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/services/logger/logger_service.dart';
-import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/shared/buttons/app_button.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
 
 class OfflineWidget extends StatefulWidget {
   final VoidCallback onRetry;
@@ -66,9 +66,9 @@ class _OfflineWidgetState extends State<OfflineWidget>
                       color: AppColors.error.withValues(alpha: 0.12),
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(
-                      Icons.wifi_off_rounded,
-                      size: 48.r,
+                    child: HugeIcon(
+                      icon: HugeIcons.strokeRoundedNoInternet,
+                      size: 64.sp,
                       color: AppColors.error,
                     ),
                   ),
@@ -99,10 +99,10 @@ class _OfflineWidgetState extends State<OfflineWidget>
                 label: AppStrings.sharedRetry.tr(),
                 onPressed: widget.onRetry,
                 variant: AppButtonVariant.elevated,
-                prefixIcon: Icon(Icons.refresh_rounded, size: 20.r),
-                expanded: false,
-                width: 180.w,
-                height: 48.h,
+                prefixIcon: HugeIcon(
+                  icon: HugeIcons.strokeRoundedReload,
+                  color: theme.colorScheme.onPrimary,
+                ),
               ),
             ],
           ),
