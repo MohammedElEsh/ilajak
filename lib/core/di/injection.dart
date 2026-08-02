@@ -12,6 +12,9 @@ import 'package:ilajak/core/services/connectivity/connectivity_service.dart';
 import 'package:ilajak/core/services/media/media_service.dart';
 import 'package:ilajak/core/services/session/session_manager.dart';
 import 'package:ilajak/core/services/storage/secure_storage_service.dart';
+import 'package:ilajak/features/auth/data/repositories/auth_repository.dart';
+import 'package:ilajak/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_login_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 
 final sl = GetIt.instance;
@@ -105,5 +108,19 @@ Future<void> initDependencies() async {
   // =====================================================
   sl.registerFactory<OnboardingCubit>(
     () => OnboardingCubit(sl()),
+  );
+
+  // =====================================================
+  // 8. FEATURE: AUTH
+  // =====================================================
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(
+      apiConsumer: sl<ApiConsumer>(),
+      sessionManager: sl<SessionManager>(),
+    ),
+  );
+
+  sl.registerFactory<AuthLoginCubit>(
+    () => AuthLoginCubit(sl<AuthRepository>()),
   );
 }
