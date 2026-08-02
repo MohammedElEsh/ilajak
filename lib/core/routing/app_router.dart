@@ -79,7 +79,7 @@ void initRouter() {
       GoRoute(
         path: RouteNames.login,
         builder: (context, state) => BlocProvider(
-          create: (_) => AuthLoginCubit(),
+          create: (_) => sl<AuthLoginCubit>(),
           child: const LoginView(),
         ),
       ),
