@@ -17,6 +17,17 @@ abstract class DateFormatter {
     return DateFormat('MMM dd, yyyy hh:mm a').format(date);
   }
 
+  /// e.g. "Tuesday, October 24" — used for dashboard-style greetings
+  /// (Doctor Home) where the year isn't shown.
+  static String formatToWeekdayDate(DateTime date) {
+    return DateFormat('EEEE, MMMM d').format(date);
+  }
+
+  /// e.g. "Oct 24" — used for the Doctor Schedule header ("Today, Oct 24").
+  static String formatToMonthDay(DateTime date) {
+    return DateFormat('MMM d').format(date);
+  }
+
   static String formatToISO8601(DateTime date) {
     return date.toIso8601String();
   }

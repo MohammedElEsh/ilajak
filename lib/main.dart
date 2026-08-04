@@ -11,6 +11,12 @@ import 'package:ilajak/core/routing/app_router.dart';
 import 'package:ilajak/core/services/session/session_manager.dart';
 import 'package:ilajak/core/services/storage/hive_storage_service.dart';
 
+import 'core/dev/bloc_observer.dart';
+import 'core/di/injection.dart';
+import 'core/routing/app_router.dart';
+import 'core/services/session/session_manager.dart';
+import 'core/services/storage/hive_storage_service.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

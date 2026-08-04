@@ -43,7 +43,7 @@ class SessionManager extends ChangeNotifier {
 
   /// 🎭 UI Preview → doctor | patient
   //  _role = doctor      →  shows doctor UI; change to patient for patient UI
-  UserRole _role = UserRole.patient;
+  UserRole _role = UserRole.doctor;
 
   bool get onboardingDone => prefs.getBool(_onboardingKey) ?? false;
 

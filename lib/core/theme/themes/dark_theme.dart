@@ -17,10 +17,15 @@
 //
 // 4. Component widgets resolve values in this priority:
 //    widget.param > theme.property > colorScheme/textTheme fallback
+//
+// 5. `extensions: [AppColorScheme.dark]` (added below, at the end of this
+//    ThemeData) is what makes `context.appColors.xxx` resolve to the dark
+//    palette. See app_color_scheme.dart for what's in it and why.
 // =============================================================================
 
 import 'package:flutter/material.dart';
 
+import 'package:ilajak/core/theme/colors/app_color_scheme.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 
@@ -398,4 +403,9 @@ ThemeData darkTheme = ThemeData(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
   ),
+
+  // ── Theme Extensions ──────────────────────────────────────────────────────
+  // NEW — registers the dark AppColorScheme so `context.appColors.xxx`
+  // resolves correctly. See app_color_scheme.dart.
+  extensions: const [AppColorScheme.dark],
 );

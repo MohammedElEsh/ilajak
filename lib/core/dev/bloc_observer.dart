@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:ilajak/core/services/logger/logger_service.dart';
 
+import '../services/logger/logger_service.dart';
+
 class AppBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase<dynamic> bloc) {

@@ -16,8 +16,12 @@ import 'package:ilajak/features/auth/presentation/views/signup_view.dart';
 import 'package:ilajak/features/auth/presentation/views/verify_otp_view.dart';
 import 'package:ilajak/features/doctor/articles/presentation/views/doctor_articles_view.dart';
 import 'package:ilajak/features/doctor/home/presentation/views/doctor_home_view.dart';
+import 'package:ilajak/features/doctor/home/presentation/views/doctor_schedule_view.dart';
 import 'package:ilajak/features/doctor/notifications/presentation/views/doctor_notifications_view.dart';
+import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patient_profile_view.dart';
+import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patient_records_view.dart';
 import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patients_view.dart';
+import 'package:ilajak/features/doctor/profile/presentation/views/doctor_change_password_view.dart';
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_profile_view.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
@@ -142,6 +146,16 @@ void initRouter() {
               GoRoute(
                 path: RouteNames.doctorHome,
                 builder: (context, state) => const DoctorHomeView(),
+                // Nested (not a sibling GoRoute) on purpose: this keeps the
+                // route inside the doctorHome branch's own Navigator, so
+                // pushing it leaves the shell's bottom nav bar visible with
+                // "Home" still selected — matching the Schedule screen mock.
+                routes: [
+                  GoRoute(
+                    path: RouteNames.doctorSchedule,
+                    builder: (context, state) => const DoctorScheduleView(),
+                  ),
+                ],
               ),
             ],
           ),
@@ -150,6 +164,21 @@ void initRouter() {
               GoRoute(
                 path: RouteNames.doctorPatients,
                 builder: (context, state) => const DoctorPatientsView(),
+                // Nested for the same reason as doctorSchedule above: keeps
+                // the bottom nav bar visible with "Patients" selected while
+                // the profile is pushed on top.
+                routes: [
+                  GoRoute(
+                    path: RouteNames.doctorPatientProfile,
+                    builder: (context, state) => const DoctorPatientProfileView(),
+                    routes: [
+                      GoRoute(
+                        path: RouteNames.doctorPatientRecords,
+                        builder: (context, state) => const DoctorPatientRecordsView(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
@@ -174,6 +203,12 @@ void initRouter() {
               GoRoute(
                 path: RouteNames.doctorProfile,
                 builder: (context, state) => const DoctorProfileView(),
+                routes: [
+                  GoRoute(
+                    path: RouteNames.doctorChangePassword,
+                    builder: (context, state) => const DoctorChangePasswordView(),
+                  ),
+                ],
               ),
             ],
           ),

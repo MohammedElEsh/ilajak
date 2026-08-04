@@ -187,6 +187,184 @@ class AppStrings {
   static const String homeSponsoredHeader = 'home.sponsored.header';
   static const String homeSponsoredTitle = 'home.sponsored.title';
 
+  // Doctor - Home
+  static const String doctorHomeAppBarTitle = 'doctor.home.app_bar_title';
+  static const String doctorHomeGreeting = 'doctor.home.greeting';
+  static const String doctorHomeTodayBadge = 'doctor.home.today_badge';
+  static const String doctorHomeAppointmentsToday =
+      'doctor.home.appointments_today';
+  static const String doctorHomePending = 'doctor.home.pending';
+  static const String doctorHomeCompleted = 'doctor.home.completed';
+  static const String doctorHomeNewPatients = 'doctor.home.new_patients';
+  static const String doctorHomeQuickActions = 'doctor.home.quick_actions';
+  static const String doctorHomeAddAppointment =
+      'doctor.home.add_appointment';
+  static const String doctorHomeRecordVisit = 'doctor.home.record_visit';
+  static const String doctorHomeRecentPatients =
+      'doctor.home.recent_patients';
+  static const String doctorHomeViewAll = 'doctor.home.view_all';
+  static const String doctorHomeUpcomingToday = 'doctor.home.upcoming_today';
+  static const String doctorHomeNowLabel = 'doctor.home.now_label';
+  static const String doctorHomeLiveBadge = 'doctor.home.live_badge';
+  static const String doctorHomeStartVisit = 'doctor.home.start_visit';
+
+  // Doctor - Schedule
+  static const String doctorScheduleEyebrow = 'doctor.schedule.eyebrow';
+  static const String doctorScheduleTodayLabel = 'doctor.schedule.today_label';
+  static const String doctorScheduleNewAppointment =
+      'doctor.schedule.new_appointment';
+  static const String doctorScheduleFilterAll = 'doctor.schedule.filter_all';
+  static const String doctorScheduleFilterDate = 'doctor.schedule.filter_date';
+  static const String doctorScheduleFilterClient =
+      'doctor.schedule.filter_client';
+  static const String doctorScheduleFilterPatient =
+      'doctor.schedule.filter_patient';
+  static const String doctorScheduleLunchBreak =
+      'doctor.schedule.lunch_break';
+  static const String doctorScheduleNoAppointments =
+      'doctor.schedule.no_appointments';
+  static const String doctorScheduleStatusConfirmed =
+      'doctor.schedule.status_confirmed';
+  static const String doctorScheduleStatusPending =
+      'doctor.schedule.status_pending';
+  static const String doctorScheduleConfirm = 'doctor.schedule.confirm';
+  static const String doctorScheduleComplete = 'doctor.schedule.complete';
+  static const String doctorScheduleCancel = 'doctor.schedule.cancel';
+  static const String doctorScheduleReschedule = 'doctor.schedule.reschedule';
+  static const String doctorScheduleViewDetails =
+      'doctor.schedule.view_details';
+
+  // Doctor - Patients (list)
+  static const String doctorPatientsTitle = 'doctor.patients.title';
+  static const String doctorPatientsSearchHint =
+      'doctor.patients.search_hint';
+  static const String doctorPatientsFilterAll = 'doctor.patients.filter_all';
+  static const String doctorPatientsFilterToday =
+      'doctor.patients.filter_today';
+  static const String doctorPatientsFilterNew = 'doctor.patients.filter_new';
+  static const String doctorPatientsFilterReturning =
+      'doctor.patients.filter_returning';
+  static const String doctorPatientsStatusActive =
+      'doctor.patients.status_active';
+  static const String doctorPatientsStatusPending =
+      'doctor.patients.status_pending';
+  static const String doctorPatientsLastVisit =
+      'doctor.patients.last_visit';
+  static const String doctorPatientsNextAppointment =
+      'doctor.patients.next_appointment';
+  static const String doctorPatientsNotScheduled =
+      'doctor.patients.not_scheduled';
+  static const String doctorPatientsAddPatient =
+      'doctor.patients.add_patient';
+
+  // Doctor - Patient Profile
+  static const String doctorPatientProfileTitle =
+      'doctor.patient_profile.title';
+  static const String doctorPatientProfileBloodTypePrefix =
+      'doctor.patient_profile.blood_type_prefix';
+  static const String doctorPatientProfileMedicalConditions =
+      'doctor.patient_profile.medical_conditions';
+  static const String doctorPatientProfileAllergies =
+      'doctor.patient_profile.allergies';
+  static const String doctorPatientProfileNoneReported =
+      'doctor.patient_profile.none_reported';
+  static const String doctorPatientProfileChronicDiseases =
+      'doctor.patient_profile.chronic_diseases';
+  static const String doctorPatientProfileActiveMedications =
+      'doctor.patient_profile.active_medications';
+  static const String doctorPatientProfileItemsSuffix =
+      'doctor.patient_profile.items_suffix';
+  static const String doctorPatientProfileRecentVisits =
+      'doctor.patient_profile.recent_visits';
+  static const String doctorPatientProfileResultsPending =
+      'doctor.patient_profile.results_pending';
+  static const String doctorPatientProfileAddPrescription =
+      'doctor.patient_profile.add_prescription';
+  static const String doctorPatientProfileBookFollowUp =
+      'doctor.patient_profile.book_follow_up';
+  static const String doctorPatientProfileViewMedicalHistory =
+      'doctor.patient_profile.view_medical_history';
+
+  // Doctor - Patient Records
+  static const String doctorPatientRecordsFilterAll =
+      'doctor.patient_records.filter_all';
+  static const String doctorPatientRecordsFilterLabResults =
+      'doctor.patient_records.filter_lab_results';
+  static const String doctorPatientRecordsFilterRadiology =
+      'doctor.patient_records.filter_radiology';
+  static const String doctorPatientRecordsFilterPrescriptions =
+      'doctor.patient_records.filter_prescriptions';
+  static const String doctorPatientRecordsPatientIdPrefix =
+      'doctor.patient_records.patient_id_prefix';
+
+  // Doctor - Profile
+  static const String doctorProfileProfessionalDetails =
+      'doctor.profile.professional_details';
+  static const String doctorProfileClinic = 'doctor.profile.clinic';
+  static const String doctorProfileSpecialization =
+      'doctor.profile.specialization';
+  static const String doctorProfileContactInformation =
+      'doctor.profile.contact_information';
+  static const String doctorProfilePhone = 'doctor.profile.phone';
+  static const String doctorProfileEmail = 'doctor.profile.email';
+  static const String doctorProfileLegalInfo = 'doctor.profile.legal_info';
+  static const String doctorProfileLicenseNumber =
+      'doctor.profile.license_number';
+  static const String doctorProfileStatusActive =
+      'doctor.profile.status_active';
+  static const String doctorProfileAppSettings =
+      'doctor.profile.app_settings';
+  static const String doctorProfileNotifications =
+      'doctor.profile.notifications';
+  static const String doctorProfilePassword = 'doctor.profile.password';
+  static const String doctorProfileLogOut = 'doctor.profile.log_out';
+
+  // Doctor - Change Password
+  static const String doctorChangePasswordTitle =
+      'doctor.change_password.title';
+  static const String doctorChangePasswordIntro =
+      'doctor.change_password.intro';
+  static const String doctorChangePasswordCurrent =
+      'doctor.change_password.current';
+  static const String doctorChangePasswordNew = 'doctor.change_password.new';
+  static const String doctorChangePasswordConfirm =
+      'doctor.change_password.confirm';
+  static const String doctorChangePasswordHint =
+      'doctor.change_password.hint';
+  static const String doctorChangePasswordComplexityError =
+      'doctor.change_password.complexity_error';
+  static const String doctorChangePasswordUpdateButton =
+      'doctor.change_password.update_button';
+  static const String doctorChangePasswordForgot =
+      'doctor.change_password.forgot';
+
+  // Doctor - Notifications
+  static const String doctorNotificationsTitle = 'doctor.notifications.title';
+  static const String doctorNotificationsMarkAllRead =
+      'doctor.notifications.mark_all_read';
+  static const String doctorNotificationsSearchHint =
+      'doctor.notifications.search_hint';
+  static const String doctorNotificationsFilterAll =
+      'doctor.notifications.filter_all';
+  static const String doctorNotificationsFilterUnread =
+      'doctor.notifications.filter_unread';
+  static const String doctorNotificationsFilterAppointments =
+      'doctor.notifications.filter_appointments';
+  static const String doctorNotificationsFilterPatients =
+      'doctor.notifications.filter_patients';
+  static const String doctorNotificationsSectionToday =
+      'doctor.notifications.section_today';
+  static const String doctorNotificationsSectionYesterday =
+      'doctor.notifications.section_yesterday';
+  static const String doctorNotificationsSectionEarlier =
+      'doctor.notifications.section_earlier';
+  static const String doctorNotificationsAccept =
+      'doctor.notifications.accept';
+  static const String doctorNotificationsOpenLabs =
+      'doctor.notifications.open_labs';
+  static const String doctorNotificationsEmptyState =
+      'doctor.notifications.empty_state';
+
   // Bottom Nav
   static const String navHome = 'nav.home';
   static const String navPatients = 'nav.patients';

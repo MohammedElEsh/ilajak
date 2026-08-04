@@ -63,6 +63,11 @@ class RouterGuard {
           RouteNames.doctorArticles,
           RouteNames.doctorNotifications,
           RouteNames.doctorProfile,
+          // Doctor sub-routes (nested under doctorHome / doctorPatients)
+          RouteNames.doctorScheduleFullPath,
+          RouteNames.doctorPatientProfileFullPath,
+          RouteNames.doctorPatientRecordsFullPath,
+          RouteNames.doctorChangePasswordFullPath,
           // Patient profile sub-routes
           RouteNames.patientPersonalInfo,
           RouteNames.patientChangePassword,

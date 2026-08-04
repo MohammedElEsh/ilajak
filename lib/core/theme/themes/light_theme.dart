@@ -17,9 +17,14 @@
 //
 // 4. Component widgets resolve values in this priority:
 //    widget.param > theme.property > colorScheme/textTheme fallback
+//
+// 5. `extensions: [AppColorScheme.light]` (added below, at the end of this
+//    ThemeData) is what makes `context.appColors.xxx` resolve to the light
+//    palette. See app_color_scheme.dart for what's in it and why.
 // =============================================================================
 
 import 'package:flutter/material.dart';
+import 'package:ilajak/core/theme/colors/app_color_scheme.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 
@@ -199,24 +204,6 @@ ThemeData lightTheme = ThemeData(
       }
       return AppColors.grey5;
     }),
-  ),
-
-  // ── Chip ──────────────────────────────────────────────────────────────────
-  chipTheme: ChipThemeData(
-    backgroundColor: AppColors.grey5,
-    selectedColor: AppColors.primary.withValues(alpha: .12),
-    labelStyle: AppTypography.regular12,
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-    side: BorderSide.none,
-  ),
-
-  // ── FAB ───────────────────────────────────────────────────────────────────
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: AppColors.primary,
-    foregroundColor: AppColors.surfaceLight,
-    elevation: 4,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
   ),
 
   // ── Tab Bar ───────────────────────────────────────────────────────────────
@@ -412,4 +399,10 @@ ThemeData lightTheme = ThemeData(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
   ),
+
+  // ── Theme Extensions ──────────────────────────────────────────────────────
+  // NEW — registers the light AppColorScheme so `context.appColors.xxx`
+  // resolves correctly (and simply mirrors current values). See
+  // app_color_scheme.dart.
+  extensions: const [AppColorScheme.light],
 );

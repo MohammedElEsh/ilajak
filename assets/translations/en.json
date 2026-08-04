@@ -128,7 +128,10 @@
     "Appointments": "Appointments",
     "UpcomingAppointment": "Upcoming Appointments",
     "HealthInsight": "Health Insight",
-    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%."
+    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%.",
+    "search": {
+      "placeholder": "Search doctors, patients, appointments..."
+    }
   },
   "products": {
     "title": "Products",
@@ -174,5 +177,120 @@
     "Stay Logged In": "Stay Logged In",
     "Blood Type": "Blood Type",
     "Status": "Status"
+  },
+  "doctor": {
+    "home": {
+      "app_bar_title": "Clinic Manager",
+      "greeting": "Good morning",
+      "today_badge": "Today",
+      "appointments_today": "Appointments",
+      "pending": "Pending",
+      "completed": "Completed",
+      "new_patients": "New Patients",
+      "quick_actions": "Quick Actions",
+      "add_appointment": "Add Appointment",
+      "record_visit": "Record Visit",
+      "recent_patients": "Recent Patients",
+      "view_all": "View All",
+      "upcoming_today": "Upcoming Today",
+      "now_label": "Now",
+      "live_badge": "LIVE",
+      "start_visit": "Start Visit"
+    },
+    "schedule": {
+      "eyebrow": "SCHEDULE",
+      "today_label": "Today",
+      "new_appointment": "New Appointment",
+      "filter_all": "All",
+      "filter_date": "Date",
+      "filter_client": "Client",
+      "filter_patient": "Patient",
+      "lunch_break": "Lunch Break",
+      "no_appointments": "No appointments scheduled",
+      "status_confirmed": "Confirmed",
+      "status_pending": "Pending",
+      "confirm": "Confirm",
+      "complete": "Complete",
+      "cancel": "Cancel",
+      "reschedule": "Reschedule",
+      "view_details": "View Details"
+    },
+    "patients": {
+      "title": "Patients",
+      "search_hint": "Search patients by name or ID...",
+      "filter_all": "All",
+      "filter_today": "Today",
+      "filter_new": "New",
+      "filter_returning": "Returning",
+      "status_active": "Active",
+      "status_pending": "Pending",
+      "last_visit": "LAST VISIT",
+      "next_appointment": "NEXT APPOINTMENT",
+      "not_scheduled": "Not Scheduled",
+      "add_patient": "Add Patient"
+    },
+    "patient_profile": {
+      "title": "Patient Profile",
+      "blood_type_prefix": "Blood Type: ",
+      "medical_conditions": "Medical Conditions",
+      "allergies": "ALLERGIES",
+      "none_reported": "None Reported",
+      "chronic_diseases": "CHRONIC DISEASES",
+      "active_medications": "Active Medications",
+      "items_suffix": "ITEMS",
+      "recent_visits": "Recent Visits",
+      "results_pending": "RESULTS PENDING",
+      "add_prescription": "Add Prescription",
+      "book_follow_up": "Book Follow-up",
+      "view_medical_history": "View Medical History"
+    },
+    "patient_records": {
+      "filter_all": "All Records",
+      "filter_lab_results": "Lab Results",
+      "filter_radiology": "Radiology",
+      "filter_prescriptions": "Prescriptions",
+      "patient_id_prefix": "Patient ID: "
+    },
+    "profile": {
+      "professional_details": "PROFESSIONAL DETAILS",
+      "clinic": "Clinic",
+      "specialization": "Specialization",
+      "contact_information": "CONTACT INFORMATION",
+      "phone": "Phone",
+      "email": "Email",
+      "legal_info": "LEGAL INFO",
+      "license_number": "License Number",
+      "status_active": "ACTIVE",
+      "app_settings": "APP SETTINGS",
+      "notifications": "Notifications",
+      "password": "Password",
+      "log_out": "Log Out"
+    },
+    "change_password": {
+      "title": "Change Password",
+      "intro": "Update your password to keep your account secure.",
+      "current": "CURRENT PASSWORD",
+      "new": "NEW PASSWORD",
+      "confirm": "CONFIRM NEW PASSWORD",
+      "hint": "At least 8 characters, including a number and a symbol.",
+      "complexity_error": "Password must include a number and a symbol.",
+      "update_button": "Update Password",
+      "forgot": "Forgot Password?"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "mark_all_read": "Mark all read",
+      "search_hint": "Search notifications...",
+      "filter_all": "All",
+      "filter_unread": "Unread",
+      "filter_appointments": "Appointments",
+      "filter_patients": "Patients",
+      "section_today": "TODAY",
+      "section_yesterday": "YESTERDAY",
+      "section_earlier": "EARLIER",
+      "accept": "Accept",
+      "open_labs": "Open Labs",
+      "empty_state": "No more notifications"
+    }
   }
 }
