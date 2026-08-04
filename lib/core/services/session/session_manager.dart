@@ -38,6 +38,8 @@ class SessionManager extends ChangeNotifier {
   SessionManager(this.prefs, this.tokenService, this.tokenRefresher);
 
   static const _onboardingKey = 'onboarding_done';
+  static const _roleSelectedKey = 'role_selected';
+  static const _roleKey = 'user_role';
 
   AppStatus _status = AppStatus.initial;
 
@@ -46,18 +48,28 @@ class SessionManager extends ChangeNotifier {
   UserRole _role = UserRole.doctor;
 
   bool get onboardingDone => prefs.getBool(_onboardingKey) ?? false;
+  bool get isRoleSelected => prefs.getBool(_roleSelectedKey) ?? false;
 
   AppStatus get status => _status;
   UserRole get role => _role;
 
   void setRole(UserRole role) {
     _role = role;
+    prefs.setString(_roleKey, role.name);
+    prefs.setBool(_roleSelectedKey, true);
     notifyListeners();
   }
 
   /// 🚀 DEV ONLY — Set `true` to skip Onboarding & Login
   //  _bypassAuth = true  →  skips onboarding & login, opens app directly
-  static const _bypassAuth = true;
+  static const _bypassAuth = false;
+
+  /// 🔑 Startup session restore strategy.
+  /// - `false` (default): a persisted access token is enough to restore the
+  ///   session (auto-login). Best for APIs without a refresh token.
+  /// - `true`: requires a persisted refresh token and exchanges it proactively;
+  ///   logs the user out if the refresh token is missing/expired.
+  static const _proactiveStartupRefresh = false;
 
   /// Called once at app startup — inspects persistent storage
   /// and decides the initial app flow state.
@@ -71,6 +83,14 @@ class SessionManager extends ChangeNotifier {
   ///    - Refresh fails with network/other error → authenticated (assume token still valid,
   ///      let the interceptor handle 401 on actual API calls)
   Future<void> initialize() async {
+    final savedRole = prefs.getString(_roleKey);
+    if (savedRole != null) {
+      _role = UserRole.values.firstWhere(
+        (r) => r.name == savedRole,
+        // orElse: () => UserRole.patient,
+      );
+    }
+
     if (_bypassAuth) {
       LoggerService.i(
         'SessionManager.initialize — bypass: opening home directly',
@@ -94,12 +114,9 @@ class SessionManager extends ChangeNotifier {
     final accessToken = await tokenService.getAccessToken();
     final refreshToken = await tokenService.getRefreshToken();
 
-    if (accessToken == null ||
-        accessToken.isEmpty ||
-        refreshToken == null ||
-        refreshToken.isEmpty) {
+    if (accessToken == null || accessToken.isEmpty) {
       LoggerService.i(
-        'SessionManager.initialize — no tokens stored',
+        'SessionManager.initialize — no access token stored',
         tag: 'SessionManager',
       );
       _status = AppStatus.unauthenticated;
@@ -107,43 +124,94 @@ class SessionManager extends ChangeNotifier {
       return;
     }
 
-    LoggerService.i(
-      'SessionManager.initialize — proactive token refresh...',
-      tag: 'SessionManager',
-    );
+    // ── Proactive refresh at startup (optional) ────────────────────────────
+    // When enabled, a stored refresh token is exchanged upfront for a fresh
+    // access token and the session is only kept if that succeeds. Disabled by
+    // default so the app can auto-login from a persisted access token alone,
+    // even when the API provides no refresh token.
+    if (_proactiveStartupRefresh) {
+      // ── ORIGINAL FLOW (kept for reuse in projects with a refresh token) ──
+      if (refreshToken == null || refreshToken.isEmpty) {
+        LoggerService.i(
+          'SessionManager.initialize — no tokens stored',
+          tag: 'SessionManager',
+        );
+        _status = AppStatus.unauthenticated;
+        notifyListeners();
+        return;
+      }
 
-    final result = await tokenRefresher.refresh();
-
-    if (result.isRight()) {
       LoggerService.i(
-        'SessionManager.initialize — proactive refresh succeeded',
+        'SessionManager.initialize — proactive token refresh...',
+        tag: 'SessionManager',
+      );
+
+      final result = await tokenRefresher.refresh();
+
+      if (result.isRight()) {
+        LoggerService.i(
+          'SessionManager.initialize — proactive refresh succeeded',
+          tag: 'SessionManager',
+        );
+        _status = AppStatus.authenticated;
+      } else {
+        final isAuthFailure = result.fold(
+          (failure) =>
+              failure is AuthFailure ||
+              (failure is ServerFailure && failure.statusCode == 401),
+          (_) => false,
+        );
+
+        if (isAuthFailure) {
+          LoggerService.w(
+            'SessionManager.initialize — refresh token expired (401), logging out',
+            tag: 'SessionManager',
+          );
+          _status = AppStatus.unauthenticated;
+        } else {
+          result.fold(
+            (failure) => LoggerService.w(
+              'SessionManager.initialize — refresh failed (network/other), '
+              'treating as authenticated. Interceptor will handle 401 on '
+              'actual requests. Failure: $failure',
+              tag: 'SessionManager',
+            ),
+            (_) => null,
+          );
+          _status = AppStatus.authenticated;
+        }
+      }
+    } else {
+      // ── SIMPLE FLOW (default) ────────────────────────────────────────────
+      // A persisted access token is enough to restore the session. Refresh is
+      // best-effort only and never degrades the restored session.
+      LoggerService.i(
+        'SessionManager.initialize — access token found, restoring session',
         tag: 'SessionManager',
       );
       _status = AppStatus.authenticated;
-    } else {
-      final isAuthFailure = result.fold(
-        (failure) =>
-            failure is AuthFailure ||
-            (failure is ServerFailure && failure.statusCode == 401),
-        (_) => false,
-      );
 
-      if (isAuthFailure) {
-        LoggerService.w(
-          'SessionManager.initialize — refresh token expired (401), logging out',
+      if (refreshToken != null && refreshToken.isNotEmpty) {
+        LoggerService.i(
+          'SessionManager.initialize — proactive token refresh...',
           tag: 'SessionManager',
         );
-        await logout();
-      } else {
-        result.fold(
-          (failure) => LoggerService.w(
-            'SessionManager.initialize — refresh failed (network/other), treating as authenticated. '
-            'Interceptor will handle 401 on actual requests. Failure: $failure',
+        final result = await tokenRefresher.refresh();
+        if (result.isRight()) {
+          LoggerService.i(
+            'SessionManager.initialize — proactive refresh succeeded',
             tag: 'SessionManager',
-          ),
-          (_) => null,
-        );
-        _status = AppStatus.authenticated;
+          );
+        } else {
+          result.fold(
+            (failure) => LoggerService.w(
+              'SessionManager.initialize — proactive refresh failed, '
+              'keeping session. Failure: $failure',
+              tag: 'SessionManager',
+            ),
+            (_) => null,
+          );
+        }
       }
     }
 
@@ -181,9 +249,14 @@ class SessionManager extends ChangeNotifier {
 
   /// Persists the tokens and transitions to [AppStatus.authenticatedNeedsSetup].
   /// The router will then redirect the user to the "getting started" screen.
+  ///
+  /// Pass [skipSetup] = true to transition directly to [AppStatus.authenticated]
+  /// (straight to the home screen) — used while the getting-started screen
+  /// does not exist yet.
   Future<void> login({
     required String accessToken,
     String? refreshToken,
+    bool skipSetup = false,
   }) async {
     LoggerService.i('login() — saving tokens', tag: 'SessionManager');
     await tokenService.saveTokens(
@@ -191,7 +264,9 @@ class SessionManager extends ChangeNotifier {
       refreshToken: refreshToken,
     );
 
-    _status = AppStatus.authenticatedNeedsSetup;
+    _status = skipSetup
+        ? AppStatus.authenticated
+        : AppStatus.authenticatedNeedsSetup;
     notifyListeners();
   }
 
