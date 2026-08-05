@@ -7,4 +7,8 @@ class ApiEndpoints {
   static const String checkEmailAvailability = '/users/is-available';
   static const String categories = '/categories';
   static const String products = '/products';
+  static const String doctors = '/doctors';
+   static String singleDoctor(int id) {
+    return '/doctors/$id';
+  }
 }

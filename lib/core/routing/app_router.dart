@@ -20,6 +20,8 @@ import 'package:ilajak/features/doctor/home/presentation/views/doctor_home_view.
 import 'package:ilajak/features/doctor/notifications/presentation/views/doctor_notifications_view.dart';
 import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patients_view.dart';
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_profile_view.dart';
+import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctors_cubit.dart';
 import 'package:ilajak/features/patient/health/presentation/views/health_view.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
@@ -131,7 +133,11 @@ void initRouter() {
             routes: [
               GoRoute(
                 path: RouteNames.patientAppointments,
-                builder: (context, state) => const PatientAppointmentsView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) =>
+                      DoctorsCubit(doctorsRepo: sl<DoctorsRepo>()),
+                  child: const PatientAppointmentsView(),
+                ),
               ),
             ],
           ),

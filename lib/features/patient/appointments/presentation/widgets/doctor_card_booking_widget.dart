@@ -7,6 +7,7 @@ import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/info_box_widget.dart';
 
@@ -14,6 +15,7 @@ class DoctorCardWidget extends StatelessWidget {
   const DoctorCardWidget({
     super.key,
     this.doctorName,
+    this.doctor,
     this.specialization,
     this.rating,
     this.reviews,
@@ -24,6 +26,7 @@ class DoctorCardWidget extends StatelessWidget {
     this.onTap,
   });
   final String? doctorName;
+  final DoctorModel? doctor;
   final String? specialization;
   final String? rating;
   final String? reviews;
@@ -35,7 +38,9 @@ class DoctorCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: onTap ,
+      child: Container(
       padding: EdgeInsets.all(18.w),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -48,7 +53,9 @@ class DoctorCardWidget extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 30.r,
-                backgroundImage: AssetImage(image ?? AppAssets.profileImage),
+                backgroundImage: AssetImage(
+                  doctor?.avatar ?? AppAssets.profileImage,
+                ),
               ),
 
               SizedBox(width: 16.w),
@@ -58,12 +65,12 @@ class DoctorCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      doctorName ?? 'Dr. Elena Rodriguez',
+                      doctor?.name ?? 'Dr. Elena Rodriguez',
                       style: AppTypography.semiBold18,
                     ),
                     SizedBox(height: 12.h),
                     Text(
-                      specialization ?? "Neurologist",
+                      doctor?.specialization ?? "Neurologist",
                       style: AppTypography.medium16.copyWith(
                         color: AppColors.primary,
                       ),
@@ -78,12 +85,15 @@ class DoctorCardWidget extends StatelessWidget {
                     children: [
                       const Icon(Icons.star, color: Colors.amber, size: 18),
                       SizedBox(width: 4.w),
-                      Text(rating ?? "5.0", style: AppTypography.semiBold18),
+                      Text(
+                        doctor?.averageRating.toString() ?? "5.0",
+                        style: AppTypography.semiBold18,
+                      ),
                     ],
                   ),
                   SizedBox(height: 12.h),
                   Text(
-                    reviews ?? "98 Reviews",
+                    doctor?.reviews.toString() ?? "98 Reviews",
                     style: AppTypography.medium16.copyWith(
                       color: AppColors.fieldLabel,
                     ),
@@ -99,21 +109,21 @@ class DoctorCardWidget extends StatelessWidget {
               Expanded(
                 child: InfoBoxWidget(
                   title: "Experience",
-                  value: experience ?? "12 Years",
+                  value: doctor?.experience.toString() ?? "12 Years",
                 ),
               ),
               SizedBox(width: 16.w),
               Expanded(
                 child: InfoBoxWidget(
                   title: "Patients",
-                  value: patients ?? "2.4k+",
+                  value: doctor?.totalPatients.toString() ?? "2.4k+",
                 ),
               ),
               SizedBox(width: 16.w),
               Expanded(
                 child: InfoBoxWidget(
                   title: "Availability",
-                  value: availability ?? "Tomorrow",
+                  value: doctor?.availability.toString() ?? "Tomorrow",
                 ),
               ),
             ],
@@ -128,6 +138,7 @@ class DoctorCardWidget extends StatelessWidget {
             },
           ),
         ],
+      ),
       ),
     );
   }

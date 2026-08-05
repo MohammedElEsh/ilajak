@@ -1,13 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/di/injection.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/shared/widgets/row_text_button_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctors_cubit.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctors_details_cubit.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/states/doctors_state.dart';
+import 'package:ilajak/features/patient/appointments/presentation/views/patient_doctor_profile_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/container_of_specialization.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/doctor_card_booking_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/search_field_widget.dart';
@@ -33,6 +40,13 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
     "Urology",
     "Oncology",
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<DoctorsCubit>(context).getAllDoctors();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -114,12 +128,60 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                   onTap: () {},
                 ),
                 SizedBox(height: 24.h),
-                const DoctorCardWidget(),
+                BlocConsumer<DoctorsCubit, DoctorsState>(
+                 listener: (context, state) {
+                if (state is DoctorsError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(state.errorMessage)),
+                  );
+                } 
+              },
+                 builder: (context, state) {
+  if (state is DoctorsLoading) {
+    return const SizedBox(
+      height: 200,
+      child: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
+
+  if (state is DoctorsError) {
+    return Center(
+      child: Text(state.errorMessage),
+    );
+  }
+
+  if (state is DoctorsLoaded) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: state.doctors.length,
+      itemBuilder: (context, index) {
+        return DoctorCardWidget(
+          onTap: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  BlocProvider(
+                  create: (context) =>
+                      DoctorsDetailsCubit(doctorsRepo: sl<DoctorsRepo>()),
+                  child: PatientDoctorProfileView(doctorId: state.doctors[index].id),
+                ),
+              ),
+            );
+          },
+          doctor: state.doctors[index],
+        );
+      },
+    );
+  }
+
+  return const SizedBox.shrink();
+},
+                ),
                 SizedBox(height: 24.h),
-                const DoctorCardWidget(),
-                SizedBox(height: 24.h),
-                const DoctorCardWidget(),
-                SizedBox(height: 100.h),
+            
               ],
             ),
           ),

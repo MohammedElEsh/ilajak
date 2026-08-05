@@ -1,0 +1,10 @@
+import 'package:fpdart/fpdart.dart';
+import 'package:ilajak/core/errors/failures.dart';
+import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
+import 'package:ilajak/features/patient/appointments/data/models/doctors_details_model.dart';
+
+abstract class DoctorsRepo {
+  Future<Either<Failure, List<DoctorModel>>> getAllDoctors();
+  Future<Either<Failure, DoctorDetailsModel>> getSingleDoctorDetails(int doctorId);
+
+}

@@ -26,10 +26,12 @@ class RouteNames {
   static const String patientHealthInfo = '/patient-health-info';
   static const String patientEmergencyContacts = '/patient-emergency-contacts';
   static const String patientChangePassword = '/patient-change-password';
-  static const String patientAppointmentsConfirm = '/patient-appointments-confirm';
-  static const String patientAppointmentsSuccess = '/patient-appointments-success';
+  static const String patientAppointmentsConfirm =
+      '/patient-appointments-confirm';
+  static const String patientAppointmentsSuccess =
+      '/patient-appointments-success';
   static const String patientMyAppointments = '/patient-my-appointments';
   static const String patientLabResults = '/patient-lab-results';
   static const String patientPrescriptions = '/patient-prescriptions';
-  
+  static const String patientDoctorProfile = '/patient-doctor-profile';
 }

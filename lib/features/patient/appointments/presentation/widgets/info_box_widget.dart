@@ -4,17 +4,23 @@ import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 class InfoBoxWidget extends StatelessWidget {
-  const InfoBoxWidget({super.key, required this.title, required this.value});
+  const InfoBoxWidget({
+    super.key,
+    required this.title,
+    required this.value,
+    this.color,
+  });
 
   final String title;
   final String value;
-
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 105.h,
+      height: 80.h,
       decoration: BoxDecoration(
-        color: AppColors.backgroundLight,
+        border: Border.all(color: AppColors.fieldBorder),
+        color: color ?? AppColors.backgroundLight,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
