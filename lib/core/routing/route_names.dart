@@ -30,4 +30,6 @@ class RouteNames {
   static const String patientAppointmentsSuccess = '/patient-appointments-success';
   static const String patientMyAppointments = '/patient-my-appointments';
   static const String patientLabResults = '/patient-lab-results';
+  static const String patientPrescriptions = '/patient-prescriptions';
+  
 }
