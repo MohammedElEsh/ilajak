@@ -1,10 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 
 class BirthDateWidget extends StatefulWidget {
-  const BirthDateWidget({super.key});
+  const BirthDateWidget({super.key, required this.birthDate});
+  final String birthDate;
 
   @override
   State<BirthDateWidget> createState() => _BirthDateWidgetState();
@@ -12,13 +14,17 @@ class BirthDateWidget extends StatefulWidget {
 
 class _BirthDateWidgetState extends State<BirthDateWidget> {
   DateTime? selectedDate;
-  // Show date
+
   Future<void> pickDate() async {
+    final initial = selectedDate ??
+        DateTime.tryParse(widget.birthDate) ??
+        DateTime.now();
+
     final date = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: initial,
       firstDate: DateTime(1900),
-      lastDate: DateTime(2100),
+      lastDate: DateTime.now(),
     );
 
     if (date != null) {
@@ -28,16 +34,26 @@ class _BirthDateWidgetState extends State<BirthDateWidget> {
     }
   }
 
+  String _getFormattedDate() {
+    final dateToFormat = selectedDate ?? DateTime.tryParse(widget.birthDate);
+    if (dateToFormat != null) {
+      return DateFormat('yyyy-MM-dd').format(dateToFormat);
+    }
+    return widget.birthDate;
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => pickDate(),
+      borderRadius: BorderRadius.circular(16.r),
       child: Container(
         height: 56.h,
-        width: 142.w,
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
         decoration: BoxDecoration(
           color: AppColors.surfaceLight,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
           border: Border.all(color: AppColors.grey4, width: 1),
         ),
         child: Row(
@@ -45,11 +61,13 @@ class _BirthDateWidgetState extends State<BirthDateWidget> {
           children: [
             Icon(Icons.calendar_today_outlined, size: 20.sp),
             SizedBox(width: 8.w),
-            Text(
-              selectedDate != null
-                  ? '${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}'
-                  : '12/5/1988',
-              style: AppTypography.regular14.copyWith(fontSize: 16.sp),
+            Flexible(
+              child: Text(
+                _getFormattedDate(),
+                style: AppTypography.regular14.copyWith(fontSize: 14.sp),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
             ),
           ],
         ),

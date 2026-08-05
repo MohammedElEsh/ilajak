@@ -29,6 +29,8 @@ import 'package:ilajak/features/patient/home/presentation/views/patient_home_vie
 import 'package:ilajak/features/patient/notifications/presentation/views/patient_notifications_view.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/manager/prescription_cubit.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/views/patient_prescriptions_view.dart';
+import 'package:ilajak/features/patient/profile/data/models/profile_model.dart';
+import 'package:ilajak/features/patient/profile/presentation/manager/cubit/profile_cubit.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_change_password_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_health_info_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_personal_info_view.dart';
@@ -53,8 +55,14 @@ void initRouter() {
         ),
       ),
       GoRoute(
+        // extra is ProfileModel
         path: RouteNames.patientPersonalInfo,
-        builder: (context, state) => const PatientPersonalInfoView(),
+        builder: (context, state) => BlocProvider(
+          create: (_) => sl<ProfileCubit>(),
+          child: PatientPersonalInfoView(
+            profile: state.extra as ProfileModel,
+          ),
+        ),
       ),
       GoRoute(
         path: RouteNames.patientChangePassword,
@@ -152,7 +160,10 @@ void initRouter() {
             routes: [
               GoRoute(
                 path: RouteNames.patientProfile,
-                builder: (context, state) => const PatientProfileView(),
+                builder: (context, state) => BlocProvider(
+                  create: (_) => sl<ProfileCubit>()..getProfile(),
+                  child: const PatientProfileView(),
+                ),
               ),
             ],
           ),

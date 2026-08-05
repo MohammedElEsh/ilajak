@@ -1,6 +1,9 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ilajak/features/patient/profile/data/repos/profile_repo.dart';
+import 'package:ilajak/features/patient/profile/data/repos/profile_repo_impl.dart';
+import 'package:ilajak/features/patient/profile/presentation/manager/cubit/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:ilajak/core/networking/api_consumer.dart';
@@ -122,5 +125,17 @@ Future<void> initDependencies() async {
 
   sl.registerFactory<AuthLoginCubit>(
     () => AuthLoginCubit(sl<AuthRepository>()),
+  );
+  // =====================================================
+  // 9. FEATURE: PROFILE
+  // =====================================================
+  sl.registerLazySingleton<ProfileRepo>(
+    () => ProfileRepoImpl(
+      apiConsumer: sl<ApiConsumer>(),
+      sessionManager: sl<SessionManager>(),
+    ),
+  );
+  sl.registerFactory<ProfileCubit>(
+    () => ProfileCubit(sl<ProfileRepo>()),
   );
 }
