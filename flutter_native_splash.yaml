@@ -1,0 +1,58 @@
+flutter_native_splash:
+  # ── Platforms ──
+  android: true
+  ios: true
+  web: false
+
+  # ── Colors (all platforms except Android 12+) ──
+  color: "#005EA4"
+  color_dark: "#0A3A63"
+  color_android: "#005EA4"
+  color_dark_android: "#0A3A63"
+  color_ios: "#005EA4"
+  color_dark_ios: "#0A3A63"
+
+  # ── Logo Image ──
+  image: assets/images/splash_logo.png
+  image_dark: assets/images/splash_logo_dark.png
+  image_android: assets/images/splash_logo.png
+  image_dark_android: assets/images/splash_logo_dark.png
+  image_ios: assets/images/splash_logo.png
+  image_dark_ios: assets/images/splash_logo_dark.png
+
+  # ── Alignment ──
+  android_gravity: center
+  ios_content_mode: center
+
+  # ── Branding (bottom) ──
+  branding: assets/images/splash_branding.png
+  branding_dark: assets/images/splash_branding_dark.png
+  branding_android: assets/images/splash_branding.png
+  branding_dark_android: assets/images/splash_branding_dark.png
+  branding_ios: assets/images/splash_branding.png
+  branding_dark_ios: assets/images/splash_branding_dark.png
+  branding_mode: bottom
+  branding_bottom_padding: 32
+
+  # ── System ──
+  fullscreen: true
+  android_screen_orientation: portrait
+  android_min_sdk: 21
+
+  # ── Android 12+ ──
+  android_12:
+    color: "#00629f"
+    color_dark: "#00629f"
+    image: assets/images/splash_logo.png
+    image_dark: assets/images/splash_logo_dark.png
+    branding: assets/images/splash_branding.png
+    branding_dark: assets/images/splash_branding_dark.png
+    branding_mode: bottom
+    branding_bottom_padding: 32
+    android_gravity: center
+    ios_content_mode: center
+    fullscreen: true
+    android_screen_orientation: portrait
+    android_min_sdk: 21
+
+

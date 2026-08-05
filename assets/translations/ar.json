@@ -23,6 +23,14 @@
       "subtitle3": "تتبع أدويتك، واضبط التذكيرات، واطلب إعادة الوصفات الطبية مباشرة إلى باب منزلك."
     }
   },
+  "role_selection": {
+    "title": "اختر دورك",
+    "subtitle": "هل أنت مريض أم طبيب؟",
+    "patient": "مريض",
+    "patient_desc": "ابحث عن الأطباء، احجز مواعيد، أدر الوصفات الطبية",
+    "doctor": "طبيب",
+    "doctor_desc": "أدر المرضى، انشر المقالات، طوّر ممارستك"
+  },
   "validation": {
     "required": "هذا الحقل مطلوب",
     "field_required": "{} مطلوب"
@@ -179,5 +187,29 @@
     "TOTAL CHOLESTEROL" : "إجمالي الكوليسترول",
     "NORMAL RANGE" : "نطاق طبيعي",
     "View Details" : "عرض التفاصيل"
+  },
+  "prescriptions": {
+    "title": "وصفاتي الطبية",
+    "subtitle": "إدارة وتجديد أدويتك الحالية.",
+    "filter_all": "الكل",
+    "filter_active": "نشط",
+    "filter_completed": "مكتمل",
+    "filter_expiring_soon": "ينتهي قريباً",
+    "dosage": "الجرعة",
+    "frequency": "التكرار",
+    "doctor": "الطبيب",
+    "prescribed": "تاريخ الوصفة",
+    "expires": "تاريخ الانتهاء",
+    "no_prescriptions": "لم يتم العثور على وصفات",
+    "no_prescriptions_subtitle": "ليس لديك أي وصفات تطابق هذا الفلتر.",
+    "status_active": "نشط",
+    "status_completed": "مكتمل",
+    "status_expiring_soon": "ينتهي قريباً",
+    "status_expired": "منتهي الصلاحية",
+    "medicines": "الأدوية",
+    "medicines_count": "{} أدوية",
+    "issue_date": "تاريخ الإصدار",
+    "refill": "تجديد",
+    "view": "عرض"
   }
 }

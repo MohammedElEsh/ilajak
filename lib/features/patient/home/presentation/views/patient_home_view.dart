@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/shared/widgets/row_text_button_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
@@ -82,7 +84,7 @@ class PatientHomeView extends StatelessWidget {
                         strokeWidth: 1.5,
                       ),
                       title: AppStrings.homePerciptions.tr(),
-                      onTap: () {},
+                      onTap: () => context.push(RouteNames.patientPrescriptions),
                     ),
                     const Spacer(),
 
