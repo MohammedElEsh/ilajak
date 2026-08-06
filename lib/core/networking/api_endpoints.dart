@@ -11,4 +11,5 @@ class ApiEndpoints {
    static String singleDoctor(int id) {
     return '/doctors/$id';
   }
+   
 }

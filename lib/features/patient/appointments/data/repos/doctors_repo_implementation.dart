@@ -1,4 +1,3 @@
-
 import 'package:fpdart/fpdart.dart';
 import 'package:ilajak/core/errors/failures.dart';
 import 'package:ilajak/core/networking/api_consumer.dart';
@@ -13,38 +12,42 @@ class DoctorsRepoImplementation implements DoctorsRepo {
   DoctorsRepoImplementation(this.apiConsumer);
 
   @override
-  Future<Either<Failure, List<DoctorModel>>> getAllDoctors() async {
+  Future<Either<Failure, DoctorDetailsModel>> getSingleDoctorDetails(
+    int doctorId,
+  ) async {
     try {
-      final response = await apiConsumer.get(ApiEndpoints.doctors);
-      final List<DoctorModel> doctors = [];
-      final doctorsList = response['data']['data'] as List<dynamic>;
-      for (var doctor in doctorsList) {
-        doctors.add(DoctorModel.fromJson(doctor));
-      }
-      return right(doctors);
-    } catch (e) {
-      return left(
-        ServerFailure(
-          e.toString(),
-          statusCode: 500,
-        ),
+      final response = await apiConsumer.get(
+        ApiEndpoints.singleDoctor(doctorId),
       );
+      final doctor = DoctorDetailsModel.fromJson(response['data']);
+      return right(doctor);
+    } catch (e) {
+      return left(ServerFailure(e.toString(), statusCode: 500));
     }
   }
 
   @override
-  Future<Either<Failure, DoctorDetailsModel>> getSingleDoctorDetails(int doctorId) async {
+  Future<Either<Failure, List<DoctorModel>>> getDoctors({
+    String? search,
+    String? specialization,
+  }) async {
     try {
-      final response = await apiConsumer.get(ApiEndpoints.singleDoctor(doctorId));
-      final doctor = DoctorDetailsModel.fromJson(response['data']);
-      return right(doctor);
-    } catch (e) {
-      return left(
-        ServerFailure(
-          e.toString(),
-          statusCode: 500,
-        ),
+      final response = await apiConsumer.get(
+        ApiEndpoints.doctors,
+        queryParameters: {
+          if (search != null && search.isNotEmpty) "search": search,
+          if (specialization != null && specialization.isNotEmpty)
+            "specialization": specialization,
+        },
       );
+
+      final doctors = (response['data']['data'] as List)
+          .map((e) => DoctorModel.fromJson(e))
+          .toList();
+
+      return right(doctors);
+    } catch (e) {
+      return left(ServerFailure(e.toString(), statusCode: 500));
     }
   }
 }

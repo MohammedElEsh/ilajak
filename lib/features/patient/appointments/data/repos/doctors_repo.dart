@@ -4,7 +4,11 @@ import 'package:ilajak/features/patient/appointments/data/models/doctors_model.d
 import 'package:ilajak/features/patient/appointments/data/models/doctors_details_model.dart';
 
 abstract class DoctorsRepo {
-  Future<Either<Failure, List<DoctorModel>>> getAllDoctors();
-  Future<Either<Failure, DoctorDetailsModel>> getSingleDoctorDetails(int doctorId);
-
+  Future<Either<Failure, DoctorDetailsModel>> getSingleDoctorDetails(
+    int doctorId,
+  );
+  Future<Either<Failure, List<DoctorModel>>> getDoctors({
+    String? search,
+    String? specialization,
+  });
 }

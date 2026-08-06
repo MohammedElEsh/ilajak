@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,22 +31,59 @@ class PatientAppointmentsView extends StatefulWidget {
 class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
   int selectedIndex = 0;
   final specializations = [
-    "All"
-        "Cardiology",
-    "Dermatology",
-    "Neurology",
-    "Ophthalmology",
+    "All",
+    "Cardiology",
+    "Pediatric Cardiologist",
+    "General Practitioner",
     "Pediatrics",
+    "Ophthalmology",
     "Orthopedics",
     "Gynecology",
     "Urology",
     "Oncology",
   ];
+  Timer? _debounce; // علشان ااخر عمليه البحث شويه
+  String searchQuery = '';
+  // الميثود دي بتتنده كل مره اليوزر يكتب حرف
+  void _onSearchChanged(String query) {
+    if (_debounce?.isActive ?? false)
+      _debounce!.cancel(); //لو فيه Timer شغال من الحرف اللي قبله، الغيه.
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      //تنتظر 500 ملي ثانية بعد آخر ضغطة زر
+      setState(() {
+        searchQuery = query;
+      });
+      _fetchDoctors();
+    });
+  }
+
+  void _fetchDoctors() {
+    if (selectedIndex == 0) {
+      if (searchQuery.isNotEmpty) {
+        BlocProvider.of<DoctorsCubit>(
+          context,
+        ).getDoctors(search: searchQuery);
+      } else {
+         BlocProvider.of<DoctorsCubit>(
+          context,
+        ).getDoctors();
+      }
+    } else {
+      BlocProvider.of<DoctorsCubit>(
+        context,
+      ).getDoctors(
+        search: searchQuery.isNotEmpty ? searchQuery : null,
+        specialization: specializations[selectedIndex],
+      );
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<DoctorsCubit>(context).getAllDoctors();
+      BlocProvider.of<DoctorsCubit>(
+          context,
+        ).getDoctors();
   }
 
   @override
@@ -80,6 +118,7 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                     Expanded(
                       child: SearchFieldWidget(
                         hintText: AppStrings.searchDoctorsSymptoms.tr(),
+                        onChanged: _onSearchChanged,
                       ),
                     ),
                     SizedBox(width: 12.w),
@@ -116,6 +155,7 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                             setState(() {
                               selectedIndex = index;
                             });
+                            _fetchDoctors();
                           },
                         ),
                       ),
