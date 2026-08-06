@@ -228,8 +228,13 @@ class _PatientDoctorProfileViewState extends State<PatientDoctorProfileView> {
                                         .doctorDetails
                                         .clinics[index]
                                         .phone,
-                                    availability: index < state.doctorDetails.schedules.length
-                                        ? state.doctorDetails.schedules[index].dayOfWeek
+                                    availability:
+                                        index <
+                                            state.doctorDetails.schedules.length
+                                        ? state
+                                              .doctorDetails
+                                              .schedules[index]
+                                              .dayOfWeek
                                         : 'N/A',
                                   );
                                 },
