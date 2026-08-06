@@ -30,7 +30,8 @@ class PatientAppointmentsView extends StatefulWidget {
 class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
   int selectedIndex = 0;
   final specializations = [
-    "Cardiology",
+    "All"
+        "Cardiology",
     "Dermatology",
     "Neurology",
     "Ophthalmology",
@@ -129,59 +130,57 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                 ),
                 SizedBox(height: 24.h),
                 BlocConsumer<DoctorsCubit, DoctorsState>(
-                 listener: (context, state) {
-                if (state is DoctorsError) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(state.errorMessage)),
-                  );
-                } 
-              },
-                 builder: (context, state) {
-  if (state is DoctorsLoading) {
-    return const SizedBox(
-      height: 200,
-      child: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-  }
+                  listener: (context, state) {
+                    if (state is DoctorsError) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(state.errorMessage)),
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is DoctorsLoading) {
+                      return const SizedBox(
+                        height: 200,
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    }
 
-  if (state is DoctorsError) {
-    return Center(
-      child: Text(state.errorMessage),
-    );
-  }
+                    if (state is DoctorsError) {
+                      return Center(child: Text(state.errorMessage));
+                    }
 
-  if (state is DoctorsLoaded) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: state.doctors.length,
-      itemBuilder: (context, index) {
-        return DoctorCardWidget(
-          onTap: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>  BlocProvider(
-                  create: (context) =>
-                      DoctorsDetailsCubit(doctorsRepo: sl<DoctorsRepo>()),
-                  child: PatientDoctorProfileView(doctorId: state.doctors[index].id),
-                ),
-              ),
-            );
-          },
-          doctor: state.doctors[index],
-        );
-      },
-    );
-  }
+                    if (state is DoctorsLoaded) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: state.doctors.length,
+                        itemBuilder: (context, index) {
+                          return DoctorCardWidget(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BlocProvider(
+                                    create: (context) => DoctorsDetailsCubit(
+                                      doctorsRepo: sl<DoctorsRepo>(),
+                                    ),
+                                    child: PatientDoctorProfileView(
+                                      doctorId: state.doctors[index].id,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            doctor: state.doctors[index],
+                          );
+                        },
+                      );
+                    }
 
-  return const SizedBox.shrink();
-},
+                    return const SizedBox.shrink();
+                  },
                 ),
                 SizedBox(height: 24.h),
-            
               ],
             ),
           ),
