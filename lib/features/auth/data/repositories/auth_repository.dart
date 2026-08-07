@@ -1,4 +1,5 @@
 import '../../../../core/errors/safe_call.dart';
+import '../../../../core/services/session/session_manager.dart';
 import '../models/auth_tokens.dart';
 import '../models/user_model.dart';
 
@@ -9,12 +10,17 @@ abstract class AuthRepository {
   });
 
   EitherResult<UserModel> register({
+    required UserRole role,
     required String name,
     required String email,
     required String password,
-  });
-
-  EitherResult<bool> checkEmailAvailability({
-    required String email,
+    required String passwordConfirmation,
+    String? medicalId,
+    String? phone,
+    String? nationalId,
+    String? dateOfBirth,
+    String? gender,
+    String? bloodType,
+    String? address,
   });
 }

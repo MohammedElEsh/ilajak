@@ -68,6 +68,9 @@
       "national_id": "الرقم الوطني / جواز السفر",
       "national_id_hint": "1234567890",
       "national_id_required": "الرقم الوطني مطلوب",
+      "medical_id": "الرقم الطبي",
+      "medical_id_hint": "مثال: 1234567890",
+      "medical_id_required": "الرقم الطبي مطلوب",
       "date_of_birth": "تاريخ الميلاد",
       "date_of_birth_hint": "mm/dd/yyyy",
       "date_of_birth_required": "تاريخ الميلاد مطلوب",
@@ -86,6 +89,7 @@
       "confirm_password_required": "تأكيد كلمة المرور مطلوب",
       "passwords_do_not_match": "كلمات المرور غير متطابقة",
       "button": "إنشاء حساب",
+      "success": "تم إنشاء الحساب بنجاح. يرجى تسجيل الدخول.",
       "already_have_account": "لديك حساب بالفعل؟ ",
       "sign_in": "تسجيل الدخول"
     },
@@ -114,7 +118,8 @@
       "terms_of_service": "شروط الخدمة",
       "and": " و",
       "privacy_policy": "سياسة الخصوصية",
-      "medical_data": "، بما في ذلك التعامل مع البيانات الطبية."
+      "medical_data": "، بما في ذلك التعامل مع البيانات الطبية.",
+      "required": "يرجى الموافقة على شروط الخدمة وسياسة الخصوصية."
     }
   },
   "nav": {

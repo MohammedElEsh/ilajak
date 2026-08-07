@@ -82,6 +82,10 @@ class AppStrings {
   static const String authSignupNationalIdHint = 'auth.signup.national_id_hint';
   static const String authSignupNationalIdRequired =
       'auth.signup.national_id_required';
+  static const String authSignupMedicalId = 'auth.signup.medical_id';
+  static const String authSignupMedicalIdHint = 'auth.signup.medical_id_hint';
+  static const String authSignupMedicalIdRequired =
+      'auth.signup.medical_id_required';
   static const String authSignupDateOfBirth = 'auth.signup.date_of_birth';
   static const String authSignupDateOfBirthHint =
       'auth.signup.date_of_birth_hint';
@@ -107,6 +111,7 @@ class AppStrings {
   static const String authSignupPasswordsDoNotMatch =
       'auth.signup.passwords_do_not_match';
   static const String authSignupButton = 'auth.signup.button';
+  static const String authSignupSuccess = 'auth.signup.success';
   static const String authSignupAlreadyHaveAccount =
       'auth.signup.already_have_account';
   static const String authSignupSignIn = 'auth.signup.sign_in';
@@ -141,6 +146,7 @@ class AppStrings {
   static const String authTermsAnd = 'auth.terms.and';
   static const String authTermsPrivacyPolicy = 'auth.terms.privacy_policy';
   static const String authTermsMedicalData = 'auth.terms.medical_data';
+  static const String authTermsRequired = 'auth.terms.required';
 
   // Home - Getting Started
   static const String gettingStartedTitle = 'home.getting_started.title';
