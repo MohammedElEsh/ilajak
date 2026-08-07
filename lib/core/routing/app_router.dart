@@ -90,7 +90,7 @@ void initRouter() {
       GoRoute(
         path: RouteNames.signup,
         builder: (context, state) => BlocProvider(
-          create: (_) => AuthRegisterCubit(),
+          create: (_) => sl<AuthRegisterCubit>(),
           child: const SignupView(),
         ),
       ),

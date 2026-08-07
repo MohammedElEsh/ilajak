@@ -15,6 +15,7 @@ import 'package:ilajak/core/services/storage/secure_storage_service.dart';
 import 'package:ilajak/features/auth/data/repositories/auth_repository.dart';
 import 'package:ilajak/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_login_cubit.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_register_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 
 final sl = GetIt.instance;
@@ -122,5 +123,9 @@ Future<void> initDependencies() async {
 
   sl.registerFactory<AuthLoginCubit>(
     () => AuthLoginCubit(sl<AuthRepository>()),
+  );
+
+  sl.registerFactory<AuthRegisterCubit>(
+    () => AuthRegisterCubit(sl<AuthRepository>()),
   );
 }
