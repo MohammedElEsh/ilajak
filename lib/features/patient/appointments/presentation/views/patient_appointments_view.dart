@@ -196,6 +196,7 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                         itemCount: state.doctors.length,
                         itemBuilder: (context, index) {
                           return DoctorCardWidget(
+                          
                             onTap: () {
                               Navigator.push(
                                 context,

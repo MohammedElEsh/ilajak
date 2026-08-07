@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
@@ -9,6 +10,9 @@ import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/shared/widgets/row_text_button_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctor_available_time_slots_cubit.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/states/doctor_available_time_slots_state.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/text_field_notes_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/time_item_widget.dart';
@@ -16,7 +20,8 @@ import 'package:ilajak/features/patient/appointments/presentation/widgets/date_i
 import 'package:ilajak/features/patient/appointments/presentation/widgets/doctor_card_describtion_widget.dart';
 
 class PatientAppointmentsConfirmView extends StatefulWidget {
-  const PatientAppointmentsConfirmView({super.key});
+  final DoctorModel doctor;
+  const PatientAppointmentsConfirmView({super.key, required this.doctor});
 
   @override
   State<PatientAppointmentsConfirmView> createState() =>
@@ -55,9 +60,9 @@ class _PatientAppointmentsConfirmViewState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 23),
-              child: DoctorCardDescribtionWidget(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 23),
+              child: DoctorCardDescribtionWidget(doctor: widget.doctor),
             ),
 
             SizedBox(height: 8.h),
@@ -86,6 +91,7 @@ class _PatientAppointmentsConfirmViewState
                     onTap: () {
                       setState(() {
                         selectedDate = date;
+                      
                       });
                     },
                     child: Padding(
@@ -95,6 +101,13 @@ class _PatientAppointmentsConfirmViewState
                         onTap: () {
                           setState(() {
                             selectedDate = date;
+                            context
+                                .read<DoctorAvailableTimeSlotsCubit>()
+                                .getAvailableTimeSlots(
+                                  widget.doctor.id,
+                                  selectedDate,
+                                );
+                            print(selectedDate);
                           });
                         },
                         isSelected:
@@ -118,29 +131,86 @@ class _PatientAppointmentsConfirmViewState
               ),
             ),
             SizedBox(height: 16.h),
-            SizedBox(
-              height: 50.h,
-              child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 18.w),
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return TimeItemWidget(
-                    isSelected: selectedIndexTime == index,
-                    onTap: () {
-                      setState(() {
-                        selectedIndexTime = index;
-                      });
-                    },
+            BlocConsumer<
+              DoctorAvailableTimeSlotsCubit,
+              DoctorAvailableTimeSlotsState
+            >(
+              listener: (context, state) {
+                if (state is DoctorAvailableTimeSlotsError) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+                }
+              },
+              builder: (context, state) {
+                if (state is DoctorAvailableTimeSlotsLoading) {
+                  return const SizedBox(
+                    height: 200,
+                    child: Center(child: CircularProgressIndicator()),
                   );
-                },
-              ),
+                }
+
+                if (state is DoctorAvailableTimeSlotsError) {
+                  return Center(child: Text(state.errorMessage));
+                }
+                if (state is DoctorAvailableTimeSlotsLoaded) {
+                  if (state.timeSlots.isEmpty) {
+                    return Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15.h),
+                        child: Text(
+                          'Doctor does not work on this day.',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  return SizedBox(
+                    height: 50.h,
+                    child: ListView.builder(
+                      padding: EdgeInsets.symmetric(horizontal: 18.w),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.timeSlots.length,
+                      itemBuilder: (context, index) {
+                        return TimeItemWidget(
+                          isSelected: selectedIndexTime == index,
+                          time: state.timeSlots[index],
+                          onTap: () {
+                            setState(() {
+                              selectedIndexTime = index;
+                              print(state.timeSlots[index]);
+                            });
+                          },
+                        );
+                      },
+                    ),
+                  );
+                } else {
+                  return Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15.h),
+                      child: Text(
+                        'Doctor does not work on this day.',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
             ),
             SizedBox(height: 35.h),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Text(
-               AppStrings.symptomsNotes.tr(),
+                AppStrings.symptomsNotes.tr(),
                 style: AppTypography.semiBold22.copyWith(
                   color: AppColors.textPrimaryLight,
                 ),

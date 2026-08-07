@@ -6,11 +6,11 @@ import 'package:ilajak/core/theme/typography/app_typography.dart';
 class TimeItemWidget extends StatelessWidget {
   const TimeItemWidget({
     super.key,
-    this.time,
+    required this.time,
     required this.isSelected,
     required this.onTap,
   });
-  final String? time;
+  final String time;
   final bool isSelected;
   final VoidCallback onTap;
 
@@ -29,7 +29,7 @@ class TimeItemWidget extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            time ?? "09:00 AM",
+            time,
             style: AppTypography.semiBold16.copyWith(
               color: isSelected
                   ? AppColors.backgroundLight

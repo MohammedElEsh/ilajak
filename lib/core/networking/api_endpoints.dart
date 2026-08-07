@@ -8,8 +8,12 @@ class ApiEndpoints {
   static const String categories = '/categories';
   static const String products = '/products';
   static const String doctors = '/doctors';
-   static String singleDoctor(int id) {
+  static String singleDoctor(int id) {
     return '/doctors/$id';
   }
-   
+
+  static String availableTimeSlots(int doctorId, DateTime date) {
+    final formattedDate = '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+    return '/doctors/$doctorId/available-slots?date=$formattedDate';
+  }
 }

@@ -11,4 +11,9 @@ abstract class DoctorsRepo {
     String? search,
     String? specialization,
   });
+
+  Future<Either<Failure, List<String>>> getAvailableTimeSlots(
+    int doctorId,
+    DateTime date,
+  );
 }

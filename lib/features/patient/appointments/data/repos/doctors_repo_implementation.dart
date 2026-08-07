@@ -50,4 +50,25 @@ class DoctorsRepoImplementation implements DoctorsRepo {
       return left(ServerFailure(e.toString(), statusCode: 500));
     }
   }
+
+@override
+Future<Either<Failure, List<String>>> getAvailableTimeSlots(
+  int doctorId,
+  DateTime date,
+) async {
+  try {
+    final response = await apiConsumer.get(
+      ApiEndpoints.availableTimeSlots(doctorId, date),
+    );
+
+    final slotsList = response['available_slots'] ?? [];
+    final timeSlots = (slotsList as List)
+        .map((e) => e['start_time'] as String)
+        .toList();
+
+    return right(timeSlots);
+  } catch (e) {
+    return left(ServerFailure(e.toString(), statusCode: 500));
+  }
+}
 }

@@ -209,10 +209,6 @@ void initRouter() {
         ],
       ),
       GoRoute(
-        path: RouteNames.patientAppointmentsConfirm,
-        builder: (context, state) => const PatientAppointmentsConfirmView(),
-      ),
-      GoRoute(
         path: RouteNames.patientAppointmentsSuccess,
         builder: (context, state) => const PatientAppointmentsSuccessView(),
       ),

@@ -3,22 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
 
 class DoctorCardDescribtionWidget extends StatelessWidget {
   const DoctorCardDescribtionWidget({
     super.key,
-    this.doctorName,
-    this.specialization,
-    this.rating,
-    this.reviews,
-    this.experience,
+    required this.doctor,
     this.image,
   });
-  final String? doctorName;
-  final String? specialization;
-  final String? rating;
-  final String? reviews;
-  final String? experience;
+  final DoctorModel doctor;
+
   final String? image;
 
   @override
@@ -50,12 +44,12 @@ class DoctorCardDescribtionWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  doctorName ?? 'Dr. Elena Rodriguez',
+                  doctor.name,
                   style: AppTypography.semiBold18,
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  specialization ?? "Neurologist",
+                  doctor.specialization,
                   style: AppTypography.medium16.copyWith(
                     color: AppColors.labelColor,
                   ),
@@ -63,7 +57,7 @@ class DoctorCardDescribtionWidget extends StatelessWidget {
                 SizedBox(height: 4.h),
 
                 Text(
-                  experience ?? "12 Years Expreience",
+                  "${doctor.experience.toString()} Years Experience",
                   style: AppTypography.medium16.copyWith(
                     color: AppColors.labelColor,
                   ),
@@ -74,9 +68,12 @@ class DoctorCardDescribtionWidget extends StatelessWidget {
                   children: [
                     const Icon(Icons.star, color: Colors.amber, size: 18),
                     SizedBox(width: 4.w),
-                    Text(rating ?? "5.0", style: AppTypography.semiBold18),
                     Text(
-                      " (${reviews ?? "98 Reviews"})",
+                      doctor.averageRating.toString(),
+                      style: AppTypography.semiBold18,
+                    ),
+                    Text(
+                      " (${doctor.reviews.toString()})",
                       style: AppTypography.medium16.copyWith(
                         color: AppColors.labelColor,
                       ),
