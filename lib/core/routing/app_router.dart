@@ -26,7 +26,6 @@ import 'package:ilajak/features/patient/health/presentation/views/health_view.da
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/my_appointments_view.dart';
-import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_confirm_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_success.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_view.dart';
 import 'package:ilajak/features/patient/health/presentation/views/labs_view.dart';
