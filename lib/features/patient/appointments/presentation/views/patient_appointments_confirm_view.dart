@@ -2,10 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
-import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/shared/widgets/row_text_button_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
@@ -13,6 +11,7 @@ import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
 import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctor_available_time_slots_cubit.dart';
 import 'package:ilajak/features/patient/appointments/presentation/manager/states/doctor_available_time_slots_state.dart';
+import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_success.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/text_field_notes_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/time_item_widget.dart';
@@ -38,7 +37,7 @@ class _PatientAppointmentsConfirmViewState
 
   late DateTime selectedDate = now;
   int selectedIndexTime = 0;
-
+  String time = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +90,6 @@ class _PatientAppointmentsConfirmViewState
                     onTap: () {
                       setState(() {
                         selectedDate = date;
-                      
                       });
                     },
                     child: Padding(
@@ -140,7 +138,8 @@ class _PatientAppointmentsConfirmViewState
                   ScaffoldMessenger.of(
                     context,
                   ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
-                }
+                } 
+            
               },
               builder: (context, state) {
                 if (state is DoctorAvailableTimeSlotsLoading) {
@@ -182,6 +181,7 @@ class _PatientAppointmentsConfirmViewState
                           onTap: () {
                             setState(() {
                               selectedIndexTime = index;
+                              time = state.timeSlots[index];
                               print(state.timeSlots[index]);
                             });
                           },
@@ -251,7 +251,16 @@ class _PatientAppointmentsConfirmViewState
                     text: AppStrings.confirmBooking.tr(),
                     width: 180.w,
                     onTap: () {
-                      context.push(RouteNames.patientAppointmentsSuccess);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PatientAppointmentsSuccessView(
+                            doctor: widget.doctor,
+                            date: DateFormat('dd MMM, yyyy').format(selectedDate),
+                            time: time,
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ],

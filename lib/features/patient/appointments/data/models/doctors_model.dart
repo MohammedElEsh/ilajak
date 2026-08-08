@@ -5,6 +5,7 @@ class DoctorModel {
   final String specialization;
   final double consultationFee;
   final String? clinicName;
+    final String? clinicAddress;
   final double averageRating;
   final int reviews;
   final int experience;
@@ -18,6 +19,7 @@ class DoctorModel {
     required this.specialization,
     required this.consultationFee,
     this.clinicName,
+    this.clinicAddress,
     required this.averageRating,
     required this.reviews,
     required this.experience,
@@ -35,6 +37,9 @@ class DoctorModel {
           double.tryParse(json['consultation_fee'].toString()) ?? 0,
       clinicName: (json['clinics'] as List).isNotEmpty
           ? json['clinics'][0]['name']
+          : null,
+           clinicAddress: (json['clinics'] as List).isNotEmpty
+          ? json['clinics'][0]['address']
           : null,
       averageRating: double.tryParse(json['average_rating'].toString()) ?? 0,
       reviews: int.tryParse(json['total_ratings'].toString()) ?? 0,

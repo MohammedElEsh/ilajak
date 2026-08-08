@@ -9,12 +9,20 @@ import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/appointmentdeatailscard_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
 
 class PatientAppointmentsSuccessView extends StatelessWidget {
-  const PatientAppointmentsSuccessView({super.key});
-
+  const PatientAppointmentsSuccessView({
+    super.key,
+    required this.doctor,
+    required this.date,
+    required this.time,
+  });
+  final DoctorModel doctor;
+  final String date;
+  final String time;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,12 +93,13 @@ class PatientAppointmentsSuccessView extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
-              const AppointmentDetailsCard(
-                doctorName: "Dr. Sarah Johnson",
-                specialization: "Cardiology",
-                date: "Today, 2:30 PM",
-                time: "02:30 PM",
-                address: "123 Health St., Heartville, CA 90210",
+              AppointmentDetailsCard(
+                doctorName: doctor.name,
+                specialization: doctor.specialization,
+                date: date,
+                time: time,
+                clinicName: doctor.clinicName ?? "",
+                address: doctor.clinicAddress ?? "",
                 doctorImage: AppAssets.profileImage,
                 mapImage: AppAssets.mapImage,
               ),

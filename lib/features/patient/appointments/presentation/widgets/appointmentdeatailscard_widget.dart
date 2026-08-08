@@ -15,20 +15,20 @@ class AppointmentDetailsCard extends StatelessWidget {
     required this.specialization,
     required this.date,
     required this.time,
+    required this.clinicName,
     required this.address,
     required this.doctorImage,
     required this.mapImage,
-  
   });
 
   final String doctorName;
   final String specialization;
   final String date;
   final String time;
+  final String clinicName;
   final String address;
   final String doctorImage;
   final String mapImage;
-
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +78,8 @@ class AppointmentDetailsCard extends StatelessWidget {
                 ),
               ),
 
-               StatusWidget(
-                title:AppStrings.confirmed.tr(),
+              StatusWidget(
+                title: AppStrings.confirmed.tr(),
                 backgroundColor: AppColors.lightMint,
                 textColor: AppColors.primary,
               ),
@@ -120,11 +120,22 @@ class AppointmentDetailsCard extends StatelessWidget {
 
           SizedBox(height: 10.h),
 
-          Text(
-            address,
-            style: AppTypography.semiBold16.copyWith(
-              color: AppColors.backgroundDark,
-            ),
+          Row(
+            children: [
+              Text(
+                clinicName,
+                style: AppTypography.semiBold16.copyWith(
+                  color: AppColors.backgroundDark,
+                ),
+              ),
+              SizedBox(width: 3.w),
+              Text(
+                address,
+                style: AppTypography.semiBold16.copyWith(
+                  color: AppColors.backgroundDark,
+                ),
+              ),
+            ],
           ),
 
           SizedBox(height: 18.h),
