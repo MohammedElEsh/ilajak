@@ -28,7 +28,7 @@ class HealthViewBanner extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           Text(
-            AppStrings.monitorYourProgress.tr(),
+            AppStrings.monitorProgress.tr(),
             style: AppTypography.regular14.copyWith(
               color: AppColors.surfaceLight,
               height: 1.5,

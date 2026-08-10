@@ -52,6 +52,7 @@ class RouterGuard {
           RouteNames.signup,
           RouteNames.forgotPassword,
           RouteNames.verifyOtp,
+          RouteNames.resetPassword,
         };
       case AppStatus.authenticated:
         return const {
@@ -72,8 +73,8 @@ class RouterGuard {
           RouteNames.patientChangePassword,
           RouteNames.patientHealthInfo,
           RouteNames.patientEmergencyContacts,
-          // Patient health sub-routes
           RouteNames.patientLabResults,
+          RouteNames.patientRadiologyResults,
           // Prescriptions routes
           RouteNames.patientPrescriptions,
         };

@@ -28,6 +28,10 @@ class AuthVerifyOtpError extends AuthVerifyOtpState {
   List<Object?> get props => [message];
 }
 
+class AuthVerifyOtpResendLoading extends AuthVerifyOtpState {
+  const AuthVerifyOtpResendLoading();
+}
+
 class AuthVerifyOtpResendSuccess extends AuthVerifyOtpState {
   const AuthVerifyOtpResendSuccess();
 }
