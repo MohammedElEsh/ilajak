@@ -140,6 +140,22 @@ class AppStrings {
   static const String authVerifyOtpSuccess = 'auth.verify_otp.success';
   static const String authVerifyOtpIncomplete = 'auth.verify_otp.incomplete';
 
+  // Auth - Reset Password
+  static const String authResetPasswordTitle = 'auth.reset_password.title';
+  static const String authResetPasswordSubtitle =
+      'auth.reset_password.subtitle';
+  static const String authResetPasswordLabel = 'auth.reset_password.label';
+  static const String authResetPasswordHint = 'auth.reset_password.hint';
+  static const String authResetPasswordConfirmLabel =
+      'auth.reset_password.confirm_label';
+  static const String authResetPasswordConfirmHint =
+      'auth.reset_password.confirm_hint';
+  static const String authResetPasswordButton = 'auth.reset_password.button';
+  static const String authResetPasswordSuccess =
+      'auth.reset_password.success';
+  static const String authResetPasswordPasswordMismatch =
+      'auth.reset_password.password_mismatch';
+
   // Auth - Terms
   static const String authTermsAgree = 'auth.terms.agree';
   static const String authTermsTermsOfService = 'auth.terms.terms_of_service';
