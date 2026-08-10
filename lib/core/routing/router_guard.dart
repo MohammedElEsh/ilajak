@@ -19,21 +19,21 @@ class RouterGuard {
     final location = state.uri.path;
     final hasSelectedRole = _sessionManager.isRoleSelected;
 
-    LoggerService.d('🔍 [RouterGuard.redirect] status=$status, location=$location, '
+    LoggerService.d(' [RouterGuard.redirect] status=$status, location=$location, '
         'hasSelectedRole=$hasSelectedRole', tag: 'RouterGuard');
 
     if (location == _homeRouteFor(status)) {
-      LoggerService.d('✅ [RouterGuard.redirect] Location matches home route, allowing', tag: 'RouterGuard');
+      LoggerService.d(' [RouterGuard.redirect] Location matches home route, allowing', tag: 'RouterGuard');
       return null;
     }
 
     if (_siblingRoutesFor(status).contains(location)) {
-      LoggerService.d('✅ [RouterGuard.redirect] Location is in sibling routes, allowing', tag: 'RouterGuard');
+      LoggerService.d(' [RouterGuard.redirect] Location is in sibling routes, allowing', tag: 'RouterGuard');
       return null;
     }
 
     final targetRoute = _homeRouteFor(status);
-    LoggerService.d('❌ [RouterGuard.redirect] Redirecting to home route: $targetRoute', tag: 'RouterGuard');
+    LoggerService.d(' [RouterGuard.redirect] Redirecting to home route: $targetRoute', tag: 'RouterGuard');
     return targetRoute;
   }
 
