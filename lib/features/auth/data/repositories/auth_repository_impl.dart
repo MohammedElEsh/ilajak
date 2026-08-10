@@ -45,6 +45,10 @@ class AuthRepositoryImpl implements AuthRepository {
           ? UserModel.fromJson(response['user'] as Map<String, dynamic>)
           : null;
 
+      if (user != null) {
+        await _sessionManager.saveUserData(user);
+      }
+
       if (user?.role != null) {
         final role = UserRole.values.firstWhere(
           (r) => r.name == user!.role,
@@ -117,6 +121,9 @@ class AuthRepositoryImpl implements AuthRepository {
         throw ServerFailure(message ?? 'Registration failed');
       }
 
+      final userModel = UserModel.fromJson(response);
+      await _sessionManager.saveUserData(userModel);
+      return userModel;
       return UserModel.fromJson(userData);
     });
   }

@@ -6,11 +6,13 @@ import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/features/patient/profile/data/models/profile_model.dart';
 import 'package:ilajak/features/patient/profile/presentation/widgets/personal_info_form.dart';
 import 'package:ilajak/features/patient/profile/presentation/widgets/profile_image_avatar.dart';
 
 class PatientPersonalInfoView extends StatelessWidget {
-  const PatientPersonalInfoView({super.key});
+  const PatientPersonalInfoView({super.key, required this.profile});
+  final ProfileModel profile;
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +41,9 @@ class PatientPersonalInfoView extends StatelessWidget {
                 SizedBox(height: 36.h),
                 const ProfileImageAvatar(),
                 SizedBox(height: 16.h),
-                Text('Mohamed Ehab', style: AppTypography.semiBold22),
+                Text(profile.name, style: AppTypography.semiBold22),
                 SizedBox(height: 4.h),
-                Text('Member since Oct 2023', style: AppTypography.medium12),
+                Text(profile.email, style: AppTypography.medium12),
                 SizedBox(height: 64.h),
                 const PersonalInfoForm(),
               ],
@@ -52,4 +54,3 @@ class PatientPersonalInfoView extends StatelessWidget {
     );
   }
 }
-
