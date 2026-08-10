@@ -272,13 +272,6 @@ class AppStrings {
   static const String radiologyReviewText = 'radiology.review_text';
   static const String radiologyHintMsg = 'radiology.hint_msg';
 
-  static const String labResults = 'profile.Lab Results';
-  static const String monitorYourProgress =
-      'profile.Monitor your progress with clinical precision.';
-  static const String totalCholesterol = 'profile.TOTAL CHOLESTEROL';
-  static const String normalRange = 'profile.NORMAL RANGE';
-  static const String viewDetails = 'profile.View Details';
-
   // Prescriptions
   static const String prescriptionsTitle = 'prescriptions.title';
   static const String prescriptionsSubtitle = 'prescriptions.subtitle';

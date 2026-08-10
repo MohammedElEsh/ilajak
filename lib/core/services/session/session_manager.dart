@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:ilajak/core/errors/failures.dart';
 import 'package:ilajak/core/services/auth/token_refresher.dart';
@@ -274,7 +275,10 @@ class SessionManager extends ChangeNotifier {
   }
 
   Future<void> saveUserData(UserModel user) async {
-    LoggerService.i('saveUserData() — caching user data', tag: 'SessionManager');
+    LoggerService.i(
+      'saveUserData() — caching user data',
+      tag: 'SessionManager',
+    );
     await prefs.setString(_userDataKey, jsonEncode(user.toJson()));
   }
 
@@ -286,7 +290,11 @@ class SessionManager extends ChangeNotifier {
           jsonDecode(jsonString) as Map<String, dynamic>,
         );
       } catch (e) {
-        LoggerService.e('Failed to parse cached user data', error: e, tag: 'SessionManager');
+        LoggerService.e(
+          'Failed to parse cached user data',
+          error: e,
+          tag: 'SessionManager',
+        );
         return null;
       }
     }
@@ -294,7 +302,10 @@ class SessionManager extends ChangeNotifier {
   }
 
   Future<void> logout() async {
-    LoggerService.w('logout() — clearing tokens and user data', tag: 'SessionManager');
+    LoggerService.w(
+      'logout() — clearing tokens and user data',
+      tag: 'SessionManager',
+    );
     await tokenService.clearTokens();
     await prefs.remove(_userDataKey);
     _status = AppStatus.unauthenticated;

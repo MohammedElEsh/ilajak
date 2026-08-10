@@ -124,7 +124,6 @@ class AuthRepositoryImpl implements AuthRepository {
       final userModel = UserModel.fromJson(response);
       await _sessionManager.saveUserData(userModel);
       return userModel;
-      return UserModel.fromJson(userData);
     });
   }
 

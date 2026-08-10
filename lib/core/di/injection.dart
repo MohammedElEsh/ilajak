@@ -138,6 +138,7 @@ Future<void> initDependencies() async {
   );
   sl.registerFactory<ProfileCubit>(
     () => ProfileCubit(sl<ProfileRepo>()),
+  );
 
   sl.registerFactory<AuthRegisterCubit>(
     () => AuthRegisterCubit(sl<AuthRepository>()),
