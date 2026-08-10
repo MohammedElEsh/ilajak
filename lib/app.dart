@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'package:ilajak/core/constants/app_constants.dart';
 import 'package:ilajak/core/routing/app_router.dart';
 import 'package:ilajak/core/shared/wrappers/connectivity_wrapper.dart';

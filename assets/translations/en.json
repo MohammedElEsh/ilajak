@@ -23,6 +23,14 @@
       "subtitle3": "Keep track of your medications, set reminders, and order refills directly to your doorstep."
     }
   },
+  "role_selection": {
+    "title": "Choose Your Role",
+    "subtitle": "Are you a patient or a doctor?",
+    "patient": "Patient",
+    "patient_desc": "Find doctors, book appointments, manage prescriptions",
+    "doctor": "Doctor",
+    "doctor_desc": "Manage patients, publish articles, grow your practice"
+  },
   "validation": {
     "required": "This field is required",
     "field_required": "{} is required"
@@ -60,6 +68,9 @@
       "national_id": "National ID / Passport",
       "national_id_hint": "1234567890",
       "national_id_required": "National ID is required",
+      "medical_id": "Medical License Number",
+      "medical_id_hint": "e.g., 1234567890",
+      "medical_id_required": "Medical license number is required",
       "date_of_birth": "Date of Birth",
       "date_of_birth_hint": "mm/dd/yyyy",
       "date_of_birth_required": "Date of birth is required",
@@ -78,6 +89,7 @@
       "confirm_password_required": "Confirm password is required",
       "passwords_do_not_match": "Passwords do not match",
       "button": "Create Account",
+      "success": "Account created successfully. Please sign in.",
       "already_have_account": "I Already have an account?",
       "sign_in": "Sign In"
     },
@@ -101,12 +113,24 @@
       "success": "Email verified successfully.",
       "incomplete": "Please enter the complete 6-digit code."
     },
+    "reset_password": {
+      "title": "Set New Password",
+      "subtitle": "Enter a new password for your medical account.",
+      "label": "New Password",
+      "hint": "••••••••",
+      "confirm_label": "Confirm New Password",
+      "confirm_hint": "Re-enter your new password",
+      "button": "Save Password",
+      "success": "Password changed successfully. Please log in with your new password.",
+      "password_mismatch": "Passwords do not match."
+    },
     "terms": {
       "agree": "I agree to the ",
       "terms_of_service": "Terms of Service",
       "and": " and ",
       "privacy_policy": "Privacy Policy",
-      "medical_data": ", including medical data handling."
+      "medical_data": ", including medical data handling.",
+      "required": "Please accept the Terms of Service and Privacy Policy."
     }
   },
   "nav": {
@@ -188,5 +212,35 @@
     "review_text": "Review your recent scans and diagnostic reports from our partner clinics.",
     "hint_msg": "Your recent lab results for \"Full Blood Count\" are pending. You will receive a notification once they are ready."
 
+    "Status": "Status",
+    "Lab Results": "Lab Results",
+    "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",
+    "TOTAL CHOLESTEROL": "TOTAL CHOLESTEROL",
+    "NORMAL RANGE": "NORMAL RANGE",
+    "View Details": "View Details"
+  },
+  "prescriptions": {
+    "title": "My Prescriptions",
+    "subtitle": "Manage and refill your current medications.",
+    "filter_all": "All",
+    "filter_active": "Active",
+    "filter_completed": "Completed",
+    "filter_expiring_soon": "Expiring Soon",
+    "dosage": "Dosage",
+    "frequency": "Frequency",
+    "doctor": "Doctor",
+    "prescribed": "Prescribed",
+    "expires": "Expires",
+    "no_prescriptions": "No prescriptions found",
+    "no_prescriptions_subtitle": "You don't have any prescriptions matching this filter.",
+    "status_active": "Active",
+    "status_completed": "Completed",
+    "status_expiring_soon": "Expiring Soon",
+    "status_expired": "Expired",
+    "medicines": "Medicines",
+    "medicines_count": "{} Medicines",
+    "issue_date": "Issue Date",
+    "refill": "Refill",
+    "view": "View"
   }
 }

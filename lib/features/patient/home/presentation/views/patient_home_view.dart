@@ -84,7 +84,8 @@ class PatientHomeView extends StatelessWidget {
                         strokeWidth: 1.5,
                       ),
                       title: AppStrings.homePerciptions.tr(),
-                      onTap: () {},
+                      onTap: () =>
+                          context.push(RouteNames.patientPrescriptions),
                     ),
                     const Spacer(),
 
@@ -242,7 +243,7 @@ class PatientHomeView extends StatelessWidget {
                 ),
                 SizedBox(height: 16.h),
                 const HealthInsightCard(),
-                SizedBox(height: 24.h),
+                SizedBox(height: 96.h),
               ],
             ),
           ),

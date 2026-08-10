@@ -7,7 +7,7 @@ import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/health/presentation/widgets/app_icon_outlined_button.dart';
 import 'package:ilajak/features/patient/health/presentation/widgets/app_primary_action_button.dart';
-import 'package:ilajak/features/patient/health/presentation/widgets/lab_card_Info_widget.dart';
+import 'package:ilajak/features/patient/health/presentation/widgets/lab_card_info_widget.dart';
 
 class HealthCardWidget extends StatelessWidget {
   const HealthCardWidget({

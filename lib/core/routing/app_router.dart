@@ -6,13 +6,17 @@ import 'package:ilajak/core/routing/router_guard.dart';
 import 'package:ilajak/core/routing/router_shell.dart';
 import 'package:ilajak/core/services/session/session_manager.dart';
 import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
+import 'package:ilajak/features/auth/data/repositories/auth_repository.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_forgot_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_login_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_register_cubit.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_reset_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_verify_otp_cubit.dart';
 import 'package:ilajak/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:ilajak/features/auth/presentation/views/login_view.dart';
+import 'package:ilajak/features/auth/presentation/views/reset_password_view.dart';
 import 'package:ilajak/features/auth/presentation/views/signup_view.dart';
+import 'package:ilajak/features/auth/presentation/views/role_selection_view.dart';
 import 'package:ilajak/features/auth/presentation/views/verify_otp_view.dart';
 import 'package:ilajak/features/doctor/articles/presentation/views/doctor_articles_view.dart';
 import 'package:ilajak/features/doctor/home/presentation/views/doctor_home_view.dart';
@@ -26,6 +30,8 @@ import 'package:ilajak/features/patient/appointments/presentation/views/patient_
 import 'package:ilajak/features/patient/health/presentation/views/labs_view.dart';
 import 'package:ilajak/features/patient/home/presentation/views/patient_home_view.dart';
 import 'package:ilajak/features/patient/notifications/presentation/views/patient_notifications_view.dart';
+import 'package:ilajak/features/patient/prescriptions/presentation/manager/prescription_cubit.dart';
+import 'package:ilajak/features/patient/prescriptions/presentation/views/patient_prescriptions_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_change_password_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_health_info_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_personal_info_view.dart';
@@ -71,23 +77,35 @@ void initRouter() {
         builder: (context, state) => const LabResultsView(),
       ),
       GoRoute(
+        path: RouteNames.patientPrescriptions,
+        builder: (context, state) => BlocProvider(
+          create: (_) => PrescriptionCubit(),
+          child: const PatientPrescriptionsView(),
+        ),
+      ),
+
+      GoRoute(
         path: RouteNames.login,
         builder: (context, state) => BlocProvider(
-          create: (_) => AuthLoginCubit(),
+          create: (_) => sl<AuthLoginCubit>(),
           child: const LoginView(),
         ),
       ),
       GoRoute(
+        path: RouteNames.roleSelection,
+        builder: (context, state) => const RoleSelectionView(),
+      ),
+      GoRoute(
         path: RouteNames.signup,
         builder: (context, state) => BlocProvider(
-          create: (_) => AuthRegisterCubit(),
+          create: (_) => sl<AuthRegisterCubit>(),
           child: const SignupView(),
         ),
       ),
       GoRoute(
         path: RouteNames.forgotPassword,
         builder: (context, state) => BlocProvider(
-          create: (_) => AuthForgotPasswordCubit(),
+          create: (_) => AuthForgotPasswordCubit(sl<AuthRepository>()),
           child: const ForgotPasswordView(),
         ),
       ),
@@ -96,8 +114,20 @@ void initRouter() {
         builder: (context, state) {
           final email = state.extra as String? ?? '';
           return BlocProvider(
-            create: (_) => AuthVerifyOtpCubit(),
+            create: (_) => AuthVerifyOtpCubit(sl<AuthRepository>()),
             child: VerifyOtpView(email: email),
+          );
+        },
+      ),
+      GoRoute(
+        path: RouteNames.resetPassword,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>? ?? {};
+          final email = extra['email'] as String? ?? '';
+          final otp = extra['otp'] as String? ?? '';
+          return BlocProvider(
+            create: (_) => AuthResetPasswordCubit(sl<AuthRepository>()),
+            child: ResetPasswordView(email: email, otp: otp),
           );
         },
       ),
