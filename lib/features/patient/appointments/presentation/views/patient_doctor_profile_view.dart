@@ -11,7 +11,6 @@ import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctors_details_cubit.dart';
 import 'package:ilajak/features/patient/appointments/presentation/manager/states/doctors_details_state.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/doctor_info_card_widget.dart';
-import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/info_box_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/icon_list_tile_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/clinic_card_widget.dart';
@@ -71,49 +70,6 @@ class _PatientDoctorProfileViewState extends State<PatientDoctorProfileView> {
                   radius: 20.r,
                   backgroundImage: const AssetImage(AppAssets.profileImage),
                 ),
-              ),
-            ),
-            bottomNavigationBar: Container(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, -5),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation",
-                        style: AppTypography.regular12.copyWith(
-                          color: AppColors.fieldLabel,
-                        ),
-                      ),
-                      Text(
-                        "\$ ${state.doctorDetails.consultationFee}",
-                        style: AppTypography.bold20.copyWith(
-                          color: AppColors.primary,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 24.w),
-                  Expanded(
-                    child: ElevatedButtonBookingWidget(
-                      text: 'Book Appointment',
-                      onTap: () {},
-                    ),
-                  ),
-                ],
               ),
             ),
             body: SingleChildScrollView(
@@ -244,6 +200,7 @@ class _PatientDoctorProfileViewState extends State<PatientDoctorProfileView> {
                             ],
                           ),
                         ),
+                        SizedBox(height: 50.h),
                       ],
                     ),
                   ),

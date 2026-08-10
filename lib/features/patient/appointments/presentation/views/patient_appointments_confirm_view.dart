@@ -42,128 +42,171 @@ class _PatientAppointmentsConfirmViewState
   String time = "";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppTopBar(
-        title: AppStrings.homeAppBarTitle.tr(),
-        leadingWidget: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back, color: AppColors.primary),
-        ),
-        actionWidget: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: CircleAvatar(
-            radius: 20.r,
-            backgroundImage: const AssetImage(AppAssets.profileImage),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 130.0),
+      child: Scaffold(
+        appBar: AppTopBar(
+          title: AppStrings.homeAppBarTitle.tr(),
+          leadingWidget: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(Icons.arrow_back, color: AppColors.primary),
+          ),
+          actionWidget: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18),
+            child: CircleAvatar(
+              radius: 20.r,
+              backgroundImage: const AssetImage(AppAssets.profileImage),
+            ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 23),
-              child: DoctorCardDescribtionWidget(doctor: widget.doctor),
-            ),
-
-            SizedBox(height: 8.h),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: RowTextButtonWidget(
-                title: AppStrings.selectDate.tr(),
-                buttonText: DateFormat('MMMM yyyy').format(now),
-                onTap: () {},
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                  vertical: 23,
+                ),
+                child: DoctorCardDescribtionWidget(doctor: widget.doctor),
               ),
-            ),
 
-            SizedBox(height: 16.h),
+              SizedBox(height: 8.h),
 
-            SizedBox(
-              height: 80.h,
-              child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 18.w),
-                scrollDirection: Axis.horizontal,
-                itemCount: daysCount,
-                itemBuilder: (context, index) {
-                  final date = now.add(Duration(days: index));
-
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedDate = date;
-                        selectedIndexTime = -1;
-                        time = "";
-                      });
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 12.w),
-                      child: DateItem(
-                        date: date,
-                        onTap: () {
-                          setState(() {
-                            selectedDate = date;
-                            selectedIndexTime = -1;
-                            time = "";
-                            context
-                                .read<DoctorAvailableTimeSlotsCubit>()
-                                .getAvailableTimeSlots(
-                                  widget.doctor.id,
-                                  selectedDate!,
-                                );
-                            print(selectedDate);
-                          });
-                        },
-                        isSelected:
-                            selectedDate?.year == date.year &&
-                            selectedDate?.month == date.month &&
-                            selectedDate?.day == date.day,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 40.h),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Text(
-                AppStrings.availableTime.tr(),
-                style: AppTypography.semiBold22.copyWith(
-                  color: AppColors.textPrimaryLight,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: RowTextButtonWidget(
+                  title: AppStrings.selectDate.tr(),
+                  buttonText: DateFormat('MMMM yyyy').format(now),
+                  onTap: () {},
                 ),
               ),
-            ),
-            SizedBox(height: 16.h),
-            BlocConsumer<
-              DoctorAvailableTimeSlotsCubit,
-              DoctorAvailableTimeSlotsState
-            >(
-              listener: (context, state) {
-                if (state is DoctorAvailableTimeSlotsError) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
-                }
-              },
-              builder: (context, state) {
-                if (state is DoctorAvailableTimeSlotsLoading) {
-                  return const SizedBox(
-                    height: 200,
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                }
 
-                if (state is DoctorAvailableTimeSlotsError) {
-                  return Center(child: Text(state.errorMessage));
-                }
-                if (state is DoctorAvailableTimeSlotsLoaded) {
-                  if (state.timeSlots.isEmpty) {
+              SizedBox(height: 16.h),
+
+              SizedBox(
+                height: 80.h,
+                child: ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: daysCount,
+                  itemBuilder: (context, index) {
+                    final date = now.add(Duration(days: index));
+
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedDate = date;
+                          selectedIndexTime = -1;
+                          time = "";
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 12.w),
+                        child: DateItem(
+                          date: date,
+                          onTap: () {
+                            setState(() {
+                              selectedDate = date;
+                              selectedIndexTime = -1;
+                              time = "";
+                              context
+                                  .read<DoctorAvailableTimeSlotsCubit>()
+                                  .getAvailableTimeSlots(
+                                    widget.doctor.id,
+                                    selectedDate!,
+                                  );
+                            
+                            });
+                          },
+                          isSelected:
+                              selectedDate?.year == date.year &&
+                              selectedDate?.month == date.month &&
+                              selectedDate?.day == date.day,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 40.h),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Text(
+                  AppStrings.availableTime.tr(),
+                  style: AppTypography.semiBold22.copyWith(
+                    color: AppColors.textPrimaryLight,
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.h),
+              BlocConsumer<
+                DoctorAvailableTimeSlotsCubit,
+                DoctorAvailableTimeSlotsState
+              >(
+                listener: (context, state) {
+                  if (state is DoctorAvailableTimeSlotsError) {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+                  }
+                },
+                builder: (context, state) {
+                  if (state is DoctorAvailableTimeSlotsLoading) {
+                    return const SizedBox(
+                      height: 200,
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+
+                  if (state is DoctorAvailableTimeSlotsError) {
+                    return Center(child: Text(state.errorMessage));
+                  }
+                  if (state is DoctorAvailableTimeSlotsLoaded) {
+                    if (state.timeSlots.isEmpty) {
+                      return Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 15.h),
+                          child: Text(
+                            'Doctor does not work on this day.',
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    return SizedBox(
+                      height: 50.h,
+                      child: ListView.builder(
+                        padding: EdgeInsets.symmetric(horizontal: 18.w),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.timeSlots.length,
+                        itemBuilder: (context, index) {
+                          return TimeItemWidget(
+                            isSelected: selectedIndexTime == index,
+                            time: state.timeSlots[index],
+                            onTap: () {
+                              setState(() {
+                                selectedIndexTime = index;
+                                time = state.timeSlots[index];
+                            
+                              });
+                            },
+                          );
+                        },
+                      ),
+                    );
+                  } else {
                     return Center(
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 15.h),
                         child: Text(
-                          'Doctor does not work on this day.',
+                          selectedDate == null
+                              ? 'Please select a date'
+                              : 'Doctor does not work on this day.',
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
@@ -173,150 +216,119 @@ class _PatientAppointmentsConfirmViewState
                       ),
                     );
                   }
-                  return SizedBox(
-                    height: 50.h,
-                    child: ListView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 18.w),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: state.timeSlots.length,
-                      itemBuilder: (context, index) {
-                        return TimeItemWidget(
-                          isSelected: selectedIndexTime == index,
-                          time: state.timeSlots[index],
+                },
+              ),
+              SizedBox(height: 35.h),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Text(
+                  AppStrings.symptomsNotes.tr(),
+                  style: AppTypography.semiBold22.copyWith(
+                    color: AppColors.textPrimaryLight,
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.h),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 18),
+                child: TextFieldNotesWidget(),
+              ),
+              SizedBox(height: 30.h),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.totalPayment.tr(),
+                          style: AppTypography.regular13.copyWith(
+                            color: AppColors.darkMint,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '\$45.00',
+                          style: AppTypography.semiBold22.copyWith(
+                            color: AppColors.backgroundDark,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    BlocConsumer<BookAppointmentCubit, BookAppointmentState>(
+                      listener: (context, state) {
+                        if (state is BookAppointmentError) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.message)),
+                          );
+                        } else if (state is BookAppointmentSuccess) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  PatientAppointmentsSuccessView(
+                                    doctor: widget.doctor,
+                                    date: DateFormat(
+                                      'dd MMM, yyyy',
+                                    ).format(selectedDate!),
+                                    time: time,
+                                  ),
+                            ),
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is BookAppointmentLoading) {
+                          return SizedBox(
+                            width: 180.w,
+                            child: const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        }
+                        return ElevatedButtonBookingWidget(
+                          text: AppStrings.confirmBooking.tr(),
+                          width: 180.w,
                           onTap: () {
-                            setState(() {
-                              selectedIndexTime = index;
-                              time = state.timeSlots[index];
-                              print(state.timeSlots[index]);
-                            });
+                            if (selectedDate == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please select a date'),
+                                ),
+                              );
+                              return;
+                            }
+                            if (time.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please select a time slot'),
+                                ),
+                              );
+                              return;
+                            }
+                            context
+                                .read<BookAppointmentCubit>()
+                                .bookAppointment(
+                                  doctorId: widget.doctor.id,
+                                  clinicId: widget.doctor.clinicId,
+                                  date: DateFormat(
+                                    'yyyy-MM-dd',
+                                  ).format(selectedDate!),
+                                  slotTime: time,
+                                );
                           },
                         );
                       },
                     ),
-                  );
-                } else {
-                  return Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15.h),
-                      child: Text(
-                        selectedDate == null ? 'Please select a date' : 'Doctor does not work on this day.',
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  );
-                }
-              },
-            ),
-            SizedBox(height: 35.h),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Text(
-                AppStrings.symptomsNotes.tr(),
-                style: AppTypography.semiBold22.copyWith(
-                  color: AppColors.textPrimaryLight,
+                  ],
                 ),
               ),
-            ),
-            SizedBox(height: 16.h),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18),
-              child: TextFieldNotesWidget(),
-            ),
-            SizedBox(height: 30.h),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Row(
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.totalPayment.tr(),
-                        style: AppTypography.regular13.copyWith(
-                          color: AppColors.darkMint,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        '\$45.00',
-                        style: AppTypography.semiBold22.copyWith(
-                          color: AppColors.backgroundDark,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  BlocConsumer<BookAppointmentCubit, BookAppointmentState>(
-                    listener: (context, state) {
-                      if (state is BookAppointmentError) {
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(SnackBar(content: Text(state.message)));
-                      } else if (state is BookAppointmentSuccess) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                PatientAppointmentsSuccessView(
-                                  doctor: widget.doctor,
-                                  date: DateFormat(
-                                    'dd MMM, yyyy',
-                                  ).format(selectedDate!),
-                                  time: time,
-                                ),
-                          ),
-                        );
-                      }
-                    },
-                    builder: (context, state) {
-                      if (state is BookAppointmentLoading) {
-                        return SizedBox(
-                          width: 180.w,
-                          child: const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        );
-                      }
-                      return ElevatedButtonBookingWidget(
-                        text: AppStrings.confirmBooking.tr(),
-                        width: 180.w,
-                        onTap: () {
-                          if (selectedDate == null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Please select a date'),
-                              ),
-                            );
-                            return;
-                          }
-                          if (time.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Please select a time slot'),
-                              ),
-                            );
-                            return;
-                          }
-                          context.read<BookAppointmentCubit>().bookAppointment(
-                            doctorId: widget.doctor.id,
-                            clinicId: widget.doctor.clinicId,
-                            date: DateFormat('yyyy-MM-dd').format(selectedDate!),
-                            slotTime: time,
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

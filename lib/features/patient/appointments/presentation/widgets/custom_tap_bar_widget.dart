@@ -29,7 +29,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          double tabWidth = (constraints.maxWidth - 8) / _tabs.length;
+          final double tabWidth = (constraints.maxWidth - 8) / _tabs.length;
 
           return Stack(
             children: [
