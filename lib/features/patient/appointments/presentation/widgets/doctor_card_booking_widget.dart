@@ -10,6 +10,7 @@ import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
 import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo.dart';
 import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctor_available_time_slots_cubit.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/book_appointment_cubit.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_confirm_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/info_box_widget.dart';
@@ -17,26 +18,11 @@ import 'package:ilajak/features/patient/appointments/presentation/widgets/info_b
 class DoctorCardWidget extends StatelessWidget {
   const DoctorCardWidget({
     super.key,
-    this.doctorName,
     this.doctor,
-    this.specialization,
-    this.rating,
-    this.reviews,
-    this.experience,
-    this.patients,
-    this.availability,
-    this.image,
     this.onTap,
   });
-  final String? doctorName;
   final DoctorModel? doctor;
-  final String? specialization;
-  final String? rating;
-  final String? reviews;
-  final String? experience;
-  final String? patients;
-  final String? availability;
-  final String? image;
+  
   final VoidCallback? onTap;
 
   @override
@@ -140,10 +126,19 @@ class DoctorCardWidget extends StatelessWidget {
                  Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => BlocProvider(
-                                    create: (context) => DoctorAvailableTimeSlotsCubit(
-                                      doctorsRepo: sl<DoctorsRepo>(),
-                                    ),
+                                  builder: (context) => MultiBlocProvider(
+                                    providers: [
+                                      BlocProvider(
+                                        create: (context) => DoctorAvailableTimeSlotsCubit(
+                                          doctorsRepo: sl<DoctorsRepo>(),
+                                        ),
+                                      ),
+                                      BlocProvider(
+                                        create: (context) => BookAppointmentCubit(
+                                          sl<DoctorsRepo>(),
+                                        ),
+                                      ),
+                                    ],
                                     child: PatientAppointmentsConfirmView(
                                      doctor: doctor!,
                                     ),

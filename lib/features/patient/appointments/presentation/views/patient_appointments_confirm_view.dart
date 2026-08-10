@@ -9,8 +9,10 @@ import 'package:ilajak/core/shared/widgets/row_text_button_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/appointments/data/models/doctors_model.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/book_appointment_cubit.dart';
 import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctor_available_time_slots_cubit.dart';
 import 'package:ilajak/features/patient/appointments/presentation/manager/states/doctor_available_time_slots_state.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/states/book_appointment_state.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_success.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/elevated_button_booking_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/text_field_notes_widget.dart';
@@ -138,8 +140,7 @@ class _PatientAppointmentsConfirmViewState
                   ScaffoldMessenger.of(
                     context,
                   ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
-                } 
-            
+                }
               },
               builder: (context, state) {
                 if (state is DoctorAvailableTimeSlotsLoading) {
@@ -247,19 +248,60 @@ class _PatientAppointmentsConfirmViewState
                     ],
                   ),
                   const Spacer(),
-                  ElevatedButtonBookingWidget(
-                    text: AppStrings.confirmBooking.tr(),
-                    width: 180.w,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PatientAppointmentsSuccessView(
-                            doctor: widget.doctor,
-                            date: DateFormat('dd MMM, yyyy').format(selectedDate),
-                            time: time,
+                  BlocConsumer<BookAppointmentCubit, BookAppointmentState>(
+                    listener: (context, state) {
+                      if (state is BookAppointmentError) {
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text(state.message)));
+                      } else if (state is BookAppointmentSuccess) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                PatientAppointmentsSuccessView(
+                                  doctor: widget.doctor,
+                                  date: DateFormat(
+                                    'dd MMM, yyyy',
+                                  ).format(selectedDate),
+                                  time: time,
+                                ),
                           ),
-                        ),
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is BookAppointmentLoading) {
+                        return SizedBox(
+                          width: 180.w,
+                          child: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
+                      }
+                      return ElevatedButtonBookingWidget(
+                        text: AppStrings.confirmBooking.tr(),
+                        width: 180.w,
+                        onTap: () {
+                          if (time.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Please select a time slot'),
+                              ),
+                            );
+                            return;
+                          }
+                          context
+                              .read<BookAppointmentCubit>()
+                              .bookAppointment(
+                                doctorId: widget.doctor.id,
+                                clinicId: widget.doctor.clinicId,
+                                date: DateFormat(
+                                  'yyyy-MM-dd',
+                                ).format(selectedDate),
+                                slotTime: time,
+                              );
+                        },
                       );
                     },
                   ),

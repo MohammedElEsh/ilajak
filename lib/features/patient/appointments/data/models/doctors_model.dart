@@ -4,6 +4,7 @@ class DoctorModel {
   final String? avatar;
   final String specialization;
   final double consultationFee;
+   final int clinicId;
   final String? clinicName;
     final String? clinicAddress;
   final double averageRating;
@@ -14,6 +15,7 @@ class DoctorModel {
 
   DoctorModel({
     required this.id,
+    required this.clinicId,
     required this.name,
     this.avatar,
     required this.specialization,
@@ -29,23 +31,26 @@ class DoctorModel {
 
   factory DoctorModel.fromJson(Map<String, dynamic> json) {
     return DoctorModel(
-      id: json['id'],
-      name: json['user']['name'],
-      avatar: json['user']['avatar'],
-      specialization: json['specialization'],
+      id: json['id'] ?? 0,
+      name: json['user']?['name'] ?? '',
+      avatar: json['user']?['avatar'],
+      specialization: json['specialization'] ?? '',
       consultationFee:
-          double.tryParse(json['consultation_fee'].toString()) ?? 0,
-      clinicName: (json['clinics'] as List).isNotEmpty
+          double.tryParse(json['consultation_fee']?.toString() ?? '') ?? 0,
+      clinicName: (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
           ? json['clinics'][0]['name']
           : null,
-           clinicAddress: (json['clinics'] as List).isNotEmpty
+      clinicAddress: (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
           ? json['clinics'][0]['address']
           : null,
-      averageRating: double.tryParse(json['average_rating'].toString()) ?? 0,
-      reviews: int.tryParse(json['total_ratings'].toString()) ?? 0,
-      experience: int.tryParse(json['experience'].toString()) ?? 0,
-      totalPatients: int.tryParse(json['total_patients'].toString()) ?? 0,
-      availability: json['availability'].toString(),
+      clinicId: (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
+          ? json['clinics'][0]['id'] ?? 0
+          : 0,
+      averageRating: double.tryParse(json['average_rating']?.toString() ?? '') ?? 0,
+      reviews: int.tryParse(json['total_ratings']?.toString() ?? '') ?? 0,
+      experience: int.tryParse(json['experience']?.toString() ?? '') ?? 0,
+      totalPatients: int.tryParse(json['total_patients']?.toString() ?? '') ?? 0,
+      availability: json['availability']?.toString() ?? '',
     );
   }
 }
