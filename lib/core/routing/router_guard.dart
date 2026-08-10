@@ -15,7 +15,7 @@ class RouterGuard {
 
   String? redirect(BuildContext _, GoRouterState state) {
     final status = _sessionManager.status;
-    final location = state.uri.path;
+    final location = state.uri.path;     
 
     if (location == _homeRouteFor(status)) return null;
 
@@ -70,10 +70,15 @@ class RouterGuard {
           RouteNames.patientChangePassword,
           RouteNames.patientHealthInfo,
           RouteNames.patientEmergencyContacts,
+          // Patient appointment & sub-routes
+          RouteNames.patientAppointmentsConfirm,
+          RouteNames.patientAppointmentsSuccess,
+          RouteNames.patientMyAppointments,
           RouteNames.patientLabResults,
           RouteNames.patientRadiologyResults,
           // Prescriptions routes
           RouteNames.patientPrescriptions,
+          RouteNames.patientDoctorProfile,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:

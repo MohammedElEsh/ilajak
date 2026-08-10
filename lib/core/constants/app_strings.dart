@@ -36,6 +36,34 @@ class AppStrings {
   static const String homeUpcomingAppointment = 'home.UpcomingAppointment';
   static const String homeHealthInsight = 'home.HealthInsight';
   static const String homeHealthInsightSubtitle = 'home.HealthInsightSubtitle';
+  //Booking
+  static const String searchDoctorsSymptoms = 'booking.search_hint';
+  static const String recommendedDoctors = 'booking.Recommended Doctors';
+  static const String bookAppointment = 'booking.Book Appointment';
+  static const String myAppointments = 'booking.My Appointments';
+  static const String manageAppointments =
+      'booking.Manage your upcoming and past medical visits';
+  static const String upcoming = 'booking.Upcoming';
+  static const String selectDate = 'booking.Select Date';
+  static const String confirmBooking = 'booking.Confirm Booking';
+  static const String availableTime = 'booking.Available Time';
+  static const String symptomsNotes = 'booking.Symptoms/Notes (Optional)';
+  static const String describeSymptoms = 'booking.Describe Symptoms';
+  static const String totalPayment = 'booking.Total Payment';
+  static const String appointmentConfirmed = 'booking.Appointment Confirmed!';
+  static const String appointmentConfirmedSubtitle =
+      'booking.appointment_confirmed_subtitle';
+  static const String doctor = 'booking.DOCTOR';
+  static const String confirmed = 'booking.Confirmed';
+  static const String reschedule = 'booking.Reschedule';
+  static const String cancel = 'booking.Cancel';
+  static const String date = 'booking.DATE';
+  static const String time = 'booking.TIME';
+  static const String clinicAddress = 'booking.CLINIC ADDRESS';
+  static const String viewMyAppointments = 'booking.View My Appointments';
+  static const String backToHome = 'booking.Back to Home';
+  static const String completed = 'booking.Completed';
+  static const String cancelled = 'booking.Cancelled';
 
   // Auth - General
   static const String authOrContinueWith = 'auth.or_continue_with';

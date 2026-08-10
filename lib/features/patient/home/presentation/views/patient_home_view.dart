@@ -7,12 +7,12 @@ import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
+import 'package:ilajak/core/shared/widgets/row_text_button_widget.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/category_widget.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/conditions_report_widget.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/health_insight_card.dart';
-import 'package:ilajak/features/patient/home/presentation/widgets/row_text_button_widget.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/status_widget.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/time_line_card_widget.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/time_line_indicator_widget.dart';
@@ -24,7 +24,7 @@ class PatientHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w),
+      padding: EdgeInsets.only(left: 18.w, right: 18.w, bottom: 60.h),
       child: Scaffold(
         appBar: AppTopBar(
           leadingWidget: CircleAvatar(
@@ -100,7 +100,6 @@ class PatientHomeView extends StatelessWidget {
                       onTap: () {},
                     ),
                     const Spacer(),
-
                     CategoryWidget(
                       icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedXRay,
@@ -114,7 +113,6 @@ class PatientHomeView extends StatelessWidget {
                       },
                     ),
                     const Spacer(),
-
                     CategoryWidget(
                       icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedCalendar02,

@@ -1,6 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo.dart';
+import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo_implementation.dart';
 import 'package:ilajak/features/patient/profile/data/repos/profile_repo.dart';
 import 'package:ilajak/features/patient/profile/data/repos/profile_repo_impl.dart';
 import 'package:ilajak/features/patient/profile/presentation/manager/cubit/profile_cubit.dart';
@@ -91,7 +93,9 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton<ApiConsumer>(
     () => sl<DioConsumer>(),
   );
-
+  sl.registerLazySingleton<DoctorsRepo>(
+    () => DoctorsRepoImplementation(sl<ApiConsumer>()),
+  );
   // =====================================================
   // 6. CORE SERVICES
   // =====================================================
