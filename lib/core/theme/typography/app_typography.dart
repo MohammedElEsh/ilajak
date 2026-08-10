@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 
 abstract class AppTypography {
@@ -11,7 +12,7 @@ abstract class AppTypography {
     Color? color,
   }) {
     return GoogleFonts.almarai(
-      fontSize: fontSize,
+      fontSize: fontSize.sp,
       fontWeight: fontWeight,
       height: height,
       letterSpacing: letterSpacing,
@@ -25,8 +26,14 @@ abstract class AppTypography {
   static TextStyle get bold28 =>
       _base(fontSize: 28, fontWeight: FontWeight.w700);
 
+  static TextStyle get bold24 =>
+      _base(fontSize: 24, fontWeight: FontWeight.w700);
+
   static TextStyle get extraBold24 =>
       _base(fontSize: 24, fontWeight: FontWeight.w800);
+
+  static TextStyle get semiBold24 =>
+      _base(fontSize: 24, fontWeight: FontWeight.w600);
 
   static TextStyle get semiBold22 =>
       _base(fontSize: 22, fontWeight: FontWeight.w600);
@@ -43,6 +50,9 @@ abstract class AppTypography {
   static TextStyle get semiBold14 =>
       _base(fontSize: 14, fontWeight: FontWeight.w600);
 
+  static TextStyle get semiBold13 =>
+      _base(fontSize: 13, fontWeight: FontWeight.w600);
+
   static TextStyle get regular14 => _base(
     fontSize: 14,
     fontWeight: FontWeight.w500,
@@ -54,6 +64,9 @@ abstract class AppTypography {
     fontWeight: FontWeight.w400,
     color: AppColors.primary,
   );
+
+  static TextStyle get regular13 =>
+      _base(fontSize: 13, fontWeight: FontWeight.w500);
 
   static TextStyle get regular12 =>
       _base(fontSize: 12, fontWeight: FontWeight.w400);
@@ -86,7 +99,4 @@ abstract class AppTypography {
     fontWeight: FontWeight.w700,
     color: AppColors.error,
   );
-
-  static TextStyle get regular13 =>
-      _base(fontSize: 12, fontWeight: FontWeight.w500);
 }

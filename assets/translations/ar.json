@@ -37,6 +37,7 @@
   },
   "auth": {
     "or_continue_with": "أو",
+    "change_role": "تغيير الدور",
     "login": {
       "title": "تسجيل الدخول",
       "subtitle": "أدخل بريدك الإلكتروني وكلمة المرور",
@@ -115,6 +116,25 @@
       "and": " و",
       "privacy_policy": "سياسة الخصوصية",
       "medical_data": "، بما في ذلك التعامل مع البيانات الطبية."
+    },
+    "doctor_signup": {
+      "title": "إنشاء حساب",
+      "subtitle": "انضم إلى شبكتنا من متخصصي الرعاية الصحية لإدارة عيادتك بدقة واحترافية.",
+      "full_name": "الاسم الكامل",
+      "full_name_hint": "د. فاطمة أحمد",
+      "medical_id": "رقم الهوية الطبية / NPI",
+      "medical_id_hint": "1234567890",
+      "medical_id_required": "رقم الهوية الطبية مطلوب",
+      "work_email": "البريد الإلكتروني الرسمي",
+      "work_email_hint": "fatima.ahmed@clinic.com",
+      "password": "كلمة المرور",
+      "password_hint": "••••••••••••",
+      "confirm_password": "تأكيد كلمة المرور",
+      "confirm_password_hint": "••••••••••••",
+      "create_account_button": "إنشاء حساب",
+      "already_have_profile": "عندك حساب بالفعل؟ ",
+      "log_in": "تسجيل الدخول",
+      "help": "مساعدة"
     }
   },
   "nav": {
@@ -184,7 +204,12 @@
     "Logout Hint": "سوف تحتاج إلى إدخال بيانات الاعتماد الخاصة بك للوصول إلى سجلاتك الصحية ومواعيدك مرة أخرى",
     "Stay Logged In": "البقاء مسجلا",
     "Blood Type": "فصيلة الدم",
-    "Status": "الحالة"
+    "Status": "الحالة",
+    "Lab Results": "نتائج التحاليل",
+    "Monitor your progress with clinical precision.": "راقب تقدمك بدقة علمية",
+    "TOTAL CHOLESTEROL": "إجمالي الكوليسترول",
+    "NORMAL RANGE": "نطاق طبيعي",
+    "View Details": "عرض التفاصيل"
   },
   "doctor": {
     "home": {
@@ -259,6 +284,47 @@
       "filter_prescriptions": "الروشتات",
       "patient_id_prefix": "رقم المريض: "
     },
+    "missing_patient_context": "محتاجين نفتح الملف ده من الموعد مباشرة عشان نقدر نعرض بيانات المريض بأمان.",
+    "medical_records": {
+      "title": "السجلات الطبية",
+      "empty": "لا توجد سجلات طبية لهذا المريض حتى الآن.",
+      "chronic_diseases": "الأمراض المزمنة",
+      "allergies": "الحساسية",
+      "lab_results": "نتائج المعمل",
+      "radiology_results": "نتائج الأشعة",
+      "attachments": "المرفقات"
+    },
+    "create_medical_record": {
+      "title": "إضافة سجل طبي",
+      "success": "تم إضافة السجل الطبي بنجاح",
+      "chronic_hint": "مثال: ضغط دم مرتفع بسيط",
+      "allergies_hint": "مثال: حساسية من البنسلين",
+      "attachments_hint": "أضف أسماء الملفات المرفقة (لا يوجد رفع ملفات فعلي حاليًا)",
+      "attachment_hint": "اسم الملف",
+      "field_name_hint": "اسم القيمة (مثال: ضغط الدم)",
+      "field_value_hint": "القيمة (مثال: 130/85)",
+      "save": "حفظ السجل"
+    },
+    "prescriptions": {
+      "section_title": "الروشتات",
+      "empty": "لا توجد روشتات لهذا المريض حتى الآن."
+    },
+    "create_prescription": {
+      "title": "إضافة روشتة",
+      "success": "تم إضافة الروشتة بنجاح",
+      "appointment": "الموعد",
+      "medication": "اسم الدواء",
+      "medication_hint": "مثال: Concor 5mg",
+      "dosage": "الجرعة",
+      "dosage_hint": "مثال: قرص واحد يوميًا صباحًا",
+      "instructions": "تعليمات الاستخدام",
+      "instructions_hint": "مثال: بعد الإفطار لمدة 30 يومًا",
+      "required_field": "هذا الحقل مطلوب",
+      "save": "حفظ الروشتة",
+      "select_appointment_error": "اختر الموعد أولًا",
+      "select_appointment_hint": "اختر موعد المريض",
+      "no_appointments": "لا يوجد مواعيد لهذا المريض لإنشاء روشتة له"
+    },
     "profile": {
       "professional_details": "البيانات المهنية",
       "clinic": "العيادة",
@@ -300,13 +366,7 @@
       "open_labs": "فتح نتائج المعمل",
       "empty_state": "لا مزيد من الإشعارات"
     },
-    "Blood Type" : "فصيلة الدم",
-    "Status" : "الحالة",
-    "Lab Results" : "نتائج التحاليل",
-    "Monitor your progress with clinical precision." : "راقب تقدمك بدقة علمية",
-    "TOTAL CHOLESTEROL" : "إجمالي الكوليسترول",
-    "NORMAL RANGE" : "نطاق طبيعي",
-    "View Details" : "عرض التفاصيل"
+    "Blood Type": "فصيلة الدم"
   },
   "prescriptions": {
     "title": "وصفاتي الطبية",

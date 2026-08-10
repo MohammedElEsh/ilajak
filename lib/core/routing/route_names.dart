@@ -2,6 +2,7 @@ class RouteNames {
   static const String onboarding = '/onboarding';
   static const String login = '/login';
   static const String signup = '/signup';
+  static const String doctorSignup = '/doctor-signup';
   static const String forgotPassword = '/forgot-password';
   static const String verifyOtp = '/verify-otp';
   static const String roleSelection = '/role-selection';
@@ -45,6 +46,16 @@ class RouteNames {
   static const String doctorPatientRecords = 'records';
   static const String doctorPatientRecordsFullPath =
       '$doctorPatientProfileFullPath/$doctorPatientRecords';
+
+  // Nested under doctorPatientProfile — Add Prescription (Doctor)
+  static const String doctorAddPrescription = 'add-prescription';
+  static const String doctorAddPrescriptionFullPath =
+      '$doctorPatientProfileFullPath/$doctorAddPrescription';
+
+  // Nested under doctorPatientRecords — Create Medical Record
+  static const String doctorCreateMedicalRecord = 'create';
+  static const String doctorCreateMedicalRecordFullPath =
+      '$doctorPatientRecordsFullPath/$doctorCreateMedicalRecord';
 
   // Nested under doctorProfile
   static const String doctorChangePassword = 'change-password';

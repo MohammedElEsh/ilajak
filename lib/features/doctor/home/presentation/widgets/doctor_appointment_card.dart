@@ -40,7 +40,7 @@ class DoctorAppointmentCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16.r),
+        padding: EdgeInsets.all(18.r),
         decoration: BoxDecoration(
           color: isLive ? context.appColors.primaryLight2 : context.appColors.surface,
           borderRadius: BorderRadius.circular(18.r),
@@ -92,7 +92,7 @@ class DoctorAppointmentCard extends StatelessWidget {
                       ],
                     ],
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 6.h),
                   Row(
                     children: [
                       Icon(Icons.access_time, size: 14.sp, color: accentColor),
@@ -118,7 +118,7 @@ class DoctorAppointmentCard extends StatelessWidget {
               children: [
                 if (room != null)
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
                     decoration: BoxDecoration(
                       color: context.appColors.primary,
                       borderRadius: BorderRadius.circular(20.r),

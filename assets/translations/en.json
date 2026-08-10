@@ -37,6 +37,7 @@
   },
   "auth": {
     "or_continue_with": "OR",
+    "change_role": "Change Role",
     "login": {
       "title": "Log in",
       "subtitle": "Enter your email and password",
@@ -115,6 +116,25 @@
       "and": " and ",
       "privacy_policy": "Privacy Policy",
       "medical_data": ", including medical data handling."
+    },
+    "doctor_signup": {
+      "title": "Create Account",
+      "subtitle": "Join our network of healthcare professionals to manage your practice with precision.",
+      "full_name": "Full Name",
+      "full_name_hint": "Dr. Jane Smith",
+      "medical_id": "Medical ID / NPI Number",
+      "medical_id_hint": "1234567890",
+      "medical_id_required": "Medical ID is required",
+      "work_email": "Work Email",
+      "work_email_hint": "jane.smith@clinic.com",
+      "password": "Password",
+      "password_hint": "••••••••••••",
+      "confirm_password": "Confirm Password",
+      "confirm_password_hint": "••••••••••••",
+      "create_account_button": "Create Account",
+      "already_have_profile": "Already have a profile? ",
+      "log_in": "Log In",
+      "help": "Help"
     }
   },
   "nav": {
@@ -184,7 +204,12 @@
     "Logout Hint": "You'll need to enter your credentials to access your health records and appointments again.",
     "Stay Logged In": "Stay Logged In",
     "Blood Type": "Blood Type",
-    "Status": "Status"
+    "Status": "Status",
+    "Lab Results": "Lab Results",
+    "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",
+    "TOTAL CHOLESTEROL": "TOTAL CHOLESTEROL",
+    "NORMAL RANGE": "NORMAL RANGE",
+    "View Details": "View Details"
   },
   "doctor": {
     "home": {
@@ -259,6 +284,47 @@
       "filter_prescriptions": "Prescriptions",
       "patient_id_prefix": "Patient ID: "
     },
+    "missing_patient_context": "Open this screen from an appointment so we can safely load the patient's data.",
+    "medical_records": {
+      "title": "Medical Records",
+      "empty": "No medical records for this patient yet.",
+      "chronic_diseases": "Chronic Diseases",
+      "allergies": "Allergies",
+      "lab_results": "Lab Results",
+      "radiology_results": "Radiology Results",
+      "attachments": "Attachments"
+    },
+    "create_medical_record": {
+      "title": "Add Medical Record",
+      "success": "Medical record added successfully",
+      "chronic_hint": "e.g. Mild Hypertension",
+      "allergies_hint": "e.g. Penicillin allergy",
+      "attachments_hint": "Add attached file names (no real file upload yet)",
+      "attachment_hint": "File name",
+      "field_name_hint": "Label (e.g. Blood Pressure)",
+      "field_value_hint": "Value (e.g. 130/85)",
+      "save": "Save Record"
+    },
+    "prescriptions": {
+      "section_title": "Prescriptions",
+      "empty": "No prescriptions for this patient yet."
+    },
+    "create_prescription": {
+      "title": "Add Prescription",
+      "success": "Prescription added successfully",
+      "appointment": "Appointment",
+      "medication": "Medication Name",
+      "medication_hint": "e.g. Concor 5mg",
+      "dosage": "Dosage",
+      "dosage_hint": "e.g. 1 tablet daily in the morning",
+      "instructions": "Instructions",
+      "instructions_hint": "e.g. Take after breakfast for 30 days",
+      "required_field": "This field is required",
+      "save": "Save Prescription",
+      "select_appointment_error": "Select an appointment first",
+      "select_appointment_hint": "Select the patient's appointment",
+      "no_appointments": "This patient has no appointments to attach a prescription to"
+    },
     "profile": {
       "professional_details": "PROFESSIONAL DETAILS",
       "clinic": "Clinic",
@@ -299,13 +365,7 @@
       "accept": "Accept",
       "open_labs": "Open Labs",
       "empty_state": "No more notifications"
-    },
-    "Status": "Status",
-    "Lab Results": "Lab Results",
-    "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",
-    "TOTAL CHOLESTEROL": "TOTAL CHOLESTEROL",
-    "NORMAL RANGE": "NORMAL RANGE",
-    "View Details": "View Details"
+    }
   },
   "prescriptions": {
     "title": "My Prescriptions",

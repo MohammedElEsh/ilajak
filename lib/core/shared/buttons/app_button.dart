@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
 
 /// Visual variant of [AppButton]. Each variant pulls its base style from
 /// the matching Material button theme in the active [ThemeData]
@@ -237,15 +238,86 @@ class AppButton extends StatelessWidget {
   }) {
     switch (variant) {
       case AppButtonVariant.elevated:
-        return ElevatedButton(
-          onPressed: onPressed,
-          onLongPress: onLongPress,
-          onHover: onHover,
-          autofocus: autofocus,
-          focusNode: focusNode,
-          style: style,
-          clipBehavior: clipBehavior,
-          child: child,
+        final br = BorderRadius.circular(borderRadius ?? 6);
+        // Decorated background with ElevatedButton as child so size is correct,
+        // plus glossy overlay on top.
+        final btnHeight = height ?? 48.h;
+        return SizedBox(
+          height: btnHeight,
+          child: Stack(
+            children: [
+              // Background gradient + shadow
+              Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [AppColors.primaryLight, AppColors.primary],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: br,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primary.withValues(alpha: .12),
+                        blurRadius: 10,
+                        offset: const Offset(0, 6),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // Actual button (transparent) to handle gestures and ripple
+              Positioned.fill(
+                child: ElevatedButton(
+                  onPressed: onPressed,
+                  onLongPress: onLongPress,
+                  onHover: onHover,
+                  autofocus: autofocus,
+                  focusNode: focusNode,
+                  style: (style ?? const ButtonStyle()).copyWith(
+                    minimumSize: WidgetStatePropertyAll<Size>(Size(double.infinity, btnHeight)),
+                    backgroundColor: WidgetStatePropertyAll<Color?>(Colors.transparent),
+                    elevation: WidgetStatePropertyAll<double>(0),
+                    shadowColor: WidgetStatePropertyAll<Color?>(Colors.transparent),
+                    shape: WidgetStatePropertyAll<OutlinedBorder>(
+                      RoundedRectangleBorder(borderRadius: br),
+                    ),
+                  ),
+                  clipBehavior: clipBehavior,
+                  child: child,
+                ),
+              ),
+
+              // Gloss overlay (top highlight)
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: ClipRRect(
+                    borderRadius: br,
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: FractionallySizedBox(
+                        heightFactor: 0.45,
+                        widthFactor: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Color.fromRGBO(255,255,255,0.28),
+                                Color.fromRGBO(255,255,255,0.06),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       case AppButtonVariant.outlined:
         return OutlinedButton(
@@ -287,13 +359,13 @@ class AppButton extends StatelessWidget {
     if (variant == AppButtonVariant.icon) {
       if (prefixIcon != null) {
         return IconTheme(
-          data: IconThemeData(color: fg, size: 24),
+                  data: IconThemeData(color: fg, size: 24.r),
           child: prefixIcon!,
         );
       }
       if (suffixIcon != null) {
         return IconTheme(
-          data: IconThemeData(color: fg, size: 24),
+                  data: IconThemeData(color: fg, size: 24.r),
           child: suffixIcon!,
         );
       }
@@ -309,7 +381,7 @@ class AppButton extends StatelessWidget {
     }
 
     final baseTextStyle =
-        resolvedStyle?.textStyle?.resolve({}) ?? AppTypography.semiBold14;
+        resolvedStyle?.textStyle?.resolve({}) ?? AppTypography.semiBold13;
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -317,16 +389,23 @@ class AppButton extends StatelessWidget {
       children: [
         if (prefixIcon != null) ...[
           IconTheme(
-            data: IconThemeData(color: fg),
+            data: IconThemeData(color: fg, size: 20.r),
             child: prefixIcon!,
           ),
           SizedBox(width: 8.w),
         ],
-        Text(label, style: baseTextStyle.copyWith(color: fg)),
+        Flexible(
+          child: Text(
+            label,
+            style: baseTextStyle.copyWith(color: fg),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
+        ),
         if (suffixIcon != null) ...[
           SizedBox(width: 8.w),
           IconTheme(
-            data: IconThemeData(color: fg),
+            data: IconThemeData(color: fg, size: 20.r),
             child: suffixIcon!,
           ),
         ],

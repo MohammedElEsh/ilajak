@@ -1,20 +1,37 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/di/injection.dart';
+import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/shared/chips/app_filter_chip.dart';
+import 'package:ilajak/core/shared/feedback/app_error_widget.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/shared/layout/bottom_nav_clearance.dart';
+import 'package:ilajak/core/shared/loading/app_loading.dart';
 import 'package:ilajak/core/theme/colors/app_color_scheme.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
-import 'package:ilajak/features/doctor/patients/presentation/widgets/medical_record_card.dart';
+import 'package:ilajak/features/doctor/medical_records/logic/doctor_medical_records_cubit/doctor_medical_records_cubit.dart';
+import 'package:ilajak/features/doctor/medical_records/logic/doctor_medical_records_cubit/doctor_medical_records_state.dart';
+import 'package:ilajak/features/doctor/medical_records/presentation/widgets/medical_record_list_tile.dart';
+import 'package:ilajak/features/doctor/prescriptions/logic/doctor_prescriptions_cubit/doctor_prescriptions_cubit.dart';
+import 'package:ilajak/features/doctor/prescriptions/logic/doctor_prescriptions_cubit/doctor_prescriptions_state.dart';
+import 'package:ilajak/features/doctor/prescriptions/presentation/widgets/prescription_list_tile.dart';
 
-// TODO(backend): hardcoded for James Wilson, from the mock — swap for the
-// real doctor-patient-records cubit, fetched by patient id, once the
-// API/integration work starts.
+enum _RecordsFilter { all, labResults, radiology, prescriptions }
+
+/// TODO(backend): the header (avatar / name / "Patient ID") still shows
+/// [patientName] only — no doctor-facing "get patient personal info"
+/// endpoint exists yet to fill in age/gender/a real patient ID label (see
+/// backend gaps shipped with this feature).
 class DoctorPatientRecordsView extends StatefulWidget {
-  const DoctorPatientRecordsView({super.key});
+  const DoctorPatientRecordsView({super.key, required this.patientId, this.patientName});
+
+  final int patientId;
+  final String? patientName;
 
   @override
   State<DoctorPatientRecordsView> createState() => _DoctorPatientRecordsViewState();
@@ -27,196 +44,219 @@ class _DoctorPatientRecordsViewState extends State<DoctorPatientRecordsView> {
     AppStrings.doctorPatientRecordsFilterRadiology,
     AppStrings.doctorPatientRecordsFilterPrescriptions,
   ];
+  static const _filters = [
+    _RecordsFilter.all,
+    _RecordsFilter.labResults,
+    _RecordsFilter.radiology,
+    _RecordsFilter.prescriptions,
+  ];
 
   int _selectedFilterIndex = 0;
 
-  // NOTE: this used to be a top-level `final _records = [...]` list. It had
-  // to move inside the State (as a method that takes context) once these
-  // entries started reading `context.appColors.xxx` for dark-mode support —
-  // a top-level variable has no BuildContext to read from.
-  List<_MedicalRecordItem> _buildRecords(BuildContext context) {
-    return [
-      _MedicalRecordItem(
-        badge: Icon(Icons.medical_services_outlined, color: context.appColors.surface, size: 20.sp),
-        badgeColor: context.appColors.primary,
-        date: 'Oct 12, 2023',
-        title: 'Seasonal Allergies',
-        doctorName: 'Dr. Mitchell',
-        specialty: 'General Practitioner',
-      ),
-      _MedicalRecordItem(
-        badge: Icon(Icons.history, color: context.appColors.surface, size: 20.sp),
-        badgeColor: context.appColors.grey4,
-        date: 'Aug 05, 2023',
-        title: 'Routine Annual Checkup',
-        doctorName: 'Dr. Mitchell',
-        specialty: 'General Practitioner',
-      ),
-      _MedicalRecordItem(
-        badge: Text(
-          '*',
-          style: TextStyle(
-            color: context.appColors.surface,
-            fontSize: 24.sp,
-            fontWeight: FontWeight.bold,
-            height: 1,
-          ),
-        ),
-        badgeColor: context.appColors.error,
-        date: 'Jan 22, 2023',
-        title: 'Acute Gastritis',
-        doctorName: 'Dr. Sarah Chen',
-        specialty: 'Gastroenterology',
-        isFlagged: true,
-      ),
-    ];
+  late final DoctorMedicalRecordsCubit _medicalRecordsCubit;
+  late final DoctorPrescriptionsCubit _prescriptionsCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _medicalRecordsCubit = sl<DoctorMedicalRecordsCubit>()..loadRecords(patientId: widget.patientId);
+    _prescriptionsCubit = sl<DoctorPrescriptionsCubit>()..loadPrescriptions(patientId: widget.patientId);
+  }
+
+  @override
+  void dispose() {
+    _medicalRecordsCubit.close();
+    _prescriptionsCubit.close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final records = _buildRecords(context);
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.w),
-      child: Scaffold(
-        appBar: AppTopBar(
-          leadingWidget: CircleAvatar(
-            radius: 20.r,
-            backgroundColor: context.appColors.primaryLight2,
-            child: HugeIcon(
-              icon: HugeIcons.strokeRoundedHospital01,
-              size: 20.sp,
+    final selectedFilter = _filters[_selectedFilterIndex];
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: _medicalRecordsCubit),
+        BlocProvider.value(value: _prescriptionsCubit),
+      ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 18.w),
+        child: Scaffold(
+          appBar: AppTopBar(
+            leadingWidget: CircleAvatar(
+              radius: 20.r,
+              backgroundColor: context.appColors.primaryLight2,
+              child: HugeIcon(
+                icon: HugeIcons.strokeRoundedHospital01,
+                size: 20.sp,
+                color: context.appColors.primary,
+                strokeWidth: 1.5,
+              ),
+            ),
+            titleWidget: Text(
+              AppStrings.doctorHomeAppBarTitle.tr(),
+              style: AppTypography.semiBold18.copyWith(color: context.appColors.primary),
+            ),
+            actionWidget: HugeIcon(
+              icon: HugeIcons.strokeRoundedSearch01,
+              size: 24.sp,
               color: context.appColors.primary,
               strokeWidth: 1.5,
             ),
           ),
-          titleWidget: Text(
-            AppStrings.doctorHomeAppBarTitle.tr(),
-            style: AppTypography.semiBold18.copyWith(color: context.appColors.primary),
-          ),
-          actionWidget: HugeIcon(
-            icon: HugeIcons.strokeRoundedSearch01,
-            size: 24.sp,
-            color: context.appColors.primary,
-            strokeWidth: 1.5,
-          ),
-        ),
-        body: SafeArea(
-          child: Stack(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20.h),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(16.r),
-                        child: Container(
-                          width: 64.w,
-                          height: 64.h,
-                          color: context.appColors.secondary,
-                          child: Icon(Icons.person_outline, color: context.appColors.primary, size: 30.sp),
+          body: SafeArea(
+            child: Stack(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20.h),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16.r),
+                          child: Container(
+                            width: 64.w,
+                            height: 64.h,
+                            color: context.appColors.secondary,
+                            child: Icon(Icons.person_outline, color: context.appColors.primary, size: 30.sp),
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 14.w),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'James Wilson',
-                              style: AppTypography.semiBold22.copyWith(color: context.appColors.textPrimary),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              '${AppStrings.doctorPatientRecordsPatientIdPrefix.tr()}#JW-8829 • Male, 42',
-                              style: AppTypography.regular14.copyWith(color: context.appColors.textSecondary),
-                            ),
-                          ],
+                        SizedBox(width: 14.w),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.patientName ??
+                                    '${AppStrings.doctorPatientRecordsPatientIdPrefix.tr()}${widget.patientId}',
+                                style:
+                                    AppTypography.semiBold22.copyWith(color: context.appColors.textPrimary),
+                              ),
+                              SizedBox(height: 4.h),
+                              Text(
+                                '${AppStrings.doctorPatientRecordsPatientIdPrefix.tr()}${widget.patientId}',
+                                style:
+                                    AppTypography.regular14.copyWith(color: context.appColors.textSecondary),
+                              ),
+                            ],
+                          ),
                         ),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    SizedBox(
+                      height: 40.h,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: _filterKeys.length,
+                        separatorBuilder: (_, __) => SizedBox(width: 10.w),
+                        itemBuilder: (context, index) {
+                          return AppFilterChip(
+                            label: _filterKeys[index].tr(),
+                            selected: index == _selectedFilterIndex,
+                            onTap: () => setState(() => _selectedFilterIndex = index),
+                          );
+                        },
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 20.h),
-
-                  SizedBox(
-                    height: 40.h,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _filterKeys.length,
-                      separatorBuilder: (_, __) => SizedBox(width: 10.w),
-                      itemBuilder: (context, index) {
-                        return AppFilterChip(
-                          label: _filterKeys[index].tr(),
-                          selected: index == _selectedFilterIndex,
-                          onTap: () => setState(() => _selectedFilterIndex = index),
-                        );
-                      },
                     ),
-                  ),
-                  SizedBox(height: 16.h),
-
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: records.length,
-                      separatorBuilder: (_, __) => SizedBox(height: 16.h),
-                      // Leave room so the last card isn't hidden behind
-                      // the FAB / the overlay bottom nav bar.
-                      padding: EdgeInsets.only(bottom: 90.h + context.bottomNavClearance),
-                      itemBuilder: (context, index) {
-                        final record = records[index];
-                        return MedicalRecordCard(
-                          badge: record.badge,
-                          badgeColor: record.badgeColor,
-                          date: record.date,
-                          title: record.title,
-                          doctorName: record.doctorName,
-                          specialty: record.specialty,
-                          isFlagged: record.isFlagged,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              // NOTE: positioned manually because RouterShell draws the
-              // BottomNavBar as an overlay, not Scaffold.bottomNavigationBar.
-              Positioned(
-                right: 0,
-                bottom: 16.h + context.bottomNavClearance,
-                child: FloatingActionButton(
-                  onPressed: () {
-                    // TODO(backend): open the "Add Record" creation flow.
-                  },
-                  backgroundColor: context.appColors.primary,
-                  child: Icon(Icons.add, color: context.appColors.surface, size: 26.sp),
+                    SizedBox(height: 16.h),
+                    Expanded(child: _buildList(context, selectedFilter)),
+                  ],
                 ),
-              ),
-            ],
+                // NOTE: positioned manually because RouterShell draws the
+                // BottomNavBar as an overlay, not Scaffold.bottomNavigationBar.
+                Positioned(
+                  right: 0,
+                  bottom: 16.h + context.bottomNavClearance,
+                  child: FloatingActionButton(
+                    onPressed: () async {
+                      final created = await context.push<bool>(
+                        RouteNames.doctorCreateMedicalRecordFullPath,
+                        extra: widget.patientId,
+                      );
+                      if (created == true) {
+                        _medicalRecordsCubit.loadRecords(patientId: widget.patientId);
+                      }
+                    },
+                    backgroundColor: context.appColors.primary,
+                    child: Icon(Icons.add, color: context.appColors.surface, size: 26.sp),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-}
 
-class _MedicalRecordItem {
-  const _MedicalRecordItem({
-    required this.badge,
-    required this.badgeColor,
-    required this.date,
-    required this.title,
-    required this.doctorName,
-    required this.specialty,
-    this.isFlagged = false,
-  });
+  Widget _buildList(BuildContext context, _RecordsFilter filter) {
+    if (filter == _RecordsFilter.prescriptions) {
+      return BlocBuilder<DoctorPrescriptionsCubit, DoctorPrescriptionsState>(
+        builder: (context, state) {
+          if (state is DoctorPrescriptionsLoading || state is DoctorPrescriptionsInitial) {
+            return const AppLoading();
+          }
+          if (state is DoctorPrescriptionsError) {
+            return AppErrorWidget(
+              message: state.message,
+              onRetry: () => _prescriptionsCubit.loadPrescriptions(patientId: widget.patientId),
+            );
+          }
+          final prescriptions = state is DoctorPrescriptionsLoaded ? state.prescriptions : const [];
+          if (prescriptions.isEmpty) {
+            return Center(
+              child: Text(
+                AppStrings.doctorPrescriptionsEmpty.tr(),
+                style: AppTypography.regular14.copyWith(color: context.appColors.textSecondary),
+              ),
+            );
+          }
+          return ListView.separated(
+            itemCount: prescriptions.length,
+            separatorBuilder: (_, __) => SizedBox(height: 16.h),
+            padding: EdgeInsets.only(bottom: 90.h + context.bottomNavClearance),
+            itemBuilder: (context, index) => PrescriptionListTile(prescription: prescriptions[index]),
+          );
+        },
+      );
+    }
 
-  final Widget badge;
-  final Color badgeColor;
-  final String date;
-  final String title;
-  final String doctorName;
-  final String specialty;
-  final bool isFlagged;
+    return BlocBuilder<DoctorMedicalRecordsCubit, DoctorMedicalRecordsState>(
+      builder: (context, state) {
+        if (state is DoctorMedicalRecordsLoading || state is DoctorMedicalRecordsInitial) {
+          return const AppLoading();
+        }
+        if (state is DoctorMedicalRecordsError) {
+          return AppErrorWidget(
+            message: state.message,
+            onRetry: () => _medicalRecordsCubit.loadRecords(patientId: widget.patientId),
+          );
+        }
+        final allRecords = state is DoctorMedicalRecordsLoaded ? state.records : const [];
+        final records = switch (filter) {
+          _RecordsFilter.labResults => allRecords.where((r) => r.hasLabResults).toList(),
+          _RecordsFilter.radiology => allRecords.where((r) => r.hasRadiologyResults).toList(),
+          _ => allRecords,
+        };
+
+        if (records.isEmpty) {
+          return Center(
+            child: Text(
+              AppStrings.doctorMedicalRecordsEmpty.tr(),
+              style: AppTypography.regular14.copyWith(color: context.appColors.textSecondary),
+            ),
+          );
+        }
+        return ListView.separated(
+          itemCount: records.length,
+          separatorBuilder: (_, __) => SizedBox(height: 16.h),
+          padding: EdgeInsets.only(bottom: 90.h + context.bottomNavClearance),
+          itemBuilder: (context, index) => MedicalRecordListTile(record: records[index]),
+        );
+      },
+    );
+  }
 }

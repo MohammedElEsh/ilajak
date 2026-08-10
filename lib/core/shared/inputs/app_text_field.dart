@@ -120,10 +120,16 @@ class _AppTextFieldState<T> extends State<AppTextField<T>> {
     super.initState();
     _obscure = widget.isPassword;
     _focusNode = widget.focusNode ?? FocusNode();
+    _focusNode.addListener(_onFocusChanged);
+  }
+
+  void _onFocusChanged() {
+    setState(() {});
   }
 
   @override
   void dispose() {
+    _focusNode.removeListener(_onFocusChanged);
     if (widget.focusNode == null) {
       _focusNode.dispose();
     }
@@ -227,54 +233,68 @@ class _AppTextFieldState<T> extends State<AppTextField<T>> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.type == AppTextFieldType.dropdown) {
-      return DropdownButtonFormField<T>(
-        initialValue: widget.dropdownValue,
-        items: widget.dropdownItems ?? [],
-        onChanged: widget.enabled ? widget.onDropdownChanged : null,
-        validator: widget.validator != null
-            ? (value) => widget.validator!(value as String?)
-            : null,
-        icon: HugeIcon(
-          icon: HugeIcons.strokeRoundedArrowDown01,
-          size: 20.r,
-          color: AppColors.fieldLabel,
-        ),
-        style:
-            widget.textStyle ??
-            Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
-        decoration: _buildDecoration(),
-      );
-    }
+    final inner = widget.type == AppTextFieldType.dropdown
+        ? DropdownButtonFormField<T>(
+            initialValue: widget.dropdownValue,
+            items: widget.dropdownItems ?? [],
+            onChanged: widget.enabled ? widget.onDropdownChanged : null,
+            validator: widget.validator != null
+                ? (value) => widget.validator!(value as String?)
+                : null,
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedArrowDown01,
+              size: 20.r,
+              color: AppColors.fieldLabel,
+            ),
+            style:
+                widget.textStyle ??
+                Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
+            decoration: _buildDecoration(),
+          )
+        : TextFormField(
+            controller: widget.controller,
+            focusNode: _focusNode,
+            initialValue: widget.initialValue,
+            obscureText: widget.isPassword ? _obscure : false,
+            enabled: widget.enabled,
+            readOnly: widget.readOnly || widget.type == AppTextFieldType.date,
+            autofocus: widget.autofocus,
+            keyboardType: widget.keyboardType,
+            textInputAction: widget.textInputAction,
+            textCapitalization: widget.textCapitalization,
+            maxLines: widget.isPassword ? 1 : (widget.maxLines ?? 1),
+            minLines: widget.minLines,
+            expands: widget.expands,
+            inputFormatters: widget.inputFormatters,
+            onChanged: widget.onChanged,
+            onFieldSubmitted: widget.onSubmitted,
+            onTap: widget.type == AppTextFieldType.date ? _pickDate : widget.onTap,
+            onEditingComplete: widget.onEditingComplete,
+            validator: widget.validator,
+            style:
+                widget.textStyle ??
+                Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
+            cursorColor: widget.cursorColor,
+            cursorHeight: widget.cursorHeight,
+            cursorWidth: widget.cursorWidth,
+            cursorRadius: widget.cursorRadius,
+            decoration: _buildDecoration(),
+          );
 
-    return TextFormField(
-      controller: widget.controller,
-      focusNode: _focusNode,
-      initialValue: widget.initialValue,
-      obscureText: widget.isPassword ? _obscure : false,
-      enabled: widget.enabled,
-      readOnly: widget.readOnly || widget.type == AppTextFieldType.date,
-      autofocus: widget.autofocus,
-      keyboardType: widget.keyboardType,
-      textInputAction: widget.textInputAction,
-      textCapitalization: widget.textCapitalization,
-      maxLines: widget.isPassword ? 1 : (widget.maxLines ?? 1),
-      minLines: widget.minLines,
-      expands: widget.expands,
-      inputFormatters: widget.inputFormatters,
-      onChanged: widget.onChanged,
-      onFieldSubmitted: widget.onSubmitted,
-      onTap: widget.type == AppTextFieldType.date ? _pickDate : widget.onTap,
-      onEditingComplete: widget.onEditingComplete,
-      validator: widget.validator,
-      style:
-          widget.textStyle ??
-          Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 16),
-      cursorColor: widget.cursorColor,
-      cursorHeight: widget.cursorHeight,
-      cursorWidth: widget.cursorWidth,
-      cursorRadius: widget.cursorRadius,
-      decoration: _buildDecoration(),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        boxShadow: _focusNode.hasFocus
+            ? [
+                BoxShadow(
+                  color: AppColors.primary.withValues(alpha: .08),
+                  blurRadius: 10,
+                  offset: const Offset(0, 6),
+                ),
+              ]
+            : [],
+      ),
+      child: inner,
     );
   }
 }

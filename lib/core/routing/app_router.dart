@@ -6,24 +6,33 @@ import 'package:ilajak/core/routing/router_guard.dart';
 import 'package:ilajak/core/routing/router_shell.dart';
 import 'package:ilajak/core/services/session/session_manager.dart';
 import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_change_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_forgot_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_login_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_register_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_verify_otp_cubit.dart';
 import 'package:ilajak/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:ilajak/features/auth/presentation/views/login_view.dart';
+import 'package:ilajak/features/auth/presentation/manager/doctor_register_cubit.dart';
+import 'package:ilajak/features/auth/presentation/views/doctor_signup_view.dart';
 import 'package:ilajak/features/auth/presentation/views/signup_view.dart';
 import 'package:ilajak/features/auth/presentation/views/role_selection_view.dart';
 import 'package:ilajak/features/auth/presentation/views/verify_otp_view.dart';
 import 'package:ilajak/features/doctor/articles/presentation/views/doctor_articles_view.dart';
 import 'package:ilajak/features/doctor/home/presentation/views/doctor_home_view.dart';
-import 'package:ilajak/features/doctor/home/presentation/views/doctor_schedule_view.dart';
+import 'package:ilajak/features/doctor/medical_records/logic/doctor_medical_records_cubit/doctor_medical_records_cubit.dart';
+import 'package:ilajak/features/doctor/medical_records/presentation/views/create_medical_record_view.dart';
+import 'package:ilajak/features/doctor/schedule/presentation/views/doctor_schedule_view.dart';
 import 'package:ilajak/features/doctor/notifications/presentation/views/doctor_notifications_view.dart';
 import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patient_profile_view.dart';
 import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patient_records_view.dart';
 import 'package:ilajak/features/doctor/patients/presentation/views/doctor_patients_view.dart';
+import 'package:ilajak/features/doctor/prescriptions/logic/doctor_prescriptions_cubit/doctor_prescriptions_cubit.dart';
+import 'package:ilajak/features/doctor/prescriptions/presentation/views/create_prescription_view.dart';
+import 'package:ilajak/features/doctor/profile/presentation/manager/doctor_profile_cubit.dart';
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_change_password_view.dart';
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_profile_view.dart';
+import 'package:ilajak/features/doctor/schedule/logic/doctor_schedule_cubit/doctor_schedule_cubit.dart';
 import 'package:ilajak/features/patient/health/presentation/views/health_view.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
@@ -96,6 +105,13 @@ void initRouter() {
         builder: (context, state) => BlocProvider(
           create: (_) => AuthRegisterCubit(),
           child: const SignupView(),
+        ),
+      ),
+      GoRoute(
+        path: RouteNames.doctorSignup,
+        builder: (context, state) => BlocProvider(
+          create: (_) => sl<DoctorRegisterCubit>(),
+          child: const DoctorSignupView(),
         ),
       ),
       GoRoute(
@@ -173,7 +189,10 @@ void initRouter() {
                 routes: [
                   GoRoute(
                     path: RouteNames.doctorSchedule,
-                    builder: (context, state) => const DoctorScheduleView(),
+                    builder: (context, state) => BlocProvider(
+                      create: (_) => sl<DoctorScheduleCubit>()..loadAppointments(),
+                      child: const DoctorScheduleView(),
+                    ),
                   ),
                 ],
               ),
@@ -190,11 +209,62 @@ void initRouter() {
                 routes: [
                   GoRoute(
                     path: RouteNames.doctorPatientProfile,
-                    builder: (context, state) => const DoctorPatientProfileView(),
+                    builder: (context, state) {
+                      final args = state.extra;
+                      if (args is! DoctorPatientProfileArgs) {
+                        // No real patientId was passed (e.g. tapped from a
+                        // still-mock entry point like "Recent Patients" or
+                        // the "Patients" tab list — neither is wired to a
+                        // real patient id yet). Never fall back to a fake
+                        // id — see DoctorPatientProfileArgs docs.
+                        return const MissingPatientContextView();
+                      }
+                      return DoctorPatientProfileView(
+                        patientId: args.patientId,
+                        patientName: args.patientName,
+                      );
+                    },
                     routes: [
                       GoRoute(
                         path: RouteNames.doctorPatientRecords,
-                        builder: (context, state) => const DoctorPatientRecordsView(),
+                        builder: (context, state) {
+                          final args = state.extra;
+                          if (args is! DoctorPatientProfileArgs) {
+                            return const MissingPatientContextView();
+                          }
+                          return DoctorPatientRecordsView(
+                            patientId: args.patientId,
+                            patientName: args.patientName,
+                          );
+                        },
+                        routes: [
+                          GoRoute(
+                            path: RouteNames.doctorCreateMedicalRecord,
+                            builder: (context, state) {
+                              final patientId = state.extra;
+                              if (patientId is! int) {
+                                return const MissingPatientContextView();
+                              }
+                              return BlocProvider(
+                                create: (_) => sl<DoctorMedicalRecordsCubit>(),
+                                child: CreateMedicalRecordView(patientId: patientId),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: RouteNames.doctorAddPrescription,
+                        builder: (context, state) {
+                          final patientId = state.extra;
+                          if (patientId is! int) {
+                            return const MissingPatientContextView();
+                          }
+                          return BlocProvider(
+                            create: (_) => sl<DoctorPrescriptionsCubit>(),
+                            child: CreatePrescriptionView(patientId: patientId),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -222,11 +292,17 @@ void initRouter() {
             routes: [
               GoRoute(
                 path: RouteNames.doctorProfile,
-                builder: (context, state) => const DoctorProfileView(),
+                builder: (context, state) => BlocProvider(
+                  create: (_) => sl<DoctorProfileCubit>(),
+                  child: const DoctorProfileView(),
+                ),
                 routes: [
                   GoRoute(
                     path: RouteNames.doctorChangePassword,
-                    builder: (context, state) => const DoctorChangePasswordView(),
+                    builder: (context, state) => BlocProvider(
+                      create: (_) => sl<AuthChangePasswordCubit>(),
+                      child: const DoctorChangePasswordView(),
+                    ),
                   ),
                 ],
               ),

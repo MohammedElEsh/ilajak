@@ -58,6 +58,7 @@ class AppStrings {
   static const String authLoginEmailRequired = 'auth.login.email_required';
   static const String authLoginEmailInvalid = 'auth.login.email_invalid';
   static const String authLoginPassword = 'auth.login.password';
+  static const String authChangeRole = 'auth.change_role';
   static const String authLoginPasswordHint = 'auth.login.password_hint';
   static const String authLoginPasswordRequired =
       'auth.login.password_required';
@@ -305,6 +306,60 @@ class AppStrings {
   static const String doctorPatientRecordsPatientIdPrefix =
       'doctor.patient_records.patient_id_prefix';
 
+  // Missing patient context (router guard)
+  static const String doctorMissingPatientContext = 'doctor.missing_patient_context';
+
+  // Doctor - Medical Records (display)
+  static const String doctorMedicalRecordsTitle = 'doctor.medical_records.title';
+  static const String doctorMedicalRecordsEmpty = 'doctor.medical_records.empty';
+  static const String doctorMedicalRecordsChronicDiseases = 'doctor.medical_records.chronic_diseases';
+  static const String doctorMedicalRecordsAllergies = 'doctor.medical_records.allergies';
+  static const String doctorMedicalRecordsLabResults = 'doctor.medical_records.lab_results';
+  static const String doctorMedicalRecordsRadiologyResults = 'doctor.medical_records.radiology_results';
+  static const String doctorMedicalRecordsAttachments = 'doctor.medical_records.attachments';
+
+  // Doctor - Create Medical Record
+  static const String doctorCreateMedicalRecordTitle = 'doctor.create_medical_record.title';
+  static const String doctorCreateMedicalRecordSuccess = 'doctor.create_medical_record.success';
+  static const String doctorCreateMedicalRecordChronicHint = 'doctor.create_medical_record.chronic_hint';
+  static const String doctorCreateMedicalRecordAllergiesHint =
+      'doctor.create_medical_record.allergies_hint';
+  static const String doctorCreateMedicalRecordAttachmentsHint =
+      'doctor.create_medical_record.attachments_hint';
+  static const String doctorCreateMedicalRecordAttachmentHint =
+      'doctor.create_medical_record.attachment_hint';
+  static const String doctorCreateMedicalRecordFieldNameHint =
+      'doctor.create_medical_record.field_name_hint';
+  static const String doctorCreateMedicalRecordFieldValueHint =
+      'doctor.create_medical_record.field_value_hint';
+  static const String doctorCreateMedicalRecordSave = 'doctor.create_medical_record.save';
+
+  // Doctor - Prescriptions (display)
+  static const String doctorPrescriptionsSectionTitle = 'doctor.prescriptions.section_title';
+  static const String doctorPrescriptionsEmpty = 'doctor.prescriptions.empty';
+
+  // Doctor - Create Prescription
+  static const String doctorCreatePrescriptionTitle = 'doctor.create_prescription.title';
+  static const String doctorCreatePrescriptionSuccess = 'doctor.create_prescription.success';
+  static const String doctorCreatePrescriptionAppointment = 'doctor.create_prescription.appointment';
+  static const String doctorCreatePrescriptionMedication = 'doctor.create_prescription.medication';
+  static const String doctorCreatePrescriptionMedicationHint =
+      'doctor.create_prescription.medication_hint';
+  static const String doctorCreatePrescriptionDosage = 'doctor.create_prescription.dosage';
+  static const String doctorCreatePrescriptionDosageHint = 'doctor.create_prescription.dosage_hint';
+  static const String doctorCreatePrescriptionInstructions = 'doctor.create_prescription.instructions';
+  static const String doctorCreatePrescriptionInstructionsHint =
+      'doctor.create_prescription.instructions_hint';
+  static const String doctorCreatePrescriptionRequiredField =
+      'doctor.create_prescription.required_field';
+  static const String doctorCreatePrescriptionSave = 'doctor.create_prescription.save';
+  static const String doctorCreatePrescriptionSelectAppointmentError =
+      'doctor.create_prescription.select_appointment_error';
+  static const String doctorCreatePrescriptionSelectAppointmentHint =
+      'doctor.create_prescription.select_appointment_hint';
+  static const String doctorCreatePrescriptionNoAppointments =
+      'doctor.create_prescription.no_appointments';
+
   // Doctor - Profile
   static const String doctorProfileProfessionalDetails =
       'doctor.profile.professional_details';
@@ -448,4 +503,38 @@ class AppStrings {
   static const String prescriptionsIssueDate = 'prescriptions.issue_date';
   static const String prescriptionsRefill = 'prescriptions.refill';
   static const String prescriptionsView = 'prescriptions.view';
+
+  // Doctor - Signup (Create Account)
+  static const String authDoctorSignupHelp = 'auth.doctor_signup.help';
+  static const String authDoctorSignupTitle = 'auth.doctor_signup.title';
+  static const String authDoctorSignupSubtitle =
+      'auth.doctor_signup.subtitle';
+  static const String authDoctorSignupFullName =
+      'auth.doctor_signup.full_name';
+  static const String authDoctorSignupFullNameHint =
+      'auth.doctor_signup.full_name_hint';
+  static const String authDoctorSignupMedicalId =
+      'auth.doctor_signup.medical_id';
+  static const String authDoctorSignupMedicalIdHint =
+      'auth.doctor_signup.medical_id_hint';
+  static const String authDoctorSignupMedicalIdRequired =
+      'auth.doctor_signup.medical_id_required';
+  static const String authDoctorSignupWorkEmail =
+      'auth.doctor_signup.work_email';
+  static const String authDoctorSignupWorkEmailHint =
+      'auth.doctor_signup.work_email_hint';
+  static const String authDoctorSignupPassword =
+      'auth.doctor_signup.password';
+  static const String authDoctorSignupPasswordHint =
+      'auth.doctor_signup.password_hint';
+  static const String authDoctorSignupConfirmPassword =
+      'auth.doctor_signup.confirm_password';
+  static const String authDoctorSignupConfirmPasswordHint =
+      'auth.doctor_signup.confirm_password_hint';
+  static const String authDoctorSignupCreateAccountButton =
+      'auth.doctor_signup.create_account_button';
+  static const String authDoctorSignupAlreadyHaveProfile =
+      'auth.doctor_signup.already_have_profile';
+  static const String authDoctorSignupLogIn = 'auth.doctor_signup.log_in';
 }
+

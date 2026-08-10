@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -12,9 +13,14 @@ import 'package:ilajak/core/shared/layout/bottom_nav_clearance.dart';
 import 'package:ilajak/core/theme/colors/app_color_scheme.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/doctor/home/presentation/widgets/doctor_schedule_appointment_card.dart';
+import 'package:ilajak/features/doctor/schedule/data/models/appointment_model.dart';
+import 'package:ilajak/features/doctor/schedule/presentation/manager/doctor_schedule_cubit.dart';
+import 'package:ilajak/features/doctor/schedule/presentation/manager/doctor_schedule_state.dart';
 
-// TODO(backend): placeholder day + placeholder appointments — swap for the
-// real doctor-schedule cubit once the API/integration work starts.
+// TODO(backend): the "All / Date / Client / Patient" filter chips are still
+// visual-only — the backend has no documented query params for GET
+// /appointments beyond the bare call, so there's nothing to wire them to
+// yet. Ask backend if/when filtering should be added.
 class DoctorScheduleView extends StatefulWidget {
   const DoctorScheduleView({super.key});
 
@@ -91,6 +97,9 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
                   ElevatedButton(
                     onPressed: () {
                       // TODO(backend): open the "New Appointment" creation flow.
+                      // Also unconfirmed whether a doctor can call
+                      // POST /appointments directly (named "(Patient)" in
+                      // the Postman collection) — ask backend.
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: context.appColors.primary,
@@ -133,63 +142,92 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
               SizedBox(height: 8.h),
 
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      _ScheduleRow(time: '9:00', child: null),
-                      _ScheduleRow(
-                        time: '9:30',
-                        child: DoctorScheduleAppointmentCard(
-                          patientName: 'James Wilson',
-                          typeLabel: 'Consultation',
-                          timeLabel: '9:30 AM',
-                          statusLabel: AppStrings.doctorScheduleStatusConfirmed.tr(),
-                          onConfirm: () {},
-                          onComplete: () {},
-                          onCancel: () {},
-                          onViewDetails: () => context.push(RouteNames.doctorPatientProfileFullPath),
+                child: BlocBuilder<DoctorScheduleCubit, DoctorScheduleState>(
+                  builder: (context, state) {
+                    if (state is DoctorScheduleLoading || state is DoctorScheduleInitial) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    if (state is DoctorScheduleError) {
+                      return Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(24.r),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                state.message,
+                                textAlign: TextAlign.center,
+                                style: AppTypography.regular14.copyWith(color: context.appColors.textSecondary),
+                              ),
+                              SizedBox(height: 12.h),
+                              TextButton(
+                                onPressed: () => context.read<DoctorScheduleCubit>().loadAppointments(),
+                                child: Text(AppStrings.sharedRetry.tr()),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      _ScheduleRow(time: '10:00', child: null),
-                      _ScheduleRow(
-                        time: '11:15',
-                        child: DoctorScheduleAppointmentCard(
-                          patientName: 'Sarah Chen',
-                          typeLabel: 'Follow-up',
-                          timeLabel: '11:15 AM',
-                          statusLabel: AppStrings.doctorScheduleStatusPending.tr(),
-                          isPending: true,
-                          onConfirm: () {},
-                          onReschedule: () {},
+                      );
+                    }
+
+                    final appointments = switch (state) {
+                      DoctorScheduleLoaded(:final appointments) => appointments,
+                      DoctorScheduleActionSuccess(:final appointments) => appointments,
+                      _ => const <AppointmentModel>[],
+                    };
+
+                    if (appointments.isEmpty) {
+                      return Center(
+                        child: Text(
+                          AppStrings.doctorScheduleNoAppointments.tr(),
+                          style: AppTypography.regular14.copyWith(color: context.appColors.textSecondary),
                         ),
+                      );
+                    }
+
+                    return SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          for (final appt in appointments) ...[
+                            _ScheduleRow(
+                              time: appt.time ?? '',
+                              child: DoctorScheduleAppointmentCard(
+                                patientName: appt.patientName,
+                                typeLabel: appt.type ?? '',
+                                timeLabel: appt.time ?? '',
+                                statusLabel: appt.status,
+                                isPending: appt.isPending,
+                                onConfirm: appt.isPending
+                                    ? () => context.read<DoctorScheduleCubit>().updateStatus(
+                                          appointmentId: appt.id,
+                                          status: 'confirmed',
+                                        )
+                                    : null,
+                                onComplete: appt.isConfirmed
+                                    ? () => context.read<DoctorScheduleCubit>().updateStatus(
+                                          appointmentId: appt.id,
+                                          status: 'completed',
+                                        )
+                                    : null,
+                                onCancel: (appt.isPending || appt.isConfirmed)
+                                    ? () => context.read<DoctorScheduleCubit>().updateStatus(
+                                          appointmentId: appt.id,
+                                          status: 'cancelled',
+                                        )
+                                    : null,
+                                onViewDetails: appt.patientId != null
+                                    ? () => context.push(RouteNames.doctorPatientProfileFullPath)
+                                    : null,
+                              ),
+                            ),
+                            SizedBox(height: 16.h),
+                          ],
+                          SizedBox(height: 24.h + context.bottomNavClearance),
+                        ],
                       ),
-                      _ScheduleRow(
-                        time: '12:00',
-                        child: _LunchBreakDivider(
-                          label: AppStrings.doctorScheduleLunchBreak.tr(),
-                        ),
-                      ),
-                      _ScheduleRow(
-                        time: '1:00',
-                        child: _EmptySlotPlaceholder(
-                          label: AppStrings.doctorScheduleNoAppointments.tr(),
-                        ),
-                      ),
-                      _ScheduleRow(
-                        time: '2:30',
-                        child: DoctorScheduleAppointmentCard(
-                          patientName: 'Michael Rodriguez',
-                          typeLabel: 'Check-up',
-                          timeLabel: '2:30 PM',
-                          statusLabel: AppStrings.doctorScheduleStatusConfirmed.tr(),
-                          onConfirm: () {},
-                          onComplete: () {},
-                        ),
-                      ),
-                      _ScheduleRow(time: '5:00', child: null),
-                      SizedBox(height: 24.h + context.bottomNavClearance),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
             ],
@@ -200,19 +238,18 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
   }
 }
 
-/// One row of the timeline: a fixed-width time label on the left, and
-/// either an appointment card, a break/empty-state widget, or (when
-/// [child] is null) a plain divider line for the untouched hours.
+/// One row of the timeline: a fixed-width time label on the left, and the
+/// appointment card on the right.
 class _ScheduleRow extends StatelessWidget {
   const _ScheduleRow({required this.time, required this.child});
 
   final String time;
-  final Widget? child;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 16.h),
+      padding: EdgeInsets.only(bottom: 4.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -220,100 +257,13 @@ class _ScheduleRow extends StatelessWidget {
             width: 46.w,
             child: Text(
               time,
-              style: AppTypography.semiBold14.copyWith(
-                color: child == null ? context.appColors.textSecondary : context.appColors.primary,
-              ),
+              style: AppTypography.semiBold14.copyWith(color: context.appColors.primary),
             ),
           ),
           SizedBox(width: 12.w),
-          Expanded(
-            child: child ?? Divider(height: 1, color: context.appColors.divider),
-          ),
+          Expanded(child: child),
         ],
       ),
     );
   }
-}
-
-class _LunchBreakDivider extends StatelessWidget {
-  const _LunchBreakDivider({required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(child: Divider(color: context.appColors.divider)),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Text(
-            label,
-            style: AppTypography.regular13.copyWith(color: context.appColors.textSecondary),
-          ),
-        ),
-        Expanded(child: Divider(color: context.appColors.divider)),
-      ],
-    );
-  }
-}
-
-class _EmptySlotPlaceholder extends StatelessWidget {
-  const _EmptySlotPlaceholder({required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _DashedRectPainter(color: context.appColors.divider, radius: 14.r),
-      child: Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 18.h),
-        alignment: Alignment.center,
-        child: Text(
-          label,
-          style: AppTypography.regular14.copyWith(color: context.appColors.textSecondary),
-        ),
-      ),
-    );
-  }
-}
-
-/// Manual dashed rounded-rect border — avoids pulling in an extra pub
-/// dependency just for the empty-slot placeholder.
-class _DashedRectPainter extends CustomPainter {
-  _DashedRectPainter({required this.color, required this.radius, this.gap = 4});
-
-  final Color color;
-  final double radius;
-  final double gap;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.2;
-
-    final rrect = RRect.fromRectAndRadius(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      Radius.circular(radius),
-    );
-    final path = Path()..addRRect(rrect);
-    final metrics = path.computeMetrics();
-
-    for (final metric in metrics) {
-      double distance = 0;
-      const dashLength = 5.0;
-      while (distance < metric.length) {
-        final next = distance + dashLength;
-        canvas.drawPath(metric.extractPath(distance, next), paint);
-        distance = next + gap;
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _DashedRectPainter oldDelegate) => false;
 }

@@ -14,7 +14,21 @@ import 'package:ilajak/core/services/session/session_manager.dart';
 import 'package:ilajak/core/services/storage/secure_storage_service.dart';
 import 'package:ilajak/features/auth/data/repositories/auth_repository.dart';
 import 'package:ilajak/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_change_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_login_cubit.dart';
+import 'package:ilajak/features/auth/presentation/manager/doctor_register_cubit.dart';
+import 'package:ilajak/features/doctor/medical_records/data/repositories/medical_records_repository_impl.dart';
+import 'package:ilajak/features/doctor/medical_records/domain/repositories/medical_records_repository.dart';
+import 'package:ilajak/features/doctor/medical_records/logic/doctor_medical_records_cubit/doctor_medical_records_cubit.dart';
+import 'package:ilajak/features/doctor/prescriptions/data/repositories/doctor_prescriptions_repository_impl.dart';
+import 'package:ilajak/features/doctor/prescriptions/domain/repositories/doctor_prescriptions_repository.dart';
+import 'package:ilajak/features/doctor/prescriptions/logic/doctor_prescriptions_cubit/doctor_prescriptions_cubit.dart';
+import 'package:ilajak/features/doctor/profile/data/repositories/doctor_profile_repository.dart';
+import 'package:ilajak/features/doctor/profile/data/repositories/doctor_profile_repository_impl.dart';
+import 'package:ilajak/features/doctor/profile/presentation/manager/doctor_profile_cubit.dart';
+import 'package:ilajak/features/doctor/schedule/domain/repositories/appointments_repository.dart';
+import 'package:ilajak/features/doctor/schedule/data/repositories/appointments_repository_impl.dart';
+import 'package:ilajak/features/doctor/schedule/logic/doctor_schedule_cubit/doctor_schedule_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 
 final sl = GetIt.instance;
@@ -122,5 +136,64 @@ Future<void> initDependencies() async {
 
   sl.registerFactory<AuthLoginCubit>(
     () => AuthLoginCubit(sl<AuthRepository>()),
+  );
+
+  sl.registerFactory<DoctorRegisterCubit>(
+    () => DoctorRegisterCubit(sl<AuthRepository>()),
+  );
+
+  // Generic (not doctor-specific) — PUT /user/change-password is the same
+  // endpoint for patient and doctor accounts. Reuse this same registration
+  // for patient_change_password_view.dart whenever that screen is wired.
+  sl.registerFactory<AuthChangePasswordCubit>(
+    () => AuthChangePasswordCubit(sl<AuthRepository>()),
+  );
+
+  // =====================================================
+  // 9. FEATURE: DOCTOR PROFILE
+  // =====================================================
+  sl.registerLazySingleton<DoctorProfileRepository>(
+    () => DoctorProfileRepositoryImpl(apiConsumer: sl<ApiConsumer>()),
+  );
+
+  sl.registerFactory<DoctorProfileCubit>(
+    () => DoctorProfileCubit(
+      sl<DoctorProfileRepository>(),
+      sl<AuthRepository>(),
+      sl<MediaService>(),
+    ),
+  );
+
+  // =====================================================
+  // 10. FEATURE: DOCTOR SCHEDULE
+  // =====================================================
+  sl.registerLazySingleton<AppointmentsRepository>(
+    () => AppointmentsRepositoryImpl(apiConsumer: sl<ApiConsumer>()),
+  );
+
+  sl.registerFactory<DoctorScheduleCubit>(
+    () => DoctorScheduleCubit(sl<AppointmentsRepository>()),
+  );
+
+  // =====================================================
+  // 11. FEATURE: DOCTOR MEDICAL RECORDS
+  // =====================================================
+  sl.registerLazySingleton<MedicalRecordsRepository>(
+    () => MedicalRecordsRepositoryImpl(apiConsumer: sl<ApiConsumer>()),
+  );
+
+  sl.registerFactory<DoctorMedicalRecordsCubit>(
+    () => DoctorMedicalRecordsCubit(sl<MedicalRecordsRepository>()),
+  );
+
+  // =====================================================
+  // 12. FEATURE: DOCTOR PRESCRIPTIONS
+  // =====================================================
+  sl.registerLazySingleton<DoctorPrescriptionsRepository>(
+    () => DoctorPrescriptionsRepositoryImpl(apiConsumer: sl<ApiConsumer>()),
+  );
+
+  sl.registerFactory<DoctorPrescriptionsCubit>(
+    () => DoctorPrescriptionsCubit(sl<DoctorPrescriptionsRepository>()),
   );
 }

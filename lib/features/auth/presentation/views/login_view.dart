@@ -6,11 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-import '../../../../core/constants/app_constants.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/di/injection.dart';
 import '../../../../core/routing/route_names.dart';
+import '../../../../core/services/session/session_manager.dart';
 import '../../../../core/shared/buttons/app_button.dart';
 import '../../../../core/shared/feedback/feedback_handler.dart';
+import '../../../../core/services/logger/logger_service.dart';
 import '../manager/auth_login_cubit.dart';
 import '../manager/auth_login_state.dart';
 import '../widgets/login_form.dart';
@@ -30,6 +32,8 @@ class _LoginViewState extends State<LoginView> {
 
   void _onLogin() {
     if (_formKey.currentState?.validate() ?? false) {
+      final role = sl<SessionManager>().role;
+      LoggerService.d('🔐 [LoginView] Logging in as: ${role.name}', tag: 'LoginView');
       context.read<AuthLoginCubit>().login(
         email: _emailController.text.trim(),
         password: _passwordController.text,
@@ -37,7 +41,14 @@ class _LoginViewState extends State<LoginView> {
     }
   }
 
-  void _onCreateAccount() => context.push(RouteNames.signup);
+  void _onCreateAccount() {
+    final role = sl<SessionManager>().role;
+    context.push(
+      role == UserRole.doctor ? RouteNames.doctorSignup : RouteNames.signup,
+    );
+  }
+
+  void _onChangeRole() => context.go(RouteNames.roleSelection);
 
   void _onForgotPassword() => context.push(RouteNames.forgotPassword);
 
@@ -46,8 +57,13 @@ class _LoginViewState extends State<LoginView> {
     super.initState();
 
     if (kDebugMode) {
-      _emailController.text = 'mohamed@gmail.com';
-      _passwordController.text = 'M12345678';
+      final sessionManager = sl<SessionManager>();
+      // Only populate debug credentials if user selected patient role
+      // Doctor login should require valid doctor credentials
+      if (sessionManager.role == UserRole.patient) {
+        _emailController.text = 'mohamed@gmail.com';
+        _passwordController.text = 'M12345678';
+      }
     }
   }
 
@@ -103,15 +119,7 @@ class _LoginViewState extends State<LoginView> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 16.h),
-                          Center(
-                            child: Text(
-                              AppConstants.appName,
-                              style: theme.textTheme.headlineLarge?.copyWith(
-                                color: colors.primary,
-                              ),
-                            ),
-                          ),
+                          SizedBox(height: 24.h),
                           SizedBox(height: 32.h),
                           Text(
                             AppStrings.authLoginWelcomeBack.tr(),
@@ -168,6 +176,16 @@ class _LoginViewState extends State<LoginView> {
                             label: AppStrings.authSignupButton.tr(),
                             onPressed: _onCreateAccount,
                           ),
+                          SizedBox(height: 12.h),
+                          TextButton(
+                            onPressed: _onChangeRole,
+                            child: Text(
+                              AppStrings.authChangeRole.tr(),
+                              style: theme.textTheme.labelLarge?.copyWith(
+                                color: colors.primary,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -181,3 +199,4 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+

@@ -1,16 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/routing/route_names.dart';
 import 'package:ilajak/core/shared/buttons/app_button.dart';
+import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
 import 'package:ilajak/core/shared/inputs/app_text_field.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/shared/layout/bottom_nav_clearance.dart';
 import 'package:ilajak/core/theme/colors/app_color_scheme.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/core/utils/app_validators.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_change_password_cubit.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_change_password_state.dart';
 
 class DoctorChangePasswordView extends StatefulWidget {
   const DoctorChangePasswordView({super.key});
@@ -49,8 +53,11 @@ class _DoctorChangePasswordViewState extends State<DoctorChangePasswordView> {
 
   void _onUpdatePassword() {
     if (!_formKey.currentState!.validate()) return;
-    // TODO(backend): call the change-password API with the three
-    // controllers' values once it exists.
+    context.read<AuthChangePasswordCubit>().changePassword(
+          currentPassword: _currentPasswordController.text,
+          newPassword: _newPasswordController.text,
+          confirmation: _confirmPasswordController.text,
+        );
   }
 
   @override
@@ -69,103 +76,119 @@ class _DoctorChangePasswordViewState extends State<DoctorChangePasswordView> {
           ),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20.h),
-                  Text(
-                    AppStrings.doctorChangePasswordIntro.tr(),
-                    style: AppTypography.regular16.copyWith(color: context.appColors.textSecondary),
-                  ),
-                  SizedBox(height: 24.h),
+          child: BlocConsumer<AuthChangePasswordCubit, AuthChangePasswordState>(
+            listener: (context, state) {
+              if (state is AuthChangePasswordError) {
+                FeedbackHandler.error(state.message);
+              }
+              if (state is AuthChangePasswordSuccess) {
+                FeedbackHandler.success(AppStrings.doctorChangePasswordUpdateButton.tr());
+                context.pop();
+              }
+            },
+            builder: (context, state) {
+              final isLoading = state is AuthChangePasswordLoading;
 
-                  _FieldLabel(AppStrings.doctorChangePasswordCurrent.tr()),
-                  SizedBox(height: 8.h),
-                  AppTextField(
-                    controller: _currentPasswordController,
-                    isPassword: true,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) => AppValidators.validatePassword(value, minLength: 0),
-                  ),
-                  SizedBox(height: 20.h),
+              return SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20.h),
+                      Text(
+                        AppStrings.doctorChangePasswordIntro.tr(),
+                        style: AppTypography.regular16.copyWith(color: context.appColors.textSecondary),
+                      ),
+                      SizedBox(height: 24.h),
 
-                  _FieldLabel(AppStrings.doctorChangePasswordNew.tr()),
-                  SizedBox(height: 8.h),
-                  AppTextField(
-                    controller: _newPasswordController,
-                    isPassword: true,
-                    textInputAction: TextInputAction.next,
-                    validator: _validateNewPassword,
-                  ),
-                  SizedBox(height: 20.h),
+                      _FieldLabel(AppStrings.doctorChangePasswordCurrent.tr()),
+                      SizedBox(height: 8.h),
+                      AppTextField(
+                        controller: _currentPasswordController,
+                        isPassword: true,
+                        textInputAction: TextInputAction.next,
+                        validator: (value) => AppValidators.validatePassword(value, minLength: 0),
+                      ),
+                      SizedBox(height: 20.h),
 
-                  _FieldLabel(AppStrings.doctorChangePasswordConfirm.tr()),
-                  SizedBox(height: 8.h),
-                  AppTextField(
-                    controller: _confirmPasswordController,
-                    isPassword: true,
-                    textInputAction: TextInputAction.done,
-                    validator: (value) => AppValidators.validateConfirmPassword(
-                      value,
-                      _newPasswordController.text,
-                    ),
-                  ),
-                  SizedBox(height: 18.h),
+                      _FieldLabel(AppStrings.doctorChangePasswordNew.tr()),
+                      SizedBox(height: 8.h),
+                      AppTextField(
+                        controller: _newPasswordController,
+                        isPassword: true,
+                        textInputAction: TextInputAction.next,
+                        validator: _validateNewPassword,
+                      ),
+                      SizedBox(height: 20.h),
 
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(14.r),
-                    decoration: BoxDecoration(
-                      color: context.appColors.primaryLight2,
-                      borderRadius: BorderRadius.circular(14.r),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(Icons.info_outline, size: 18.sp, color: context.appColors.primary),
-                        SizedBox(width: 10.w),
-                        Expanded(
+                      _FieldLabel(AppStrings.doctorChangePasswordConfirm.tr()),
+                      SizedBox(height: 8.h),
+                      AppTextField(
+                        controller: _confirmPasswordController,
+                        isPassword: true,
+                        textInputAction: TextInputAction.done,
+                        validator: (value) => AppValidators.validateConfirmPassword(
+                          value,
+                          _newPasswordController.text,
+                        ),
+                      ),
+                      SizedBox(height: 18.h),
+
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.all(14.r),
+                        decoration: BoxDecoration(
+                          color: context.appColors.primaryLight2,
+                          borderRadius: BorderRadius.circular(14.r),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(Icons.info_outline, size: 18.sp, color: context.appColors.primary),
+                            SizedBox(width: 10.w),
+                            Expanded(
+                              child: Text(
+                                AppStrings.doctorChangePasswordHint.tr(),
+                                style: AppTypography.regular14.copyWith(color: context.appColors.textPrimary),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+
+                      AppButton(
+                        label: AppStrings.doctorChangePasswordUpdateButton.tr(),
+                        variant: AppButtonVariant.elevated,
+                        onPressed: _onUpdatePassword,
+                        isLoading: isLoading,
+                      ),
+                      SizedBox(height: 16.h),
+
+                      Center(
+                        child: TextButton(
+                          onPressed: () => context.push(RouteNames.forgotPassword),
                           child: Text(
-                            AppStrings.doctorChangePasswordHint.tr(),
-                            style: AppTypography.regular14.copyWith(color: context.appColors.textPrimary),
+                            AppStrings.doctorChangePasswordForgot.tr(),
+                            style: AppTypography.semiBold14.copyWith(color: context.appColors.primary),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 24.h),
-
-                  AppButton(
-                    label: AppStrings.doctorChangePasswordUpdateButton.tr(),
-                    variant: AppButtonVariant.elevated,
-                    onPressed: _onUpdatePassword,
-                  ),
-                  SizedBox(height: 16.h),
-
-                  Center(
-                    child: TextButton(
-                      onPressed: () => context.push(RouteNames.forgotPassword),
-                      child: Text(
-                        AppStrings.doctorChangePasswordForgot.tr(),
-                        style: AppTypography.semiBold14.copyWith(color: context.appColors.primary),
                       ),
-                    ),
-                  ),
-                  SizedBox(height: 40.h),
+                      SizedBox(height: 40.h),
 
-                  Center(
-                    child: Opacity(
-                      opacity: .06,
-                      child: Icon(Icons.lock_reset, size: 160.sp, color: context.appColors.primary),
-                    ),
+                      Center(
+                        child: Opacity(
+                          opacity: .06,
+                          child: Icon(Icons.lock_reset, size: 160.sp, color: context.appColors.primary),
+                        ),
+                      ),
+                      SizedBox(height: 24.h + context.bottomNavClearance),
+                    ],
                   ),
-                  SizedBox(height: 24.h + context.bottomNavClearance),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),

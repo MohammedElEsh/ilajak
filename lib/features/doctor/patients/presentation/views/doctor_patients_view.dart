@@ -68,7 +68,7 @@ class _DoctorPatientsViewState extends State<DoctorPatientsView> {
                   SizedBox(height: 20.h),
                   Text(
                     AppStrings.doctorPatientsTitle.tr(),
-                    style: AppTypography.bold28.copyWith(color: context.appColors.textPrimary),
+                    style: AppTypography.semiBold20.copyWith(color: context.appColors.textPrimary),
                   ),
                   SizedBox(height: 16.h),
                   SearchField(
