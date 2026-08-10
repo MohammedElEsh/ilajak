@@ -68,6 +68,9 @@
       "national_id": "الرقم الوطني / جواز السفر",
       "national_id_hint": "1234567890",
       "national_id_required": "الرقم الوطني مطلوب",
+      "medical_id": "الرقم الطبي",
+      "medical_id_hint": "مثال: 1234567890",
+      "medical_id_required": "الرقم الطبي مطلوب",
       "date_of_birth": "تاريخ الميلاد",
       "date_of_birth_hint": "mm/dd/yyyy",
       "date_of_birth_required": "تاريخ الميلاد مطلوب",
@@ -86,6 +89,7 @@
       "confirm_password_required": "تأكيد كلمة المرور مطلوب",
       "passwords_do_not_match": "كلمات المرور غير متطابقة",
       "button": "إنشاء حساب",
+      "success": "تم إنشاء الحساب بنجاح. يرجى تسجيل الدخول.",
       "already_have_account": "لديك حساب بالفعل؟ ",
       "sign_in": "تسجيل الدخول"
     },
@@ -109,12 +113,24 @@
       "success": "تم التحقق من البريد الإلكتروني بنجاح.",
       "incomplete": "يرجى إدخال الرمز المكون من 6 أرقام بالكامل."
     },
+    "reset_password": {
+      "title": "تعيين كلمة المرور الجديدة",
+      "subtitle": "أدخل كلمة المرور الجديدة لحسابك الطبي.",
+      "label": "كلمة المرور الجديدة",
+      "hint": "••••••••",
+      "confirm_label": "تأكيد كلمة المرور الجديدة",
+      "confirm_hint": "أعد إدخال كلمة المرور الجديدة",
+      "button": "حفظ كلمة المرور",
+      "success": "تم تغيير كلمة المرور بنجاح. يرجى تسجيل الدخول بالكلمة الجديدة.",
+      "password_mismatch": "كلمات المرور غير متطابقة."
+    },
     "terms": {
       "agree": "أوافق على ",
       "terms_of_service": "شروط الخدمة",
       "and": " و",
       "privacy_policy": "سياسة الخصوصية",
-      "medical_data": "، بما في ذلك التعامل مع البيانات الطبية."
+      "medical_data": "، بما في ذلك التعامل مع البيانات الطبية.",
+      "required": "يرجى الموافقة على شروط الخدمة وسياسة الخصوصية."
     }
   },
   "nav": {
@@ -181,11 +197,25 @@
     "Logout Hint": "سوف تحتاج إلى إدخال بيانات الاعتماد الخاصة بك للوصول إلى سجلاتك الصحية ومواعيدك مرة أخرى",
     "Stay Logged In": "البقاء مسجلا",
     "Blood Type" : "فصيلة الدم",
-    "Status" : "الحالة",
     "Lab Results" : "نتائج التحاليل",
     "Monitor your progress with clinical precision." : "راقب تقدمك بدقة علمية",
     "TOTAL CHOLESTEROL" : "إجمالي الكوليسترول",
     "NORMAL RANGE" : "نطاق طبيعي",
+    "View Details" : "عرض التفاصيل",
+    "Status" : "الحالة"
+  },
+  "health":{
+    "lab_results": "نتائج التحاليل",
+    "monitor_progress": "راقب تقدمك بدقة علمية",
+    "total_cholesterol": "إجمالي الكوليسترول",
+    "normal_range": "نطاق طبيعي",
+    "view_details": "عرض التفاصيل"
+  },
+  "radiology": {
+    "title": "تقارير الأشعة",
+    "radiology_results": "نتائج الأشعة",
+    "review_text": "مراجعة أحدث الفحوصات والتقارير التشخيصية من العيادات الشريكة.",
+    "hint_msg" : "نتائج الأشعة الحديثة الخاصة بك من 'Full Blood Count' قيد الانتظار. ستتلقى إشعارًا بمجرد جاهزيتها.",
     "View Details" : "عرض التفاصيل"
   },
   "prescriptions": {

@@ -4,6 +4,7 @@ class RouteNames {
   static const String signup = '/signup';
   static const String forgotPassword = '/forgot-password';
   static const String verifyOtp = '/verify-otp';
+  static const String resetPassword = '/reset-password';
   static const String roleSelection = '/role-selection';
   static const String gettingStarted = '/getting-started';
 
@@ -32,6 +33,9 @@ class RouteNames {
       '/patient-appointments-success';
   static const String patientMyAppointments = '/patient-my-appointments';
   static const String patientLabResults = '/patient-lab-results';
+  static const String patientRadiologyResults = '/patient-radiology-results';
+
+  // Prescriptions routes
   static const String patientPrescriptions = '/patient-prescriptions';
   static const String patientDoctorProfile = '/patient-doctor-profile';
 }

@@ -110,6 +110,10 @@ class AppStrings {
   static const String authSignupNationalIdHint = 'auth.signup.national_id_hint';
   static const String authSignupNationalIdRequired =
       'auth.signup.national_id_required';
+  static const String authSignupMedicalId = 'auth.signup.medical_id';
+  static const String authSignupMedicalIdHint = 'auth.signup.medical_id_hint';
+  static const String authSignupMedicalIdRequired =
+      'auth.signup.medical_id_required';
   static const String authSignupDateOfBirth = 'auth.signup.date_of_birth';
   static const String authSignupDateOfBirthHint =
       'auth.signup.date_of_birth_hint';
@@ -135,6 +139,7 @@ class AppStrings {
   static const String authSignupPasswordsDoNotMatch =
       'auth.signup.passwords_do_not_match';
   static const String authSignupButton = 'auth.signup.button';
+  static const String authSignupSuccess = 'auth.signup.success';
   static const String authSignupAlreadyHaveAccount =
       'auth.signup.already_have_account';
   static const String authSignupSignIn = 'auth.signup.sign_in';
@@ -163,12 +168,29 @@ class AppStrings {
   static const String authVerifyOtpSuccess = 'auth.verify_otp.success';
   static const String authVerifyOtpIncomplete = 'auth.verify_otp.incomplete';
 
+  // Auth - Reset Password
+  static const String authResetPasswordTitle = 'auth.reset_password.title';
+  static const String authResetPasswordSubtitle =
+      'auth.reset_password.subtitle';
+  static const String authResetPasswordLabel = 'auth.reset_password.label';
+  static const String authResetPasswordHint = 'auth.reset_password.hint';
+  static const String authResetPasswordConfirmLabel =
+      'auth.reset_password.confirm_label';
+  static const String authResetPasswordConfirmHint =
+      'auth.reset_password.confirm_hint';
+  static const String authResetPasswordButton = 'auth.reset_password.button';
+  static const String authResetPasswordSuccess =
+      'auth.reset_password.success';
+  static const String authResetPasswordPasswordMismatch =
+      'auth.reset_password.password_mismatch';
+
   // Auth - Terms
   static const String authTermsAgree = 'auth.terms.agree';
   static const String authTermsTermsOfService = 'auth.terms.terms_of_service';
   static const String authTermsAnd = 'auth.terms.and';
   static const String authTermsPrivacyPolicy = 'auth.terms.privacy_policy';
   static const String authTermsMedicalData = 'auth.terms.medical_data';
+  static const String authTermsRequired = 'auth.terms.required';
 
   // Home - Getting Started
   static const String gettingStartedTitle = 'home.getting_started.title';
@@ -268,12 +290,15 @@ class AppStrings {
   static const String stayLoggedIn = 'profile.Stay Logged In';
   static const String bloodType = 'profile.Blood Type';
   static const String status = 'profile.Status';
-  static const String labResults = 'profile.Lab Results';
-  static const String monitorYourProgress =
-      'profile.Monitor your progress with clinical precision.';
-  static const String totalCholesterol = 'profile.TOTAL CHOLESTEROL';
-  static const String normalRange = 'profile.NORMAL RANGE';
-  static const String viewDetails = 'profile.View Details';
+  static const String labResults = 'health.lab_results';
+  static const String monitorProgress = 'health.monitor_progress';
+  static const String totalCholesterol = 'health.total_cholesterol';
+  static const String normalRange = 'health.normal_range';
+  static const String viewDetails = 'health.view_details';
+  static const String radiologyTitle = 'radiology.title';
+  static const String radiologyResults = 'radiology.radiology_results';
+  static const String radiologyReviewText = 'radiology.review_text';
+  static const String radiologyHintMsg = 'radiology.hint_msg';
 
   // Prescriptions
   static const String prescriptionsTitle = 'prescriptions.title';

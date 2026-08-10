@@ -30,9 +30,6 @@ class RouterGuard {
       case AppStatus.onboardingRequired:
         return RouteNames.onboarding;
       case AppStatus.unauthenticated:
-        if (!_sessionManager.isRoleSelected) {
-          return RouteNames.roleSelection;
-        }
         return RouteNames.login;
       case AppStatus.authenticatedNeedsSetup:
         return RouteNames.gettingStarted;
@@ -52,6 +49,7 @@ class RouterGuard {
           RouteNames.signup,
           RouteNames.forgotPassword,
           RouteNames.verifyOtp,
+          RouteNames.resetPassword,
         };
       case AppStatus.authenticated:
         return const {
@@ -77,6 +75,7 @@ class RouterGuard {
           RouteNames.patientAppointmentsSuccess,
           RouteNames.patientMyAppointments,
           RouteNames.patientLabResults,
+          RouteNames.patientRadiologyResults,
           // Prescriptions routes
           RouteNames.patientPrescriptions,
           RouteNames.patientDoctorProfile,

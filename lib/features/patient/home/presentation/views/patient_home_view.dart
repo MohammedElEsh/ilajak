@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_assets.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/routing/route_names.dart';
@@ -84,7 +84,8 @@ class PatientHomeView extends StatelessWidget {
                         strokeWidth: 1.5,
                       ),
                       title: AppStrings.homePerciptions.tr(),
-                      onTap: () => context.push(RouteNames.patientPrescriptions),
+                      onTap: () =>
+                          context.push(RouteNames.patientPrescriptions),
                     ),
                     const Spacer(),
 
@@ -107,7 +108,9 @@ class PatientHomeView extends StatelessWidget {
                         strokeWidth: 1.5,
                       ),
                       title: AppStrings.homeImaging.tr(),
-                      onTap: () {},
+                      onTap: () {
+                        context.push(RouteNames.patientRadiologyResults);
+                      },
                     ),
                     const Spacer(),
                     CategoryWidget(
@@ -238,7 +241,7 @@ class PatientHomeView extends StatelessWidget {
                 ),
                 SizedBox(height: 16.h),
                 const HealthInsightCard(),
-                SizedBox(height: 24.h),
+                SizedBox(height: 96.h),
               ],
             ),
           ),
