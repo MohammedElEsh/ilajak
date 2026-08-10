@@ -1,6 +1,11 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo.dart';
+import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo_implementation.dart';
+import 'package:ilajak/features/patient/profile/data/repos/profile_repo.dart';
+import 'package:ilajak/features/patient/profile/data/repos/profile_repo_impl.dart';
+import 'package:ilajak/features/patient/profile/presentation/manager/cubit/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:ilajak/core/networking/api_consumer.dart';
@@ -29,6 +34,7 @@ import 'package:ilajak/features/doctor/profile/presentation/manager/doctor_profi
 import 'package:ilajak/features/doctor/schedule/domain/repositories/appointments_repository.dart';
 import 'package:ilajak/features/doctor/schedule/data/repositories/appointments_repository_impl.dart';
 import 'package:ilajak/features/doctor/schedule/logic/doctor_schedule_cubit/doctor_schedule_cubit.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_register_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 
 final sl = GetIt.instance;
@@ -101,7 +107,9 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton<ApiConsumer>(
     () => sl<DioConsumer>(),
   );
-
+  sl.registerLazySingleton<DoctorsRepo>(
+    () => DoctorsRepoImplementation(sl<ApiConsumer>()),
+  );
   // =====================================================
   // 6. CORE SERVICES
   // =====================================================
@@ -195,5 +203,20 @@ Future<void> initDependencies() async {
 
   sl.registerFactory<DoctorPrescriptionsCubit>(
     () => DoctorPrescriptionsCubit(sl<DoctorPrescriptionsRepository>()),
+  // =====================================================
+  // 9. FEATURE: PROFILE
+  // =====================================================
+  sl.registerLazySingleton<ProfileRepo>(
+    () => ProfileRepoImpl(
+      apiConsumer: sl<ApiConsumer>(),
+      sessionManager: sl<SessionManager>(),
+    ),
+  );
+  sl.registerFactory<ProfileCubit>(
+    () => ProfileCubit(sl<ProfileRepo>()),
+  );
+
+  sl.registerFactory<AuthRegisterCubit>(
+    () => AuthRegisterCubit(sl<AuthRepository>()),
   );
 }

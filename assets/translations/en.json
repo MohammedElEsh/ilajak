@@ -69,6 +69,9 @@
       "national_id": "National ID / Passport",
       "national_id_hint": "1234567890",
       "national_id_required": "National ID is required",
+      "medical_id": "Medical License Number",
+      "medical_id_hint": "e.g., 1234567890",
+      "medical_id_required": "Medical license number is required",
       "date_of_birth": "Date of Birth",
       "date_of_birth_hint": "mm/dd/yyyy",
       "date_of_birth_required": "Date of birth is required",
@@ -87,6 +90,7 @@
       "confirm_password_required": "Confirm password is required",
       "passwords_do_not_match": "Passwords do not match",
       "button": "Create Account",
+      "success": "Account created successfully. Please sign in.",
       "already_have_account": "I Already have an account?",
       "sign_in": "Sign In"
     },
@@ -109,6 +113,17 @@
       "resent": "OTP code resent successfully.",
       "success": "Email verified successfully.",
       "incomplete": "Please enter the complete 6-digit code."
+    },
+    "reset_password": {
+      "title": "Set New Password",
+      "subtitle": "Enter a new password for your medical account.",
+      "label": "New Password",
+      "hint": "••••••••",
+      "confirm_label": "Confirm New Password",
+      "confirm_hint": "Re-enter your new password",
+      "button": "Save Password",
+      "success": "Password changed successfully. Please log in with your new password.",
+      "password_mismatch": "Passwords do not match."
     },
     "terms": {
       "agree": "I agree to the ",
@@ -135,6 +150,8 @@
       "already_have_profile": "Already have a profile? ",
       "log_in": "Log In",
       "help": "Help"
+      "medical_data": ", including medical data handling.",
+      "required": "Please accept the Terms of Service and Privacy Policy."
     }
   },
   "nav": {
@@ -160,6 +177,33 @@
     "search": {
       "placeholder": "Search doctors, patients, appointments..."
     }
+  },
+  "booking": {
+    "search_hint": "Search doctors, symptoms...",
+    "Recommended Doctors": "Recommended Doctors",
+    "Book Appointment": "Book Appointment",
+    "My Appointments": "My Appointments",
+    "Manage your upcoming and past medical visits": "Manage your upcoming and past medical visits",
+    "Upcoming": "Upcoming",
+    "Select Date": "Select Date",
+    "Confirm Booking": "Confirm Booking",
+    "Available Time": "Available Time",
+    "Symptoms/Notes (Optional)": "Symptoms/Notes (Optional)",
+    "Describe Symptoms": "Describe how you're feeling or any specific symptoms...",
+    "Total Payment": "Total Payment",
+    "Appointment Confirmed!": "Appointment Confirmed!",
+     "appointment_confirmed_subtitle": "Your visit has been successfully scheduled.\nWe’ve sent a confirmation to your email.",
+    "DOCTOR": "DOCTOR",
+    "Confirmed": "Confirmed",
+    "Reschedule": "Reschedule",
+    "Cancel": "Cancel",
+    "DATE": "DATE",
+    "TIME": "TIME",
+    "CLINIC ADDRESS": "CLINIC ADDRESS",
+    "View My Appointments": "View My Appointments",
+    "Back to Home": "Back to Home",
+    "Completed": "Completed",
+    "Cancelled": "Cancelled"
   },
   "products": {
     "title": "Products",
@@ -204,6 +248,21 @@
     "Logout Hint": "You'll need to enter your credentials to access your health records and appointments again.",
     "Stay Logged In": "Stay Logged In",
     "Blood Type": "Blood Type",
+    "Status": "Status"
+  },
+  "health": {
+    "lab_results": "lab results",
+    "monitor_progress": "Monitor your progress with clinical precision.",
+    "total_cholesterol": "TOTAL CHOLESTEROL",
+    "normal_range": "NORMAL RANGE",
+    "view_details": "View Details"
+  },
+  "radiology": {
+    "title": "Radiology Reports",
+    "radiology_results": "Radiology Results",
+    "review_text": "Review your recent scans and diagnostic reports from our partner clinics.",
+    "hint_msg": "Your recent lab results for \"Full Blood Count\" are pending. You will receive a notification once they are ready.",
+
     "Status": "Status",
     "Lab Results": "Lab Results",
     "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",

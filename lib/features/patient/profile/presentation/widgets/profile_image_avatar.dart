@@ -10,40 +10,38 @@ class ProfileImageAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final avatarSize = 80.r;
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
-          padding: EdgeInsets.all(4.sp),
+          padding: EdgeInsets.all(4.r),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: AppColors.primary, width: 3),
+            border: Border.all(color: AppColors.primary, width: 3.r),
           ),
-    
-          // Add radius to image
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(50.r),
+          child: ClipOval(
             child: Image.asset(
               AppAssets.profileImage,
-              width: 80.w,
-              height: 80.h,
+              width: avatarSize,
+              height: avatarSize,
               fit: BoxFit.cover,
             ),
           ),
         ),
         Positioned(
-          bottom: 2.h,
-          right: 2.w,
+          bottom: 2.r,
+          right: 2.r,
           child: Container(
             decoration: const BoxDecoration(
               color: AppColors.primary,
               shape: BoxShape.circle,
             ),
-            padding: const EdgeInsets.all(6),
-            child: const Icon(
+            padding: EdgeInsets.all(6.r),
+            child: Icon(
               Icons.edit,
               color: Colors.white,
-              size: 16,
+              size: 16.r,
             ),
           ),
         ),

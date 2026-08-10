@@ -33,11 +33,12 @@ class _LoginViewState extends State<LoginView> {
       context.read<AuthLoginCubit>().login(
         email: _emailController.text.trim(),
         password: _passwordController.text,
+        rememberMe: _rememberMe,
       );
     }
   }
 
-  void _onCreateAccount() => context.push(RouteNames.signup);
+  void _onCreateAccount() => context.push(RouteNames.roleSelection);
 
   void _onForgotPassword() => context.push(RouteNames.forgotPassword);
 
@@ -47,7 +48,7 @@ class _LoginViewState extends State<LoginView> {
 
     if (kDebugMode) {
       _emailController.text = 'mohamed@gmail.com';
-      _passwordController.text = 'M12345678';
+      _passwordController.text = 'M123456789';
     }
   }
 

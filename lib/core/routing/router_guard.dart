@@ -16,8 +16,7 @@ class RouterGuard {
 
   String? redirect(BuildContext _, GoRouterState state) {
     final status = _sessionManager.status;
-    final location = state.uri.path;
-    final hasSelectedRole = _sessionManager.isRoleSelected;
+    final location = state.uri.path;     
 
     LoggerService.d(' [RouterGuard.redirect] status=$status, location=$location, '
         'hasSelectedRole=$hasSelectedRole', tag: 'RouterGuard');
@@ -43,10 +42,6 @@ class RouterGuard {
       case AppStatus.onboardingRequired:
         return RouteNames.onboarding;
       case AppStatus.unauthenticated:
-        // After onboarding, user must select a role first
-        if (!_sessionManager.isRoleSelected) {
-          return RouteNames.roleSelection;
-        }
         return RouteNames.login;
       case AppStatus.authenticatedNeedsSetup:
         return RouteNames.gettingStarted;
@@ -68,6 +63,7 @@ class RouterGuard {
           RouteNames.roleSelection,
           RouteNames.forgotPassword,
           RouteNames.verifyOtp,
+          RouteNames.resetPassword,
         };
       case AppStatus.authenticated:
         return {
@@ -93,6 +89,15 @@ class RouterGuard {
           RouteNames.patientChangePassword,
           RouteNames.patientHealthInfo,
           RouteNames.patientEmergencyContacts,
+          // Patient appointment & sub-routes
+          RouteNames.patientAppointmentsConfirm,
+          RouteNames.patientAppointmentsSuccess,
+          RouteNames.patientMyAppointments,
+          RouteNames.patientLabResults,
+          RouteNames.patientRadiologyResults,
+          // Prescriptions routes
+          RouteNames.patientPrescriptions,
+          RouteNames.patientDoctorProfile,
         };
       case AppStatus.initial:
       case AppStatus.onboardingRequired:

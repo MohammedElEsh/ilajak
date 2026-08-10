@@ -7,14 +7,17 @@ import 'package:ilajak/core/routing/router_shell.dart';
 import 'package:ilajak/core/services/session/session_manager.dart';
 import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_change_password_cubit.dart';
+import 'package:ilajak/features/auth/data/repositories/auth_repository.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_forgot_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_login_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_register_cubit.dart';
+import 'package:ilajak/features/auth/presentation/manager/auth_reset_password_cubit.dart';
 import 'package:ilajak/features/auth/presentation/manager/auth_verify_otp_cubit.dart';
 import 'package:ilajak/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:ilajak/features/auth/presentation/views/login_view.dart';
 import 'package:ilajak/features/auth/presentation/manager/doctor_register_cubit.dart';
 import 'package:ilajak/features/auth/presentation/views/doctor_signup_view.dart';
+import 'package:ilajak/features/auth/presentation/views/reset_password_view.dart';
 import 'package:ilajak/features/auth/presentation/views/signup_view.dart';
 import 'package:ilajak/features/auth/presentation/views/role_selection_view.dart';
 import 'package:ilajak/features/auth/presentation/views/verify_otp_view.dart';
@@ -33,19 +36,25 @@ import 'package:ilajak/features/doctor/profile/presentation/manager/doctor_profi
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_change_password_view.dart';
 import 'package:ilajak/features/doctor/profile/presentation/views/doctor_profile_view.dart';
 import 'package:ilajak/features/doctor/schedule/logic/doctor_schedule_cubit/doctor_schedule_cubit.dart';
+import 'package:ilajak/features/patient/appointments/data/repos/doctors_repo.dart';
+import 'package:ilajak/features/patient/appointments/presentation/manager/cubits/doctors_cubit.dart';
 import 'package:ilajak/features/patient/health/presentation/views/health_view.dart';
 import 'package:ilajak/features/onboarding/presentation/manager/onboarding_cubit.dart';
 import 'package:ilajak/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:ilajak/features/patient/appointments/presentation/views/my_appointments_view.dart';
 import 'package:ilajak/features/patient/appointments/presentation/views/patient_appointments_view.dart';
 import 'package:ilajak/features/patient/health/presentation/views/labs_view.dart';
 import 'package:ilajak/features/patient/home/presentation/views/patient_home_view.dart';
 import 'package:ilajak/features/patient/notifications/presentation/views/patient_notifications_view.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/manager/prescription_cubit.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/views/patient_prescriptions_view.dart';
+import 'package:ilajak/features/patient/profile/data/models/profile_model.dart';
+import 'package:ilajak/features/patient/profile/presentation/manager/cubit/profile_cubit.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_change_password_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_health_info_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_personal_info_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_profile_view.dart';
+import 'package:ilajak/features/patient/radiology/presentation/views/radiology_results_view.dart';
 
 late final GoRouter appRouter;
 
@@ -66,8 +75,14 @@ void initRouter() {
         ),
       ),
       GoRoute(
+        // extra is ProfileModel
         path: RouteNames.patientPersonalInfo,
-        builder: (context, state) => const PatientPersonalInfoView(),
+        builder: (context, state) => BlocProvider(
+          create: (_) => sl<ProfileCubit>(),
+          child: PatientPersonalInfoView(
+            profile: state.extra as ProfileModel,
+          ),
+        ),
       ),
       GoRoute(
         path: RouteNames.patientChangePassword,
@@ -76,6 +91,10 @@ void initRouter() {
       GoRoute(
         path: RouteNames.patientHealthInfo,
         builder: (context, state) => const PatientHealthInfoView(),
+      ),
+      GoRoute(
+        path: RouteNames.patientRadiologyResults,
+        builder: (context, state) => const RadiologyResultsView(),
       ),
       GoRoute(
         path: RouteNames.patientLabResults,
@@ -103,7 +122,7 @@ void initRouter() {
       GoRoute(
         path: RouteNames.signup,
         builder: (context, state) => BlocProvider(
-          create: (_) => AuthRegisterCubit(),
+          create: (_) => sl<AuthRegisterCubit>(),
           child: const SignupView(),
         ),
       ),
@@ -117,7 +136,7 @@ void initRouter() {
       GoRoute(
         path: RouteNames.forgotPassword,
         builder: (context, state) => BlocProvider(
-          create: (_) => AuthForgotPasswordCubit(),
+          create: (_) => AuthForgotPasswordCubit(sl<AuthRepository>()),
           child: const ForgotPasswordView(),
         ),
       ),
@@ -126,8 +145,20 @@ void initRouter() {
         builder: (context, state) {
           final email = state.extra as String? ?? '';
           return BlocProvider(
-            create: (_) => AuthVerifyOtpCubit(),
+            create: (_) => AuthVerifyOtpCubit(sl<AuthRepository>()),
             child: VerifyOtpView(email: email),
+          );
+        },
+      ),
+      GoRoute(
+        path: RouteNames.resetPassword,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>? ?? {};
+          final email = extra['email'] as String? ?? '';
+          final otp = extra['otp'] as String? ?? '';
+          return BlocProvider(
+            create: (_) => AuthResetPasswordCubit(sl<AuthRepository>()),
+            child: ResetPasswordView(email: email, otp: otp),
           );
         },
       ),
@@ -148,7 +179,11 @@ void initRouter() {
             routes: [
               GoRoute(
                 path: RouteNames.patientAppointments,
-                builder: (context, state) => const PatientAppointmentsView(),
+                builder: (context, state) => BlocProvider(
+                  create: (context) =>
+                      DoctorsCubit(doctorsRepo: sl<DoctorsRepo>()),
+                  child: const PatientAppointmentsView(),
+                ),
               ),
             ],
           ),
@@ -172,7 +207,10 @@ void initRouter() {
             routes: [
               GoRoute(
                 path: RouteNames.patientProfile,
-                builder: (context, state) => const PatientProfileView(),
+                builder: (context, state) => BlocProvider(
+                  create: (_) => sl<ProfileCubit>()..getProfile(),
+                  child: const PatientProfileView(),
+                ),
               ),
             ],
           ),
@@ -309,6 +347,10 @@ void initRouter() {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: RouteNames.patientMyAppointments,
+        builder: (context, state) => const MyAppointmentsView(),
       ),
     ],
   );
