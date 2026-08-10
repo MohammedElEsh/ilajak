@@ -73,8 +73,8 @@ class RouterGuard {
           RouteNames.patientChangePassword,
           RouteNames.patientHealthInfo,
           RouteNames.patientEmergencyContacts,
-          // Patient health sub-routes
           RouteNames.patientLabResults,
+          RouteNames.patientRadiologyResults,
           // Prescriptions routes
           RouteNames.patientPrescriptions,
         };

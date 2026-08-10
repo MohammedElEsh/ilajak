@@ -109,7 +109,9 @@ class PatientHomeView extends StatelessWidget {
                         strokeWidth: 1.5,
                       ),
                       title: AppStrings.homeImaging.tr(),
-                      onTap: () {},
+                      onTap: () {
+                        context.push(RouteNames.patientRadiologyResults);
+                      },
                     ),
                     const Spacer(),
 

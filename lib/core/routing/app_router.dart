@@ -36,6 +36,7 @@ import 'package:ilajak/features/patient/profile/presentation/views/patient_chang
 import 'package:ilajak/features/patient/profile/presentation/views/patient_health_info_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_personal_info_view.dart';
 import 'package:ilajak/features/patient/profile/presentation/views/patient_profile_view.dart';
+import 'package:ilajak/features/patient/radiology/presentation/views/radiology_results_view.dart';
 
 late final GoRouter appRouter;
 
@@ -66,6 +67,10 @@ void initRouter() {
       GoRoute(
         path: RouteNames.patientHealthInfo,
         builder: (context, state) => const PatientHealthInfoView(),
+      ),
+      GoRoute(
+        path: RouteNames.patientRadiologyResults,
+        builder: (context, state) => const RadiologyResultsView(),
       ),
       GoRoute(
         path: RouteNames.patientLabResults,
