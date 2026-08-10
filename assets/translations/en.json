@@ -197,6 +197,21 @@
     "Logout Hint": "You'll need to enter your credentials to access your health records and appointments again.",
     "Stay Logged In": "Stay Logged In",
     "Blood Type": "Blood Type",
+    "Status": "Status"
+  },
+  "health": {
+    "lab_results": "lab results",
+    "monitor_progress": "Monitor your progress with clinical precision.",
+    "total_cholesterol": "TOTAL CHOLESTEROL",
+    "normal_range": "NORMAL RANGE",
+    "view_details": "View Details"
+  },
+  "radiology": {
+    "title": "Radiology Reports",
+    "radiology_results": "Radiology Results",
+    "review_text": "Review your recent scans and diagnostic reports from our partner clinics.",
+    "hint_msg": "Your recent lab results for \"Full Blood Count\" are pending. You will receive a notification once they are ready."
+
     "Status": "Status",
     "Lab Results": "Lab Results",
     "Monitor your progress with clinical precision.": "Monitor your progress with\nclinical precision.",

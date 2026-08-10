@@ -262,6 +262,16 @@ class AppStrings {
   static const String stayLoggedIn = 'profile.Stay Logged In';
   static const String bloodType = 'profile.Blood Type';
   static const String status = 'profile.Status';
+  static const String labResults = 'health.lab_results';
+  static const String monitorProgress = 'health.monitor_progress';
+  static const String totalCholesterol = 'health.total_cholesterol';
+  static const String normalRange = 'health.normal_range';
+  static const String viewDetails = 'health.view_details';
+  static const String radiologyTitle = 'radiology.title';
+  static const String radiologyResults = 'radiology.radiology_results';
+  static const String radiologyReviewText = 'radiology.review_text';
+  static const String radiologyHintMsg = 'radiology.hint_msg';
+
   static const String labResults = 'profile.Lab Results';
   static const String monitorYourProgress =
       'profile.Monitor your progress with clinical precision.';
