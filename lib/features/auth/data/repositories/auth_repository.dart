@@ -7,6 +7,7 @@ abstract class AuthRepository {
   EitherResult<AuthTokens> login({
     required String email,
     required String password,
+    bool rememberMe = false,
   });
 
   EitherResult<UserModel> register({

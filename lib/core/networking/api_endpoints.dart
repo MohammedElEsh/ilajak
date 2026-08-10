@@ -1,6 +1,6 @@
 class ApiEndpoints {
   static const String baseUrl =
-      'https://ilajak-backend-production.up.railway.app/api';
+      'https://fifty-partly-blighted.ngrok-free.dev/api';
   static const String login = '/login';
   static const String refresh = '/auth/refresh-token';
   static const String registerPatient = '/register';

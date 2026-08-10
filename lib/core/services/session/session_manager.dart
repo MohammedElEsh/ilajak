@@ -261,12 +261,20 @@ class SessionManager extends ChangeNotifier {
     required String accessToken,
     String? refreshToken,
     bool skipSetup = false,
+    bool persist = true,
   }) async {
-    LoggerService.i('login() — saving tokens', tag: 'SessionManager');
-    await tokenService.saveTokens(
-      accessToken: accessToken,
-      refreshToken: refreshToken,
-    );
+    if (persist) {
+      LoggerService.i('login() — saving tokens', tag: 'SessionManager');
+      await tokenService.saveTokens(
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      );
+    } else {
+      LoggerService.i(
+        'login() — skipping token persistence (remember me = false)',
+        tag: 'SessionManager',
+      );
+    }
 
     _status = skipSetup
         ? AppStatus.authenticated

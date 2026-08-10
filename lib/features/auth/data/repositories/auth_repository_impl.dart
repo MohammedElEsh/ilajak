@@ -22,6 +22,7 @@ class AuthRepositoryImpl implements AuthRepository {
   EitherResult<AuthTokens> login({
     required String email,
     required String password,
+    bool rememberMe = false,
   }) {
     return safeCall(() async {
       final response = await _apiConsumer.post(
@@ -61,6 +62,7 @@ class AuthRepositoryImpl implements AuthRepository {
         accessToken: tokens.accessToken,
         refreshToken: tokens.refreshToken,
         skipSetup: true,
+        persist: rememberMe,
       );
 
       return tokens;
