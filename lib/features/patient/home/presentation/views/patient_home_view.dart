@@ -99,7 +99,6 @@ class PatientHomeView extends StatelessWidget {
                       onTap: () {},
                     ),
                     const Spacer(),
-
                     CategoryWidget(
                       icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedXRay,
@@ -111,7 +110,6 @@ class PatientHomeView extends StatelessWidget {
                       onTap: () {},
                     ),
                     const Spacer(),
-
                     CategoryWidget(
                       icon: const HugeIcon(
                         icon: HugeIcons.strokeRoundedCalendar02,

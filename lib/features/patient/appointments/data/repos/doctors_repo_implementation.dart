@@ -63,12 +63,14 @@ class DoctorsRepoImplementation implements DoctorsRepo {
         ApiEndpoints.availableTimeSlots(doctorId, date),
       );
 
-      final slotsList = response['available_slots'] ?? [];
-      final timeSlots = (slotsList as List)
-          .map((e) => e['start_time'] as String)
-          .toList();
+   final slotsList = response['available_slots'] as List? ?? [];
 
-      return right(timeSlots);
+final timeSlots = slotsList
+    .map((e) => e['start_time']?.toString() ?? '')
+    .where((time) => time.isNotEmpty)
+    .toList();
+
+return right(timeSlots);
     } catch (e) {
       return left(ServerFailure(e.toString(), statusCode: 500));
     }
