@@ -1,5 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:ilajak/core/errors/failures.dart';
+import 'package:ilajak/core/formatters/date_formatter.dart';
 import 'package:ilajak/core/networking/api_consumer.dart';
 import 'package:ilajak/core/networking/api_endpoints.dart';
 import 'package:ilajak/features/patient/appointments/data/models/book_appointment_request_model.dart';
@@ -19,7 +20,7 @@ class DoctorsRepoImplementation implements DoctorsRepo {
   ) async {
     try {
       final response = await apiConsumer.get(
-        ApiEndpoints.singleDoctor(doctorId),
+        '${ApiEndpoints.doctors}/$doctorId',
       );
       final doctor = DoctorDetailsModel.fromJson(response['data']);
       return right(doctor);
@@ -60,7 +61,7 @@ class DoctorsRepoImplementation implements DoctorsRepo {
   ) async {
     try {
       final response = await apiConsumer.get(
-        ApiEndpoints.availableTimeSlots(doctorId, date),
+        '${ApiEndpoints.doctors}/$doctorId/available-slots?date=${DateFormatter.formatToYMD(date)}',
       );
 
       final slotsList = response['available_slots'] as List? ?? [];
