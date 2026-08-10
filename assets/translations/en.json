@@ -113,6 +113,17 @@
       "success": "Email verified successfully.",
       "incomplete": "Please enter the complete 6-digit code."
     },
+    "reset_password": {
+      "title": "Set New Password",
+      "subtitle": "Enter a new password for your medical account.",
+      "label": "New Password",
+      "hint": "••••••••",
+      "confirm_label": "Confirm New Password",
+      "confirm_hint": "Re-enter your new password",
+      "button": "Save Password",
+      "success": "Password changed successfully. Please log in with your new password.",
+      "password_mismatch": "Passwords do not match."
+    },
     "terms": {
       "agree": "I agree to the ",
       "terms_of_service": "Terms of Service",

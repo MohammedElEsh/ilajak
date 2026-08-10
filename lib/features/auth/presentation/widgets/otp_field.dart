@@ -25,10 +25,10 @@ class OtpField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
 
   @override
-  State<OtpField> createState() => _OtpFieldState();
+  State<OtpField> createState() => OtpFieldState();
 }
 
-class _OtpFieldState extends State<OtpField> {
+class OtpFieldState extends State<OtpField> {
   late List<TextEditingController> _controllers;
   late List<FocusNode> _focusNodes;
 
@@ -51,6 +51,14 @@ class _OtpFieldState extends State<OtpField> {
   }
 
   String get _code => _controllers.map((c) => c.text).join();
+
+  void reset() {
+    for (final c in _controllers) {
+      c.clear();
+    }
+    _focusNodes[0].requestFocus();
+    widget.onChanged?.call('');
+  }
 
   double get _boxWidth => widget.boxSize ?? widget.boxWidth ?? 38.w;
   double get _boxHeight => widget.boxSize ?? widget.boxHeight ?? 46.h;

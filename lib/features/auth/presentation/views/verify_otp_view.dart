@@ -2,11 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/formatters/timer_formatter.dart';
+import '../../../../core/routing/route_names.dart';
 import '../../../../core/shared/buttons/app_button.dart';
+import '../../../../core/shared/feedback/feedback_handler.dart';
 import '../../../../core/utils/timer_manager.dart';
 import '../manager/auth_verify_otp_cubit.dart';
 import '../manager/auth_verify_otp_state.dart';
@@ -23,6 +26,7 @@ class VerifyOtpView extends StatefulWidget {
 
 class _VerifyOtpViewState extends State<VerifyOtpView> {
   final TimerManager _timerManager = TimerManager();
+  final _otpFieldKey = GlobalKey<OtpFieldState>();
   int _remainingSeconds = 60;
   bool _canResend = false;
   String _otpCode = '';
@@ -53,12 +57,7 @@ class _VerifyOtpViewState extends State<VerifyOtpView> {
 
   void _onVerify() {
     if (_otpCode.length < 6) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppStrings.authVerifyOtpIncomplete.tr()),
-          backgroundColor: Theme.of(context).colorScheme.error,
-        ),
-      );
+      FeedbackHandler.error(AppStrings.authVerifyOtpIncomplete.tr());
       return;
     }
     context.read<AuthVerifyOtpCubit>().verifyOtp(
@@ -70,6 +69,8 @@ class _VerifyOtpViewState extends State<VerifyOtpView> {
   void _onResend() {
     if (!_canResend) return;
     context.read<AuthVerifyOtpCubit>().resendOtp(email: widget.email);
+    _otpFieldKey.currentState?.reset();
+    _otpCode = '';
     _startTimer();
   }
 
@@ -90,30 +91,22 @@ class _VerifyOtpViewState extends State<VerifyOtpView> {
         child: BlocConsumer<AuthVerifyOtpCubit, AuthVerifyOtpState>(
           listener: (context, state) {
             if (state is AuthVerifyOtpSuccess) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(AppStrings.authVerifyOtpSuccess.tr()),
-                  backgroundColor: colors.primary,
-                ),
+              context.push(
+                RouteNames.resetPassword,
+                extra: {
+                  'email': widget.email,
+                  'otp': _otpCode,
+                },
               );
             } else if (state is AuthVerifyOtpResendSuccess) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(AppStrings.authVerifyOtpResent.tr()),
-                  backgroundColor: colors.primary,
-                ),
-              );
+              FeedbackHandler.success(AppStrings.authVerifyOtpResent.tr());
             } else if (state is AuthVerifyOtpError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message),
-                  backgroundColor: colors.error,
-                ),
-              );
+              FeedbackHandler.error(state.message);
             }
           },
           builder: (context, state) {
-            final isLoading = state is AuthVerifyOtpLoading;
+            final isVerifyLoading = state is AuthVerifyOtpLoading;
+            final isResendLoading = state is AuthVerifyOtpResendLoading;
 
             return LayoutBuilder(
               builder: (context, constraints) {
@@ -184,13 +177,13 @@ class _VerifyOtpViewState extends State<VerifyOtpView> {
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 48.h),
-                        OtpField(onCompleted: _onOtpCompleted),
+                        OtpField(key: _otpFieldKey, onCompleted: _onOtpCompleted),
                         SizedBox(height: 36.h),
                         AppButton(
                           variant: AppButtonVariant.elevated,
                           label: AppStrings.authVerifyOtpButton.tr(),
                           onPressed: _onVerify,
-                          isLoading: isLoading,
+                          isLoading: isVerifyLoading,
                         ),
                         SizedBox(height: 32.h),
                         Row(
@@ -222,18 +215,28 @@ class _VerifyOtpViewState extends State<VerifyOtpView> {
                             ),
                             SizedBox(width: 4.w),
                             GestureDetector(
-                              onTap: _canResend ? _onResend : null,
-                              child: Text(
-                                AppStrings.authVerifyOtpResendButton.tr(),
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: _canResend
-                                      ? colors.primary
-                                      : colors.onSurfaceVariant.withValues(
-                                          alpha: 0.5,
-                                        ),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              onTap: _canResend && !isResendLoading
+                                  ? _onResend
+                                  : null,
+                              child: isResendLoading
+                                  ? SizedBox(
+                                      width: 16.r,
+                                      height: 16.r,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: colors.primary,
+                                      ),
+                                    )
+                                  : Text(
+                                      AppStrings.authVerifyOtpResendButton.tr(),
+                                      style: theme.textTheme.bodyMedium?.copyWith(
+                                        color: _canResend
+                                            ? colors.primary
+                                            : colors.onSurfaceVariant
+                                                .withValues(alpha: 0.5),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                             ),
                           ],
                         ),

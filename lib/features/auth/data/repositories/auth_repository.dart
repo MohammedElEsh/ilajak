@@ -23,4 +23,18 @@ abstract class AuthRepository {
     String? bloodType,
     String? address,
   });
+
+  EitherResult<void> forgotPassword({required String email});
+
+  EitherResult<void> verifyOtp({
+    required String email,
+    required String otp,
+  });
+
+  EitherResult<void> resetPassword({
+    required String email,
+    required String otp,
+    required String password,
+    required String passwordConfirmation,
+  });
 }

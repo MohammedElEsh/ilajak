@@ -120,4 +120,74 @@ class AuthRepositoryImpl implements AuthRepository {
       return UserModel.fromJson(userData);
     });
   }
+
+  @override
+  EitherResult<void> forgotPassword({required String email}) {
+    return safeCall(() async {
+      final response = await _apiConsumer.post(
+        ApiEndpoints.forgotPassword,
+        data: {'email': email},
+      );
+
+      if (response is! Map<String, dynamic>) {
+        throw const ServerFailure('Unexpected response format');
+      }
+
+      final message = response['message'] as String?;
+      if (message != null && message.toLowerCase().contains('error')) {
+        throw ServerFailure(message);
+      }
+    });
+  }
+
+  @override
+  EitherResult<void> verifyOtp({
+    required String email,
+    required String otp,
+  }) {
+    return safeCall(() async {
+      final response = await _apiConsumer.post(
+        ApiEndpoints.verifyOtp,
+        data: {'email': email, 'otp': otp},
+      );
+
+      if (response is! Map<String, dynamic>) {
+        throw const ServerFailure('Unexpected response format');
+      }
+
+      final message = response['message'] as String?;
+      if (message != null && message.toLowerCase().contains('error')) {
+        throw ServerFailure(message);
+      }
+    });
+  }
+
+  @override
+  EitherResult<void> resetPassword({
+    required String email,
+    required String otp,
+    required String password,
+    required String passwordConfirmation,
+  }) {
+    return safeCall(() async {
+      final response = await _apiConsumer.post(
+        ApiEndpoints.resetPassword,
+        data: {
+          'email': email,
+          'otp': otp,
+          'password': password,
+          'password_confirmation': passwordConfirmation,
+        },
+      );
+
+      if (response is! Map<String, dynamic>) {
+        throw const ServerFailure('Unexpected response format');
+      }
+
+      final message = response['message'] as String?;
+      if (message != null && message.toLowerCase().contains('error')) {
+        throw ServerFailure(message);
+      }
+    });
+  }
 }
