@@ -30,9 +30,6 @@ class RouterGuard {
       case AppStatus.onboardingRequired:
         return RouteNames.onboarding;
       case AppStatus.unauthenticated:
-        if (!_sessionManager.isRoleSelected) {
-          return RouteNames.roleSelection;
-        }
         return RouteNames.login;
       case AppStatus.authenticatedNeedsSetup:
         return RouteNames.gettingStarted;

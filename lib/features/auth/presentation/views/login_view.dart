@@ -37,7 +37,7 @@ class _LoginViewState extends State<LoginView> {
     }
   }
 
-  void _onCreateAccount() => context.push(RouteNames.signup);
+  void _onCreateAccount() => context.push(RouteNames.roleSelection);
 
   void _onForgotPassword() => context.push(RouteNames.forgotPassword);
 
