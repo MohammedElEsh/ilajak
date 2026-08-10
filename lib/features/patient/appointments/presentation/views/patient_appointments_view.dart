@@ -61,18 +61,12 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
   void _fetchDoctors() {
     if (selectedIndex == 0) {
       if (searchQuery.isNotEmpty) {
-        BlocProvider.of<DoctorsCubit>(
-          context,
-        ).getDoctors(search: searchQuery);
+        BlocProvider.of<DoctorsCubit>(context).getDoctors(search: searchQuery);
       } else {
-         BlocProvider.of<DoctorsCubit>(
-          context,
-        ).getDoctors();
+        BlocProvider.of<DoctorsCubit>(context).getDoctors();
       }
     } else {
-      BlocProvider.of<DoctorsCubit>(
-        context,
-      ).getDoctors(
+      BlocProvider.of<DoctorsCubit>(context).getDoctors(
         search: searchQuery.isNotEmpty ? searchQuery : null,
         specialization: specializations[selectedIndex],
       );
@@ -82,9 +76,7 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
   @override
   void initState() {
     super.initState();
-      BlocProvider.of<DoctorsCubit>(
-          context,
-        ).getDoctors();
+    BlocProvider.of<DoctorsCubit>(context).getDoctors();
   }
 
   @override
@@ -197,7 +189,6 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                         itemCount: state.doctors.length,
                         itemBuilder: (context, index) {
                           return DoctorCardWidget(
-                          
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -222,7 +213,7 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
                     return const SizedBox.shrink();
                   },
                 ),
-                SizedBox(height: 24.h),
+                SizedBox(height: 70.h),
               ],
             ),
           ),
