@@ -198,4 +198,12 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     });
   }
+
+  @override
+  EitherResult<void> logout() {
+    return safeCall(() async {
+      await _apiConsumer.post(ApiEndpoints.logout);
+      await _sessionManager.logout();
+    });
+  }
 }

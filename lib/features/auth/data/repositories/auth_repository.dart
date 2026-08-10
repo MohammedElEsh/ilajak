@@ -38,4 +38,6 @@ abstract class AuthRepository {
     required String password,
     required String passwordConfirmation,
   });
+
+  EitherResult<void> logout();
 }

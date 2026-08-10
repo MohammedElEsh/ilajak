@@ -17,6 +17,9 @@ import 'package:ilajak/features/patient/profile/presentation/widgets/profile_inf
 import 'package:ilajak/features/patient/profile/presentation/widgets/settings_card_widget.dart';
 import 'package:ilajak/features/patient/profile/presentation/widgets/settings_tile_widget.dart';
 
+import '../../../../../../core/di/injection.dart';
+import '../../../../../../features/auth/data/repositories/auth_repository.dart';
+
 class PatientProfileView extends StatelessWidget {
   const PatientProfileView({super.key});
 
@@ -268,12 +271,12 @@ void showLogOutDialog(BuildContext context) {
 
             /// Logout
             AppButton(
-              style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: AppColors.error, width: 1.5),
-                foregroundColor: AppColors.error,
-              ),
               label: AppStrings.logout.tr(),
-              onPressed: () {},
+              onPressed: () async {
+                Navigator.pop(context);
+                final result = await sl<AuthRepository>().logout();
+                result.fold((failure) => null, (_) {});
+              },
               variant: AppButtonVariant.outlined,
             ),
           ],

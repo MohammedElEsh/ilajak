@@ -48,7 +48,7 @@ class _LoginViewState extends State<LoginView> {
 
     if (kDebugMode) {
       _emailController.text = 'mohamed@gmail.com';
-      _passwordController.text = 'M12345678';
+      _passwordController.text = 'M123456789';
     }
   }
 
