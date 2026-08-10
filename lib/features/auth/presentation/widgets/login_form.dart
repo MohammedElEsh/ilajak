@@ -101,14 +101,11 @@ class LoginForm extends StatelessWidget {
                   ),
                 ],
               ),
-              Flexible(
-                fit: FlexFit.loose,
-                child: AppButton(
-                  variant: AppButtonVariant.text,
-                  label: AppStrings.authLoginForgotPassword.tr(),
-                  onPressed: onForgotPassword,
-                  expanded: false,
-                ),
+              AppButton(
+                variant: AppButtonVariant.text,
+                label: AppStrings.authLoginForgotPassword.tr(),
+                onPressed: onForgotPassword,
+                expanded: false,
               ),
             ],
           ),
