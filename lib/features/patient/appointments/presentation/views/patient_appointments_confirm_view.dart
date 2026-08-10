@@ -37,8 +37,8 @@ class _PatientAppointmentsConfirmViewState
 
   int get daysCount => lastDay.day - now.day + 1;
 
-  late DateTime selectedDate = now;
-  int selectedIndexTime = 0;
+  DateTime? selectedDate;
+  int selectedIndexTime = -1;
   String time = "";
   @override
   Widget build(BuildContext context) {
@@ -92,6 +92,8 @@ class _PatientAppointmentsConfirmViewState
                     onTap: () {
                       setState(() {
                         selectedDate = date;
+                        selectedIndexTime = -1;
+                        time = "";
                       });
                     },
                     child: Padding(
@@ -101,19 +103,21 @@ class _PatientAppointmentsConfirmViewState
                         onTap: () {
                           setState(() {
                             selectedDate = date;
+                            selectedIndexTime = -1;
+                            time = "";
                             context
                                 .read<DoctorAvailableTimeSlotsCubit>()
                                 .getAvailableTimeSlots(
                                   widget.doctor.id,
-                                  selectedDate,
+                                  selectedDate!,
                                 );
                             print(selectedDate);
                           });
                         },
                         isSelected:
-                            selectedDate.year == date.year &&
-                            selectedDate.month == date.month &&
-                            selectedDate.day == date.day,
+                            selectedDate?.year == date.year &&
+                            selectedDate?.month == date.month &&
+                            selectedDate?.day == date.day,
                       ),
                     ),
                   );
@@ -195,7 +199,7 @@ class _PatientAppointmentsConfirmViewState
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 15.h),
                       child: Text(
-                        'Doctor does not work on this day.',
+                        selectedDate == null ? 'Please select a date' : 'Doctor does not work on this day.',
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
@@ -263,7 +267,7 @@ class _PatientAppointmentsConfirmViewState
                                   doctor: widget.doctor,
                                   date: DateFormat(
                                     'dd MMM, yyyy',
-                                  ).format(selectedDate),
+                                  ).format(selectedDate!),
                                   time: time,
                                 ),
                           ),
@@ -283,6 +287,14 @@ class _PatientAppointmentsConfirmViewState
                         text: AppStrings.confirmBooking.tr(),
                         width: 180.w,
                         onTap: () {
+                          if (selectedDate == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Please select a date'),
+                              ),
+                            );
+                            return;
+                          }
                           if (time.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
@@ -291,16 +303,12 @@ class _PatientAppointmentsConfirmViewState
                             );
                             return;
                           }
-                          context
-                              .read<BookAppointmentCubit>()
-                              .bookAppointment(
-                                doctorId: widget.doctor.id,
-                                clinicId: widget.doctor.clinicId,
-                                date: DateFormat(
-                                  'yyyy-MM-dd',
-                                ).format(selectedDate),
-                                slotTime: time,
-                              );
+                          context.read<BookAppointmentCubit>().bookAppointment(
+                            doctorId: widget.doctor.id,
+                            clinicId: widget.doctor.clinicId,
+                            date: DateFormat('yyyy-MM-dd').format(selectedDate!),
+                            slotTime: time,
+                          );
                         },
                       );
                     },

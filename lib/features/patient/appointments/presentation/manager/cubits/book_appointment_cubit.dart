@@ -6,8 +6,7 @@ import 'package:ilajak/features/patient/appointments/presentation/manager/states
 class BookAppointmentCubit extends Cubit<BookAppointmentState> {
   final DoctorsRepo doctorsRepo;
 
-  BookAppointmentCubit(this.doctorsRepo)
-      : super(BookAppointmentInitial());
+  BookAppointmentCubit(this.doctorsRepo) : super(BookAppointmentInitial());
 
   Future<void> bookAppointment({
     required int doctorId,

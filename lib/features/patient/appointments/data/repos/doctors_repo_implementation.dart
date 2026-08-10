@@ -63,18 +63,19 @@ class DoctorsRepoImplementation implements DoctorsRepo {
         ApiEndpoints.availableTimeSlots(doctorId, date),
       );
 
-   final slotsList = response['available_slots'] as List? ?? [];
+      final slotsList = response['available_slots'] as List? ?? [];
 
-final timeSlots = slotsList
-    .map((e) => e['start_time']?.toString() ?? '')
-    .where((time) => time.isNotEmpty)
-    .toList();
+      final timeSlots = slotsList
+          .map((e) => e['start_time']?.toString() ?? '')
+          .where((time) => time.isNotEmpty)
+          .toList();
 
-return right(timeSlots);
+      return right(timeSlots);
     } catch (e) {
       return left(ServerFailure(e.toString(), statusCode: 500));
     }
   }
+
   @override
   Future<Either<Failure, BookAppointmentResponseModel>> bookAppointment(
     BookAppointmentRequest request,
