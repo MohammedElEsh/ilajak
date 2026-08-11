@@ -322,7 +322,14 @@ class AppButton extends StatelessWidget {
           ),
           SizedBox(width: 8.w),
         ],
-        Text(label, style: baseTextStyle.copyWith(color: fg)),
+        Flexible(
+          child: Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: baseTextStyle.copyWith(color: fg),
+          ),
+        ),
         if (suffixIcon != null) ...[
           SizedBox(width: 8.w),
           IconTheme(
