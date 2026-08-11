@@ -243,7 +243,14 @@
     "medicines_count": "{} أدوية",
     "issue_date": "تاريخ الإصدار",
     "refill": "تجديد",
-    "view": "عرض"
+    "view": "عرض",
+    "detail_medicines_list": "قائمة الأدوية",
+    "detail_medicine_name": "الدواء",
+    "detail_morning": "صباحاً",
+    "detail_evening": "مساءً",
+    "detail_night": "ليلاً",
+    "detail_dosage_value": "{} ملغ",
+    "detail_frequency_value": "مرات/يوم"
   },
   "doctor": {
     "home": {

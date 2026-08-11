@@ -323,6 +323,13 @@ class AppStrings {
   static const String prescriptionsIssueDate = 'prescriptions.issue_date';
   static const String prescriptionsRefill = 'prescriptions.refill';
   static const String prescriptionsView = 'prescriptions.view';
+  static const String prescriptionsDetailMedicinesList = 'prescriptions.detail_medicines_list';
+  static const String prescriptionsDetailMedicineName = 'prescriptions.detail_medicine_name';
+  static const String prescriptionsDetailMorning = 'prescriptions.detail_morning';
+  static const String prescriptionsDetailEvening = 'prescriptions.detail_evening';
+  static const String prescriptionsDetailNight = 'prescriptions.detail_night';
+  static const String prescriptionsDetailDosageValue = 'prescriptions.detail_dosage_value';
+  static const String prescriptionsDetailFrequencyValue = 'prescriptions.detail_frequency_value';
 
   // ── Doctor Home ──────────────────────────────────────────────────────
   static const String doctorHomeAppBarTitle = 'doctor.home.appBarTitle';

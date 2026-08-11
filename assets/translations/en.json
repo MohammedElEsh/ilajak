@@ -271,7 +271,14 @@
     "medicines_count": "{} Medicines",
     "issue_date": "Issue Date",
     "refill": "Refill",
-    "view": "View"
+    "view": "View",
+    "detail_medicines_list": "Medicines List",
+    "detail_medicine_name": "Medicine",
+    "detail_morning": "Morning",
+    "detail_evening": "Evening",
+    "detail_night": "Night",
+    "detail_dosage_value": "{} mg",
+    "detail_frequency_value": "Times/day"
   },
   "doctor": {
     "home": {

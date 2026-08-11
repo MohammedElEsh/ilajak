@@ -37,6 +37,7 @@ class RouteNames {
 
   // Prescriptions routes
   static const String patientPrescriptions = '/patient-prescriptions';
+  static const String patientPrescriptionDetail = '/patient-prescription-detail';
   static const String patientDoctorProfile = '/patient-doctor-profile';
 
   // Doctor sub-routes (nested under doctor shell)
