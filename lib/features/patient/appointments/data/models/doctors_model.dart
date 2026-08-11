@@ -4,9 +4,9 @@ class DoctorModel {
   final String? avatar;
   final String specialization;
   final double consultationFee;
-   final int clinicId;
+  final int clinicId;
   final String? clinicName;
-    final String? clinicAddress;
+  final String? clinicAddress;
   final double averageRating;
   final int reviews;
   final int experience;
@@ -37,19 +37,24 @@ class DoctorModel {
       specialization: json['specialization'] ?? '',
       consultationFee:
           double.tryParse(json['consultation_fee']?.toString() ?? '') ?? 0,
-      clinicName: (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
+      clinicName:
+          (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
           ? json['clinics'][0]['name']
           : null,
-      clinicAddress: (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
+      clinicAddress:
+          (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
           ? json['clinics'][0]['address']
           : null,
-      clinicId: (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
+      clinicId:
+          (json['clinics'] is List && (json['clinics'] as List).isNotEmpty)
           ? json['clinics'][0]['id'] ?? 0
           : 0,
-      averageRating: double.tryParse(json['average_rating']?.toString() ?? '') ?? 0,
+      averageRating:
+          double.tryParse(json['average_rating']?.toString() ?? '') ?? 0,
       reviews: int.tryParse(json['total_ratings']?.toString() ?? '') ?? 0,
       experience: int.tryParse(json['experience']?.toString() ?? '') ?? 0,
-      totalPatients: int.tryParse(json['total_patients']?.toString() ?? '') ?? 0,
+      totalPatients:
+          int.tryParse(json['total_patients']?.toString() ?? '') ?? 0,
       availability: json['availability']?.toString() ?? '',
     );
   }
