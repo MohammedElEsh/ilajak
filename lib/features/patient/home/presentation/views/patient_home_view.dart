@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -17,6 +18,7 @@ import 'package:ilajak/features/patient/home/presentation/widgets/status_widget.
 import 'package:ilajak/features/patient/home/presentation/widgets/time_line_card_widget.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/time_line_indicator_widget.dart';
 import 'package:ilajak/features/patient/home/presentation/widgets/upcomingappointment_widget.dart';
+import 'package:ilajak/features/patient/profile/presentation/manager/cubit/profile_cubit.dart';
 
 class PatientHomeView extends StatelessWidget {
   const PatientHomeView({super.key});
@@ -57,11 +59,22 @@ class PatientHomeView extends StatelessWidget {
                         color: AppColors.backgroundDark,
                       ),
                     ),
-                    Text(
-                      "Ahmed",
-                      style: AppTypography.bold28.copyWith(
-                        color: AppColors.backgroundDark,
-                      ),
+                    BlocBuilder<ProfileCubit, ProfileState>(
+                      builder: (context, state) {
+                        final name = switch (state) {
+                          GetProfileSuccess(:final profile) => profile.name,
+                          _ => '',
+                        };
+                        return Flexible(
+                          child: Text(
+                            name,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTypography.bold28.copyWith(
+                              color: AppColors.backgroundDark,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -97,7 +110,8 @@ class PatientHomeView extends StatelessWidget {
                         strokeWidth: 1.5,
                       ),
                       title: AppStrings.homeLabs.tr(),
-                      onTap: () {},
+                      onTap: () =>
+                          context.push(RouteNames.patientLabResults),
                     ),
                     const Spacer(),
                     CategoryWidget(
@@ -121,7 +135,8 @@ class PatientHomeView extends StatelessWidget {
                         strokeWidth: 1.5,
                       ),
                       title: AppStrings.homeAppointments.tr(),
-                      onTap: () {},
+                      onTap: () =>
+                          context.push(RouteNames.patientMyAppointments),
                     ),
                   ],
                 ),

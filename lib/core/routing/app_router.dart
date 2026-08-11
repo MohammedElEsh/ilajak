@@ -152,7 +152,10 @@ void initRouter() {
             routes: [
               GoRoute(
                 path: RouteNames.patientHome,
-                builder: (context, state) => const PatientHomeView(),
+                builder: (context, state) => BlocProvider(
+                  create: (_) => sl<ProfileCubit>()..getProfile(),
+                  child: const PatientHomeView(),
+                ),
               ),
             ],
           ),
