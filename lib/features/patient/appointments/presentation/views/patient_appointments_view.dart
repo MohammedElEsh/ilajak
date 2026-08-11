@@ -46,8 +46,9 @@ class _PatientAppointmentsViewState extends State<PatientAppointmentsView> {
   String searchQuery = '';
   // الميثود دي بتتنده كل مره اليوزر يكتب حرف
   void _onSearchChanged(String query) {
-    if (_debounce?.isActive ?? false)
-      _debounce!.cancel(); //لو فيه Timer شغال من الحرف اللي قبله، الغيه.
+    if (_debounce?.isActive ?? false) {
+      _debounce!.cancel();
+    } //لو فيه Timer شغال من الحرف اللي قبله، الغيه.
     _debounce = Timer(const Duration(milliseconds: 500), () {
       //تنتظر 500 ملي ثانية بعد آخر ضغطة زر
       setState(() {

@@ -1,7 +1,7 @@
-import '../../../../core/errors/safe_call.dart';
-import '../../../../core/services/session/session_manager.dart';
-import '../models/auth_tokens.dart';
-import '../models/user_model.dart';
+import 'package:ilajak/core/errors/safe_call.dart';
+import 'package:ilajak/core/services/session/session_manager.dart';
+import 'package:ilajak/features/auth/data/models/auth_tokens.dart';
+import 'package:ilajak/features/auth/data/models/user_model.dart';
 
 abstract class AuthRepository {
   EitherResult<AuthTokens> login({
@@ -27,10 +27,7 @@ abstract class AuthRepository {
 
   EitherResult<void> forgotPassword({required String email});
 
-  EitherResult<void> verifyOtp({
-    required String email,
-    required String otp,
-  });
+  EitherResult<void> verifyOtp({required String email, required String otp});
 
   EitherResult<void> resetPassword({
     required String email,

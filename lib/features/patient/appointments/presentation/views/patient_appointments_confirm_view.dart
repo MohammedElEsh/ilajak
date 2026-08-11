@@ -107,7 +107,7 @@ class _PatientAppointmentsConfirmViewState
                                   widget.doctor.id,
                                   selectedDate,
                                 );
-                            print(selectedDate);
+                            debugPrint(selectedDate.toString());
                           });
                         },
                         isSelected:
@@ -183,7 +183,7 @@ class _PatientAppointmentsConfirmViewState
                             setState(() {
                               selectedIndexTime = index;
                               time = state.timeSlots[index];
-                              print(state.timeSlots[index]);
+                              debugPrint(state.timeSlots[index].toString());
                             });
                           },
                         );

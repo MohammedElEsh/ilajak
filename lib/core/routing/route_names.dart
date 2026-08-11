@@ -38,4 +38,11 @@ class RouteNames {
   // Prescriptions routes
   static const String patientPrescriptions = '/patient-prescriptions';
   static const String patientDoctorProfile = '/patient-doctor-profile';
+
+  // Doctor sub-routes (nested under doctor shell)
+  static const String doctorScheduleFullPath = '/doctor-home/schedule';
+  static const String doctorPatientProfileFullPath = '/doctor-patients/patient-profile';
+  static const String doctorPatientRecordsFullPath = '/doctor-patients/patient-profile/patient-records';
+  static const String doctorCreateMedicalRecordFullPath = '/doctor-patients/patient-profile/patient-records/create';
+  static const String doctorAddPrescriptionFullPath = '/doctor-patients/patient-profile/add-prescription';
 }

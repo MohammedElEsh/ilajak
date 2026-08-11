@@ -52,4 +52,12 @@ abstract class DateFormatter {
     }
     return 'Just now';
   }
+
+  static String formatToWeekdayDate(DateTime date) {
+    return DateFormat('EEEE, MMM dd').format(date);
+  }
+
+  static String formatToMonthDay(DateTime date) {
+    return DateFormat('MMM dd').format(date);
+  }
 }

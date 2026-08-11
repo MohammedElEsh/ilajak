@@ -7,7 +7,7 @@ import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
-import 'package:ilajak/features/patient/appointments/presentation/widgets/cudtom_tap_bar_widget.dart';
+import 'package:ilajak/features/patient/appointments/presentation/widgets/custom_tap_bar_widget.dart';
 import 'package:ilajak/features/patient/appointments/presentation/widgets/my_appointment_card_widget.dart';
 
 class MyAppointmentsView extends StatelessWidget {
