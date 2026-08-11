@@ -152,7 +152,10 @@
     "Appointments": "المواعيد",
     "UpcomingAppointment": "المواعيد القادمة",
     "HealthInsight": "رؤية صحية",
-    "HealthInsightSubtitle": "استنادًا إلى نشاطك، فإن زيادة عدد خطواتك اليومية بمقدار 2000 خطوة قد تُحسّن صحة القلب والأوعية الدموية لديك بنسبة 15٪."
+    "HealthInsightSubtitle": "استنادًا إلى نشاطك، فإن زيادة عدد خطواتك اليومية بمقدار 2000 خطوة قد تُحسّن صحة القلب والأوعية الدموية لديك بنسبة 15٪.",
+    "search": {
+      "placeholder": "البحث عن أطباء، أعراض..."
+    }
   },
   "products": {
     "title": "المنتجات",
@@ -240,6 +243,165 @@
     "medicines_count": "{} أدوية",
     "issue_date": "تاريخ الإصدار",
     "refill": "تجديد",
-    "view": "عرض"
+    "view": "عرض",
+    "detail_medicines_list": "قائمة الأدوية",
+    "detail_medicine_name": "الدواء",
+    "detail_morning": "صباحاً",
+    "detail_evening": "مساءً",
+    "detail_night": "ليلاً",
+    "detail_dosage_value": "{} ملغ",
+    "detail_frequency_value": "مرات/يوم"
+  },
+  "doctor": {
+    "home": {
+      "appBarTitle": "لوحة تحكم الطبيب",
+      "greeting": "صباح الخير",
+      "appointments_today": "مواعيد اليوم",
+      "today_badge": "اليوم",
+      "pending": "قيد الانتظار",
+      "completed": "مكتمل",
+      "new_patients": "مرضى جدد",
+      "quick_actions": "إجراءات سريعة",
+      "add_appointment": "إضافة موعد",
+      "record_visit": "تسجيل زيارة",
+      "recent_patients": "المرضى الأخيرين",
+      "view_all": "عرض الكل",
+      "upcoming_today": "قادم اليوم",
+      "now_label": "الآن",
+      "live_badge": "مباشر",
+      "start_visit": "بدء الزيارة",
+      "search_placeholder": "البحث عن مرضى، مواعيد..."
+    },
+    "schedule": {
+      "filter_all": "الكل",
+      "filter_date": "التاريخ",
+      "filter_client": "العميل",
+      "filter_patient": "المريض",
+      "eyebrow": "المواعيد",
+      "today_label": "اليوم",
+      "new_appointment": "موعد جديد",
+      "no_appointments": "لا توجد مواعيد",
+      "confirm": "تأكيد",
+      "complete": "إتمام",
+      "reschedule": "إعادة جدولة",
+      "cancel": "إلغاء",
+      "view_details": "عرض التفاصيل"
+    },
+    "notifications": {
+      "title": "الإشعارات",
+      "filter_all": "الكل",
+      "filter_unread": "غير مقروء",
+      "filter_appointments": "المواعيد",
+      "filter_patients": "المرضى",
+      "section_today": "اليوم",
+      "section_yesterday": "أمس",
+      "section_earlier": "سابقاً",
+      "mark_all_read": "تحديد الكل كمقروء",
+      "search_hint": "البحث في الإشعارات...",
+      "empty_state": "لا توجد إشعارات بعد",
+      "accept": "قبول",
+      "open_labs": "فتح المختبرات"
+    },
+    "patients": {
+      "title": "مرضاي",
+      "filter_all": "الكل",
+      "filter_today": "اليوم",
+      "filter_new": "جديد",
+      "filter_returning": "عائد",
+      "search_hint": "البحث عن مرضى...",
+      "status_active": "نشط",
+      "status_pending": "قيد الانتظار",
+      "last_visit": "آخر زيارة",
+      "next_appointment": "الموعد القادم",
+      "not_scheduled": "غير مجدول"
+    },
+    "patient_profile": {
+      "missing_context": "معلومات المريض غير متاحة",
+      "title": "ملف المريض",
+      "medical_conditions": "الحالات الطبية",
+      "allergies": "الحساسية",
+      "chronic_diseases": "الأمراض المزمنة",
+      "active_medications": "الأدوية النشطة",
+      "recent_visits": "الزيارات الأخيرة",
+      "results_pending": "النتائج قيد الانتظار",
+      "view_medical_history": "عرض السجل الطبي",
+      "add_prescription": "إضافة وصفة",
+      "book_follow_up": "حجز موعد متابعة",
+      "none_reported": "لم يتم الإبلاغ",
+      "items_suffix": " عنصر(عناصر)"
+    },
+    "patient_records": {
+      "patient_id_prefix": "رقم المريض: ",
+      "filter_all": "الكل",
+      "filter_lab_results": "نتائج المختبر",
+      "filter_radiology": "الأشعة",
+      "filter_prescriptions": "الوصفات"
+    },
+    "medical_records": {
+      "title": "السجلات الطبية",
+      "empty": "لم يتم العثور على سجلات طبية",
+      "chronic_diseases": "الأمراض المزمنة",
+      "allergies": "الحساسية",
+      "lab_results": "نتائج المختبر",
+      "radiology_results": "نتائج الأشعة",
+      "attachments": "المرفقات"
+    },
+    "create_medical_record": {
+      "title": "إنشاء سجل طبي",
+      "success": "تم إنشاء السجل الطبي بنجاح",
+      "chronic_hint": "أدخل الأمراض المزمنة",
+      "allergies_hint": "أدخل الحساسية",
+      "attachments_hint": "المرفقات",
+      "attachment_hint": "أدخل رابط المرفق",
+      "save": "حفظ السجل",
+      "field_name_hint": "اسم الحقل",
+      "field_value_hint": "قيمة الحقل"
+    },
+    "change_password": {
+      "title": "تغيير كلمة المرور",
+      "intro": "لأمانك، يرجى إدخال كلمة المرور الحالية واختيار جديدة.",
+      "current": "كلمة المرور الحالية",
+      "new": "كلمة المرور الجديدة",
+      "confirm": "تأكيد كلمة المرور الجديدة",
+      "hint": "يجب أن تكون كلمة المرور 8 أحرف على الأقل، بما في ذلك رقم ورمز.",
+      "update_button": "تحديث كلمة المرور",
+      "forgot": "نسيت كلمة المرور؟",
+      "complexity_error": "يجب أن تتضمن كلمة المرور رقماً واحداً على الأقل ورمزداً واحداً."
+    },
+    "profile": {
+      "professional_details": "التفاصيل المهنية",
+      "clinic": "العيادة",
+      "specialization": "التخصص",
+      "contact_information": "معلومات الاتصال",
+      "phone": "الهاتف",
+      "email": "البريد الإلكتروني",
+      "legal_info": "المعلومات القانونية",
+      "license_number": "رقم الترخيص",
+      "status_active": "نشط",
+      "app_settings": "إعدادات التطبيق",
+      "notifications": "الإشعارات",
+      "password": "كلمة المرور",
+      "log_out": "تسجيل الخروج"
+    },
+    "prescriptions": {
+      "section_title": "الوصفات الطبية",
+      "empty": "لم يتم العثور على وصفات"
+    },
+    "create_prescription": {
+      "title": "إنشاء وصفة طبية",
+      "success": "تم إنشاء الوصفة بنجاح",
+      "appointment": "الموعد",
+      "select_appointment_hint": "اختر موعداً",
+      "select_appointment_error": "يرجى اختيار موعد",
+      "no_appointments": "لا توجد مواعيد متاحة",
+      "medication": "الدواء",
+      "medication_hint": "مثال: أموكسيسيلين 500 ملغ",
+      "dosage": "الجرعة",
+      "dosage_hint": "مثال: قرص واحد 3 مرات يومياً",
+      "instructions": "التعليمات",
+      "instructions_hint": "تعليمات إضافية للمريض",
+      "required_field": "هذا الحقل مطلوب",
+      "save": "حفظ الوصفة"
+    }
   }
 }

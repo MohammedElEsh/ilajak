@@ -72,6 +72,49 @@ class _PatientDoctorProfileViewState extends State<PatientDoctorProfileView> {
                 ),
               ),
             ),
+            bottomNavigationBar: Container(
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.05),
+                    blurRadius: 10,
+                    offset: const Offset(0, -5),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Consultation",
+                        style: AppTypography.regular12.copyWith(
+                          color: AppColors.fieldLabel,
+                        ),
+                      ),
+                      Text(
+                        "\$ ${state.doctorDetails.consultationFee}",
+                        style: AppTypography.bold20.copyWith(
+                          color: AppColors.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 24.w),
+                  Expanded(
+                    child: ElevatedButtonBookingWidget(
+                      text: 'Book Appointment',
+                      onTap: () {},
+                    ),
+                  ),
+                ],
+              ),
+            ),
             body: SingleChildScrollView(
               child: Stack(
                 children: [

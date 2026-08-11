@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 import 'package:ilajak/core/constants/app_strings.dart';
+import 'package:ilajak/core/theme/colors/app_colors.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
@@ -47,78 +48,79 @@ class SearchField extends StatelessWidget {
     final searchBar = theme.searchBarTheme;
     const states = <WidgetState>{};
 
-    final bg = fillColor ?? searchBar.backgroundColor?.resolve(states);
+    final bg = fillColor ?? AppColors.fieldInput;
     final hintStyle = searchBar.hintStyle?.resolve(states);
     final textStyle = searchBar.textStyle?.resolve(states);
-    final elev = elevation ?? searchBar.elevation?.resolve(states) ?? 0;
 
-    final OutlinedBorder? shape = searchBar.shape?.resolve(states);
-    BorderRadius? radius = borderRadius;
-    if (radius == null && shape is RoundedRectangleBorder) {
-      radius = shape.borderRadius as BorderRadius?;
-    }
-    radius ??= BorderRadius.circular(6.r);
-
-    final EdgeInsetsGeometry? resolvedPadding =
-        padding ?? searchBar.padding?.resolve(states);
+    final radius =
+        borderRadius ?? BorderRadius.circular(50.r);
 
     final fg = textColor ?? textStyle?.color ?? theme.colorScheme.onSurface;
-    final hintClr = hintColor ?? hintStyle?.color;
-    final icon = iconColor ?? hintClr ?? fg;
+    final hintClr = hintColor ?? hintStyle?.color ?? AppColors.fieldLabel;
+    final icon = iconColor ?? hintClr;
 
-    return Material(
-      color: bg,
-      elevation: elev,
-      borderRadius: radius,
-      child: Padding(
-        padding: resolvedPadding ?? EdgeInsets.symmetric(horizontal: 16.w),
-        child: Row(
-          children: [
-            HugeIcon(
+    return Container(
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: radius,
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withValues(alpha: 0.06),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: TextField(
+        controller: controller,
+        focusNode: focusNode,
+        onChanged: onChanged,
+        onSubmitted: onSubmitted,
+        textInputAction: TextInputAction.search,
+        cursorColor: theme.colorScheme.primary,
+        style: textStyle?.copyWith(color: fg) ??
+            theme.textTheme.bodyLarge?.copyWith(color: fg),
+        decoration: InputDecoration(
+          isCollapsed: true,
+          border: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          disabledBorder: InputBorder.none,
+          hintText: hint ?? AppStrings.homeSearchPlaceholder.tr(),
+          hintStyle: (hintStyle ?? theme.textTheme.bodyLarge)
+              ?.copyWith(color: hintClr),
+          contentPadding:
+              EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+          prefixIcon: Padding(
+            padding: EdgeInsets.only(left: 16.w, right: 8.w),
+            child: HugeIcon(
               icon: HugeIcons.strokeRoundedSearch01,
               color: icon,
               size: 20.r,
             ),
-            SizedBox(width: 12.w),
-            Expanded(
-              child: TextField(
-                controller: controller,
-                focusNode: focusNode,
-                onChanged: onChanged,
-                onSubmitted: onSubmitted,
-                textInputAction: TextInputAction.search,
-                cursorColor: theme.colorScheme.primary,
-                style: textStyle?.copyWith(color: fg) ??
-                    theme.textTheme.bodyLarge?.copyWith(color: fg),
-                decoration: InputDecoration(
-                  isCollapsed: true,
-                  border: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  hintText: hint ?? AppStrings.homeSearchPlaceholder.tr(),
-                  hintStyle: hintStyle,
-                  contentPadding: EdgeInsets.symmetric(vertical: 20.h),
-                ),
-              ),
-            ),
-            SizedBox(width: 8.w),
-            GestureDetector(
-              onTap: onVoiceTap,
-              behavior: HitTestBehavior.opaque,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 4.w,
-                  vertical: 8.h,
-                ),
-                child: HugeIcon(
-                  icon: HugeIcons.strokeRoundedMic01,
-                  color: icon,
-                  size: 20.r,
-                ),
-              ),
-            ),
-          ],
+          ),
+          prefixIconConstraints: const BoxConstraints(
+            minWidth: 0,
+            minHeight: 0,
+          ),
+          suffixIcon: onVoiceTap != null
+              ? GestureDetector(
+                  onTap: onVoiceTap,
+                  behavior: HitTestBehavior.opaque,
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 16.w, left: 8.w),
+                    child: HugeIcon(
+                      icon: HugeIcons.strokeRoundedMic01,
+                      color: icon,
+                      size: 20.r,
+                    ),
+                  ),
+                )
+              : null,
+          suffixIconConstraints: const BoxConstraints(
+            minWidth: 0,
+            minHeight: 0,
+          ),
         ),
       ),
     );

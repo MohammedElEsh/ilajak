@@ -3,10 +3,9 @@ import 'package:ilajak/core/errors/safe_call.dart';
 import 'package:ilajak/core/networking/api_consumer.dart';
 import 'package:ilajak/core/networking/api_endpoints.dart';
 import 'package:ilajak/core/services/session/session_manager.dart';
-
-import '../models/auth_tokens.dart';
-import '../models/user_model.dart';
-import 'auth_repository.dart';
+import 'package:ilajak/features/auth/data/models/auth_tokens.dart';
+import 'package:ilajak/features/auth/data/models/user_model.dart';
+import 'package:ilajak/features/auth/data/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final ApiConsumer _apiConsumer;
@@ -149,10 +148,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  EitherResult<void> verifyOtp({
-    required String email,
-    required String otp,
-  }) {
+  EitherResult<void> verifyOtp({required String email, required String otp}) {
     return safeCall(() async {
       final response = await _apiConsumer.post(
         ApiEndpoints.verifyOtp,

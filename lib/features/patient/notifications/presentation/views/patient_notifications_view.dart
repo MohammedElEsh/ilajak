@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ilajak/features/notifications/presentation/views/notifications_view.dart';
 
 class PatientNotificationsView extends StatelessWidget {
   const PatientNotificationsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Text('Notifications', style: TextStyle(fontSize: 24.sp)),
-        ),
-      ),
-    );
+    return const NotificationsView();
   }
 }

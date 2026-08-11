@@ -17,4 +17,20 @@ class ApiEndpoints {
   static const String verifyOtp = '/verify-otp';
   static const String resetPassword = '/reset-password';
   static const String logout = '/logout';
+  static const String changePassword = '/user/change-password';
+
+  // Doctor Profile
+  static const String doctorProfile = '/doctor/profile';
+  static const String doctorProfileAvatar = '/doctor/profile/avatar';
+
+  // Appointments
+  static const String appointments = '/appointments';
+  static String appointmentStatus(int appointmentId) =>
+      '/appointments/$appointmentId/status';
+
+  // Medical Records
+  static const String medicalRecords = '/medical-records';
+
+  // Prescriptions
+  static const String prescriptions = '/prescriptions';
 }

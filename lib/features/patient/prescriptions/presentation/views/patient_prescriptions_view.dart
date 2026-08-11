@@ -9,6 +9,7 @@ import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/manager/prescription_cubit.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/manager/prescription_state.dart';
+import 'package:ilajak/features/patient/prescriptions/presentation/views/prescription_detail_view.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/widgets/prescription_card_widget.dart';
 import 'package:ilajak/features/patient/prescriptions/presentation/widgets/prescription_filter_tabs.dart';
 
@@ -140,8 +141,19 @@ class _PatientPrescriptionsViewState extends State<PatientPrescriptionsView> {
                         padding: EdgeInsets.only(bottom: 24.h),
                         itemCount: state.prescriptions.length,
                         itemBuilder: (context, index) {
+                          final prescription = state.prescriptions[index];
                           return PrescriptionCardWidget(
-                            prescription: state.prescriptions[index],
+                            prescription: prescription,
+                            onView: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => PrescriptionDetailView(
+                                    prescription: prescription,
+                                  ),
+                                ),
+                              );
+                            },
                           );
                         },
                       );

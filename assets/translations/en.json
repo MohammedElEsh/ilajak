@@ -152,7 +152,10 @@
     "Appointments": "Appointments",
     "UpcomingAppointment": "Upcoming Appointments",
     "HealthInsight": "Health Insight",
-    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%."
+    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%.",
+    "search": {
+      "placeholder": "Search doctors, symptoms..."
+    }
   },
   "booking": {
     "search_hint": "Search doctors, symptoms...",
@@ -268,6 +271,165 @@
     "medicines_count": "{} Medicines",
     "issue_date": "Issue Date",
     "refill": "Refill",
-    "view": "View"
+    "view": "View",
+    "detail_medicines_list": "Medicines List",
+    "detail_medicine_name": "Medicine",
+    "detail_morning": "Morning",
+    "detail_evening": "Evening",
+    "detail_night": "Night",
+    "detail_dosage_value": "{} mg",
+    "detail_frequency_value": "Times/day"
+  },
+  "doctor": {
+    "home": {
+      "appBarTitle": "Doctor Dashboard",
+      "greeting": "Good Morning",
+      "appointments_today": "Appointments Today",
+      "today_badge": "TODAY",
+      "pending": "Pending",
+      "completed": "Completed",
+      "new_patients": "New Patients",
+      "quick_actions": "Quick Actions",
+      "add_appointment": "Add Appointment",
+      "record_visit": "Record Visit",
+      "recent_patients": "Recent Patients",
+      "view_all": "View All",
+      "upcoming_today": "Upcoming Today",
+      "now_label": "NOW",
+      "live_badge": "LIVE",
+      "start_visit": "Start Visit",
+      "search_placeholder": "Search patients, appointments..."
+    },
+    "schedule": {
+      "filter_all": "All",
+      "filter_date": "Date",
+      "filter_client": "Client",
+      "filter_patient": "Patient",
+      "eyebrow": "Appointments",
+      "today_label": "Today",
+      "new_appointment": "New Appointment",
+      "no_appointments": "No appointments found",
+      "confirm": "Confirm",
+      "complete": "Complete",
+      "reschedule": "Reschedule",
+      "cancel": "Cancel",
+      "view_details": "View Details"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "filter_all": "All",
+      "filter_unread": "Unread",
+      "filter_appointments": "Appointments",
+      "filter_patients": "Patients",
+      "section_today": "Today",
+      "section_yesterday": "Yesterday",
+      "section_earlier": "Earlier",
+      "mark_all_read": "Mark All Read",
+      "search_hint": "Search notifications...",
+      "empty_state": "No notifications yet",
+      "accept": "Accept",
+      "open_labs": "Open Labs"
+    },
+    "patients": {
+      "title": "My Patients",
+      "filter_all": "All",
+      "filter_today": "Today",
+      "filter_new": "New",
+      "filter_returning": "Returning",
+      "search_hint": "Search patients...",
+      "status_active": "Active",
+      "status_pending": "Pending",
+      "last_visit": "Last Visit",
+      "next_appointment": "Next Appointment",
+      "not_scheduled": "Not scheduled"
+    },
+    "patient_profile": {
+      "missing_context": "Patient information not available",
+      "title": "Patient Profile",
+      "medical_conditions": "Medical Conditions",
+      "allergies": "Allergies",
+      "chronic_diseases": "Chronic Diseases",
+      "active_medications": "Active Medications",
+      "recent_visits": "Recent Visits",
+      "results_pending": "Results Pending",
+      "view_medical_history": "View Medical History",
+      "add_prescription": "Add Prescription",
+      "book_follow_up": "Book Follow-up",
+      "none_reported": "None reported",
+      "items_suffix": " item(s)"
+    },
+    "patient_records": {
+      "patient_id_prefix": "ID: ",
+      "filter_all": "All",
+      "filter_lab_results": "Lab Results",
+      "filter_radiology": "Radiology",
+      "filter_prescriptions": "Prescriptions"
+    },
+    "medical_records": {
+      "title": "Medical Records",
+      "empty": "No medical records found",
+      "chronic_diseases": "Chronic Diseases",
+      "allergies": "Allergies",
+      "lab_results": "Lab Results",
+      "radiology_results": "Radiology Results",
+      "attachments": "Attachments"
+    },
+    "create_medical_record": {
+      "title": "Create Medical Record",
+      "success": "Medical record created successfully",
+      "chronic_hint": "Enter chronic diseases",
+      "allergies_hint": "Enter allergies",
+      "attachments_hint": "Attachments",
+      "attachment_hint": "Enter attachment URL",
+      "save": "Save Record",
+      "field_name_hint": "Field name",
+      "field_value_hint": "Field value"
+    },
+    "change_password": {
+      "title": "Change Password",
+      "intro": "For your security, please enter your current password and choose a new one.",
+      "current": "Current Password",
+      "new": "New Password",
+      "confirm": "Confirm New Password",
+      "hint": "Password must be at least 8 characters, including a number and a symbol.",
+      "update_button": "Update Password",
+      "forgot": "Forgot Password?",
+      "complexity_error": "Password must include at least one number and one symbol."
+    },
+    "profile": {
+      "professional_details": "Professional Details",
+      "clinic": "Clinic",
+      "specialization": "Specialization",
+      "contact_information": "Contact Information",
+      "phone": "Phone",
+      "email": "Email",
+      "legal_info": "Legal Information",
+      "license_number": "License Number",
+      "status_active": "Active",
+      "app_settings": "App Settings",
+      "notifications": "Notifications",
+      "password": "Password",
+      "log_out": "Log Out"
+    },
+    "prescriptions": {
+      "section_title": "Prescriptions",
+      "empty": "No prescriptions found"
+    },
+    "create_prescription": {
+      "title": "Create Prescription",
+      "success": "Prescription created successfully",
+      "appointment": "Appointment",
+      "select_appointment_hint": "Select an appointment",
+      "select_appointment_error": "Please select an appointment",
+      "no_appointments": "No appointments available",
+      "medication": "Medication",
+      "medication_hint": "e.g., Amoxicillin 500mg",
+      "dosage": "Dosage",
+      "dosage_hint": "e.g., 1 tablet 3 times daily",
+      "instructions": "Instructions",
+      "instructions_hint": "Additional instructions for the patient",
+      "required_field": "This field is required",
+      "save": "Save Prescription"
+    }
   }
 }

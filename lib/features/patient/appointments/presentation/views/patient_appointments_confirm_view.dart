@@ -93,37 +93,32 @@ class _PatientAppointmentsConfirmViewState
                   itemBuilder: (context, index) {
                     final date = now.add(Duration(days: index));
 
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedDate = date;
-                          selectedIndexTime = -1;
-                          time = "";
-                        });
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 12.w),
-                        child: DateItem(
-                          date: date,
-                          onTap: () {
-                            setState(() {
-                              selectedDate = date;
-                              selectedIndexTime = -1;
-                              time = "";
-                              context
-                                  .read<DoctorAvailableTimeSlotsCubit>()
-                                  .getAvailableTimeSlots(
-                                    widget.doctor.id,
-                                    selectedDate!,
-                                  );
-                            
-                            });
-                          },
-                          isSelected:
-                              selectedDate?.year == date.year &&
-                              selectedDate?.month == date.month &&
-                              selectedDate?.day == date.day,
-                        ),
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedDate = date;
+                      });
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 12.w),
+                      child: DateItem(
+                        date: date,
+                        onTap: () {
+                          setState(() {
+                            selectedDate = date;
+                            context
+                                .read<DoctorAvailableTimeSlotsCubit>()
+                                .getAvailableTimeSlots(
+                                  widget.doctor.id,
+                                  selectedDate,
+                                );
+                            debugPrint(selectedDate.toString());
+                          });
+                        },
+                        isSelected:
+                            selectedDate.year == date.year &&
+                            selectedDate.month == date.month &&
+                            selectedDate.day == date.day,
                       ),
                     );
                   },
@@ -216,16 +211,51 @@ class _PatientAppointmentsConfirmViewState
                       ),
                     );
                   }
-                },
-              ),
-              SizedBox(height: 35.h),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: Text(
-                  AppStrings.symptomsNotes.tr(),
-                  style: AppTypography.semiBold22.copyWith(
-                    color: AppColors.textPrimaryLight,
-                  ),
+                  return SizedBox(
+                    height: 50.h,
+                    child: ListView.builder(
+                      padding: EdgeInsets.symmetric(horizontal: 18.w),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.timeSlots.length,
+                      itemBuilder: (context, index) {
+                        return TimeItemWidget(
+                          isSelected: selectedIndexTime == index,
+                          time: state.timeSlots[index],
+                          onTap: () {
+                            setState(() {
+                              selectedIndexTime = index;
+                              time = state.timeSlots[index];
+                              debugPrint(state.timeSlots[index].toString());
+                            });
+                          },
+                        );
+                      },
+                    ),
+                  );
+                } else {
+                  return Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15.h),
+                      child: Text(
+                        'Doctor does not work on this day.',
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+            SizedBox(height: 35.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Text(
+                AppStrings.symptomsNotes.tr(),
+                style: AppTypography.semiBold22.copyWith(
+                  color: AppColors.textPrimaryLight,
                 ),
               ),
               SizedBox(height: 16.h),
