@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/routing/route_names.dart';
+import 'package:ilajak/core/shared/chips/app_filter_chip.dart';
 import 'package:ilajak/core/shared/inputs/search_field.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
-import 'package:ilajak/core/shared/chips/app_filter_chip.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/doctor/patients/presentation/widgets/patient_list_card.dart';
@@ -49,9 +49,7 @@ class _DoctorPatientsViewState extends State<DoctorPatientsView> {
           ),
           titleWidget: Text(
             AppStrings.doctorHomeAppBarTitle.tr(),
-            style: AppTypography.semiBold18.copyWith(
-              color: AppColors.primary,
-            ),
+            style: AppTypography.semiBold18.copyWith(color: AppColors.primary),
           ),
           actionWidget: HugeIcon(
             icon: HugeIcons.strokeRoundedSearch01,
@@ -139,7 +137,7 @@ class _DoctorPatientsViewState extends State<DoctorPatientsView> {
               // proper Scaffold.bottomNavigationBar — see bottom_nav_clearance.dart.
               Positioned(
                 right: 0,
-                bottom: 16.h + MediaQuery.of(context).padding.bottom,
+                bottom: 64.h + MediaQuery.of(context).padding.bottom,
                 child: FloatingActionButton(
                   onPressed: () {
                     // TODO(backend): open the "Add Patient" creation flow.

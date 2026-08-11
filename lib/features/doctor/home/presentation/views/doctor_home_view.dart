@@ -85,16 +85,23 @@ class DoctorHomeView extends StatelessWidget {
                 SizedBox(height: 24.h),
                 Text(
                   '${AppStrings.doctorHomeGreeting.tr()}, Dr. Sarah',
-                  style: AppTypography.semiBold20.copyWith(color: AppColors.textPrimaryLight),
+                  style: AppTypography.semiBold20.copyWith(
+                    color: AppColors.textPrimaryLight,
+                  ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
                   DateFormatter.formatToWeekdayDate(DateTime.now()),
-                  style: AppTypography.regular14.copyWith(color: AppColors.textSecondary),
+                  style: AppTypography.regular14.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
                 ),
                 SizedBox(height: 24.h),
 
-                SearchField(onChanged: (_) {}),
+                SearchField(
+                  hint: AppStrings.doctorHomeSearchPlaceholder.tr(),
+                  onChanged: (_) {},
+                ),
                 SizedBox(height: 24.h),
 
                 // ── Stats grid ─────────────────────────────────────────
@@ -112,7 +119,8 @@ class DoctorHomeView extends StatelessWidget {
                         label: AppStrings.doctorHomeAppointmentsToday.tr(),
                         badgeText: AppStrings.doctorHomeTodayBadge.tr(),
                         backgroundColor: AppColors.primary,
-                        onTap: () => context.push(RouteNames.doctorScheduleFullPath),
+                        onTap: () =>
+                            context.push(RouteNames.doctorScheduleFullPath),
                       ),
                     ),
                     SizedBox(width: 16.w),
@@ -169,85 +177,111 @@ class DoctorHomeView extends StatelessWidget {
                 // ── Quick actions ──────────────────────────────────────
                 Text(
                   AppStrings.doctorHomeQuickActions.tr(),
-                  style: AppTypography.semiBold16.copyWith(color: AppColors.textPrimaryLight),
+                  style: AppTypography.semiBold16.copyWith(
+                    color: AppColors.textPrimaryLight,
+                  ),
                 ),
                 SizedBox(height: 16.h),
                 LayoutBuilder(
-                 builder: (context, constraints) {
-                   final isNarrow = constraints.maxWidth < 400;
-                   if (isNarrow) {
-                     return Column(
-                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                       children: [
-                         AppButton(
-                           label: AppStrings.doctorHomeAddAppointment.tr(),
-                           variant: AppButtonVariant.elevated,
-                           prefixIcon: SizedBox(width: 20.w, height: 20.h, child: Center(child: Icon(Icons.add, size: 18.sp))),
-                           style: ElevatedButton.styleFrom(
-                             padding: EdgeInsets.symmetric(vertical: 16.h),
-                             textStyle: AppTypography.semiBold14,
-                           ),
-                           onPressed: () {},
-                         ),
-                         SizedBox(height: 12.h),
-                         AppButton(
-                           label: AppStrings.doctorHomeRecordVisit.tr(),
-                           variant: AppButtonVariant.elevated,
-                           prefixIcon: SizedBox(width: 20.w, height: 20.h, child: Center(child: HugeIcon(
-                             icon: HugeIcons.strokeRoundedNoteEdit,
-                             size: 18.sp,
-                             color: AppColors.primary,
-                           ))),
-                           style: ElevatedButton.styleFrom(
-                             backgroundColor: AppColors.primaryLight2,
-                             foregroundColor: AppColors.primary,
-                             elevation: 0,
-                             padding: EdgeInsets.symmetric(vertical: 16.h),
-                             textStyle: AppTypography.semiBold14,
-                           ),
-                           onPressed: () {},
-                         ),
-                       ],
-                     );
-                   }
+                  builder: (context, constraints) {
+                    final isNarrow = constraints.maxWidth < 400;
+                    if (isNarrow) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          AppButton(
+                            label: AppStrings.doctorHomeAddAppointment.tr(),
+                            variant: AppButtonVariant.elevated,
+                            prefixIcon: SizedBox(
+                              width: 20.w,
+                              height: 20.h,
+                              child: Center(
+                                child: Icon(Icons.add, size: 18.sp),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 16.h),
+                              textStyle: AppTypography.semiBold14,
+                            ),
+                            onPressed: () {},
+                          ),
+                          SizedBox(height: 12.h),
+                          AppButton(
+                            label: AppStrings.doctorHomeRecordVisit.tr(),
+                            variant: AppButtonVariant.elevated,
+                            prefixIcon: SizedBox(
+                              width: 20.w,
+                              height: 20.h,
+                              child: Center(
+                                child: HugeIcon(
+                                  icon: HugeIcons.strokeRoundedNoteEdit,
+                                  size: 18.sp,
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primaryLight2,
+                              foregroundColor: AppColors.primary,
+                              elevation: 0,
+                              padding: EdgeInsets.symmetric(vertical: 16.h),
+                              textStyle: AppTypography.semiBold14,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      );
+                    }
 
-                   return Row(
-                     children: [
-                       Expanded(
-                         child: AppButton(
-                           label: AppStrings.doctorHomeAddAppointment.tr(),
-                           variant: AppButtonVariant.elevated,
-                           prefixIcon: SizedBox(width: 20.w, height: 20.h, child: Center(child: Icon(Icons.add, size: 18.sp))),
-                           style: ElevatedButton.styleFrom(
-                             padding: EdgeInsets.symmetric(vertical: 16.h),
-                             textStyle: AppTypography.semiBold14,
-                           ),
-                           onPressed: () {},
-                         ),
-                       ),
-                       SizedBox(width: 12.w),
-                       Expanded(
-                         child: AppButton(
-                           label: AppStrings.doctorHomeRecordVisit.tr(),
-                           variant: AppButtonVariant.elevated,
-                           prefixIcon: SizedBox(width: 20.w, height: 20.h, child: Center(child: HugeIcon(
-                             icon: HugeIcons.strokeRoundedNoteEdit,
-                             size: 18.sp,
-                             color: AppColors.primary,
-                           ))),
-                           style: ElevatedButton.styleFrom(
-                             backgroundColor: AppColors.primaryLight2,
-                             foregroundColor: AppColors.primary,
-                             elevation: 0,
-                             padding: EdgeInsets.symmetric(vertical: 16.h),
-                             textStyle: AppTypography.semiBold14,
-                           ),
-                           onPressed: () {},
-                         ),
-                       ),
-                     ],
-                   );
-                 },
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: AppButton(
+                            label: AppStrings.doctorHomeAddAppointment.tr(),
+                            variant: AppButtonVariant.elevated,
+                            prefixIcon: SizedBox(
+                              width: 20.w,
+                              height: 20.h,
+                              child: Center(
+                                child: Icon(Icons.add, size: 18.sp),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 16.h),
+                              textStyle: AppTypography.semiBold14,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                        SizedBox(width: 12.w),
+                        Expanded(
+                          child: AppButton(
+                            label: AppStrings.doctorHomeRecordVisit.tr(),
+                            variant: AppButtonVariant.elevated,
+                            prefixIcon: SizedBox(
+                              width: 20.w,
+                              height: 20.h,
+                              child: Center(
+                                child: HugeIcon(
+                                  icon: HugeIcons.strokeRoundedNoteEdit,
+                                  size: 18.sp,
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primaryLight2,
+                              foregroundColor: AppColors.primary,
+                              elevation: 0,
+                              padding: EdgeInsets.symmetric(vertical: 16.h),
+                              textStyle: AppTypography.semiBold14,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 SizedBox(height: 32.h),
 
@@ -256,14 +290,18 @@ class DoctorHomeView extends StatelessWidget {
                   children: [
                     Text(
                       AppStrings.doctorHomeRecentPatients.tr(),
-                      style: AppTypography.semiBold16.copyWith(color: AppColors.textPrimaryLight),
+                      style: AppTypography.semiBold16.copyWith(
+                        color: AppColors.textPrimaryLight,
+                      ),
                     ),
                     const Spacer(),
                     TextButton(
                       onPressed: () => context.go(RouteNames.doctorPatients),
                       child: Text(
                         AppStrings.doctorHomeViewAll.tr(),
-                        style: AppTypography.regular14.copyWith(color: AppColors.primary),
+                        style: AppTypography.regular14.copyWith(
+                          color: AppColors.primary,
+                        ),
                       ),
                     ),
                   ],
@@ -280,7 +318,9 @@ class DoctorHomeView extends StatelessWidget {
                       return RecentPatientAvatar(
                         name: name,
                         highlighted: index == 0,
-                        onTap: () => context.push(RouteNames.doctorPatientProfileFullPath),
+                        onTap: () => context.push(
+                          RouteNames.doctorPatientProfileFullPath,
+                        ),
                       );
                     },
                   ),
@@ -292,12 +332,16 @@ class DoctorHomeView extends StatelessWidget {
                   children: [
                     Text(
                       AppStrings.doctorHomeUpcomingToday.tr(),
-                      style: AppTypography.semiBold16.copyWith(color: AppColors.textPrimaryLight),
+                      style: AppTypography.semiBold16.copyWith(
+                        color: AppColors.textPrimaryLight,
+                      ),
                     ),
                     const Spacer(),
                     Text(
                       '${DateFormatter.formatToTime(DateTime.now())} • ${AppStrings.doctorHomeNowLabel.tr()}',
-                      style: AppTypography.semiBold14.copyWith(color: AppColors.primary),
+                      style: AppTypography.semiBold14.copyWith(
+                        color: AppColors.primary,
+                      ),
                     ),
                   ],
                 ),
@@ -320,7 +364,7 @@ class DoctorHomeView extends StatelessWidget {
                   patientName: 'Marcus Thorne',
                   timeLabel: '11:15 AM • Annual Checkup',
                 ),
-                SizedBox(height: 24.h + MediaQuery.of(context).padding.bottom),
+                SizedBox(height: 64.h + MediaQuery.of(context).padding.bottom),
               ],
             ),
           ),

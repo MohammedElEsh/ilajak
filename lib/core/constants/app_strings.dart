@@ -337,6 +337,7 @@ class AppStrings {
   static const String doctorHomeRecordVisit = 'doctor.home.record_visit';
   static const String doctorHomeRecentPatients = 'doctor.home.recent_patients';
   static const String doctorHomeViewAll = 'doctor.home.view_all';
+  static const String doctorHomeSearchPlaceholder = 'doctor.home.search_placeholder';
   static const String doctorHomeUpcomingToday = 'doctor.home.upcoming_today';
   static const String doctorHomeNowLabel = 'doctor.home.now_label';
   static const String doctorHomeLiveBadge = 'doctor.home.live_badge';

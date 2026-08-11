@@ -62,7 +62,8 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
               if (state is DoctorProfileError) {
                 return AppErrorWidget(
                   message: state.message,
-                  onRetry: () => context.read<DoctorProfileCubit>().loadProfile(),
+                  onRetry: () =>
+                      context.read<DoctorProfileCubit>().loadProfile(),
                 );
               }
 
@@ -83,7 +84,9 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                         clipBehavior: Clip.none,
                         children: [
                           ClipOval(
-                            child: (profile.avatarUrl != null && profile.avatarUrl!.isNotEmpty)
+                            child:
+                                (profile.avatarUrl != null &&
+                                    profile.avatarUrl!.isNotEmpty)
                                 ? AppCachedImage(
                                     imageUrl: profile.avatarUrl!,
                                     width: 110.w,
@@ -93,7 +96,11 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                                     width: 110.w,
                                     height: 110.h,
                                     color: AppColors.secondary,
-                                    child: Icon(Icons.person_outline, color: AppColors.primary, size: 48.sp),
+                                    child: Icon(
+                                      Icons.person_outline,
+                                      color: AppColors.primary,
+                                      size: 48.sp,
+                                    ),
                                   ),
                           ),
                           Positioned(
@@ -102,14 +109,19 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                             child: GestureDetector(
                               onTap: isUploadingAvatar
                                   ? null
-                                  : () => context.read<DoctorProfileCubit>().changeAvatar(),
+                                  : () => context
+                                        .read<DoctorProfileCubit>()
+                                        .changeAvatar(),
                               child: Container(
                                 width: 32.w,
                                 height: 32.h,
                                 decoration: BoxDecoration(
                                   color: AppColors.primary,
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: AppColors.backgroundLight, width: 2),
+                                  border: Border.all(
+                                    color: AppColors.backgroundLight,
+                                    width: 2,
+                                  ),
                                 ),
                                 child: isUploadingAvatar
                                     ? Padding(
@@ -119,7 +131,11 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                                           color: AppColors.surfaceLight,
                                         ),
                                       )
-                                    : Icon(Icons.edit, color: AppColors.surfaceLight, size: 16.sp),
+                                    : Icon(
+                                        Icons.edit,
+                                        color: AppColors.surfaceLight,
+                                        size: 16.sp,
+                                      ),
                               ),
                             ),
                           ),
@@ -130,41 +146,61 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                     Center(
                       child: Text(
                         profile.name ?? '—',
-                        style: AppTypography.semiBold22.copyWith(color: AppColors.textPrimaryLight),
+                        style: AppTypography.semiBold22.copyWith(
+                          color: AppColors.textPrimaryLight,
+                        ),
                       ),
                     ),
                     SizedBox(height: 8.h),
                     Center(
                       child: Text(
                         profile.specialization ?? '—',
-                        style: AppTypography.semiBold16.copyWith(color: AppColors.primary),
+                        style: AppTypography.semiBold16.copyWith(
+                          color: AppColors.primary,
+                        ),
                       ),
                     ),
                     SizedBox(height: 32.h),
 
-                    _SectionLabel(AppStrings.doctorProfileProfessionalDetails.tr()),
+                    _SectionLabel(
+                      AppStrings.doctorProfileProfessionalDetails.tr(),
+                    ),
                     SizedBox(height: 14.h),
                     ProfileInfoCard(
-                      icon: Icon(Icons.apartment_outlined, color: AppColors.primary, size: 20.sp),
+                      icon: Icon(
+                        Icons.apartment_outlined,
+                        color: AppColors.primary,
+                        size: 20.sp,
+                      ),
                       label: AppStrings.doctorProfileClinic.tr(),
                       value: profile.firstClinicName ?? '—',
                     ),
                     SizedBox(height: 12.h),
                     ProfileInfoCard(
-                      icon: Icon(Icons.monitor_heart_outlined, color: AppColors.primary, size: 20.sp),
+                      icon: Icon(
+                        Icons.monitor_heart_outlined,
+                        color: AppColors.primary,
+                        size: 20.sp,
+                      ),
                       label: AppStrings.doctorProfileSpecialization.tr(),
                       value: profile.specialization ?? '—',
                     ),
                     SizedBox(height: 24.h),
 
-                    _SectionLabel(AppStrings.doctorProfileContactInformation.tr()),
+                    _SectionLabel(
+                      AppStrings.doctorProfileContactInformation.tr(),
+                    ),
                     SizedBox(height: 14.h),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: ProfileInfoCard(
-                            icon: Icon(Icons.call_outlined, color: AppColors.primary, size: 20.sp),
+                            icon: Icon(
+                              Icons.call_outlined,
+                              color: AppColors.primary,
+                              size: 20.sp,
+                            ),
                             label: AppStrings.doctorProfilePhone.tr(),
                             value: profile.phone ?? '—',
                           ),
@@ -172,7 +208,11 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                         SizedBox(width: 12.w),
                         Expanded(
                           child: ProfileInfoCard(
-                            icon: Icon(Icons.mail_outline, color: AppColors.primary, size: 20.sp),
+                            icon: Icon(
+                              Icons.mail_outline,
+                              color: AppColors.primary,
+                              size: 20.sp,
+                            ),
                             label: AppStrings.doctorProfileEmail.tr(),
                             value: profile.email ?? '—',
                           ),
@@ -184,19 +224,28 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                     _SectionLabel(AppStrings.doctorProfileLegalInfo.tr()),
                     SizedBox(height: 14.h),
                     ProfileInfoCard(
-                      icon: Icon(Icons.verified_user_outlined, color: AppColors.primary, size: 20.sp),
+                      icon: Icon(
+                        Icons.verified_user_outlined,
+                        color: AppColors.primary,
+                        size: 20.sp,
+                      ),
                       label: AppStrings.doctorProfileLicenseNumber.tr(),
                       value: profile.licenseNumber ?? '—',
                       trailing: profile.status == 'active'
                           ? Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                                vertical: 4.h,
+                              ),
                               decoration: BoxDecoration(
                                 color: AppColors.success.withValues(alpha: .12),
                                 borderRadius: BorderRadius.circular(20.r),
                               ),
                               child: Text(
                                 AppStrings.doctorProfileStatusActive.tr(),
-                                style: AppTypography.semiBold14.copyWith(color: AppColors.success),
+                                style: AppTypography.semiBold14.copyWith(
+                                  color: AppColors.success,
+                                ),
                               ),
                             )
                           : null,
@@ -219,26 +268,37 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                     SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(
-                        onPressed: () => context.read<DoctorProfileCubit>().logout(),
+                        onPressed: () =>
+                            context.read<DoctorProfileCubit>().logout(),
                         style: OutlinedButton.styleFrom(
                           side: const BorderSide(color: AppColors.error),
                           padding: EdgeInsets.symmetric(vertical: 16.h),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.r)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14.r),
+                          ),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.logout, color: AppColors.error, size: 18.sp),
+                            Icon(
+                              Icons.logout,
+                              color: AppColors.error,
+                              size: 18.sp,
+                            ),
                             SizedBox(width: 8.w),
                             Text(
                               AppStrings.doctorProfileLogOut.tr(),
-                              style: AppTypography.semiBold16.copyWith(color: AppColors.error),
+                              style: AppTypography.semiBold16.copyWith(
+                                color: AppColors.error,
+                              ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(height: 24.h + MediaQuery.of(context).padding.bottom),
+                    SizedBox(
+                      height: 96.h + MediaQuery.of(context).padding.bottom,
+                    ),
                   ],
                 ),
               );
@@ -259,7 +319,10 @@ class _SectionLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: AppTypography.medium12.copyWith(color: AppColors.textSecondary, letterSpacing: .5),
+      style: AppTypography.medium12.copyWith(
+        color: AppColors.textSecondary,
+        letterSpacing: .5,
+      ),
     );
   }
 }

@@ -152,7 +152,10 @@
     "Appointments": "Appointments",
     "UpcomingAppointment": "Upcoming Appointments",
     "HealthInsight": "Health Insight",
-    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%."
+    "HealthInsightSubtitle": "Based on your activity, increasing your daily\nsteps by 2,000 could improve your\ncardiovascular health by 15%.",
+    "search": {
+      "placeholder": "Search doctors, symptoms..."
+    }
   },
   "booking": {
     "search_hint": "Search doctors, symptoms...",
@@ -287,7 +290,8 @@
       "upcoming_today": "Upcoming Today",
       "now_label": "NOW",
       "live_badge": "LIVE",
-      "start_visit": "Start Visit"
+      "start_visit": "Start Visit",
+      "search_placeholder": "Search patients, appointments..."
     },
     "schedule": {
       "filter_all": "All",

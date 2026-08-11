@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ilajak/core/constants/app_strings.dart';
 import 'package:ilajak/core/routing/route_names.dart';
+import 'package:ilajak/core/shared/chips/app_filter_chip.dart';
 import 'package:ilajak/core/shared/feedback/feedback_handler.dart';
 import 'package:ilajak/core/shared/inputs/search_field.dart';
 import 'package:ilajak/core/shared/layout/app_top_bar.dart';
-import 'package:ilajak/core/shared/chips/app_filter_chip.dart';
 import 'package:ilajak/core/theme/colors/app_colors.dart';
 import 'package:ilajak/core/theme/typography/app_typography.dart';
 import 'package:ilajak/features/doctor/notifications/presentation/widgets/notification_card.dart';
@@ -114,25 +114,17 @@ class _DoctorNotificationsViewState extends State<DoctorNotificationsView> {
             onTap: () {
               // TODO(design): same open-a-Drawer TODO as Doctor Profile.
             },
-            child: Icon(
-              Icons.menu,
-              color: AppColors.primary,
-              size: 24.sp,
-            ),
+            child: Icon(Icons.menu, color: AppColors.primary, size: 24.sp),
           ),
           titleWidget: Text(
             AppStrings.doctorNotificationsTitle.tr(),
-            style: AppTypography.semiBold18.copyWith(
-              color: AppColors.primary,
-            ),
+            style: AppTypography.semiBold18.copyWith(color: AppColors.primary),
           ),
           actionWidget: TextButton(
             onPressed: _markAllRead,
             child: Text(
               AppStrings.doctorNotificationsMarkAllRead.tr(),
-              style: AppTypography.medium14.copyWith(
-                color: AppColors.primary,
-              ),
+              style: AppTypography.medium14.copyWith(color: AppColors.primary),
             ),
           ),
         ),
@@ -170,7 +162,7 @@ class _DoctorNotificationsViewState extends State<DoctorNotificationsView> {
                       )
                     : ListView(
                         padding: EdgeInsets.only(
-                          bottom: 24.h + MediaQuery.of(context).padding.bottom,
+                          bottom: 48.h + MediaQuery.of(context).padding.bottom,
                         ),
                         children: [
                           for (final section in visibleSections)
